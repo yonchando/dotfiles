@@ -1,0 +1,21 @@
+syntax enable
+
+colorscheme desert
+
+set backspace=indent,eol,start
+set number
+set linespace=15
+
+"----------------Mapping-----------------"
+
+nmap <C-h> ^
+nmap H b
+nmap L w
+
+
+
+"--------------------Auto-Commands-------------"
+
+"Auto source ideavimrc"
+autocmd BufWritePost ~/.ideavimrc source %
+
