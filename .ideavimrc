@@ -13,10 +13,7 @@ set linespace=15
 :nmap <C-h> ^
 :nmap <C-l> $
 :nmap H b
-:nmap L w
-:nmap <Leader>( vi(
-:nmap <Leader>' vi'
-:nmap <Leader>" vi"
+:nmap L e
 
 
 :nnoremap <C-,> i<CR><Esc>
@@ -25,5 +22,5 @@ set linespace=15
 " Vistual Map
 :vmap <C-l> $
 :vmap <C-h> ^
-:vmap L w
+:vmap L e
 :vmap H b
