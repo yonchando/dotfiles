@@ -1,3 +1,7 @@
+"Plugin
+Plug 'tpope/vim-surround'
+
+
 "" Source your .vimrc
 "source ~/.vimrc
 sethandler <C-v> i-v-x:ide n:vim
