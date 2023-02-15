@@ -5,21 +5,23 @@ Plug 'tpope/vim-surround'
 "" Source your .vimrc
 "source ~/.vimrc
 sethandler <C-v> i-v-x:ide n:vim
-sethandler <BS> a:ide
+sethandler <C-d> i-v-x:ide n:vim
+sethandler <C-a> i-v-x:ide n:vim
+sethandler <C-x> i-v-x:ide n:vim
 
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
 set scrolloff=6
+set idearefactormode=keep
 
+" Custom Set
+let mapleader = ","
 set backspace=indent,eol,start
 set number
 set linespace=16
-let mapleader = ","
 set relativenumber
-
-" Do incremental searching.
-set incsearch
+set tabstop=4
 
 " Don't use Ex mode, use Q for formatting.
 map Q gq
@@ -31,25 +33,33 @@ nmap H b
 nmap L e
 nmap J 3j
 nmap K 3k
-nmap 
-nnoremap <C-,> i<CR><Esc>
-nnoremap <C-.> i<BS><Esc>
 
 " Virtual Map
 vmap <C-l> $
 vmap <C-h> ^
 vmap L e
 vmap H b
+vmap J 3j
+vmap K 3k
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
+map <Leader>l <Action>(ReformatCode)
+map <Leader>a <Action>(PreviousTab)
+map <Leader>d <Action>(NextTab)
+map <Leader>b <Action>(Back)
+map <BS> <Action>(EditorBackSpace)
+map <Leader><Space> <Action>(CodeCompletion)
+map <Leader>i <Action>(ShowIntentionActions)
+map <CR> <Action>(EditorEnter)
+map <Leader>f <Action>(Find)
+map <Leader>F <Action>(FindInPath)
+map <Leader>g <Action>(GotoLine)
 
 "" Map <leader>d to start debug
-"map <leader>d <Action>(Debug)
+map <leader>r <Action>(RunClass)
 
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
-
 
 " Find more examples here: https://jb.gg/share-ideavimrc
