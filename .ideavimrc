@@ -35,20 +35,14 @@ vmap <C-k> 10k
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
-"Format Code"
-map <Leader>l <Action>(ReformatCode) 
+"Navigate breadcrumb tab"
+map <Leader>h <Action>(PreviousTab) 
 
 "Navigate breadcrumb tab"
-map <Leader>a <Action>(PreviousTab) 
-
-"Navigate breadcrumb tab"
-map <Leader>d <Action>(NextTab) 
+map <Leader>l <Action>(NextTab) 
 
 "Navigate Back to previous location"
 map <Leader>b <Action>(Back)
-
-"Show Code Completion"
-map <Leader><Space> <Action>(CodeCompletion)
 
 "Show Import Class and Intention Suggested"
 map <Leader>i <Action>(ShowIntentionActions)
@@ -60,18 +54,21 @@ map <Leader>f <Action>(Find)
 map <Leader>F <Action>(FindInPath)
 
 map <Leader>g <Action>(GotoLine)
-"map <CR> <Action>(EditorEnter)
+
 map <BS> <Action>(EditorBackSpace)
 
 "" Map <leader>d to start debug
-map <leader>r <Action>(RunClass)
+map <Leader>r <Action>(RunClass)
 
-map <leader>e <Action>(ShowErrorDescription)
+map <Leader>e <Action>(ShowErrorDescription)
 
-map <leader>dt <Action>(Unwrap)
+map <Leader>dt <Action>(Unwrap)
 
-map <leader>t <Action>(Refactorings.QuickListPopupAction)
+map <Leader>t <Action>(Refactorings.QuickListPopupAction)
 
+map <Leader>w <Action>(EditorSelectWord)
+
+map <Leader>s <Action>(EditorUnSelectWord)
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
