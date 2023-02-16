@@ -1,5 +1,6 @@
+Plug 'tpope/vim-surround'
+
 let mapleader = " "
-set surround
 set backspace=indent,eol,start
 set number
 set relativenumber
@@ -58,7 +59,8 @@ map <Leader>g <Action>(GotoLine)
 map <BS> <Action>(EditorBackSpace)
 
 "" Map <leader>d to start debug
-map <Leader>r <Action>(RunClass)
+map <Leader>rc <Action>(RunClass)
+map <Leader>re <Action>(Rerun)
 
 map <Leader>e <Action>(ShowErrorDescription)
 
