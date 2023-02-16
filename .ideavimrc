@@ -1,23 +1,12 @@
-"Plugin
-Plug 'tpope/vim-surround'
-
-"" Source your .vimrc
-"source ~/.vimrc
-sethandler <C-v> i-v-x:ide n:vim
-sethandler <C-d> i-v-x:ide n:vim
-sethandler <C-a> i-v-x:ide n:vim
-sethandler <C-x> i-v-x:ide n:vim
-
-set scrolloff=6
-set idearefactormode=keep
-
-" Custom Set
 let mapleader = " "
+set surround
 set backspace=indent,eol,start
 set number
-set linespace=16
 set relativenumber
 set tabstop=4
+set belloff=all
+
+"----------------Mapping-----------------"
 
 " Normal Map
 nmap <C-h> ^
@@ -26,6 +15,7 @@ nmap H b
 nmap L e
 nmap J 3j
 nmap K 3k
+nmap 
 
 " Virtual Map
 vmap <C-l> $
@@ -34,6 +24,7 @@ vmap L e
 vmap H b
 vmap J 3j
 vmap K 3k
+
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
@@ -62,11 +53,16 @@ map <Leader>f <Action>(Find)
 map <Leader>F <Action>(FindInPath)
 
 map <Leader>g <Action>(GotoLine)
-map <CR> <Action>(EditorEnter)
+"map <CR> <Action>(EditorEnter)
 map <BS> <Action>(EditorBackSpace)
 
 "" Map <leader>d to start debug
 map <leader>r <Action>(RunClass)
+
+map <leader>e <Action>(ShowErrorDescription)
+
+
+map <leader>dt <Action>(Unwrap)
 
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
