@@ -6,7 +6,7 @@ set number
 set linespace=16
 set relativenumber
 set tabstop=4
-set expendtab
+set expandtab
 
 " Normal Map
 nmap <C-h> ^
