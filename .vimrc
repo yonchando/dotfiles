@@ -8,18 +8,15 @@ set relativenumber
 set tabstop=4
 set expandtab
 
-" Normal Map
-nmap <C-h> ^
-nmap <C-l> $
-nmap H b
-nmap L e
-nmap J 3j
-nmap K 3k
+"--------------- Map --------------"
 
-" Virtual Map
-vmap <C-l> $
-vmap <C-h> ^
-vmap L e
-vmap H b
-vmap J 3j
-vmap K 3k
+map H b
+map L e
+map J 3j
+map K 3k
+
+" Normal Map
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
