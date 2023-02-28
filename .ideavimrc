@@ -1,15 +1,18 @@
 Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
 
 let mapleader = " "
-set backspace=indent,eol,start
+set scrolloff=5
+set incsearch
 set number
 set relativenumber
-set tabstop=4
+set tabstp=4
 set belloff=all
-set visualbell
+set visualbel
 set noerrorbells
-
+set showmode
 "----------------Mapping-----------------"
+map Q gq
 
 " Normal Map
 nmap <C-h> ^
@@ -20,7 +23,6 @@ nmap J 3j
 nmap K 3k
 nmap <C-j> 10j
 nmap <C-k> 10k
-
 
 " Virtual Map
 vmap <C-l> $
@@ -33,6 +35,8 @@ vmap K 3k
 vmap <C-j> 10j
 vmap <C-k> 10k
 
+"------------- EasyMotion Map ------------------"
+map <Leader>j <Plug>(easymotion-s)
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
@@ -54,12 +58,13 @@ map <Leader>f <Action>(Find)
 "Find Everywhere Global"
 map <Leader>F <Action>(FindInPath)
 
-map <Leader>g <Action>(GotoLine)
+map <Leader>g <Action>(ActivateVersionControlToolWindow)
+map <Leader>cw <Action>(HideActiveWindow)
 
 map <BS> <Action>(EditorBackSpace)
 
 "" Map <leader>d to start debug
-map <Leader>rc <Action>(RunClass)
+map <Leader>rt <Action>(RunClass)
 map <Leader>re <Action>(Rerun)
 
 map <Leader>e <Action>(ShowErrorDescription)
@@ -71,6 +76,35 @@ map <Leader>t <Action>(Refactorings.QuickListPopupAction)
 map <Leader>w <Action>(EditorSelectWord)
 
 map <Leader>s <Action>(EditorUnSelectWord)
+
+map <Leader>n <Action>(GotoFile)
+
+map <leader>o <Action>(OverrideMethods)
+
+map <leader>m <Action>(GotoSymbol)
+
+map <leader><tab> <Action>(Switcher)
+
+map <leader>q <Action>(CloseAllEditors)
+
+map <leader>vsp <Action>(SplitVertically)
+
+map <leader>sp <Action>(SplitHorizontally)
+
+map <leader>` <Action>(NextSplitter)
+
+map <leader>usp <Action>(Unsplit)
+
+map <leader>1 <Action>(GoToTab1)
+
+map <leader>2 <Action>(GoToTab2)
+
+map <leader>3 <Action>(GoToTab3)
+
+map <leader>4 <Action>(GoToTab4)
+
+
+
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
