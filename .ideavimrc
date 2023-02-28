@@ -1,6 +1,7 @@
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 
+syntax enable
 let mapleader = " "
 set scrolloff=5
 set incsearch
@@ -11,99 +12,84 @@ set belloff=all
 set visualbel
 set noerrorbells
 set showmode
+
 "----------------Mapping-----------------"
-map Q gq
+map H b
+map L e
+map J 3j
+map K 3k
 
 " Normal Map
-nmap <C-h> ^
-nmap <C-l> $
-nmap H b
-nmap L e
-nmap J 3j
-nmap K 3k
-nmap <C-j> 10j
-nmap <C-k> 10k
-
-" Virtual Map
-vmap <C-l> $
-vmap <C-h> ^
-vmap L e
-vmap H b
-vmap J 3j
-vmap K 3k
-
-vmap <C-j> 10j
-vmap <C-k> 10k
+nmap <C-l> <C-w>l                                                                                
+nmap <C-h> <C-w>h                                                                               
+nmap <C-j> <C-w>j                                                                              
+nmap <C-k> <C-w>k
 
 "------------- EasyMotion Map ------------------"
-map <Leader>j <Plug>(easymotion-s)
+nmap <Leader>j <Plug>(easymotion-s)
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
 "Navigate breadcrumb tab"
-map <Leader>h <Action>(PreviousTab) 
+nmap <Leader>h <Action>(PreviousTab) 
 
 "Navigate breadcrumb tab"
-map <Leader>l <Action>(NextTab) 
+nmap <Leader>l <Action>(NextTab) 
 
 "Navigate Back to previous location"
-map <Leader>b <Action>(Back)
+nmap <Leader>b <Action>(Back)
 
 "Show Import Class and Intention Suggested"
-map <Leader>i <Action>(ShowIntentionActions)
+nmap <Leader>i <Action>(ShowIntentionActions)
 
 "Find in current file" 
-map <Leader>f <Action>(Find)
+nmap <Leader>f <Action>(Find)
 
 "Find Everywhere Global"
-map <Leader>F <Action>(FindInPath)
+nmap <Leader>F <Action>(FindInPath)
 
-map <Leader>g <Action>(ActivateVersionControlToolWindow)
-map <Leader>cw <Action>(HideActiveWindow)
+nmap <Leader>g <Action>(ActivateVersionControlToolWindow)
+nmap <Leader>cw <Action>(HideActiveWindow)
 
-map <BS> <Action>(EditorBackSpace)
+nmap <BS> <Action>(EditorBackSpace)
 
 "" Map <leader>d to start debug
-map <Leader>rt <Action>(RunClass)
-map <Leader>re <Action>(Rerun)
+nmap <Leader>rt <Action>(RunClass)
+nmap <Leader>re <Action>(Rerun)
 
-map <Leader>e <Action>(ShowErrorDescription)
+nmap <Leader>e <Action>(ShowErrorDescription)
 
-map <Leader>dt <Action>(Unwrap)
+nmap <Leader>dt <Action>(Unwrap)
 
-map <Leader>t <Action>(Refactorings.QuickListPopupAction)
+nmap <Leader>t <Action>(Refactorings.QuickListPopupAction)
 
-map <Leader>w <Action>(EditorSelectWord)
+nmap <Leader>w <Action>(EditorSelectWord)
 
-map <Leader>s <Action>(EditorUnSelectWord)
+nmap <Leader>s <Action>(EditorUnSelectWord)
 
-map <Leader>n <Action>(GotoFile)
+nmap <Leader>n <Action>(GotoFile)
 
-map <leader>o <Action>(OverrideMethods)
+nmap <leader>o <Action>(OverrideMethods)
 
-map <leader>m <Action>(GotoSymbol)
+nmap <leader>m <Action>(GotoSymbol)
 
-map <leader><tab> <Action>(Switcher)
+nmap <leader><tab> <Action>(Switcher)
 
-map <leader>q <Action>(CloseAllEditors)
+nmap <leader>q <Action>(CloseAllEditors)
 
-map <leader>vsp <Action>(SplitVertically)
+nmap <leader>vsp <Action>(SplitVertically)
 
-map <leader>sp <Action>(SplitHorizontally)
+nmap <leader>sp <Action>(SplitHorizontally)
 
-map <leader>` <Action>(NextSplitter)
+nmap <leader>usp <Action>(Unsplit)
 
-map <leader>usp <Action>(Unsplit)
+nmap <leader>1 <Action>(GoToTab1)
 
-map <leader>1 <Action>(GoToTab1)
+nmap <leader>2 <Action>(GoToTab2)
 
-map <leader>2 <Action>(GoToTab2)
+nmap <leader>3 <Action>(GoToTab3)
 
-map <leader>3 <Action>(GoToTab3)
-
-map <leader>4 <Action>(GoToTab4)
-
-
+nmap <leader>4 <Action>(GoToTab4)
 
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
