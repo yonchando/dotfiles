@@ -84,6 +84,8 @@ map <leader>vsp <Action>(SplitVertically)
 
 map <leader>sp <Action>(SplitHorizontally)
 
+map <leader>msp <Action>(MaximizeEditorInSplit)
+
 map <leader>usp <Action>(Unsplit)
 
 map <leader>1 <Action>(GoToTab1)
@@ -93,6 +95,8 @@ map <leader>2 <Action>(GoToTab2)
 map <leader>3 <Action>(GoToTab3)
 
 map <leader>4 <Action>(GoToTab4)
+
+map <leader><esc> <action>(HideAllWindows)
 
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
