@@ -1,11 +1,11 @@
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
+Plug 'preservim/nerdtree'
 
 syntax enable
 let mapleader = " "
 set scrolloff=5
 set incsearch
-set number
 set relativenumber
 set tabstp=4
 set belloff=all
@@ -25,71 +25,74 @@ nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j                                                                              
 nmap <C-k> <C-w>k
 
+"-------------  NERDTree ------------------"
+map <D-1> :NERDTreeToggle<CR>
+
 "------------- EasyMotion Map ------------------"
-nmap <Leader>j <Plug>(easymotion-s)
+map <Leader>j <Plug>(easymotion-s)
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
 "Navigate breadcrumb tab"
-nmap <Leader>h <Action>(PreviousTab) 
+map <Leader>h <Action>(PreviousTab) 
 
 "Navigate breadcrumb tab"
-nmap <Leader>l <Action>(NextTab) 
+map <Leader>l <Action>(NextTab) 
 
 "Navigate Back to previous location"
-nmap <Leader>b <Action>(Back)
+map <Leader>b <Action>(Back)
 
 "Show Import Class and Intention Suggested"
-nmap <Leader>i <Action>(ShowIntentionActions)
+map <Leader>i <Action>(ShowIntentionActions)
 
 "Find in current file" 
-nmap <Leader>f <Action>(Find)
+map <Leader>f <Action>(Find)
 
 "Find Everywhere Global"
-nmap <Leader>F <Action>(FindInPath)
+map <Leader>F <Action>(FindInPath)
 
-nmap <Leader>g <Action>(ActivateVersionControlToolWindow)
-nmap <Leader>cw <Action>(HideActiveWindow)
+map <Leader>g <Action>(ActivateVersionControlToolWindow)
+map <Leader>cw <Action>(HideActiveWindow)
 
-nmap <BS> <Action>(EditorBackSpace)
+map <BS> <Action>(EditorBackSpace)
 
 "" Map <leader>d to start debug
-nmap <Leader>rt <Action>(RunClass)
-nmap <Leader>re <Action>(Rerun)
+map <Leader>rt <Action>(RunClass)
+map <Leader>re <Action>(Rerun)
 
-nmap <Leader>e <Action>(ShowErrorDescription)
+map <Leader>e <Action>(ShowErrorDescription)
 
-nmap <Leader>dt <Action>(Unwrap)
+map <Leader>dt <Action>(Unwrap)
 
-nmap <Leader>t <Action>(Refactorings.QuickListPopupAction)
+map <Leader>t <Action>(Refactorings.QuickListPopupAction)
 
-nmap <Leader>w <Action>(EditorSelectWord)
+map <Leader>w <Action>(EditorSelectWord)
 
-nmap <Leader>s <Action>(EditorUnSelectWord)
+map <Leader>s <Action>(EditorUnSelectWord)
 
-nmap <Leader>n <Action>(GotoFile)
+map <Leader>n <Action>(GotoFile)
 
-nmap <leader>o <Action>(OverrideMethods)
+map <leader>o <Action>(OverrideMethods)
 
-nmap <leader>m <Action>(GotoSymbol)
+map <leader>m <Action>(GotoSymbol)
 
-nmap <leader><tab> <Action>(Switcher)
+map <leader><tab> <Action>(Switcher)
 
-nmap <leader>q <Action>(CloseAllEditors)
+map <leader>q <Action>(CloseAllEditors)
 
-nmap <leader>vsp <Action>(SplitVertically)
+map <leader>vsp <Action>(SplitVertically)
 
-nmap <leader>sp <Action>(SplitHorizontally)
+map <leader>sp <Action>(SplitHorizontally)
 
-nmap <leader>usp <Action>(Unsplit)
+map <leader>usp <Action>(Unsplit)
 
-nmap <leader>1 <Action>(GoToTab1)
+map <leader>1 <Action>(GoToTab1)
 
-nmap <leader>2 <Action>(GoToTab2)
+map <leader>2 <Action>(GoToTab2)
 
-nmap <leader>3 <Action>(GoToTab3)
+map <leader>3 <Action>(GoToTab3)
 
-nmap <leader>4 <Action>(GoToTab4)
+map <leader>4 <Action>(GoToTab4)
 
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
