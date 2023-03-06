@@ -3,6 +3,7 @@ Plug 'tpope/vim-sensible'
 Plug 'preservim/nerdtree'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 syntax enable
