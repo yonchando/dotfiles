@@ -19,11 +19,6 @@ set visualbell
 set noerrorbells
 set showmode
 
-"------------- Vinegar ------------------"
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
-
-"------------- EasyMotion Map ------------------"
-nmap <Leader>j <Plug>(easymotion-s2)
 
 "----------------Visuals-----------------"
 set t_CO=256
@@ -38,9 +33,7 @@ map H b
 map L e
 map J 3j
 map K 3k
-
-"----------------NERDTreeToggle-----------"
-map <Leader><TAB> :NERDTreeToggle<CR>
+map <leader>/ :nohl<CR>
 
 " Normal Map
 nmap <Leader>sp :sp<cr>
@@ -51,6 +44,15 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 
 
+"------------- Vinegar ------------------"
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+
+"------------- EasyMotion Map ------------------"
+nmap <Leader>j <Plug>(easymotion-s2)
+
+"----------------NERDTreeToggle-----------"
+map <Leader><TAB> :NERDTreeToggle<CR>
+map <Leader>f :NERDTreeFind<CR>
 
 "----------------Auto Command---------------"
 autocmd BufWritePost .vimrc source %
