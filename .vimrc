@@ -4,6 +4,7 @@ Plug 'preservim/nerdtree'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-surround'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 syntax enable
@@ -43,6 +44,9 @@ nmap <C-l> <C-w>l
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
+nmap <Leader>. <C-w>>
+nmap <Leader>, <C-w><
+nmap <Leader>= <C-w>=
 
 
 "------------- Vinegar ------------------"
@@ -54,6 +58,9 @@ nmap <Leader>j <Plug>(easymotion-s2)
 "----------------NERDTreeToggle-----------"
 map <Leader><TAB> :NERDTreeToggle<CR>
 map <Leader>f :NERDTreeFind<CR>
+
+"---------------- CTRL-P -----------"
+
 
 "----------------Auto Command---------------"
 autocmd BufWritePost .vimrc source %
