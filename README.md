@@ -1,6 +1,9 @@
 # Custom Script for vimrc and ideavim
 Plugin and Key Mapping for vimrc and ideavim
 
+## First install Vim-plug for plugin
+### [Vim-Plug](https://github.com/junegunn/vim-plug)
+
 ### [NERDTREE](https://github.com/preservim/nerdtree)
 Addon Plugin NERDTree for folder tree listing
 
