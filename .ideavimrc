@@ -9,7 +9,7 @@ set incsearch
 set relativenumber
 set tabstp=4
 set belloff=all
-set visualbel
+set visualbell
 set noerrorbells
 set showmode
 
@@ -20,9 +20,9 @@ map J 3j
 map K 3k
 
 " Normal Map
-nmap <C-l> <C-w>l                                                                                
-nmap <C-h> <C-w>h                                                                               
-nmap <C-j> <C-w>j                                                                              
+nmap <C-l> <C-w>l
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 
 "-------------  NERDTree ------------------"
@@ -45,22 +45,13 @@ map <Leader>b <Action>(Back)
 "Show Import Class and Intention Suggested"
 map <Leader>i <Action>(ShowIntentionActions)
 
-"Find in current file" 
-map <Leader>f <Action>(Find)
-
-"Find Everywhere Global"
-map <Leader>F <Action>(FindInPath)
-
 map <Leader>g <Action>(ActivateVersionControlToolWindow)
-map <Leader>cw <Action>(HideActiveWindow)
 
 map <BS> <Action>(EditorBackSpace)
 
-"" Map <leader>d to start debug
 map <Leader>rt <Action>(RunClass)
-map <Leader>re <Action>(Rerun)
 
-map <Leader>e <Action>(ShowErrorDescription)
+map <Leader>re <Action>(Rerun)
 
 map <Leader>dt <Action>(Unwrap)
 
@@ -68,13 +59,9 @@ map <Leader>t <Action>(Refactorings.QuickListPopupAction)
 
 map <Leader>w <Action>(EditorSelectWord)
 
-map <Leader>s <Action>(EditorUnSelectWord)
-
-map <Leader>n <Action>(GotoFile)
+map <Leader>e <Action>(EditorUnSelectWord)
 
 map <leader>o <Action>(OverrideMethods)
-
-map <leader>m <Action>(GotoSymbol)
 
 map <leader><tab> <Action>(Switcher)
 
@@ -96,8 +83,7 @@ map <leader>3 <Action>(GoToTab3)
 
 map <leader>4 <Action>(GoToTab4)
 
-map <leader><esc> <action>(HideAllWindows)
-
+map <leader><esc> <Action>(HideAllWindows)
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
