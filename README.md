@@ -14,3 +14,5 @@ Addon Plugin Vingear for search and find file
 ### [CTRL-P](https://github.com/ctrlpvim/ctrlp.vim)
 Addon Plugin Vingear for search and find file
 
+### [Multiple Cursor](https://github.com/mg979/vim-visual-multi)
+Addon Plugin for Multiple cursor editor for text
