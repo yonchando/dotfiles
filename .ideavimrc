@@ -1,6 +1,8 @@
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'preservim/nerdtree'
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'vim-matchit'
 
 syntax enable
 let mapleader = " "
@@ -22,8 +24,6 @@ map K 3k
 " Normal Map
 nmap <C-l> <C-w>l
 nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
 
 "-------------  NERDTree ------------------"
 map <D-1> :NERDTreeToggle<CR>
@@ -33,14 +33,13 @@ map <Leader>j <Plug>(easymotion-s)
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
+map <C-q> <Action>(QuickJavaDoc)
+
 "Navigate breadcrumb tab"
 map <Leader>h <Action>(PreviousTab) 
 
 "Navigate breadcrumb tab"
 map <Leader>l <Action>(NextTab) 
-
-"Navigate Back to previous location"
-map <Leader>b <Action>(Back)
 
 "Show Import Class and Intention Suggested"
 map <Leader>i <Action>(ShowIntentionActions)
@@ -67,6 +66,8 @@ map <leader><tab> <Action>(Switcher)
 
 map <leader>q <Action>(CloseAllEditors)
 
+map <leader>st <Action>(SurroundWith)
+
 map <leader>vsp <Action>(SplitVertically)
 
 map <leader>sp <Action>(SplitHorizontally)
@@ -83,7 +84,17 @@ map <leader>3 <Action>(GoToTab3)
 
 map <leader>4 <Action>(GoToTab4)
 
+map <leader>5 <Action>(GoToTab5)
+
+map <A-j> <Action>(MethodDown)
+
+map <A-k> <Action>(MethodUp)
+
 map <leader><esc> <Action>(HideAllWindows)
+
+map <C-j> <Action>(EditorCloneCaretBelow)
+
+map <C-k> <Action>(EditorCloneCaretAbove)
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
