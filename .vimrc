@@ -53,7 +53,7 @@ nmap <Leader>= <C-w>=
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
 "------------- EasyMotion Map ------------------"
-nmap <Leader>j <Plug>(easymotion-s2)
+nmap <Leader>j <Plug>(easymotion-sn)
 
 "----------------NERDTreeToggle-----------"
 map <Leader><TAB> :NERDTreeToggle<CR>
