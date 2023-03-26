@@ -90,8 +90,6 @@ map <A-j> <Action>(MethodDown)
 
 map <A-k> <Action>(MethodUp)
 
-map <leader><esc> <Action>(HideAllWindows)
-
 map <C-j> <Action>(EditorCloneCaretBelow)
 
 map <C-k> <Action>(EditorCloneCaretAbove)
