@@ -3,6 +3,10 @@ Plugin and Key Mapping for vimrc and ideavim
 
 ## First install Vim-plug for plugin
 ### [Vim-Plug](https://github.com/junegunn/vim-plug)
+Vim-Plug for Install Plug
+
+### [Easymotion](https://github.com/easymotion/vim-easymotion)
+Easymotion for easy jump to specific text
 
 ### [NERDTREE](https://github.com/preservim/nerdtree)
 Addon Plugin NERDTree for folder tree listing
