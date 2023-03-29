@@ -2,7 +2,7 @@ Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'preservim/nerdtree'
 Plug 'vim-scripts/argtextobj.vim'
-Plug 'vim-matchit'
+Plug 'chrisbra/matchit'
 
 syntax enable
 let mapleader = " "
@@ -26,7 +26,7 @@ nmap <C-l> <C-w>l
 nmap <C-h> <C-w>h
 
 "-------------  NERDTree ------------------"
-map <D-1> :NERDTreeToggle<CR>
+"map <D-1> :NERDTreeToggle<CR>
 
 "------------- EasyMotion Map ------------------"
 map <Leader>j <Plug>(easymotion-s)
@@ -35,11 +35,13 @@ map <Leader>j <Plug>(easymotion-s)
 "" Map \r to the Reformat Code action
 map <C-q> <Action>(QuickJavaDoc)
 
-"Navigate breadcrumb tab"
-map <Leader>h <Action>(PreviousTab) 
+map <C-e>d <Action>(ShowErrorDescription)
 
 "Navigate breadcrumb tab"
-map <Leader>l <Action>(NextTab) 
+map <C-h> <Action>(PreviousTab) 
+
+"Navigate breadcrumb tab"
+map <C-l> <Action>(NextTab) 
 
 "Show Import Class and Intention Suggested"
 map <Leader>i <Action>(ShowIntentionActions)
@@ -93,6 +95,11 @@ map <A-k> <Action>(MethodUp)
 map <C-j> <Action>(EditorCloneCaretBelow)
 
 map <C-k> <Action>(EditorCloneCaretAbove)
+
+map <leader>nd <Action>(NextDiff)
+map <leader>pd <Action>(PreviousDiff)
+
+map <leader>c <Action>(SilentCodeCleanup)
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
