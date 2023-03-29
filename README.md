@@ -5,6 +5,17 @@ Plugin and Key Mapping for vimrc and ideavim
 ### [Vim-Plug](https://github.com/junegunn/vim-plug)
 Vim-Plug for Install Plug
 
+### Ctags
+
+#### Ubuntu
+``` 
+sudo apt-get update && sudo apt-get install -y exuberant-ctags 
+```
+#### Mac
+```
+brew install ctags
+```
+
 ### [Easymotion](https://github.com/easymotion/vim-easymotion)
 Easymotion for easy jump to specific text
 
