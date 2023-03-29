@@ -5,6 +5,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'StanAngeloff/php.vim'
+Plug 'arnaud-lb/vim-php-namespace'
 call plug#end()
 
 syntax enable
@@ -20,7 +22,6 @@ set belloff=all
 set visualbell
 set noerrorbells
 set showmode
-
 
 "----------------Visuals-----------------"
 set t_CO=256
@@ -48,6 +49,14 @@ nmap <Leader>. <C-w>>
 nmap <Leader>, <C-w><
 nmap <Leader>= <C-w>=
 
+"------------- Vim PHP Namespace ---------"
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>i <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>i :call PhpInsertUse()<CR>
+
 
 "------------- Vinegar ------------------"
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
@@ -58,8 +67,6 @@ nmap <Leader>j <Plug>(easymotion-sn)
 "----------------NERDTreeToggle-----------"
 map <Leader><TAB> :NERDTreeToggle<CR>
 map <Leader>f :NERDTreeFind<CR>
-
-"---------------- CTRL-P -----------"
 
 
 "----------------Auto Command---------------"
