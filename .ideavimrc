@@ -3,6 +3,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'preservim/nerdtree'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'chrisbra/matchit'
+Plug 'tommcdo/vim-exchange'
 
 syntax enable
 let mapleader = " "
