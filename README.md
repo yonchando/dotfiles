@@ -15,6 +15,10 @@ sudo apt-get update && sudo apt-get install -y exuberant-ctags
 ```
 brew install ctags
 ```
+#### CentOs
+```
+sudo yum update && sudo yum install -y ctags
+```
 
 ### [Easymotion](https://github.com/easymotion/vim-easymotion)
 Easymotion for easy jump to specific text
