@@ -21,10 +21,6 @@ map L e
 map J 3j
 map K 3k
 
-" Normal Map
-nmap <C-l> <C-w>l
-nmap <C-h> <C-w>h
-
 "-------------  NERDTree ------------------"
 "map <D-1> :NERDTreeToggle<CR>
 
