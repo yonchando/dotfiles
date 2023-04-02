@@ -21,6 +21,7 @@ map H b
 map L e
 map J 3j
 map K 3k
+map <leader>dat d2f"
 
 
 "------------- EasyMotion Map ------------------"
@@ -124,6 +125,7 @@ map <leader>nd <Action>(NextDiff)
 map <leader>pd <Action>(PreviousDiff)
 
 map <leader>c <Action>(SilentCodeCleanup)
+
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
