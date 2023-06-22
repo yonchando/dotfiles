@@ -5,6 +5,7 @@ Plug 'vim-scripts/argtextobj.vim'
 Plug 'chrisbra/matchit'
 Plug 'tommcdo/vim-exchange'
 Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'machakann/vim-highlightedyank'
 
 syntax enable
 let mapleader = " "
@@ -27,9 +28,6 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 map <c-j> <c-w>j
 map <c-k> <c-w>k
-
-map <leader>c cx
-map <leader>xx cxc
 
 map <leader>vp "0p
 
@@ -141,6 +139,6 @@ map <leader>8 <Action>(GoToTab8)
 
 map <leader>9 <Action>(GoToTab9)
 
-map <C-c> <Action>(SilentCodeCleanup)
+map <leader>c <Action>(SilentCodeCleanup)
 
 " Find more examples here: https://jb.gg/share-ideavimrc
