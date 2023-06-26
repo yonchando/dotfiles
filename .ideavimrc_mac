@@ -141,4 +141,10 @@ map <leader>9 <Action>(GoToTab9)
 
 map <leader>c <Action>(SilentCodeCleanup)
 
+map <leader>el1 <Action>(ExpandToLevel1)
+map <leader>el2 <Action>(ExpandToLevel2)
+map <leader>el3 <Action>(ExpandToLevel3)
+map <leader>el4 <Action>(ExpandToLevel4)
+map <leader>el5 <Action>(ExpandToLevel5)
+
 " Find more examples here: https://jb.gg/share-ideavimrc
