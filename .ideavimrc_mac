@@ -152,8 +152,6 @@ map <leader>el3 <Action>(ExpandToLevel3)
 map <leader>el4 <Action>(ExpandToLevel4)
 map <leader>el5 <Action>(ExpandToLevel5)
 
-map <A-p> <Action>(ParameterInfo)
-
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
