@@ -17,9 +17,13 @@ set noerrorbells
 set showmode
 set idearefactormode=keep
 
-" Set Hanlde
+
+" Set Handler
+
 sethandler <C-j> v-n:vim i:ide
 sethandler <C-r> n-v:ide i:vim
+sethandler <C-d> a:vim i:ide
+
 
 "----------------Mapping-----------------"
 map H b
@@ -40,7 +44,7 @@ map <leader>ps "sp
 map <leader>pd "dp
 
 "------------- EasyMotion Map ------------------"
-map <Leader>j <Plug>(easymotion-s)
+map <leader>j <Plug>(easymotion-s)
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
@@ -84,23 +88,25 @@ map <C-h> <Action>(PreviousTab)
 map <C-l> <Action>(NextTab) 
 
 "Show Import Class and Intention Suggested"
-map <Leader>i <Action>(ShowIntentionActions)
+map <leader>i <Action>(ShowIntentionActions)
 
-map <Leader>g <Action>(ActivateVersionControlToolWindow)
+map <leader>g <Action>(ActivateVersionControlToolWindow)
 
 map <BS> <Action>(EditorBackSpace)
 
-map <Leader>rt <Action>(RunClass)
+map <leader>rt <Action>(RunClass)
 
-map <Leader>re <Action>(Rerun)
+map <leader>re <Action>(Rerun)
 
-map <Leader>dt <Action>(Unwrap)
+map <leader>rd <Action>(Debug)
 
-map <Leader>t <Action>(Refactorings.QuickListPopupAction)
+map <leader>dt <Action>(Unwrap)
 
-map <Leader>w <Action>(EditorSelectWord)
+map <leader>t <Action>(Refactorings.QuickListPopupAction)
 
-map <Leader>e <Action>(EditorUnSelectWord)
+map <leader>w <Action>(EditorSelectWord)
+
+map <leader>e <Action>(EditorUnSelectWord)
 
 map <leader>o <Action>(OverrideMethods)
 
@@ -132,7 +138,7 @@ map <A-j> <Action>(MethodDown)
 
 map <A-k> <Action>(MethodUp)
 
-nmap <C-j> <Action>(EditorCloneCaretBelow)
+map <C-j> <Action>(EditorCloneCaretBelow)
 
 map <C-k> <Action>(EditorCloneCaretAbove)
 
@@ -151,6 +157,8 @@ map <leader>el2 <Action>(ExpandToLevel2)
 map <leader>el3 <Action>(ExpandToLevel3)
 map <leader>el4 <Action>(ExpandToLevel4)
 map <leader>el5 <Action>(ExpandToLevel5)
+
+map <leader>op <Action>(OptimizeImports)
 
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
