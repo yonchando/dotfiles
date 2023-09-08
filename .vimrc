@@ -11,7 +11,9 @@ Plug 'tc50cal/vim-terminal'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ap/vim-css-color'
 Plug 'preservim/tagbar'
-Plug 'https://github.com/neoclide/coc.nvim'
+
+Plug 'https://github.com/neoclide/coc.nvim' " For neovim only
+
 call plug#end()
 
 syntax enable
