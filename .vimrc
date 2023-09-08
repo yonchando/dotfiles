@@ -55,6 +55,9 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 nmap <Leader>j <Plug>(easymotion-sn)
 
 "----------------NERDTreeToggle-----------"
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="~"
+
 map <Leader><TAB> :NERDTreeToggle<CR>
 map <Leader>f :NERDTreeFind<CR>
 
