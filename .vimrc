@@ -7,12 +7,11 @@ Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
-Plug 'tc50cal/vim-terminal'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ap/vim-css-color'
 Plug 'preservim/tagbar'
 
-Plug 'https://github.com/neoclide/coc.nvim' " For neovim only
+Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'} " For neovim only
 
 call plug#end()
 
