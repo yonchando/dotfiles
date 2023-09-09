@@ -18,6 +18,7 @@ call plug#end()
 
 syntax enable
 
+set encoding=UTF-8
 let mapleader = " "
 set scrolloff=5
 set incsearch
