@@ -41,9 +41,23 @@ Addon Plugin NERDTree for folder tree listing
 ### [Vingear](https://github.com/tpope/vim-vinegar)
 Addon Plugin Vingear for search and find file
 
-
 ### [CTRL-P](https://github.com/ctrlpvim/ctrlp.vim)
 Addon Plugin Vingear for search and find file
 
-### [Multiple Cursor](https://github.com/mg979/vim-visual-multi)
-Addon Plugin for Multiple cursor editor for text
+### [Vim-Airline](https://github.com/vim-airline/vim-airline)
+Vim Airline has tabline in bottom to show Vim mode, line number etc...
+
+### [Vim-Devicons](https://github.com/ryanoasis/vim-devicons)
+Vim devicons show icon by extension file in nerdtree and etc...
+
+### [Vim-Multiple-Cursors](https://github.com/terryma/vim-multiple-cursors)
+Vim multiple curosrs
+
+### [Vim-css-color](https://github.com/ap/vim-css-color)
+Vim css color show color on Hex color in backgroud
+
+### [Tagbar](https://github.com/preservim/tagbar)
+Sidebar tab for show Ctags
+
+### [Coc Vim](https://github.com/neoclide/coc.nvim)
+Language completion
