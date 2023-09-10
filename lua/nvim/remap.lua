@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 vim.o.shiftwidth = 4
 vim.o.relativenumber = true
+vim.o.tabstop = 4
+vim.o.expandtab = true
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
