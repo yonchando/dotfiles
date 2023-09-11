@@ -4,7 +4,8 @@ vim.o.relativenumber = true
 vim.o.tabstop = 4
 vim.o.expandtab = true
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader><tab>", vim.cmd.NvimTreeToggle)
+vim.keymap.set("n", "<leader>1", vim.cmd.NvimTreeFocus)
 
 vim.keymap.set({"n","v"}, "L","e")
 vim.keymap.set({"n","v"}, "H","b")
