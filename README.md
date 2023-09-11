@@ -13,3 +13,15 @@ Theme color dracula dark
 ## Nvim Treesitter
 [Treesiiter](https://github.com/nvim-treesitter/nvim-treesitter)
 Treesitter for syntax highlight
+
+
+## Indent Blank Line
+[Treesiiter](https://github.com/lukas-reineke/indent-blankline.nvim)
+Show indent block line
+
+
+## Nvim Tree
+[Treesiiter](https://github.com/nvim-tree/nvim-tree.lua)
+File explore right sidebar
+
+
