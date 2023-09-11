@@ -25,3 +25,14 @@ Show indent block line
 File explore right sidebar
 
 
+## NumtoStr Comment
+[Comment](https://github.com/numToStr/Comment.nvim)
+Comment in line or block
+
+## Lualine
+[Lualine](https://github.com/nvim-lualine/lualine.nvim)
+Status bar in bottom
+
+## Which Key
+[Which Key](https://github.com/folke/which-key.nvim)
+Pop description for keybinding
