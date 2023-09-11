@@ -17,6 +17,10 @@ set noerrorbells
 set showmode
 set idearefactormode=keep
 
+set which-key
+set notimeout
+set timeoutlen=5000
+
 
 " Set Handler
 
