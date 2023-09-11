@@ -1,0 +1,21 @@
+{
+    "languageserver": {
+        "dockerfile": {
+            "command": "docker-langserver",
+            "filetypes": ["dockerfile"],
+            "args": ["--stdio"]
+        },
+        "lua": {
+            "command": "lua-lsp",
+            "filetypes": ["lua"]
+        },
+        "intelephense": {
+            "command": "intelephense",
+            "args": ["--stdio"],
+            "filetypes": ["php"],
+            "initializationOptions": {
+                "storagePath": "/tmp/intelephense"
+            }
+        }
+    }
+}
