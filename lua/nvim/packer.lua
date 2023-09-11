@@ -41,4 +41,22 @@ return require('packer').startup(function(use)
 
   use {'neoclide/coc.nvim', branch = 'release'}
 
+  use({
+      "kylechui/nvim-surround",
+      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+      config = function()
+          require("nvim-surround").setup({
+              -- Configuration here, or leave empty to use defaults
+          })
+      end
+  })
+
+  use({
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      after = "nvim-treesitter",
+      requires = "nvim-treesitter/nvim-treesitter",
+  })
+  
+  use {'mg979/vim-visual-multi', branch = 'master'}
+
 end)

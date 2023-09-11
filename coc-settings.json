@@ -5,10 +5,6 @@
             "filetypes": ["dockerfile"],
             "args": ["--stdio"]
         },
-        "lua": {
-            "command": "lua-lsp",
-            "filetypes": ["lua"]
-        },
         "intelephense": {
             "command": "intelephense",
             "args": ["--stdio"],
