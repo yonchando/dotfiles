@@ -36,3 +36,9 @@ Status bar in bottom
 ## Which Key
 [Which Key](https://github.com/folke/which-key.nvim)
 Pop description for keybinding
+
+## Coc LSP
+[Coc.nvim](https://github.com/neoclide/coc.nvim)
+
+## nvim-surround
+[Surround](https://github.com/kylechui/nvim-surround)
