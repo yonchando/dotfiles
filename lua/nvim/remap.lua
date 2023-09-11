@@ -4,6 +4,7 @@ vim.o.relativenumber = true
 vim.o.tabstop = 4
 vim.o.expandtab = true
 
+vim.keymap.set("n", "<leader>/", vim.cmd.nohlsearch, { desc = "No search highlight" })
 vim.keymap.set("n", "<leader><space>", vim.cmd.WhichKey, { desc = "Show all mapping" })
 vim.keymap.set("n", "<leader><tab>", vim.cmd.NvimTreeToggle, { desc = "NvimTreeToggle" })
 vim.keymap.set("n", "<leader>1", vim.cmd.NvimTreeFocus,{desc = "NvimTreeFocus" })
