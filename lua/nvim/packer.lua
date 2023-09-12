@@ -56,7 +56,17 @@ return require('packer').startup(function(use)
       after = "nvim-treesitter",
       requires = "nvim-treesitter/nvim-treesitter",
   })
-  
+
   use {'mg979/vim-visual-multi', branch = 'master'}
+
+  use {
+      "nvim-neotest/neotest",
+      requires = {
+          "nvim-lua/plenary.nvim",
+          "nvim-treesitter/nvim-treesitter",
+          "antoinemadec/FixCursorHold.nvim",
+          "olimorris/neotest-phpunit"
+      }
+  }
 
 end)
