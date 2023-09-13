@@ -1,0 +1,7 @@
+require("nvim.plugin.nvimtree")
+require("nvim.plugin.telescope")
+require("nvim.plugin.treesitter")
+require("nvim.plugin.neotest")
+require("nvim.plugin.lualine")
+require("nvim.plugin.coc")
+require("nvim.plugin.indentblank")

@@ -5,13 +5,11 @@ vim.o.tabstop = 4
 vim.o.expandtab = true
 vim.opt.clipboard:append { 'unnamedplus' }
 
-
 vim.keymap.set("n", "<leader><space>", vim.cmd.WhichKey, { desc = "Show all mapping" })
 
 -- Nvim Tree
 vim.keymap.set("n", "<leader><tab>", vim.cmd.NvimTreeToggle, { desc = "NvimTreeToggle" })
 vim.keymap.set("n", "<leader>1", vim.cmd.NvimTreeFocus,{desc = "NvimTreeFocus" })
-
 
 -- Split Screen
 vim.keymap.set("n", "<leader>sp", vim.cmd.sp,{desc = "[Sp]lit Screen"})
