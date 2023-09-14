@@ -21,7 +21,7 @@ Show indent block line
 
 
 ## Nvim Tree
-[Treesiiter](https://github.com/nvim-tree/nvim-tree.lua)
+[Nvim Tree](https://github.com/nvim-tree/nvim-tree.lua)
 File explore right sidebar
 
 
