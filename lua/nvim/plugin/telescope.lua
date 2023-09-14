@@ -6,7 +6,7 @@ end
 
 vim.keymap.set('n', '<C-p>', builtin.git_files, {desc = "[Git files] Find all find in git track"})
 vim.keymap.set('n', '<C-f>', builtin.find_files, {desc = "[F]ind [F]iles] Find all in current working directory"})
-vim.keymap.set('n', '<c-f>lg', builtin.live_grep,{desc = "Live [G]rep Search for a string in current working directory"})
+vim.keymap.set('n', '<leader>lg', builtin.live_grep,{desc = "[L]ive [G]rep Search for a string in current working directory"})
 vim.keymap.set('n', '<C-e>', builtin.oldfiles,{desc = "Recently Files"})
 vim.keymap.set('n', '<leader>fh', hiddenFiles,{desc = "Find all files include hidden file."})
 

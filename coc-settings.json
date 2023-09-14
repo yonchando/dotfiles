@@ -11,8 +11,8 @@
             "filetypes": ["php"],
             "initializationOptions": {
                 "storagePath": "/tmp/intelephense"
-            }
-        }
+            },
+        },
         "rubocop": {
             "command": "rubocop",
             "args": ["--lsp"],
