@@ -1,5 +1,4 @@
 vim.g.coc_global_extensions = {
-    'coc-java',
     'coc-git',
     'coc-phpls',
     'coc-lua',
@@ -7,12 +6,6 @@ vim.g.coc_global_extensions = {
     'coc-blade',
     'coc-html',
     'coc-css',
-    'coc-xml',
-    'coc-yaml',
-    'coc-yank',
-    'coc-tailwindcss',
-    'coc-json',
-    'coc-docker'
 }
 
 -- Some servers have issues with backup files, see #649
