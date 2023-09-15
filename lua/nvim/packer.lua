@@ -41,6 +41,13 @@ return require('packer').startup({function(use)
     use ({'dracula/vim', as = 'dracula',config = function() vim.cmd("colorscheme dracula") end})
 
     use {
+        'goolord/alpha-nvim',
+        config = function ()
+            require'alpha'.setup(require'alpha.themes.dashboard'.config)
+        end
+    }
+
+    use {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
@@ -75,9 +82,7 @@ return require('packer').startup({function(use)
         "kylechui/nvim-surround",
         tag = "*", -- Use for stability; omit to use `main` branch for the latest features
         config = function()
-            require("nvim-surround").setup({
-                -- Configuration here, or leave empty to use defaults
-            })
+            require("nvim-surround").setup()
         end
     })
 
@@ -89,8 +94,15 @@ return require('packer').startup({function(use)
 
     use {'mg979/vim-visual-multi', branch = 'master'}
 
+    use { "moll/vim-bbye"}
+
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+        require("toggleterm").setup()
+    end}
 
     use { "folke/neodev.nvim" }
+
+    -- Cmp
     use { "hrsh7th/nvim-cmp" } -- The completion plugin
     use { "hrsh7th/cmp-buffer" } -- buffer completions
     use { "hrsh7th/cmp-path" } -- path completions
@@ -108,6 +120,7 @@ return require('packer').startup({function(use)
     use { "williamboman/mason-lspconfig.nvim" }
     use { "neovim/nvim-lspconfig" } -- enable LSP
     use { "jose-elias-alvarez/null-ls.nvim" } -- for formatters and linters
+
 
     if packer_bootstrap then
         require('packer').sync()

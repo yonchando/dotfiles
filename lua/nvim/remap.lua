@@ -1,9 +1,6 @@
-vim.g.mapleader = " "
-vim.o.shiftwidth = 4
-vim.o.relativenumber = true
-vim.o.tabstop = 4
-vim.o.expandtab = true
-vim.opt.clipboard:append { 'unnamedplus' }
+vim.keymap.set("n","<C-J>",vim.cmd.ToggleTerm, {desc = "Open Terminal"})
+
+vim.keymap.set("n","<A-w>",vim.cmd.Bdelete, {desc = "Close Buffer"})
 
 vim.keymap.set("n", "<leader><space>", vim.cmd.WhichKey, { desc = "Show all mapping" })
 
