@@ -1,4 +1,7 @@
-local builtin = require('telescope.builtin')
+local status_ok, builtin = pcall(require,"telescope.builtin")
+if not status_ok then
+    return
+end
 
 local hiddenFiles = function()
     builtin.find_files({hideen = true})

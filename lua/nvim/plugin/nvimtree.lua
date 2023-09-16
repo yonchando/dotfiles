@@ -1,3 +1,8 @@
+local status_ok, nvimtree = pcall(require,"nvim-tree")
+if not status_ok then
+    return
+end
+
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -21,8 +26,7 @@ local function my_on_attach(bufnr)
 
 end
 
--- empty setup using defaults
-require("nvim-tree").setup {
+nvimtree.setup {
     on_attach = my_on_attach,
     view = {
         relativenumber = true

@@ -27,10 +27,7 @@ return require('packer').startup({function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    use {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
-    }
+    use {"windwp/nvim-autopairs"}
 
     use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 
@@ -41,10 +38,7 @@ return require('packer').startup({function(use)
     use ({'dracula/vim', as = 'dracula',config = function() vim.cmd("colorscheme dracula") end})
 
     use {
-        'goolord/alpha-nvim',
-        config = function ()
-            require'alpha'.setup(require'alpha.themes.dashboard'.config)
-        end
+        'goolord/alpha-nvim'
     }
 
     use {
@@ -57,33 +51,19 @@ return require('packer').startup({function(use)
     use 'nvim-tree/nvim-tree.lua'
     use 'nvim-tree/nvim-web-devicons'
     use "lukas-reineke/indent-blankline.nvim"
-    use {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
-    }
+    use 'numToStr/Comment.nvim'
 
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
 
-    use {
-        "folke/which-key.nvim",
-        config = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-            require("which-key").setup {}
-        end
-    }
+    use "folke/which-key.nvim"
+
 
     use({
         "kylechui/nvim-surround",
         tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-        config = function()
-            require("nvim-surround").setup()
-        end
     })
 
     use({
@@ -96,11 +76,10 @@ return require('packer').startup({function(use)
 
     use { "moll/vim-bbye"}
 
-    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-        require("toggleterm").setup()
-    end}
+    use {"akinsho/toggleterm.nvim", tag = '*'}
 
     use { "folke/neodev.nvim" }
+    use { "dcampos/cmp-emmet-vim" }
 
     -- Cmp
     use { "hrsh7th/nvim-cmp" } -- The completion plugin

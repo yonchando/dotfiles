@@ -1,4 +1,7 @@
-local lspconfig = require('lspconfig')
+local status_ok, lspconfig = pcall(require,"lspconf")
+if not status_ok then
+    return
+end
 
 require("mason").setup({
     ui = {
@@ -28,7 +31,11 @@ local servers = {
                 }
             }
         }
-    }
+    },
+    {"html"},
+    {"tsserver"},
+    {"intelephense"},
+    {"jdtls"},
 }
 
 for _,lsp in ipairs(servers) do
