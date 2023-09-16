@@ -1,24 +1,19 @@
-local status_ok, builtin = pcall(require,"telescope.builtin")
+local status_ok, telescope = pcall(require,"telescope")
 if not status_ok then
     return
 end
 
-local hiddenFiles = function()
-    builtin.find_files({hideen = true})
-end
-
-vim.keymap.set('n', '<C-p>', builtin.git_files, {desc = "[Git files] Find all find in git track"})
-vim.keymap.set('n', '<C-f>', builtin.find_files, {desc = "[F]ind [F]iles] Find all in current working directory"})
-vim.keymap.set('n', '<leader>lg', builtin.live_grep,{desc = "[L]ive [G]rep Search for a string in current working directory"})
-vim.keymap.set('n', '<C-e>', builtin.oldfiles,{desc = "Recently Files"})
-vim.keymap.set('n', '<leader>fh', hiddenFiles,{desc = "Find all files include hidden file."})
-
-
-local telescope = require('telescope')
-
 telescope.setup{
     defaults = {
-
+        layout_config = {
+            vertical = { width = 1.5 }
+        },
+        mappings = {
+            i = {
+                ["<C-h>"] = "which_key"
+            }
+        },
+        theme = "dropdown"
     },
     pickers = {
         find_files = {

@@ -1,8 +1,12 @@
-local status_ok, neodev = pcall(require,"which-key")
+local status_ok, whichkey = pcall(require, "which-key")
 if not status_ok then
     return
 end
 
 vim.o.timeout = true
-vim.o.timeoutlen = 300
-require("which-key").setup {}
+vim.o.timeoutlen = 500
+whichkey.setup {
+    window = {
+        border = "single"
+    }
+}
