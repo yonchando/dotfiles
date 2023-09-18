@@ -24,7 +24,8 @@ require("mason-lspconfig").setup({
         'angularls',
         'volar',
         'jsonls',
-        'tailwindcss'
+        'tailwindcss',
+        'emmet_ls',
     },
     automatic_installation = false,
     handlers = nil,
@@ -40,6 +41,7 @@ local servers = {
     tailwindcss = {},
     intelephense = {},
     angularls = {},
+    emmet_ls = {},
     volar = {},
     jdtls = {},
     lua_ls = {
