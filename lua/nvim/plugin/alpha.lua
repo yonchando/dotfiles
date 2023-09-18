@@ -1,6 +1,6 @@
-local status_ok, neodev = pcall(require,"neodev")
+local status_ok, aplha = pcall(require,"alpha")
 if not status_ok then
     return
 end
 
-require'alpha'.setup(require'alpha.themes.dashboard'.config)
+aplha.setup(require'alpha.themes.dashboard'.config)

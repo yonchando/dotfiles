@@ -4,4 +4,5 @@ if not status_ok then
 end
 
 vim.opt.termguicolors = true
+
 buffer.setup{}

@@ -1,5 +1,5 @@
-local status_ok, neodev = pcall(require,"neodev")
+local status_ok, autopairs = pcall(require,"nvim-autopairs")
 if not status_ok then
     return
 end
-require("nvim-autopairs").setup()
+autopairs.setup()

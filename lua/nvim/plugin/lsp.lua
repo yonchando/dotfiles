@@ -8,71 +8,47 @@ require("mason").setup({
         icons = {
             package_installed = "✓",
             package_pending = "➜",
-            package_uninstalled = "✗"
+           package_uninstalled = "✗"
         }
     }
 })
 
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "html", "tsserver", "intelephense", "jdtls", },
+    ensure_installed = { "lua_ls", "html", "cssls", "tsserver", "intelephense", "jdtls", 'angularls', 'volar' },
     automatic_installation = false,
     handlers = nil,
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+
 local servers = {
-    "html",
-    "tsserver",
-    "intelephense",
-}
-
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
-        capabilities = capabilities,
-    }
-end
-
-local jdtls_dir = vim.fn.stdpath('data') .. '/mason/share/jdtls'
-local config_dir = jdtls_dir .. 'config'
-local plugin_dir = jdtls_dir .. 'plugins'
-local path_to_jar = plugin_dir .. 'org.eclipse.equinox.launcher_1.6.500.v20230717-2134.jar'
-local path_to_lombok = jdtls_dir .. '/lomboks.jar'
-
-local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
-local workspace_dir = vim.fn.stdpath('data') .. '/site/java/workspace-root/' .. project_name
-os.execute("mkdir " .. workspace_dir)
-
--- jdtls
-lspconfig.jdtls.setup({
-    init_options = {
-        jvm_args = {
-            '-javaagent:' .. path_to_lombok,
-        },
-        workspace = workspace_dir
-    },
-    root_dir = function(fname)
-        return lspconfig.util.root_pattern('pom.xml', 'gradle.build', '.git')(fname) or vim.fn.getcwd()
-    end
-})
-
--- lua_ls server
-lspconfig.lua_ls.setup({
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            completion = {
-                callSnippet = "Both"
-            },
-            runtime = {
-                version = "LuaJIT"
-            },
-            diagnostics = {
-                enable = true
+    html = {},
+    cssls = {},
+    tsserver = {},
+    intelephense = {},
+    angularls = {},
+    volar = {},
+    jdtls = {},
+    lua_ls = {
+        settings = {
+            Lua = {
+                completion = {
+                    callSnippet = "Both"
+                },
+                workspace = {
+                    checkThirdParty = false,
+                }
             }
         }
     }
-})
+}
+
+for lsp, config in pairs(servers) do
+    config.capabilities = capabilities
+
+    lspconfig[lsp].setup(config)
+end
 
 -- luasnip setup
 local luasnip = require 'luasnip'

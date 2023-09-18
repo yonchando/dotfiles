@@ -1,6 +1,6 @@
-vim.keymap.set("n","<C-J>",vim.cmd.ToggleTerm, {desc = "Open Terminal"})
+vim.keymap.set("n","<leader>opt",vim.cmd.ToggleTerm, {desc = "Open Terminal"})
 
-vim.keymap.set("n","<A-w>",vim.cmd.Bdelete, {desc = "Close Buffer"})
+vim.keymap.set("n","<leader>clb",vim.cmd.Bdelete, {desc = "Close Buffer"})
 
 vim.keymap.set("n", "<leader><space>", vim.cmd.WhichKey, { desc = "Show all mapping" })
 
