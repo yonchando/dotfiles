@@ -28,19 +28,13 @@ return require('packer').startup({
         -- Packer can manage itself
         use 'wbthomason/packer.nvim'
 
-        use { "windwp/nvim-autopairs" }
-
-        use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
-
-        -- Post-install/update hook with neovim command
         use({ 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate" })
 
-        -- You can alias plugin names
-        use({ 'dracula/vim', as = 'dracula', config = function() vim.cmd("colorscheme dracula") end })
-
-        use {
-            'goolord/alpha-nvim'
-        }
+        use({
+            "nvim-treesitter/nvim-treesitter-textobjects",
+            after = "nvim-treesitter",
+            requires = "nvim-treesitter/nvim-treesitter",
+        })
 
         use {
             'nvim-telescope/telescope.nvim', tag = '0.1.2',
@@ -49,9 +43,39 @@ return require('packer').startup({
 
         use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
+        -- Cmp
+        use { "hrsh7th/nvim-cmp" }         -- The completion plugin
+        use { "hrsh7th/cmp-buffer" }       -- buffer completions
+        use { "hrsh7th/cmp-path" }         -- path completions
+        use { "hrsh7th/cmp-cmdline" }      -- path completions
+        use { "saadparwaiz1/cmp_luasnip" } -- snippet completions
+        use { "hrsh7th/cmp-nvim-lsp" }
+        use { "hrsh7th/cmp-nvim-lua" }
+
+        -- Snippets
+        use { "L3MON4D3/LuaSnip" }             --snippet engine
+        use { "rafamadriz/friendly-snippets" } -- a bunch of snippets to use
+
+        -- LSP
+        use { "williamboman/mason.nvim" }         -- simple to use language server installer
+        use { "williamboman/mason-lspconfig.nvim" }
+        use { "neovim/nvim-lspconfig" }           -- enable LSP
+        use { "jose-elias-alvarez/null-ls.nvim" } -- for formatters and linters
+
+
+        use { "windwp/nvim-autopairs" }
+
+        use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
+
+        use({ 'dracula/vim', as = 'dracula', config = function() vim.cmd("colorscheme dracula") end })
+
+        use 'goolord/alpha-nvim'
+
         use 'nvim-tree/nvim-tree.lua'
         use 'nvim-tree/nvim-web-devicons'
+
         use "lukas-reineke/indent-blankline.nvim"
+
         use 'numToStr/Comment.nvim'
 
         use {
@@ -66,12 +90,6 @@ return require('packer').startup({
         use({
             "kylechui/nvim-surround",
             tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-        })
-
-        use({
-            "nvim-treesitter/nvim-treesitter-textobjects",
-            after = "nvim-treesitter",
-            requires = "nvim-treesitter/nvim-treesitter",
         })
 
         use { 'mg979/vim-visual-multi', branch = 'master' }
@@ -96,27 +114,9 @@ return require('packer').startup({
             }
         }
 
+        use 'lewis6991/gitsigns.nvim'
+
         use 'easymotion/vim-easymotion'
-
-        -- Cmp
-        use { "hrsh7th/nvim-cmp" }     -- The completion plugin
-        use { "hrsh7th/cmp-buffer" }   -- buffer completions
-        use { "hrsh7th/cmp-path" }     -- path completions
-        use { "hrsh7th/cmp-cmdline" }  -- path completions
-        use { "saadparwaiz1/cmp_luasnip" } -- snippet completions
-        use { "hrsh7th/cmp-nvim-lsp" }
-        use { "hrsh7th/cmp-nvim-lua" }
-
-        -- Snippets
-        use { "L3MON4D3/LuaSnip" }         --snippet engine
-        use { "rafamadriz/friendly-snippets" } -- a bunch of snippets to use
-
-        -- LSP
-        use { "williamboman/mason.nvim" }     -- simple to use language server installer
-        use { "williamboman/mason-lspconfig.nvim" }
-        use { "neovim/nvim-lspconfig" }       -- enable LSP
-        use { "jose-elias-alvarez/null-ls.nvim" } -- for formatters and linters
-
 
         if packer_bootstrap then
             require('packer').sync()

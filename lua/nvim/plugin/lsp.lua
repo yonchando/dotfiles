@@ -150,30 +150,26 @@ cmp.setup.cmdline(':', {
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { desc = "Diagnostic open float" })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to prev Diagnostic" })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next Diagnostic" })
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, { desc = "Open Diagnostic lists" })
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-    callback = function(ev)
+    callback = function()
         -- Enable completion triggered by <c-x><c-o>
-        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+        -- vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-        -- Buffer local mappings.
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local opts = { buffer = ev.buf }
-
-        vim.keymap.set('n', '<C-q>', vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-        vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-        vim.keymap.set({ 'n', 'v' }, '<space>i', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', '<space>f', function()
+        vim.keymap.set('n', '<C-q>', vim.lsp.buf.hover, { desc = "Hover" })
+        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = "Signature Help" })
+        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, { desc = "Type Definition" })
+        vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, { desc = "Rename" })
+        vim.keymap.set({ 'n', 'v' }, '<space>i', vim.lsp.buf.code_action, { desc = "Code Actions" })
+        vim.keymap.set('n', '<space>fc', function()
             vim.lsp.buf.format { async = true }
-        end, opts)
+        end, { desc = "Reformat code" })
     end,
 })
