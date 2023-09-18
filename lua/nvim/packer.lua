@@ -33,7 +33,7 @@ return require('packer').startup({
         use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
 
         -- Post-install/update hook with neovim command
-        use({ 'nvim-treesitter/nvim-treesitter' })
+        use({ 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate" })
 
         -- You can alias plugin names
         use({ 'dracula/vim', as = 'dracula', config = function() vim.cmd("colorscheme dracula") end })
@@ -81,6 +81,7 @@ return require('packer').startup({
         use { "akinsho/toggleterm.nvim", tag = '*' }
 
         use { "folke/neodev.nvim" }
+
         use { "dcampos/cmp-emmet-vim" }
 
         use "mfussenegger/nvim-jdtls"

@@ -41,7 +41,18 @@ local servers = {
     tailwindcss = {},
     intelephense = {},
     angularls = {},
-    emmet_ls = {},
+    emmet_ls = {
+        filetypes = {
+            'css',
+            'html',
+            'javascript',
+            'scss',
+            'sass',
+            'vue',
+            'php',
+            'blade',
+        },
+    },
     volar = {},
     jdtls = {},
     lua_ls = {
@@ -60,7 +71,7 @@ local servers = {
 
 for lsp, config in pairs(servers) do
     config.capabilities = capabilities
-
+    -- config.capabilities.textDocument.completion.completionItem.snippetSupport = true
     lspconfig[lsp].setup(config)
 end
 
