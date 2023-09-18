@@ -6,8 +6,6 @@ local path_to_lombok = jdtls_dir .. '/lomboks.jar'
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = vim.fn.stdpath('cache') .. '/jdtls/workspace/' .. project_name
-os.execute("mkdir " .. workspace_dir)
-
 local config = {
     cmd = {
         'java',

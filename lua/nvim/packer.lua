@@ -87,6 +87,16 @@ return require('packer').startup({
 
         use 'famiu/bufdelete.nvim'
 
+        use {
+            'adalessa/laravel.nvim',
+            requires = {
+                'tpope/vim-dotenv',
+                'MunifTanjim/nui.nvim',
+            }
+        }
+
+        use 'easymotion/vim-easymotion'
+
         -- Cmp
         use { "hrsh7th/nvim-cmp" }     -- The completion plugin
         use { "hrsh7th/cmp-buffer" }   -- buffer completions

@@ -8,24 +8,36 @@ require("mason").setup({
         icons = {
             package_installed = "✓",
             package_pending = "➜",
-           package_uninstalled = "✗"
+            package_uninstalled = "✗"
         }
     }
 })
 
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "html", "cssls", "tsserver", "intelephense", "jdtls", 'angularls', 'volar' },
+    ensure_installed = {
+        "lua_ls",
+        "html",
+        "cssls",
+        "tsserver",
+        "intelephense",
+        "jdtls",
+        'angularls',
+        'volar',
+        'jsonls',
+        'tailwindcss'
+    },
     automatic_installation = false,
     handlers = nil,
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-
 local servers = {
     html = {},
     cssls = {},
+    jsonls = {},
     tsserver = {},
+    tailwindcss = {},
     intelephense = {},
     angularls = {},
     volar = {},
@@ -141,13 +153,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { buffer = ev.buf }
+
         vim.keymap.set('n', '<C-q>', vim.lsp.buf.hover, opts)
         vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-        vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-        vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-        vim.keymap.set('n', '<space>wl', function()
-            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        end, opts)
         vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set({ 'n', 'v' }, '<space>i', vim.lsp.buf.code_action, opts)

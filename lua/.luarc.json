@@ -36,5 +36,8 @@
         "/home/chando/.config/nvim/lua",
         "${3rd}/luv/library"
     ],
-    "workspace.checkThirdParty": false
+    "workspace.checkThirdParty": false,
+    "diagnostics.globals": [
+        "vim"
+    ]
 }
