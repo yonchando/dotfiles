@@ -81,7 +81,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
     callback = function()
         vim.keymap.set('n', '<C-q>', vim.lsp.buf.hover, { desc = "Hover" })
-        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = "Signature Help" })
+        vim.keymap.set('n', '<leader>sh', vim.lsp.buf.signature_help, { desc = "[S]ignature [H]elp" })
         vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, { desc = "Type Definition" })
         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, { desc = "Rename" })
         vim.keymap.set({ 'n', 'v' }, '<space>i', vim.lsp.buf.code_action, { desc = "Code Actions" })
