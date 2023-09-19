@@ -2,7 +2,7 @@
 vim.keymap.set("n", "<leader>opt", vim.cmd.ToggleTerm, { desc = "Open Terminal" })
 
 -- BufferDelete
-vim.keymap.set("n", "<leader>cb", vim.cmd.Bdelete, { desc = "Close Buffer" })
+vim.keymap.set("n", "<M-w>", vim.cmd.Bdelete, { desc = "Close Buffer" })
 
 -- Bufferline
 local Go = {}
@@ -29,7 +29,7 @@ local nvimtree = function()
         tree.open()
     end
 end
-vim.keymap.set("n", "<leader><tab>", nvimtree, { desc = "NvimTreeToggle" })
+vim.keymap.set("n", "<M-1>", nvimtree, { desc = "NvimTreeToggle" })
 
 -- Split Screen
 vim.keymap.set("n", "<leader>sp", vim.cmd.sp, { desc = "[Sp]lit Screen" })

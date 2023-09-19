@@ -41,6 +41,8 @@ return packer.startup({
             requires = { { 'nvim-lua/plenary.nvim' } }
         }
 
+        use {'nvim-telescope/telescope-ui-select.nvim' }
+
         use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
         -- Cmp
@@ -48,12 +50,13 @@ return packer.startup({
         use { "hrsh7th/cmp-buffer" }       -- buffer completions
         use { "hrsh7th/cmp-path" }         -- path completions
         use { "hrsh7th/cmp-cmdline" }      -- path completions
-        use { "saadparwaiz1/cmp_luasnip" } -- snippet completions
         use { "hrsh7th/cmp-nvim-lsp" }
         use { "hrsh7th/cmp-nvim-lua" }
+        use 'onsails/lspkind.nvim'
 
         -- Snippets
         use { "L3MON4D3/LuaSnip" }             --snippet engine
+        use { "saadparwaiz1/cmp_luasnip" } -- snippet completions
         use { "rafamadriz/friendly-snippets" } -- a bunch of snippets to use
 
         -- LSP
@@ -61,6 +64,7 @@ return packer.startup({
         use { "williamboman/mason-lspconfig.nvim" }
         use { "neovim/nvim-lspconfig" }           -- enable LSP
         use { "jose-elias-alvarez/null-ls.nvim" } -- for formatters and linters
+        use "mfussenegger/nvim-jdtls"
 
 
         use { "windwp/nvim-autopairs" }
@@ -102,8 +106,6 @@ return packer.startup({
 
         use { "dcampos/cmp-emmet-vim" }
 
-        use "mfussenegger/nvim-jdtls"
-
         use 'famiu/bufdelete.nvim'
 
         use {
@@ -117,8 +119,6 @@ return packer.startup({
         use 'lewis6991/gitsigns.nvim'
 
         use 'easymotion/vim-easymotion'
-
-        use {'nvim-telescope/telescope-ui-select.nvim' }
 
         if packer_bootstrap then
             require('packer').sync()
