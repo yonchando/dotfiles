@@ -23,7 +23,7 @@ if not status_ok then
     return
 end
 
-return require('packer').startup({
+return packer.startup({
     function(use)
         -- Packer can manage itself
         use 'wbthomason/packer.nvim'
@@ -117,6 +117,8 @@ return require('packer').startup({
         use 'lewis6991/gitsigns.nvim'
 
         use 'easymotion/vim-easymotion'
+
+        use {'nvim-telescope/telescope-ui-select.nvim' }
 
         if packer_bootstrap then
             require('packer').sync()

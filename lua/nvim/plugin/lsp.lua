@@ -20,7 +20,6 @@ require("mason-lspconfig").setup({
         "cssls",
         "tsserver",
         "intelephense",
-        "jdtls",
         'angularls',
         'volar',
         'jsonls',
@@ -54,7 +53,6 @@ local servers = {
         },
     },
     volar = {},
-    jdtls = {},
     lua_ls = {
         settings = {
             Lua = {
