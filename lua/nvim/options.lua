@@ -8,14 +8,6 @@ vim.loader.enable()
 vim.o.smartindent = true
 vim.o.mouse = false
 
-vim.print(vim.fn.has('unnamedplus'))
-
-if vim.fn.has('unnamedplus') then
-    vim.opt.clipboard = 'unnamedplus'
-else
-    vim.opt.clipboard = 'unnamed'
-end
-
 -- code completion highlight color
 -- gray
 vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { bg = 'NONE', strikethrough = true, fg = '#808080' })
