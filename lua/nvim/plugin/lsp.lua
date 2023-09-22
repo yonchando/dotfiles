@@ -27,10 +27,13 @@ require("mason-lspconfig").setup({
         'emmet_ls',
         'bashls',
         'clangd',
+        'rust_analyzer',
         'lemminx',
-        -- 'jdtls',
+        'jdtls',
     },
-    automatic_installation = false,
+    automatic_installation = {
+        exclude = {"jdtls"},
+    },
     handlers = nil,
 })
 
@@ -59,7 +62,6 @@ local servers = {
             'scss',
             'sass',
             'vue',
-            'php',
             'blade',
         },
     },
@@ -77,6 +79,7 @@ local servers = {
         }
     },
     lemminx = {},
+    rust_analyzer = {},
 }
 
 for lsp, config in pairs(servers) do
