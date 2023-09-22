@@ -107,14 +107,6 @@ return packer.startup({
 
         use 'famiu/bufdelete.nvim'
 
-        use {
-            'adalessa/laravel.nvim',
-            requires = {
-                'tpope/vim-dotenv',
-                'MunifTanjim/nui.nvim',
-            }
-        }
-
         use 'lewis6991/gitsigns.nvim'
 
         use 'easymotion/vim-easymotion'
