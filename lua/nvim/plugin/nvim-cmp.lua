@@ -8,59 +8,9 @@ if not lunsnip_status then
     return
 end
 
-local lspkind = require('lspkind')
-
 require("luasnip.loaders.from_vscode").lazy_load()
 
--- nvim-cmp setup
-cmp.setup {
-    formatting = {
-        fields = {"kind", "abbr", "menu"},
-        format = lspkind.cmp_format({
-            mode = 'symbol_text',
-            menu = ({
-                buffer = "[Buffer]",
-                nvim_lsp = "[LSP]",
-                luasnip = "[LuaSnip]",
-                nvim_lua = "[Lua]",
-                latex_symbols = "[Latex]",
-            }),
-            maxwidth = 50,
-            ellipsis_char = '...',
-
-            before = function(_, vim_item)
-                local cmp_kinds = {
-                    Text = '  ',
-                    Method = '  ',
-                    Function = '  ',
-                    Constructor = '  ',
-                    Field = '  ',
-                    Variable = '  ',
-                    Class = '  ',
-                    Interface = '  ',
-                    Module = '  ',
-                    Property = '  ',
-                    Unit = '  ',
-                    Value = '  ',
-                    Enum = '  ',
-                    Keyword = '  ',
-                    Snippet = '  ',
-                    Color = '  ',
-                    File = '  ',
-                    Reference = '  ',
-                    Folder = '  ',
-                    EnumMember = '  ',
-                    Constant = '  ',
-                    Struct = '  ',
-                    Event = '  ',
-                    Operator = '  ',
-                    TypeParameter = '  ',
-                }
-                vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
-                return vim_item
-            end
-        })
-    },
+local M = {
     view = {
         entries = "custom"
     },
@@ -115,7 +65,63 @@ cmp.setup {
         { name = 'luasnip' },
         { name = 'emmet_vim' },
     },
+
 }
+
+
+local lspkind_status,lspkind = pcall(require,'lspkind')
+
+if lspkind_status then
+M.formatting = {
+        fields = {"kind", "abbr", "menu"},
+        format = lspkind.cmp_format({
+            mode = 'symbol_text',
+            menu = ({
+                buffer = "[Buffer]",
+                nvim_lsp = "[LSP]",
+                luasnip = "[LuaSnip]",
+                nvim_lua = "[Lua]",
+                latex_symbols = "[Latex]",
+            }),
+            maxwidth = 50,
+            ellipsis_char = '...',
+
+            before = function(_, vim_item)
+                local cmp_kinds = {
+                    Text = '  ',
+                    Method = '  ',
+                    Function = '  ',
+                    Constructor = '  ',
+                    Field = '  ',
+                    Variable = '  ',
+                    Class = '  ',
+                    Interface = '  ',
+                    Module = '  ',
+                    Property = '  ',
+                    Unit = '  ',
+                    Value = '  ',
+                    Enum = '  ',
+                    Keyword = '  ',
+                    Snippet = '  ',
+                    Color = '  ',
+                    File = '  ',
+                    Reference = '  ',
+                    Folder = '  ',
+                    EnumMember = '  ',
+                    Constant = '  ',
+                    Struct = '  ',
+                    Event = '  ',
+                    Operator = '  ',
+                    TypeParameter = '  ',
+                }
+                vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
+                return vim_item
+                end
+        })
+    }
+end
+-- nvim-cmp setup
+cmp.setup(M)
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {

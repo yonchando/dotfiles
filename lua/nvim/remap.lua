@@ -3,6 +3,7 @@ vim.keymap.set("n", "<leader>opt", vim.cmd.ToggleTerm, { desc = "Open Terminal" 
 
 -- BufferDelete
 vim.keymap.set("n", "<M-w>", vim.cmd.Bdelete, { desc = "Close Buffer" })
+vim.keymap.set("n", "<leader>cb", vim.cmd.Bdelete, { desc = "Close Buffer" })
 
 -- Bufferline
 local Go = {}
@@ -30,6 +31,7 @@ local nvimtree = function()
     end
 end
 vim.keymap.set("n", "<M-1>", nvimtree, { desc = "NvimTreeToggle" })
+vim.keymap.set("n", "<leader><tab>", nvimtree, { desc = "NvimTreeToggle" })
 
 -- Split Screen
 vim.keymap.set("n", "<leader>sp", vim.cmd.sp, { desc = "[Sp]lit Screen" })
@@ -72,3 +74,15 @@ vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "lsp_references" })
 
 -- Easy motion
 vim.keymap.set('n',"<leader>jj","<Plug>(easymotion-sn)",{ desc = "Easy motion search n word"})
+
+
+-- nvim-jdtls
+local jdtls = require('jdtls')
+vim.keymap.set('n','<leader>op',function() jdtls.organize_imports() end,{desc = "jdtls extract_variable"})
+
+vim.keymap.set('n','<leader>crv',function() jdtls.extract_variable() end,{desc = "jdtls extract_variable"})
+vim.keymap.set('v','<leader>crv',function() jdtls.extract_variable(true) end,{desc = "jdtls extract_variable"})
+
+vim.keymap.set('n','<leader>crv',function() jdtls.extract_constant() end,{desc = "jdtls extract_variable"})
+vim.keymap.set('v','<leader>crv',function() jdtls.extract_constant(true) end,{desc = "jdtls extract_variable"})
+

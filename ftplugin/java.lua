@@ -1,8 +1,3 @@
-local status_ok, jdtls = pcall(require, "jdtls")
-if not status_ok then
-    return
-end
-
 local jdtls = vim.fn.stdpath("data") .. "/mason/share/jdtls"
 local jar_dir = jdtls .. "/plugins/org.eclipse.equinox.launcher.jar"
 local config_dir = jdtls .. "/config"

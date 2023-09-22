@@ -66,7 +66,6 @@ return packer.startup({
         use { "jose-elias-alvarez/null-ls.nvim" } -- for formatters and linters
         use "mfussenegger/nvim-jdtls"
 
-
         use { "windwp/nvim-autopairs" }
 
         use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }

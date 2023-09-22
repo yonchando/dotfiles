@@ -25,6 +25,10 @@ require("mason-lspconfig").setup({
         'jsonls',
         'tailwindcss',
         'emmet_ls',
+        'bashls',
+        'clangd',
+        'lemminx',
+        -- 'jdtls',
     },
     automatic_installation = false,
     handlers = nil,
@@ -40,6 +44,13 @@ local servers = {
     tailwindcss = {},
     intelephense = {},
     angularls = {},
+    clangd = {},
+    bashls = {
+        filetypes = {
+            "sh",
+            "zsh",
+        }
+    },
     emmet_ls = {
         filetypes = {
             'css',
@@ -64,10 +75,18 @@ local servers = {
                 }
             }
         }
-    }
+    },
+    lemminx = {},
 }
 
 for lsp, config in pairs(servers) do
+    capabilities.textDocument = {
+        completion = {
+            completionItem = {
+                snipetSupport = true
+            }
+        }
+    }
     config.capabilities = capabilities
     lspconfig[lsp].setup(config)
 end
