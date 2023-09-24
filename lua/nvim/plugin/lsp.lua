@@ -32,7 +32,7 @@ require("mason-lspconfig").setup({
         'jdtls',
     },
     automatic_installation = {
-        exclude = {"jdtls"},
+        exclude = { "jdtls" },
     },
     handlers = nil,
 })
@@ -40,7 +40,12 @@ require("mason-lspconfig").setup({
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local servers = {
-    html = {},
+    html = {
+        filetypes = {
+            "html",
+            "blade",
+        }
+    },
     cssls = {},
     jsonls = {},
     tsserver = {},
@@ -95,16 +100,16 @@ for lsp, config in pairs(servers) do
 end
 
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { desc = "Diagnostic open float" })
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to prev Diagnostic" })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next Diagnostic" })
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, { desc = "Open Diagnostic lists" })
+vim.keymap.set('n', '<leader>din', vim.diagnostic.goto_prev, { desc = "Go to prev Diagnostic" })
+vim.keymap.set('n', '<leader>dip', vim.diagnostic.goto_next, { desc = "Go to next Diagnostic" })
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-    callback = function()
+    callback = function(ev)
+
+        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
         vim.keymap.set('n', '<C-q>', vim.lsp.buf.hover, { desc = "Hover" })
-        vim.keymap.set('n', '<leader>sh', vim.lsp.buf.signature_help, { desc = "[S]ignature [H]elp" })
-        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, { desc = "Type Definition" })
         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, { desc = "Rename" })
         vim.keymap.set({ 'n', 'v' }, '<space>i', vim.lsp.buf.code_action, { desc = "Code Actions" })
         vim.keymap.set('n', '<space>fc', function()

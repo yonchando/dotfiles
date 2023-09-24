@@ -61,16 +61,21 @@ if status_ok then
     vim.keymap.set('n', '<C-f>', builtin.find_files, { desc = "[F]ind [F]iles] Find all in current working directory" })
 
     vim.keymap.set('n', '<leader>ff', function()
-        return builtin.find_files({hidden = true})
-    end, { desc = "[F]ind [F]iles] Find all in current working directory" })
+        return builtin.find_files({ hidden = true })
+    end, {
+        desc = "[F]ind [F]iles] Find all in current working directory"
+    })
 
-    vim.keymap.set('n', '<leader>lg', builtin.live_grep,
-        { desc = "[L]ive [G]rep Search for a string in current working directory" })
+    vim.keymap.set('n', '<leader>lg', builtin.live_grep, {
+        desc = "[L]ive [G]rep Search for a string in current working directory"
+    })
     vim.keymap.set('n', '<C-e>', builtin.oldfiles, { desc = "Recently Files" })
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "help_tags" })
     vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find all files buffers" })
     vim.keymap.set("n", "<leader>jp", builtin.jumplist, { desc = "jumplist" })
-    vim.keymap.set("n", "<leader>dg", builtin.diagnostics, { desc = "diagnostics" })
+
+    vim.keymap.set("n", "<leader>dig", builtin.diagnostics, { desc = "diagnostics" })
+
     vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "lsp_definitions" })
     vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "lsp_implementations" })
     vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "lsp_references" })
@@ -89,8 +94,4 @@ if jdtls_status then
 
     vim.keymap.set('n', '<leader>crv', function() jdtls.extract_constant() end, { desc = "jdtls extract_variable" })
     vim.keymap.set('v', '<leader>crv', function() jdtls.extract_constant(true) end, { desc = "jdtls extract_variable" })
-
-    vim.keymap.set('n', "<leader>sne", function()
-        require("luasnip.loaders").edit_snippet_files()
-    end, { desc = "Luasnip edit snippet" })
 end

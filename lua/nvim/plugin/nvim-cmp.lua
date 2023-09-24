@@ -68,12 +68,11 @@ local M = {
 
 }
 
-
-local lspkind_status,lspkind = pcall(require,'lspkind')
+local lspkind_status, lspkind = pcall(require, 'lspkind')
 
 if lspkind_status then
-M.formatting = {
-        fields = {"kind", "abbr", "menu"},
+    M.formatting = {
+        fields = { "kind", "abbr", "menu" },
         format = lspkind.cmp_format({
             mode = 'symbol_text',
             menu = ({
@@ -116,7 +115,7 @@ M.formatting = {
                 }
                 vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
                 return vim_item
-                end
+            end
         })
     }
 end

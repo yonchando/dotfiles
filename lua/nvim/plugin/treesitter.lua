@@ -4,14 +4,22 @@ if not status_ok then
 end
 
 nvimtreesitter.setup {
-    -- A list of parser names, or "all" (the five listed parsers should always be installed)
-    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "css", "html", "javascript", "typescript", "php"},
+    ensure_installed = {
+        "c",
+        "lua",
+        "vim",
+        "vimdoc",
+        "query",
+        "css",
+        "html",
+        "javascript",
+        "typescript",
+        "php",
+        "blade"
+    },
 
-    -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
 
-    -- Automatically install missing parsers when entering buffer
-    -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
     auto_install = true,
 
     highlight = {
@@ -35,23 +43,22 @@ nvimtreesitter.setup {
     }
 }
 
-local parser_status_ok, parsers = pcall(require, "nvim-treesitter.parsers")
-if not parser_status_ok then
-    return
-end
+-- local parser_status_ok, parsers = pcall(require, "nvim-treesitter.parsers")
+-- if not parser_status_ok then
+--     return
+-- end
 
-parsers.get_parser_configs().blade = {
-    install_info = {
-        url = "https://github.com/EmranMR/tree-sitter-blade",
-        files = {"src/parser.c"},
-        branch = "main"
-    },
-    filetype = "blade"
-}
+-- parsers.get_parser_configs().blade = {
+--     install_info = {
+--         url = "https://github.com/EmranMR/tree-sitter-blade",
+--         files = { "src/parser.c" },
+--         branch = "main"
+--     },
+--     filetype = "blade"
+-- }
 
 vim.cmd [[
 augroup BladeFiltypeRelated
 au BufNewFile,BufRead *.blade.php set ft=blade
 augroup end
 ]]
-
