@@ -37,6 +37,7 @@ local function my_on_attach(bufnr)
     vim.keymap.set("n", "<leader>>", resize("+20"), opts("Nvimtree Resize by +20"))
     vim.keymap.set("n", "<leader><", resize("-20"), opts("NvimTree Resize by -20"))
 
+    vim.api.nvim_set_hl(0, "NvimTreeGitStaged", { fg = "#9876AA" })
     vim.api.nvim_set_hl(0, "NvimTreeGitNew", { fg = "#84E873" })
     vim.api.nvim_set_hl(0, "NvimTreeFileRenamed", { link = "NvimTreeGitNew" })
     vim.api.nvim_set_hl(0, "NvimTreeGitDirty", { fg = "#6897BB" })
@@ -58,13 +59,27 @@ nvimtree.setup {
     on_attach = my_on_attach,
     view = {
         relativenumber = true,
-        width = 50
+        width = 50,
+        float = {
+            enable = true,
+            open_win_config = {
+                title = "Project",
+                title_pos = "center",
+                relative = "editor",
+                border = "rounded",
+                width = 120,
+                height = 30,
+                row = 4,
+                col = 30
+            }
+        }
     },
     renderer = {
+        indent_width = 2,
         icons = {
             show = {
                 git = false
-            }
+            },
         },
         highlight_git = true,
         indent_markers = {
