@@ -7,6 +7,7 @@ end
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- code completion highlight color
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
@@ -35,6 +36,11 @@ local function my_on_attach(bufnr)
 
     vim.keymap.set("n", "<leader>>", resize("+20"), opts("Nvimtree Resize by +20"))
     vim.keymap.set("n", "<leader><", resize("-20"), opts("NvimTree Resize by -20"))
+
+    vim.api.nvim_set_hl(0, "NvimTreeGitNew", { fg = "#84E873" })
+    vim.api.nvim_set_hl(0, "NvimTreeFileRenamed", { link = "NvimTreeGitNew" })
+    vim.api.nvim_set_hl(0, "NvimTreeGitDirty", { fg = "#6897BB" })
+    vim.api.nvim_set_hl(0, "NvimTreeGitIgnored", { fg = "#848504" })
 end
 
 local goToFile = function()

@@ -27,9 +27,7 @@ local nvimtree = function()
     if tree.is_tree_buf() then
         tree.close()
     else
-        tree.open({
-            current_window = true
-        })
+        tree.open()
     end
 end
 vim.keymap.set("n", "<M-1>", nvimtree, { desc = "NvimTreeToggle" })
