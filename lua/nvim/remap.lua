@@ -6,18 +6,18 @@ vim.keymap.set("n", "<M-w>", vim.cmd.Bdelete, { desc = "Close Buffer" })
 vim.keymap.set("n", "<leader>cb", vim.cmd.Bdelete, { desc = "Close Buffer" })
 
 -- Bufferline
-local Go = {}
-Go.tab = function(tabIndex)
+local goTo = {}
+goTo.tab = function(tabIndex)
     return function()
         vim.cmd("BufferLineGoToBuffer " .. tabIndex)
     end
 end
-vim.keymap.set("n", '<leader>1', Go.tab(1), { desc = "Go to tab 1" })
-vim.keymap.set("n", '<leader>2', Go.tab(2), { desc = "Go to tab 2" })
-vim.keymap.set("n", '<leader>3', Go.tab(3), { desc = "Go to tab 3" })
-vim.keymap.set("n", '<leader>4', Go.tab(4), { desc = "Go to tab 4" })
-vim.keymap.set("n", '<leader>5', Go.tab(5), { desc = "Go to tab 5" })
-vim.keymap.set("n","<leader>`",vim.cmd.BufferLinePick, {desc = "Buffer pick tab"})
+vim.keymap.set("n", '<leader>1', goTo.tab(1), { desc = "Go to tab 1" })
+vim.keymap.set("n", '<leader>2', goTo.tab(2), { desc = "Go to tab 2" })
+vim.keymap.set("n", '<leader>3', goTo.tab(3), { desc = "Go to tab 3" })
+vim.keymap.set("n", '<leader>4', goTo.tab(4), { desc = "Go to tab 4" })
+vim.keymap.set("n", '<leader>5', goTo.tab(5), { desc = "Go to tab 5" })
+vim.keymap.set("n", "<leader>`", vim.cmd.BufferLinePick, { desc = "Buffer pick tab" })
 
 -- Nvim Tree
 local nvimtree = function()
@@ -27,7 +27,9 @@ local nvimtree = function()
     if tree.is_tree_buf() then
         tree.close()
     else
-        tree.open()
+        tree.open({
+            current_window = true
+        })
     end
 end
 vim.keymap.set("n", "<M-1>", nvimtree, { desc = "NvimTreeToggle" })
@@ -56,33 +58,41 @@ vim.keymap.set("v", "<leader>yd", '"dy', { desc = "Yank text in char d" })
 
 -- Telescope
 local status_ok, builtin = pcall(require, "telescope.builtin")
-if not status_ok then
-    return
+if status_ok then
+    vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = "[Git files] Find all find in git track" })
+    vim.keymap.set('n', '<C-f>', builtin.find_files, { desc = "[F]ind [F]iles] Find all in current working directory" })
+
+    vim.keymap.set('n', '<leader>ff', function()
+        return builtin.find_files({hidden = true})
+    end, { desc = "[F]ind [F]iles] Find all in current working directory" })
+
+    vim.keymap.set('n', '<leader>lg', builtin.live_grep,
+        { desc = "[L]ive [G]rep Search for a string in current working directory" })
+    vim.keymap.set('n', '<C-e>', builtin.oldfiles, { desc = "Recently Files" })
+    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "help_tags" })
+    vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find all files buffers" })
+    vim.keymap.set("n", "<leader>jp", builtin.jumplist, { desc = "jumplist" })
+    vim.keymap.set("n", "<leader>dg", builtin.diagnostics, { desc = "diagnostics" })
+    vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "lsp_definitions" })
+    vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "lsp_implementations" })
+    vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "lsp_references" })
 end
-vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = "[Git files] Find all find in git track" })
-vim.keymap.set('n', '<C-f>', builtin.find_files, { desc = "[F]ind [F]iles] Find all in current working directory" })
-vim.keymap.set('n', '<leader>lg', builtin.live_grep,
-    { desc = "[L]ive [G]rep Search for a string in current working directory" })
-vim.keymap.set('n', '<C-e>', builtin.oldfiles, { desc = "Recently Files" })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "help_tags" })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find all files buffers" })
-vim.keymap.set("n", "<leader>jp", builtin.jumplist, { desc = "jumplist" })
-vim.keymap.set("n", "<leader>dg", builtin.diagnostics, { desc = "diagnostics" })
-vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "lsp_definitions" })
-vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "lsp_implementations" })
-vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "lsp_references" })
 
 -- Easy motion
-vim.keymap.set('n',"<leader>jj","<Plug>(easymotion-sn)",{ desc = "Easy motion search n word"})
-
+vim.keymap.set('n', "<leader>jj", "<Plug>(easymotion-sn)", { desc = "Easy motion search n word" })
 
 -- nvim-jdtls
-local jdtls = require('jdtls')
-vim.keymap.set('n','<leader>op',function() jdtls.organize_imports() end,{desc = "jdtls extract_variable"})
+local jdtls_status, jdtls = pcall(require, 'jdtls')
+if jdtls_status then
+    vim.keymap.set('n', '<leader>op', function() jdtls.organize_imports() end, { desc = "jdtls extract_variable" })
 
-vim.keymap.set('n','<leader>crv',function() jdtls.extract_variable() end,{desc = "jdtls extract_variable"})
-vim.keymap.set('v','<leader>crv',function() jdtls.extract_variable(true) end,{desc = "jdtls extract_variable"})
+    vim.keymap.set('n', '<leader>crv', function() jdtls.extract_variable() end, { desc = "jdtls extract_variable" })
+    vim.keymap.set('v', '<leader>crv', function() jdtls.extract_variable(true) end, { desc = "jdtls extract_variable" })
 
-vim.keymap.set('n','<leader>crv',function() jdtls.extract_constant() end,{desc = "jdtls extract_variable"})
-vim.keymap.set('v','<leader>crv',function() jdtls.extract_constant(true) end,{desc = "jdtls extract_variable"})
+    vim.keymap.set('n', '<leader>crv', function() jdtls.extract_constant() end, { desc = "jdtls extract_variable" })
+    vim.keymap.set('v', '<leader>crv', function() jdtls.extract_constant(true) end, { desc = "jdtls extract_variable" })
 
+    vim.keymap.set('n', "<leader>sne", function()
+        require("luasnip.loaders").edit_snippet_files()
+    end, { desc = "Luasnip edit snippet" })
+end

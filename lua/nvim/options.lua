@@ -26,6 +26,13 @@ vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { bg = 'NONE', fg = '#D4D4D4' })
 vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { link = 'CmpItemKindKeyword' })
 vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link = 'CmpItemKindKeyword' })
 
+-- code completion highlight color
+vim.api.nvim_set_hl(0,"NvimTreeGitNew",{fg="#84E873"})
+vim.api.nvim_set_hl(0,"NvimTreeFileRenamed",{link ="NvimTreeGitNew"})
+vim.api.nvim_set_hl(0,"NvimTreeGitDirty",{fg="#6897BB"})
+vim.api.nvim_set_hl(0,"NvimTreeGitIgnored",{fg="#848504"})
+
+-- yank highlight
 vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function()
         vim.highlight.on_yank()
