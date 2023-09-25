@@ -32,9 +32,10 @@ return packer.startup({
 
         use({
             "nvim-treesitter/nvim-treesitter-textobjects",
-            after = "nvim-treesitter",
-            requires = "nvim-treesitter/nvim-treesitter",
+            after = "nvim-treesitter"
         })
+
+        use 'nvim-treesitter/playground'
 
         use {
             'nvim-telescope/telescope.nvim', tag = '0.1.2',

@@ -95,3 +95,20 @@ if jdtls_status then
     vim.keymap.set('n', '<leader>crv', function() jdtls.extract_constant() end, { desc = "jdtls extract_variable" })
     vim.keymap.set('v', '<leader>crv', function() jdtls.extract_constant(true) end, { desc = "jdtls extract_variable" })
 end
+
+--
+-- parser
+vim.keymap.set('n', '<leader>psl', require("nvim.parser.php").setup, {desc = "Parser highlight"})
+
+local luasnip_status, ls = pcall(require,"luasnip")
+if luasnip_status then
+    vim.keymap.set({ "i" }, "<C-j>", function() ls.expand() end, { silent = true })
+    vim.keymap.set({ "i", "s" }, "<C-N>", function() ls.jump(1) end, { silent = true })
+    vim.keymap.set({ "i", "s" }, "<C-N>", function() ls.jump(-1) end, { silent = true })
+
+    vim.keymap.set({ "i", "s" }, "<C-<space>>", function()
+        if ls.choice_active() then
+            ls.change_choice(1)
+        end
+    end, { silent = true })
+end
