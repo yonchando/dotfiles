@@ -3,40 +3,6 @@ if not status_ok then
     return
 end
 
-require("mason").setup({
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-        }
-    }
-})
-
-require("mason-lspconfig").setup({
-    ensure_installed = {
-        "lua_ls",
-        "html",
-        "cssls",
-        "tsserver",
-        "intelephense",
-        'angularls',
-        'volar',
-        'jsonls',
-        'tailwindcss',
-        'emmet_ls',
-        'bashls',
-        'clangd',
-        'rust_analyzer',
-        'lemminx',
-        'jdtls',
-    },
-    automatic_installation = {
-        exclude = { "jdtls" },
-    },
-    handlers = nil,
-})
-
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local servers = {
@@ -98,10 +64,6 @@ for lsp, config in pairs(servers) do
     config.capabilities = capabilities
     lspconfig[lsp].setup(config)
 end
-
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { desc = "Diagnostic open float" })
-vim.keymap.set('n', '<leader>din', vim.diagnostic.goto_prev, { desc = "Go to prev Diagnostic" })
-vim.keymap.set('n', '<leader>dip', vim.diagnostic.goto_next, { desc = "Go to next Diagnostic" })
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),

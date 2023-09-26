@@ -2,7 +2,9 @@
     "workspace.library": [],
     "workspace.checkThirdParty": false,
     "diagnostics.globals": [
-        "vim"
+        "vim",
+        "P",
+        "PN"
     ],
     "diagnostics.disable": [
         "unused-local"

@@ -3,7 +3,10 @@ vim.keymap.set("n", "<leader>opt", vim.cmd.ToggleTerm, { desc = "Open Terminal" 
 
 -- BufferDelete
 vim.keymap.set("n", "<M-w>", vim.cmd.Bdelete, { desc = "Close Buffer" })
-vim.keymap.set("n", "<leader>cb", vim.cmd.Bdelete, { desc = "Close Buffer" })
+vim.keymap.set("n", "<leader>cb", vim.cmd.Bdelete, { desc = "Close Current Buffer" })
+vim.keymap.set("n","<leader>cl",vim.cmd.BufferLineCloseLeft, {desc = "Close all left buffer"})
+vim.keymap.set("n","<leader>cr",vim.cmd.BufferLineCloseRight, {desc = "Close all right buffer"})
+vim.keymap.set("n","<leader>co",vim.cmd.BufferLineCloseOthers, {desc = "Close others"})
 
 -- Bufferline
 local goTo = {}
@@ -81,6 +84,11 @@ if status_ok then
     vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "lsp_references" })
 end
 
+-- vim dianostic
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { desc = "Diagnostic open float" })
+vim.keymap.set('n', '<leader>din', vim.diagnostic.goto_prev, { desc = "Go to prev Diagnostic" })
+vim.keymap.set('n', '<leader>dip', vim.diagnostic.goto_next, { desc = "Go to next Diagnostic" })
+
 -- Easy motion
 vim.keymap.set('n', "<leader>jj", "<Plug>(easymotion-sn)", { desc = "Easy motion search n word" })
 
@@ -95,10 +103,6 @@ if jdtls_status then
     vim.keymap.set('n', '<leader>crv', function() jdtls.extract_constant() end, { desc = "jdtls extract_variable" })
     vim.keymap.set('v', '<leader>crv', function() jdtls.extract_constant(true) end, { desc = "jdtls extract_variable" })
 end
-
---
--- parser
-vim.keymap.set('n', '<leader>psl', require("nvim.parser.php").setup, {desc = "Parser highlight"})
 
 local luasnip_status, ls = pcall(require,"luasnip")
 if luasnip_status then
