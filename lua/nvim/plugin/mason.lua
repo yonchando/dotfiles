@@ -1,4 +1,4 @@
-local status,mason = pcall(require,"mason")
+local status, mason = pcall(require, "mason")
 if not status then
     return
 end
@@ -24,7 +24,18 @@ require("mason-lspconfig").setup({
         'emmet_ls',
     },
     automatic_installation = {
-        exclude = { "jdtls", 'intelephense'},
+        exclude = {
+            "jdtls",
+            "tsserver",
+            "tailwindcss",
+            "intelephense",
+            "angularls",
+            "clangd",
+            "bashls",
+            "volar",
+            "lemminx",
+            "rust_analyze",
+        },
     },
     handlers = nil,
 })
