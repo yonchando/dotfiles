@@ -1,7 +1,8 @@
-local jdtls = vim.fn.stdpath("data") .. "/mason/share/jdtls"
-local jar_dir = jdtls .. "/plugins/org.eclipse.equinox.launcher.jar"
-local config_dir = jdtls .. "/config"
-local lombok = jdtls .. '/lombok.jar'
+---@diagnostic disable: param-type-mismatch
+local jdtls_path = vim.fn.stdpath("data") .. "/mason/share/jdtls"
+local jar_dir = jdtls_path .. "/plugins/org.eclipse.equinox.launcher.jar"
+local config_dir = jdtls_path .. "/config"
+local lombok = jdtls_path .. '/lombok.jar'
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 
@@ -42,4 +43,24 @@ local config = {
         bundles = {}
     },
 }
+
+local jdtls = require('jdtls')
+
+local on_attach = function(client, bufnr)
+    vim.keymap.set('n', '<leader>op', function() jdtls.organize_imports() end, { desc = "jdtls extract_variable" })
+
+    vim.keymap.set('n', '<leader>crv', function() jdtls.extract_variable() end, { desc = "jdtls extract_variable" })
+    vim.keymap.set('v', '<leader>crv', function() jdtls.extract_variable(true) end,
+        { desc = "jdtls extract_variable" })
+
+    vim.keymap.set('n', '<leader>crv', function()
+        jdtls.extract_constant()
+    end, { desc = "jdtls extract_variable" })
+
+    vim.keymap.set('v', '<leader>crv', function()
+        jdtls.extract_constant(true)
+    end, { desc = "jdtls extract_variable" })
+end
+
+config.on_attach = on_attach
 require('jdtls').start_or_attach(config)

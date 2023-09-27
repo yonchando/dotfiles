@@ -100,8 +100,6 @@ return packer.startup({
 
         use { "moll/vim-bbye" }
 
-        use { "akinsho/toggleterm.nvim", tag = '*' }
-
         use { "folke/neodev.nvim" }
 
         use { "dcampos/cmp-emmet-vim" }

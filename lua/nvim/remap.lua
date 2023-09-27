@@ -1,12 +1,9 @@
--- ToggleTerm open terminal
-vim.keymap.set("n", "<leader>opt", vim.cmd.ToggleTerm, { desc = "Open Terminal" })
-
 -- BufferDelete
 vim.keymap.set("n", "<M-w>", vim.cmd.Bdelete, { desc = "Close Buffer" })
 vim.keymap.set("n", "<leader>cb", vim.cmd.Bdelete, { desc = "Close Current Buffer" })
-vim.keymap.set("n","<leader>cl",vim.cmd.BufferLineCloseLeft, {desc = "Close all left buffer"})
-vim.keymap.set("n","<leader>cr",vim.cmd.BufferLineCloseRight, {desc = "Close all right buffer"})
-vim.keymap.set("n","<leader>co",vim.cmd.BufferLineCloseOthers, {desc = "Close others"})
+vim.keymap.set("n", "<leader>cl", vim.cmd.BufferLineCloseLeft, { desc = "Close all left buffer" })
+vim.keymap.set("n", "<leader>cr", vim.cmd.BufferLineCloseRight, { desc = "Close all right buffer" })
+vim.keymap.set("n", "<leader>co", vim.cmd.BufferLineCloseOthers, { desc = "Close others" })
 
 -- Bufferline
 local goTo = {}
@@ -92,19 +89,8 @@ vim.keymap.set('n', '<leader>dip', vim.diagnostic.goto_next, { desc = "Go to nex
 -- Easy motion
 vim.keymap.set('n', "<leader>jj", "<Plug>(easymotion-sn)", { desc = "Easy motion search n word" })
 
--- nvim-jdtls
-local jdtls_status, jdtls = pcall(require, 'jdtls')
-if jdtls_status then
-    vim.keymap.set('n', '<leader>op', function() jdtls.organize_imports() end, { desc = "jdtls extract_variable" })
 
-    vim.keymap.set('n', '<leader>crv', function() jdtls.extract_variable() end, { desc = "jdtls extract_variable" })
-    vim.keymap.set('v', '<leader>crv', function() jdtls.extract_variable(true) end, { desc = "jdtls extract_variable" })
-
-    vim.keymap.set('n', '<leader>crv', function() jdtls.extract_constant() end, { desc = "jdtls extract_variable" })
-    vim.keymap.set('v', '<leader>crv', function() jdtls.extract_constant(true) end, { desc = "jdtls extract_variable" })
-end
-
-local luasnip_status, ls = pcall(require,"luasnip")
+local luasnip_status, ls = pcall(require, "luasnip")
 if luasnip_status then
     vim.keymap.set({ "i" }, "<C-j>", function() ls.expand() end, { silent = true })
     vim.keymap.set({ "i", "s" }, "<C-N>", function() ls.jump(1) end, { silent = true })

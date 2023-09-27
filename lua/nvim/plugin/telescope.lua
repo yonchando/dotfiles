@@ -27,6 +27,10 @@ telescope.setup {
         oldfiles = {
             theme = "dropdown",
             previewer = false,
+        },
+        artisan_routes = {
+            theme = "dropdown",
+            previewer = false,
         }
     },
     extensions = {

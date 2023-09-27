@@ -6,51 +6,55 @@ end
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local servers = {
-    html = {
-        filetypes = {
-            "html",
-            "blade",
-        }
-    },
     cssls = {},
     jsonls = {},
     tsserver = {},
     tailwindcss = {},
-    intelephense = {},
     angularls = {},
     clangd = {},
-    bashls = {
-        filetypes = {
-            "sh",
-            "zsh",
-        }
-    },
-    emmet_ls = {
-        filetypes = {
-            'css',
-            'html',
-            'javascript',
-            'scss',
-            'sass',
-            'vue',
-            'blade',
-        },
-    },
     volar = {},
-    lua_ls = {
-        settings = {
-            Lua = {
-                completion = {
-                    callSnippet = "Both"
-                },
-                workspace = {
-                    checkThirdParty = false,
-                }
+    yamlls = {},
+    intelephense = {}
+}
+
+servers.html = {
+    filetypes = {
+        "html",
+        "blade",
+    }
+}
+
+servers.emmet_ls = {
+    filetypes = {
+        'css',
+        'html',
+        'javascript',
+        'scss',
+        'sass',
+        'vue',
+        'blade',
+    },
+}
+
+servers.lua_ls = {
+    settings = {
+        Lua = {
+            completion = {
+                callSnippet = "Both"
+            },
+            workspace = {
+                checkThirdParty = false,
             }
         }
-    },
-    lemminx = {},
-    rust_analyzer = {},
+    }
+
+}
+
+servers.bashls = {
+    filetypes = {
+        "sh",
+        "zsh",
+    }
 }
 
 for lsp, config in pairs(servers) do
@@ -68,7 +72,6 @@ end
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
     callback = function(ev)
-
         vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
         vim.keymap.set('n', '<C-q>', vim.lsp.buf.hover, { desc = "Hover" })
