@@ -14,7 +14,8 @@ local servers = {
     clangd = {},
     volar = {},
     yamlls = {},
-    intelephense = {}
+    intelephense = {},
+    lemminx = {},
 }
 
 servers.html = {
@@ -44,6 +45,9 @@ servers.lua_ls = {
             },
             workspace = {
                 checkThirdParty = false,
+            },
+            globals = {
+                "vim",
             }
         }
     }
@@ -66,6 +70,7 @@ for lsp, config in pairs(servers) do
         }
     }
     config.capabilities = capabilities
+
     lspconfig[lsp].setup(config)
 end
 
@@ -76,6 +81,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         vim.keymap.set('n', '<C-q>', vim.lsp.buf.hover, { desc = "Hover" })
         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, { desc = "Rename" })
+        vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, { desc = "Rename" })
         vim.keymap.set({ 'n', 'v' }, '<space>i', vim.lsp.buf.code_action, { desc = "Code Actions" })
         vim.keymap.set('n', '<space>fc', function()
             vim.lsp.buf.format { async = true }

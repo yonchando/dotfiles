@@ -1,3 +1,7 @@
+-- Save
+vim.keymap.set("n", "<c-s>", vim.cmd.wa, { desc = "Save all"})
+vim.keymap.set("n", "<c-q>", vim.cmd.wqa, { desc = "Save all"})
+
 -- BufferDelete
 vim.keymap.set("n", "<M-w>", vim.cmd.Bdelete, { desc = "Close Buffer" })
 vim.keymap.set("n", "<leader>cb", vim.cmd.Bdelete, { desc = "Close Current Buffer" })
@@ -90,15 +94,5 @@ vim.keymap.set('n', '<leader>dip', vim.diagnostic.goto_next, { desc = "Go to nex
 vim.keymap.set('n', "<leader>jj", "<Plug>(easymotion-sn)", { desc = "Easy motion search n word" })
 
 
-local luasnip_status, ls = pcall(require, "luasnip")
-if luasnip_status then
-    vim.keymap.set({ "i" }, "<C-j>", function() ls.expand() end, { silent = true })
-    vim.keymap.set({ "i", "s" }, "<C-N>", function() ls.jump(1) end, { silent = true })
-    vim.keymap.set({ "i", "s" }, "<C-N>", function() ls.jump(-1) end, { silent = true })
 
-    vim.keymap.set({ "i", "s" }, "<C-<space>>", function()
-        if ls.choice_active() then
-            ls.change_choice(1)
-        end
-    end, { silent = true })
-end
+-- which key

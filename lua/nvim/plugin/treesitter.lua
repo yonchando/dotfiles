@@ -30,6 +30,9 @@ nvimtreesitter.setup {
 
     indent = {
         enable = true,
+        disable = {
+            'html'
+        }
     },
 
     incremental_selection = {
@@ -41,6 +44,7 @@ nvimtreesitter.setup {
             node_decremental = 'grm'
         }
     },
+
     playground = {
         enable = true,
         updatetime = 25,     -- Debounced time for highlighting nodes in the playground from source code
