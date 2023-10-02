@@ -94,6 +94,6 @@ nvimtree.setup {
         }
     },
     filters = {
-        git_ignored = false
+        git_ignored = true
     }
 }

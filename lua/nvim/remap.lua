@@ -1,6 +1,6 @@
 -- Save
 vim.keymap.set("n", "<c-s>", vim.cmd.wa, { desc = "Save all"})
-vim.keymap.set("n", "<c-q>", vim.cmd.wqa, { desc = "Save all"})
+vim.keymap.set("n", "<leader>q", vim.cmd.wqa, { desc = "Save all"})
 
 -- BufferDelete
 vim.keymap.set("n", "<M-w>", vim.cmd.Bdelete, { desc = "Close Buffer" })

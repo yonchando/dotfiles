@@ -16,6 +16,7 @@ local servers = {
     yamlls = {},
     intelephense = {},
     lemminx = {},
+    rust_analyzer = {},
 }
 
 servers.html = {
