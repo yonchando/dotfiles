@@ -1,4 +1,4 @@
-local status_ok, indent = pcall(require,"indent_blankline")
+local status_ok, indent = pcall(require,"ibl")
 if not status_ok then
     return
 end
@@ -6,6 +6,4 @@ end
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
 
-indent.setup {
-    show_end_of_line = true,
-}
+indent.setup {}

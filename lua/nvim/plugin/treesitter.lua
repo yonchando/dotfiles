@@ -3,7 +3,6 @@ if not status_ok then
     return
 end
 
-
 nvimtreesitter.setup {
     ensure_installed = {
         "c",
@@ -31,7 +30,7 @@ nvimtreesitter.setup {
     indent = {
         enable = true,
         disable = {
-            'html'
+            'html',
         }
     },
 
@@ -44,10 +43,13 @@ nvimtreesitter.setup {
             node_decremental = 'grm'
         }
     },
+    autotag = {
+        enable = true,
+    },
 
     playground = {
         enable = true,
-        updatetime = 25,     -- Debounced time for highlighting nodes in the playground from source code
+        updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
         persist_queries = false, -- Whether the query persists across vim sessions
         keybindings = {
             toggle_query_editor = 'o',
