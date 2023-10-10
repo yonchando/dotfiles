@@ -42,22 +42,22 @@ return packer.startup({
             requires = { { 'nvim-lua/plenary.nvim' } }
         }
 
-        use {'nvim-telescope/telescope-ui-select.nvim' }
+        use { 'nvim-telescope/telescope-ui-select.nvim' }
 
         use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
         -- Cmp
-        use { "hrsh7th/nvim-cmp" }         -- The completion plugin
-        use { "hrsh7th/cmp-buffer" }       -- buffer completions
-        use { "hrsh7th/cmp-path" }         -- path completions
-        use { "hrsh7th/cmp-cmdline" }      -- path completions
+        use { "hrsh7th/nvim-cmp" }    -- The completion plugin
+        use { "hrsh7th/cmp-buffer" }  -- buffer completions
+        use { "hrsh7th/cmp-path" }    -- path completions
+        use { "hrsh7th/cmp-cmdline" } -- path completions
         use { "hrsh7th/cmp-nvim-lsp" }
         use { "hrsh7th/cmp-nvim-lua" }
         use 'onsails/lspkind.nvim'
 
         -- Snippets
         use { "L3MON4D3/LuaSnip" }             --snippet engine
-        use { "saadparwaiz1/cmp_luasnip" } -- snippet completions
+        use { "saadparwaiz1/cmp_luasnip" }     -- snippet completions
         use { "rafamadriz/friendly-snippets" } -- a bunch of snippets to use
 
         -- LSP
@@ -65,20 +65,19 @@ return packer.startup({
         use { "williamboman/mason-lspconfig.nvim" }
         use { "neovim/nvim-lspconfig" }           -- enable LSP
         use { "jose-elias-alvarez/null-ls.nvim" } -- for formatters and linters
+        use { 'MunifTanjim/prettier.nvim' }
         use "mfussenegger/nvim-jdtls"
 
         use { "windwp/nvim-autopairs" }
 
         use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
 
-        use({ 'dracula/vim', as = 'dracula', config = function() vim.cmd("colorscheme dracula") end })
-
-        use 'goolord/alpha-nvim'
+        use({ 'dracula/vim', as = 'dracula'})
 
         use 'nvim-tree/nvim-tree.lua'
         use 'nvim-tree/nvim-web-devicons'
 
-        use "lukas-reineke/indent-blankline.nvim"
+        use {"lukas-reineke/indent-blankline.nvim"}
 
         use 'numToStr/Comment.nvim'
 

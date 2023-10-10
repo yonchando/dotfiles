@@ -1,6 +1,6 @@
 -- Save
-vim.keymap.set("n", "<c-s>", vim.cmd.wa, { desc = "Save all"})
-vim.keymap.set("n", "<leader>q", vim.cmd.wqa, { desc = "Save all"})
+vim.keymap.set("n", "<c-s>", vim.cmd.wa, { desc = "Save all" })
+vim.keymap.set("n", "<leader>q", vim.cmd.wqa, { desc = "Save all" })
 
 -- BufferDelete
 vim.keymap.set("n", "<M-w>", vim.cmd.Bdelete, { desc = "Close Buffer" })
@@ -58,33 +58,6 @@ vim.keymap.set("v", "<leader>ya", '"ay', { desc = "Yank text in char a" })
 vim.keymap.set("v", "<leader>ys", '"sy', { desc = "Yank text in char s" })
 vim.keymap.set("v", "<leader>yd", '"dy', { desc = "Yank text in char d" })
 
--- Telescope
-local status_ok, builtin = pcall(require, "telescope.builtin")
-if status_ok then
-    vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = "[Git files] Find all find in git track" })
-    vim.keymap.set('n', '<C-f>', builtin.find_files, { desc = "[F]ind [F]iles] Find all in current working directory" })
-
-    vim.keymap.set('n', '<leader>ff', function()
-        return builtin.find_files({ hidden = true })
-    end, {
-        desc = "[F]ind [F]iles] Find all in current working directory"
-    })
-
-    vim.keymap.set('n', '<leader>lg', builtin.live_grep, {
-        desc = "[L]ive [G]rep Search for a string in current working directory"
-    })
-    vim.keymap.set('n', '<C-e>', builtin.oldfiles, { desc = "Recently Files" })
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "help_tags" })
-    vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find all files buffers" })
-    vim.keymap.set("n", "<leader>jp", builtin.jumplist, { desc = "jumplist" })
-
-    vim.keymap.set("n", "<leader>dig", builtin.diagnostics, { desc = "diagnostics" })
-
-    vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "lsp_definitions" })
-    vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "lsp_implementations" })
-    vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "lsp_references" })
-end
-
 -- vim dianostic
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { desc = "Diagnostic open float" })
 vim.keymap.set('n', '<leader>din', vim.diagnostic.goto_prev, { desc = "Go to prev Diagnostic" })
@@ -93,6 +66,5 @@ vim.keymap.set('n', '<leader>dip', vim.diagnostic.goto_next, { desc = "Go to nex
 -- Easy motion
 vim.keymap.set('n', "<leader>jj", "<Plug>(easymotion-sn)", { desc = "Easy motion search n word" })
 
-
-
--- which key
+-- prettier
+vim.keymap.set("n","<leader>pt", vim.cmd.Prettier, {desc = "Prettier format"})

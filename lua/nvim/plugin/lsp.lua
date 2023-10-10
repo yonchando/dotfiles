@@ -82,7 +82,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         vim.keymap.set('n', '<C-q>', vim.lsp.buf.hover, { desc = "Hover" })
         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, { desc = "Rename" })
-        vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, { desc = "Rename" })
+        vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, { desc = "signature_help" })
         vim.keymap.set({ 'n', 'v' }, '<space>i', vim.lsp.buf.code_action, { desc = "Code Actions" })
         vim.keymap.set('n', '<space>fc', function()
             vim.lsp.buf.format { async = true }

@@ -9,6 +9,18 @@ vim.loader.enable()
 vim.o.smartindent = true
 vim.o.mouse = false
 
+vim.cmd [[
+autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
+]]
+
+local scheme_exists, _ = pcall(vim.cmd, "colorscheme dracula")
+if scheme_exists then
+    vim.g.dracula_colorterm = 0
+    vim.cmd("colorscheme dracula")
+end
+
+-- vim.api.nvim_set_hl(0, "Normal", {guibg = none})
+
 -- code completion highlight color
 -- gray
 vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { bg = 'NONE', strikethrough = true, fg = '#808080' })

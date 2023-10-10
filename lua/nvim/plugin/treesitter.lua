@@ -3,7 +3,6 @@ if not status_ok then
     return
 end
 
-
 nvimtreesitter.setup {
     ensure_installed = {
         "c",
@@ -24,7 +23,6 @@ nvimtreesitter.setup {
 
     highlight = {
         enable = true,
-
         additional_vim_regex_highlighting = false,
     },
 
@@ -33,6 +31,9 @@ nvimtreesitter.setup {
         disable = {
             'html'
         }
+    },
+    textobjects = {
+        enable = true,
     },
 
     incremental_selection = {
@@ -45,9 +46,13 @@ nvimtreesitter.setup {
         }
     },
 
+    autotag = {
+        enable = true
+    },
+
     playground = {
         enable = true,
-        updatetime = 25,     -- Debounced time for highlighting nodes in the playground from source code
+        updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
         persist_queries = false, -- Whether the query persists across vim sessions
         keybindings = {
             toggle_query_editor = 'o',
