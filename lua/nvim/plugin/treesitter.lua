@@ -29,7 +29,7 @@ nvimtreesitter.setup {
     indent = {
         enable = true,
         disable = {
-            'html'
+            'html',
         }
     },
     textobjects = {
@@ -44,6 +44,9 @@ nvimtreesitter.setup {
             scope_incremental = 'grc',
             node_decremental = 'grm'
         }
+    },
+    autotag = {
+        enable = true,
     },
 
     autotag = {
