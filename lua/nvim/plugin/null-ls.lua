@@ -1,7 +1,6 @@
 local status, null_ls = pcall(require, 'null-ls')
 
 if not status then
-    print("Null is not loading ..")
     return
 end
 
@@ -11,12 +10,10 @@ local async = event == "BufWritePost"
 
 null_ls.setup({
     on_attach = function(client, bufnr)
-        if client.support_methods("textDocument/formatting") then
-            vim.keymap.set("n", "<leader>fm", function()
-                vim.lsp.buf.format({
-                    bufnr = vim.api.nvim_get_current_buf()
-                })
-            end, { buffer = bufnr, desc = "[Lsp] format" })
+        if client.supports_method("textDocument/formatting") then
+            vim.keymap.set("n", "<Leader>f", function()
+                vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+            end, { buffer = bufnr, desc = "[lsp] format" })
 
             -- format on save
             vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
@@ -31,9 +28,9 @@ null_ls.setup({
         end
 
         if client.supports_method("textDocument/rangeFormatting") then
-            vim.keymap.set("x", "<Leader>fm", function()
+            vim.keymap.set("x", "<Leader>f", function()
                 vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
             end, { buffer = bufnr, desc = "[lsp] format" })
         end
-    end
+    end,
 })

@@ -7,12 +7,18 @@ end
 prettier.setup({
     bin = "prettier",
     filetypes = {
-        'css',
-        'html',
-        'json',
-        'yaml',
-        'yml',
-        'javascript'
+        "css",
+        "graphql",
+        "html",
+        "javascript",
+        "javascriptreact",
+        "json",
+        "less",
+        "markdown",
+        "scss",
+        "typescript",
+        "typescriptreact",
+        "yaml",
     },
     ["null-ls"] = {
         condition = function()
@@ -26,6 +32,7 @@ prettier.setup({
         timeout = 5000,
     },
     cli_options = {
-        tab_width = 4
+        tab_width = 4,
+        config_precedence = "file-override", -- or "cli-override" or "file-override"
     }
 })
