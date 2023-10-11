@@ -22,11 +22,11 @@ local function my_on_attach(bufnr)
     api.config.mappings.default_on_attach(bufnr)
 
     -- custom mappings
-    vim.keymap.set("n", "+", api.tree.expand_all, opts('Expand All'))
-    vim.keymap.set("n", "_", api.tree.collapse_all, opts('Collapse All'))
+    vim.keymap.set("n", "n+", api.tree.expand_all, opts('Expand All'))
+    vim.keymap.set("n", "n_", api.tree.collapse_all, opts('Collapse All'))
 
-    vim.keymap.set("n", '<leader>lf', api.live_filter.start, opts("Live filter"))
-    vim.keymap.set("n", '<leader>lc', api.live_filter.clear, opts("Live filter clean"))
+    vim.keymap.set("n", 'nlf', api.live_filter.start, opts("Live filter"))
+    vim.keymap.set("n", 'nlc', api.live_filter.clear, opts("Live filter clean"))
 
     local resize = function(size)
         return function()
@@ -34,10 +34,42 @@ local function my_on_attach(bufnr)
         end
     end
 
-    vim.keymap.set("n", "<leader>>", resize("+20"), opts("Nvimtree Resize by +20"))
-    vim.keymap.set("n", "<leader><", resize("-20"), opts("NvimTree Resize by -20"))
+    local git_add = function(command)
+        local node = api.tree.get_node_under_cursor()
+        local gs = node.git_status.file
 
-    vim.api.nvim_set_hl(0, "NvimTreeGitStaged", { fg = "#9876AA" })
+        -- If the current node is a directory get children status
+        if gs == nil then
+            gs = (node.git_status.dir.direct ~= nil and node.git_status.dir.direct[1])
+                or (node.git_status.dir.indirect ~= nil and node.git_status.dir.indirect[1])
+        end
+
+
+        if command == "add" then
+            -- If the file is untracked, unstaged or partially staged, we stage it
+            if gs == "??" or gs == "MM" or gs == "AM" or gs == " M" then
+                vim.cmd("silent !git add " .. node.absolute_path)
+
+                -- If the file is staged, we unstage
+            elseif gs == "M " or gs == "A " then
+                vim.cmd("silent !git restore --staged " .. node.absolute_path)
+            end
+        end
+
+        if command == "reset" then
+            if gs == "M " or gs == "A " then
+                vim.cmd("silent !git restore --staged " .. node.absolute_path)
+            end
+            vim.cmd("silent !git checkout " .. node.absolute_path)
+        end
+
+        api.tree.reload()
+    end
+
+    vim.keymap.set('n', "nga", function() git_add('add') end, { desc = "Git add" })
+    vim.keymap.set('n', "ngr", function() git_add('reset') end, { desc = "Git reset" })
+
+    vim.api.nvim_set_hl(0, "NvimTreeGitStaged", { fg = "#B03AFC" })
     vim.api.nvim_set_hl(0, "NvimTreeGitNew", { fg = "#84E873" })
     vim.api.nvim_set_hl(0, "NvimTreeFileRenamed", { link = "NvimTreeGitNew" })
     vim.api.nvim_set_hl(0, "NvimTreeGitDirty", { fg = "#6897BB" })

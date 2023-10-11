@@ -68,3 +68,6 @@ vim.keymap.set('n', "<leader>jj", "<Plug>(easymotion-sn)", { desc = "Easy motion
 
 -- prettier
 vim.keymap.set("n","<leader>pt", vim.cmd.Prettier, {desc = "Prettier format"})
+
+-- Lsp mapping
+vim.keymap.set('n',"<leader>lsr", vim.cmd.LspRestart, {desc = "Lsp Restart"})
