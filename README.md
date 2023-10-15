@@ -7,3 +7,6 @@ This repo is for personal usage for config `.ideavimrc` for PhpStorm, `.tmux.con
 
 ### Tmux Plugin manager
 [Tmux-plugin](https://github.com/tmux-plugins/tpm)
+
+### Vim Plug
+[Vim-plug](https://github.com/junegunn/vim-plug)
