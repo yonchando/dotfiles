@@ -24,16 +24,6 @@ require("mason-lspconfig").setup({
         'emmet_ls',
         'yamlls',
     },
-    automatic_installation = {
-        exclude = {
-            "jdtls",
-            "tsserver",
-            "tailwindcss",
-            "angularls",
-            "clangd",
-            "bashls",
-            "volar",
-        },
-    },
+    automatic_installation = false,
     handlers = nil,
 })

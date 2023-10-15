@@ -71,3 +71,6 @@ vim.keymap.set("n","<leader>pt", vim.cmd.Prettier, {desc = "Prettier format"})
 
 -- Lsp mapping
 vim.keymap.set('n',"<leader>lsr", vim.cmd.LspRestart, {desc = "Lsp Restart"})
+
+-- fold
+vim.keymap.set('n',"<C-->", "zfi{")

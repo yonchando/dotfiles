@@ -17,6 +17,10 @@ nvimtreesitter.setup {
         "php",
     },
 
+    matchup = {
+        enable = true,
+    },
+
     sync_install = false,
 
     auto_install = true,
@@ -33,19 +37,6 @@ nvimtreesitter.setup {
         }
     },
     textobjects = {
-        enable = true,
-    },
-
-    incremental_selection = {
-        enable = true,
-        keymaps = {
-            init_selection = 'gnn',
-            node_incremental = 'grn',
-            scope_incremental = 'grc',
-            node_decremental = 'grm'
-        }
-    },
-    autotag = {
         enable = true,
     },
 

@@ -61,23 +61,21 @@ return packer.startup({
         use { "rafamadriz/friendly-snippets" } -- a bunch of snippets to use
 
         -- LSP
-        use { "williamboman/mason.nvim" }         -- simple to use language server installer
+        use { "williamboman/mason.nvim" } -- simple to use language server installer
         use { "williamboman/mason-lspconfig.nvim" }
-        use { "neovim/nvim-lspconfig" }           -- enable LSP
-        use { "jose-elias-alvarez/null-ls.nvim" } -- for formatters and linters
-        use { 'MunifTanjim/prettier.nvim' }
+        use { "neovim/nvim-lspconfig" }   -- enable LSP
         use "mfussenegger/nvim-jdtls"
 
         use { "windwp/nvim-autopairs" }
 
         use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
 
-        use({ 'dracula/vim', as = 'dracula'})
+        use({ 'dracula/vim', as = 'dracula' })
 
         use 'nvim-tree/nvim-tree.lua'
         use 'nvim-tree/nvim-web-devicons'
 
-        use {"lukas-reineke/indent-blankline.nvim"}
+        use { "lukas-reineke/indent-blankline.nvim" }
 
         use 'numToStr/Comment.nvim'
 
@@ -112,6 +110,19 @@ return packer.startup({
         use 'easymotion/vim-easymotion'
 
         use 'NvChad/nvim-colorizer.lua'
+
+        use { 'stevearc/dressing.nvim' }
+
+        use 'stevearc/conform.nvim'
+
+        -- use { 'MunifTanjim/prettier.nvim' }
+
+        use {
+            'andymass/vim-matchup',
+            setup = function()
+                vim.g.matchup_matchparen_offscreen = { method = "popup" }
+            end
+        }
 
         if packer_bootstrap then
             require('packer').sync()
