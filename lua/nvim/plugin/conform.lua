@@ -16,7 +16,7 @@ conform.setup({
         blade = { "blade-formatter" },
     },
     format_on_save = {
-        timeout_ms = 500,
+        timeout_ms = 50000,
         lsp_fallback = true,
     },
 })
@@ -24,6 +24,6 @@ conform.setup({
 vim.keymap.set({ "n", "v" }, "<leader>fc", function()
     conform.format({
         lsp_fallback = true,
-        timeout_ms = 500,
+        timeout_ms = 50000,
     })
 end, { desc = "Reformat file or range ( in Select mode)" })

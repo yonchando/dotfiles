@@ -124,10 +124,16 @@ return packer.startup({
             end
         }
 
+        use {
+            'j-hui/fidget.nvim',
+            tag = 'legacy',
+        }
+
         if packer_bootstrap then
             require('packer').sync()
         end
     end,
+
     config = {
         display = {
             open_fn = function()

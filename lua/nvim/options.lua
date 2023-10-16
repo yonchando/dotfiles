@@ -2,12 +2,31 @@ vim.g.mapleader = " "
 vim.g.EasyMotion_do_mapping = 0
 vim.o.shiftwidth = 4
 vim.o.relativenumber = true
-vim.o.number = true
+vim.wo.number = true
 vim.o.tabstop = 4
 vim.o.expandtab = true
 vim.loader.enable()
 vim.o.smartindent = true
 vim.o.mouse = false
+vim.o.breakindent = true
+vim.o.undofile = true
+
+-- Case-insensitive searching UNLESS \C or capital in search
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- Keep signcolumn on by default
+vim.wo.signcolumn = 'yes'
+
+-- Decrease update time
+vim.o.updatetime = 250
+vim.o.timeoutlen = 300
+
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect'
+
+-- NOTE: You should make sure your terminal supports this
+vim.o.termguicolors = true
 
 vim.cmd [[
 autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
@@ -40,9 +59,11 @@ vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { link = 'CmpItemKindKeyword' })
 vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link = 'CmpItemKindKeyword' })
 
 -- yank highlight
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function()
         vim.highlight.on_yank()
     end,
+    group = highlight_group,
     pattern = '*',
 })

@@ -76,10 +76,18 @@ if builtin_status then
     vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "lsp_implementations" })
     vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "lsp_references" })
 
-    vim.keymap.set("n", "<leader>gs", builtin.git_status,{desc = "Git status"})
-    vim.keymap.set("n", "<leader>gc", builtin.git_commits,{desc = "Git lists commits"})
-    vim.keymap.set("n", "<leader>gbc", builtin.git_bcommits,{desc = "Git list current buffer commit"})
+    vim.keymap.set('n', '<leader>fz', function()
+        -- You can pass additional configuration to telescope to change theme, layout, etc.
+        require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+            winblend = 10,
+            previewer = false,
+        })
+    end, { desc = '[/] Fuzzily search in current buffer' })
+
+    vim.keymap.set("n", "<leader>gs", builtin.git_status, { desc = "Git status" })
+    vim.keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "Git lists commits" })
+    vim.keymap.set("n", "<leader>gbc", builtin.git_bcommits, { desc = "Git list current buffer commit" })
 end
 
-telescope.load_extension('fzf')
-telescope.load_extension("ui-select")
+pcall(telescope.load_extension, 'fzf')
+pcall(telescope.load_extension, "ui-select")
