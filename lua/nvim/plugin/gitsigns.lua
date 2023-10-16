@@ -28,12 +28,14 @@ gitsigns.setup {
         end, { expr = true, desc = "Gitsigns prev_hunk" })
 
         -- Actions
-        map('n', '<leader>hp', gs.prev_hunk, { desc = "preview_hunk" })
-
+        map('n', '<leader>hp', gs.preview_hunk, { desc = "preview_hunk" })
+        map('n', "<leader>hd", gs.diffthis, { desc = "Git diff this" })
         map('n', '<leader>hs', gs.stage_hunk, { desc = "stage_hunk" })
         map('n', '<leader>hr', gs.reset_hunk, { desc = "reset_hunk" })
-        map('v', '<leader>hs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end, { desc = "stage_hunk" })
-        map('v', '<leader>hr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end,{ desc = "reset_hunk" })
+        map('v', '<leader>hs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
+            { desc = "stage_hunk" })
+        map('v', '<leader>hr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
+            { desc = "reset_hunk" })
 
         map('n', '<leader>hS', gs.stage_buffer, { desc = "stage_buffer" })
         map('n', '<leader>hR', gs.reset_buffer, { desc = "reset_buffer" })

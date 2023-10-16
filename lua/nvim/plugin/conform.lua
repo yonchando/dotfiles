@@ -17,7 +17,6 @@ conform.setup({
     },
     format_on_save = {
         timeout_ms = 500,
-        async = false,
         lsp_fallback = true,
     },
 })
@@ -25,7 +24,6 @@ conform.setup({
 vim.keymap.set({ "n", "v" }, "<leader>fc", function()
     conform.format({
         lsp_fallback = true,
-        async = false,
         timeout_ms = 500,
-    }, { desc = "Reformat file or range ( in Select mode)"})
-end)
+    })
+end, { desc = "Reformat file or range ( in Select mode)" })
