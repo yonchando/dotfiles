@@ -16,6 +16,7 @@ goTo.tab = function(tabIndex)
         vim.cmd("BufferLineGoToBuffer " .. tabIndex)
     end
 end
+-- vim.keymap.set("n", "<leader>gt", goTo.tab(), { expr = true, silent = true, noremap = true })
 vim.keymap.set("n", '<leader>1', goTo.tab(1), { desc = "Go to tab 1" })
 vim.keymap.set("n", '<leader>2', goTo.tab(2), { desc = "Go to tab 2" })
 vim.keymap.set("n", '<leader>3', goTo.tab(3), { desc = "Go to tab 3" })
@@ -67,10 +68,10 @@ vim.keymap.set('n', '<leader>dip', vim.diagnostic.goto_next, { desc = "Go to nex
 vim.keymap.set('n', "<leader>jj", "<Plug>(easymotion-sn)", { desc = "Easy motion search n word" })
 
 -- prettier
-vim.keymap.set("n","<leader>pt", vim.cmd.Prettier, {desc = "Prettier format"})
+vim.keymap.set("n", "<leader>pt", vim.cmd.Prettier, { desc = "Prettier format" })
 
 -- Lsp mapping
-vim.keymap.set('n',"<leader>lsr", vim.cmd.LspRestart, {desc = "Lsp Restart"})
+vim.keymap.set('n', "<leader>lsr", vim.cmd.LspRestart, { desc = "Lsp Restart" })
 
 -- fold
-vim.keymap.set('n',"<C-->", "zfi{")
+vim.keymap.set('n', "<C-->", "zfi{")

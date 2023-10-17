@@ -115,7 +115,7 @@ return packer.startup({
 
         use 'stevearc/conform.nvim'
 
-        -- use { 'MunifTanjim/prettier.nvim' }
+        use "ThePrimeagen/harpoon"
 
         use {
             'andymass/vim-matchup',
