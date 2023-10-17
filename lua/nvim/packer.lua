@@ -111,11 +111,11 @@ return packer.startup({
 
         use 'NvChad/nvim-colorizer.lua'
 
-        use { 'stevearc/dressing.nvim' }
-
         use 'stevearc/conform.nvim'
 
         use "ThePrimeagen/harpoon"
+
+        use 'jwalton512/vim-blade'
 
         use {
             'andymass/vim-matchup',

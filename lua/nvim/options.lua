@@ -8,7 +8,6 @@ vim.o.expandtab = true
 vim.loader.enable()
 vim.o.smartindent = true
 vim.o.mouse = false
-vim.o.breakindent = true
 vim.o.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
@@ -32,7 +31,7 @@ vim.cmd [[
 autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
 ]]
 
-local scheme_exists, _ = pcall(vim.cmd, "colorscheme dracula")
+local scheme_exists, _ = pcall(vim.cmd.colorscheme, "dracula")
 if scheme_exists then
     vim.g.dracula_colorterm = 0
     vim.cmd("colorscheme dracula")

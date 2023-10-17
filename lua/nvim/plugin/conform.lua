@@ -26,4 +26,4 @@ vim.keymap.set({ "n", "v" }, "<leader>fc", function()
         lsp_fallback = true,
         timeout_ms = 50000,
     })
-end, { desc = "Reformat file or range ( in Select mode)" })
+end, { desc = "Reformat file or range ( in Select mode)", noremap = true, silent = true })
