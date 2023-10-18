@@ -9,6 +9,8 @@ vim.loader.enable()
 vim.o.smartindent = true
 vim.o.mouse = false
 vim.o.undofile = true
+-- vim.opt.spell = true
+-- vim.opt.spelllang = 'en_us'
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true

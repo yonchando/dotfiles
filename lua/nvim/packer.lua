@@ -117,6 +117,8 @@ return packer.startup({
 
         use 'jwalton512/vim-blade'
 
+        use { 'stevearc/dressing.nvim' }
+
         use {
             'andymass/vim-matchup',
             setup = function()

@@ -13,6 +13,10 @@ vim.opt.termguicolors = true
 
 local api = require("nvim-tree.api")
 
+api.events.subscribe(api.events.Event.FileCreated, function(file)
+    vim.cmd("edit " .. file.fname)
+end)
+
 local function my_on_attach(bufnr)
     local function opts(desc)
         return { desc = "nvim-tree" .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
@@ -25,8 +29,8 @@ local function my_on_attach(bufnr)
     vim.keymap.set("n", "n+", api.tree.expand_all, opts('Expand All'))
     vim.keymap.set("n", "n_", api.tree.collapse_all, opts('Collapse All'))
 
-    vim.keymap.set("n", 'nlf', api.live_filter.start, opts("Live filter"))
-    vim.keymap.set("n", 'nlc', api.live_filter.clear, opts("Live filter clean"))
+    vim.keymap.set("n", 'lf', api.live_filter.start, opts("Live filter"))
+    vim.keymap.set("n", 'lc', api.live_filter.clear, opts("Live filter clean"))
 
     local resize = function(size)
         return function()
@@ -66,8 +70,8 @@ local function my_on_attach(bufnr)
         api.tree.reload()
     end
 
-    vim.keymap.set('n', "nga", function() git_add('add') end, { desc = "Git add" })
-    vim.keymap.set('n', "ngr", function() git_add('reset') end, { desc = "Git reset" })
+    vim.keymap.set('n', "ga", function() git_add('add') end, opts("Git Add"))
+    vim.keymap.set('n', "gr", function() git_add('reset') end, opts("Git reset"))
 
     vim.api.nvim_set_hl(0, "NvimTreeGitStaged", { fg = "#B03AFC" })
     vim.api.nvim_set_hl(0, "NvimTreeGitNew", { fg = "#84E873" })
@@ -94,16 +98,27 @@ nvimtree.setup {
         width = 50,
         float = {
             enable = true,
-            open_win_config = {
-                title = "Project",
-                title_pos = "center",
-                relative = "editor",
-                border = "rounded",
-                width = 120,
-                height = 30,
-                row = 4,
-                col = 30
-            }
+            open_win_config = function()
+                local screen_w = vim.opt.columns:get()
+                local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
+                local window_w = screen_w * 0.8
+                local window_h = screen_h * 0.8
+                local window_w_int = math.floor(window_w)
+                local window_h_int = math.floor(window_h)
+                local center_x = (screen_w - window_w) / 2
+                local center_y = ((vim.opt.lines:get() - window_h) / 2)
+                    - vim.opt.cmdheight:get()
+                return {
+                    title = "Project",
+                    title_pos = "left",
+                    border = 'rounded',
+                    relative = 'editor',
+                    row = center_y,
+                    col = center_x,
+                    width = window_w_int,
+                    height = window_h_int,
+                }
+            end,
         }
     },
     renderer = {
