@@ -119,6 +119,8 @@ return packer.startup({
 
         use { 'stevearc/dressing.nvim' }
 
+        use { 'echasnovski/mini.nvim', branch = 'stable' }
+
         use {
             'andymass/vim-matchup',
             setup = function()

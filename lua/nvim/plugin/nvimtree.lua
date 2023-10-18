@@ -32,12 +32,6 @@ local function my_on_attach(bufnr)
     vim.keymap.set("n", 'lf', api.live_filter.start, opts("Live filter"))
     vim.keymap.set("n", 'lc', api.live_filter.clear, opts("Live filter clean"))
 
-    local resize = function(size)
-        return function()
-            vim.cmd("NvimTreeResize " .. size)
-        end
-    end
-
     local git_add = function(command)
         local node = api.tree.get_node_under_cursor()
         local gs = node.git_status.file
@@ -47,7 +41,6 @@ local function my_on_attach(bufnr)
             gs = (node.git_status.dir.direct ~= nil and node.git_status.dir.direct[1])
                 or (node.git_status.dir.indirect ~= nil and node.git_status.dir.indirect[1])
         end
-
 
         if command == "add" then
             -- If the file is untracked, unstaged or partially staged, we stage it
