@@ -44,7 +44,7 @@ vim.keymap.set("n", "<leader><tab>", nvimtree, opts({ desc = "NvimTreeToggle" })
 -- Split Screen
 vim.keymap.set("n", "<leader>sp", vim.cmd.sp, opts({ desc = "[Sp]lit Screen" }))
 vim.keymap.set("n", "<leader>vsp", vim.cmd.vs, opts({ desc = "[Sp]lit Screen" }))
-vim.keymap.set("n", "<tab>", vim.cmd.w, opts({ desc = "[Sp]lit Screen" }))
+vim.keymap.set("n", "<leader>z", vim.cmd.only, opts({ desc = "Full on current split screen" }))
 
 -- General Config
 vim.keymap.set("n", "<leader>/", vim.cmd.nohlsearch, opts({ desc = "No search highlight" }))
@@ -74,3 +74,12 @@ vim.keymap.set('n', "<leader>jj", "<Plug>(easymotion-sn)", opts({ desc = "Easy m
 
 -- Lsp mapping
 vim.keymap.set('n', "<leader>lsr", vim.cmd.LspRestart, opts({ desc = "Lsp Restart" }))
+
+vim.keymap.set("n", "<leader>tsp", vim.cmd.TSPlaygroundToggle, opts({ desc = "Treesitter playground" }))
+
+-- Codeium
+vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+vim.keymap.set('i', '<c-\\>', function() return vim.fn['codeium#Complete']() end, { expr = true })

@@ -15,6 +15,8 @@ parser_config.blade = {
     filetype = "blade"
 }
 
+vim.api.nvim_set_hl(0, "@directive", { link = "Function" })
+
 vim.cmd [[
 augroup BladeFiltypeRelated
   au BufNewFile,BufRead *.blade.php set ft=blade
