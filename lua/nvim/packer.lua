@@ -121,6 +121,8 @@ return packer.startup({
 
         use { 'echasnovski/mini.nvim', branch = 'stable' }
 
+        use 'Exafunction/codeium.vim'
+
         use {
             'andymass/vim-matchup',
             setup = function()
