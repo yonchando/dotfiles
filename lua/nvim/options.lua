@@ -9,6 +9,7 @@ vim.loader.enable()
 vim.o.smartindent = true
 vim.o.mouse = false
 vim.o.undofile = true
+vim.opt.wrap = false
 -- vim.opt.spell = true
 -- vim.opt.spelllang = 'en_us'
 

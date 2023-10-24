@@ -6,7 +6,7 @@ end
 
 starter.setup({
     items = {
-        starter.sections.builtin_actions(),
         starter.sections.recent_files(5, true),
+        starter.sections.builtin_actions(),
     }
 })

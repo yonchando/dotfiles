@@ -21,7 +21,8 @@ end
 vim.keymap.set("n", "<leader>hm", harpoon_mark.add_file, opts({ desc = "[H]arpoon [M]ark" }))
 vim.keymap.set("n", "<leader>hc", harpoon_mark.clear_all, opts({ desc = "[H]arpoon [C]lear All" }))
 vim.keymap.set("n", "<leader>ho", harpoon_ui.toggle_quick_menu, opts({ desc = "[H]arpoon toggle quick menu ([o]pen)" }))
-vim.keymap.set("n", "<leader>n", harpoon_ui.nav_next, opts({ desc = "Harpoon [N]av [N]ext" }))
+vim.keymap.set("n", "<M-n>", harpoon_ui.nav_next, opts({ desc = "Harpoon [N]av [N]ext" }))
+vim.keymap.set("n", "<M-p>", harpoon_ui.nav_prev, opts({ desc = "Harpoon [N]av [P]rev" }))
 
 vim.api.nvim_set_hl(0, 'HarpoonInactive', { bg = "none", fg = '#63698c' })
 vim.api.nvim_set_hl(0, 'HarpoonActive', { bg = "none", fg = 'white' })
