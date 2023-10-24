@@ -4,6 +4,7 @@ if not status then
     return
 end
 
+local parser_config = parser.get_parser_configs()
 
 parser_config.blade = {
     install_info = {
