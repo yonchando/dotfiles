@@ -77,9 +77,6 @@ vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts({ desc = "Diagno
 vim.keymap.set('n', '<leader>din', vim.diagnostic.goto_prev, opts({ desc = "Go to prev Diagnostic" }))
 vim.keymap.set('n', '<leader>dip', vim.diagnostic.goto_next, opts({ desc = "Go to next Diagnostic" }))
 
--- Easy motion
-vim.keymap.set('n', "<leader>jj", "<Plug>(easymotion-sn)", opts({ desc = "Easy motion search n word" }))
-
 -- Lsp mapping
 vim.keymap.set('n', "<leader>lsr", vim.cmd.LspRestart, opts({ desc = "Lsp Restart" }))
 

@@ -107,8 +107,6 @@ return packer.startup({
 
         use 'tpope/vim-fugitive'
 
-        use 'easymotion/vim-easymotion'
-
         use 'NvChad/nvim-colorizer.lua'
 
         use 'stevearc/conform.nvim'
@@ -122,6 +120,8 @@ return packer.startup({
         use { 'echasnovski/mini.nvim', branch = 'stable' }
 
         use 'Exafunction/codeium.vim'
+
+        use 'folke/flash.nvim'
 
         use {
             'andymass/vim-matchup',
