@@ -9,8 +9,6 @@
 
 <body>
 
-    @extands('')
-
     @include('')
 
     @foreach('')
@@ -24,7 +22,6 @@
     @else
 
     @endif
-
 
     @php
     $count = 0;

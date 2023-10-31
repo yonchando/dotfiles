@@ -16,7 +16,6 @@ conform.setup({
         blade = { "blade-formatter" },
     },
     format_on_save = {
-        timeout_ms = 50000,
         lsp_fallback = true,
     },
 })
