@@ -1,1 +1,1 @@
-require("nvim.parser.blade-parser")
+-- require("nvim.parser.blade-parser")

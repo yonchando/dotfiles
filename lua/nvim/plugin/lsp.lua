@@ -16,6 +16,7 @@ local servers = {
     yamlls = {},
     lemminx = {},
     rust_analyzer = {},
+    gopls = {},
 }
 
 servers.intelephense = {

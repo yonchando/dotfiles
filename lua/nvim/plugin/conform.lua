@@ -12,7 +12,6 @@ conform.setup({
         css = { "prettier" },
         scss = { "prettier" },
         json = { "prettier" },
-        php = { "php_cs_fixer" },
         blade = { "blade-formatter" },
     },
     format_on_save = {
