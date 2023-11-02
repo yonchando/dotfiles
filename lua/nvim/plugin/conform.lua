@@ -13,6 +13,7 @@ conform.setup({
         scss = { "prettier" },
         json = { "prettier" },
         blade = { "blade-formatter" },
+        java = { "google-java-format" }
     },
     format_on_save = {
         lsp_fallback = true,

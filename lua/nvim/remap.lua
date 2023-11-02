@@ -62,9 +62,9 @@ vim.keymap.set({ "n", "v" }, "J", "3j", opts({ desc = "Move coursor down 3 line"
 vim.keymap.set({ "n", "v" }, "K", "3k", opts({ desc = "Move coursor up 3 line" }))
 
 -- Yank and Paste with key store
-vim.keymap.set("n", "<leader>pa", '"ap', opts({ desc = "Paste text store in char a" }))
-vim.keymap.set("n", "<leader>ps", '"sp', opts({ desc = "Paste text store in char s" }))
-vim.keymap.set("n", "<leader>pd", '"dp', opts({ desc = "Paste text store in char d" }))
+vim.keymap.set({ "n", "v" }, "<leader>pa", '"ap', opts({ desc = "Paste text store in char a" }))
+vim.keymap.set({ "n", "v" }, "<leader>ps", '"sp', opts({ desc = "Paste text store in char s" }))
+vim.keymap.set({ "n", "v" }, "<leader>pd", '"dp', opts({ desc = "Paste text store in char d" }))
 
 vim.keymap.set("v", "<leader>ya", '"ay', opts({ desc = "Yank text in char a" }))
 vim.keymap.set("v", "<leader>ys", '"sy', opts({ desc = "Yank text in char s" }))
