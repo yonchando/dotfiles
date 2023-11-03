@@ -14,6 +14,7 @@ conform.setup({
         json = { "prettier" },
         php = { "php_cs_fixer" },
         blade = { "blade-formatter" },
+        yaml = { "prettier" }
     },
     format_on_save = {
         lsp_fallback = true,
