@@ -19,7 +19,7 @@ end)
 
 local function my_on_attach(bufnr)
     local function opts(desc)
-        return { desc = "nvim-tree" .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+        return { desc = desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
     end
 
     -- default mapping
@@ -31,6 +31,16 @@ local function my_on_attach(bufnr)
 
     vim.keymap.set("n", 'lf', api.live_filter.start, opts("Live filter"))
     vim.keymap.set("n", 'lc', api.live_filter.clear, opts("Live filter clean"))
+
+    vim.keymap.set("n", "M", function()
+        local node = api.tree.get_node_under_cursor()
+
+        local ok, my_spaces = pcall(require, "my_spaces")
+
+        if ok then
+            my_spaces.add_space({ path = node.absolute_path })
+        end
+    end, opts("Add to my space"))
 
     local git_add = function(command)
         local node = api.tree.get_node_under_cursor()

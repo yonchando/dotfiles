@@ -20,6 +20,7 @@ whichkey.setup {
         scroll_up = "<c-u>",
     },
     triggers_blacklist = {
-        i = { "<" }
+        i = { "<" },
+        n = { "d", "c" }
     }
 }

@@ -88,3 +88,8 @@ vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'
 vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
 vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
 vim.keymap.set('i', '<c-\\>', function() return vim.fn['codeium#Complete']() end, { expr = true })
+
+
+-- My spaces
+vim.keymap.set("n", "<leader>ml", vim.cmd.ListSpace, { desc = "[M]y workpaces [L]ist" })
+vim.keymap.set("n", "<leader>mr", vim.cmd.RemoveSpace, { desc = "[M]y workpaces [R]emove List" })
