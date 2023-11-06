@@ -14,6 +14,8 @@ conform.setup({
         json = { "prettier" },
         blade = { "prettier" },
         -- java = { "clang_format" }
+        blade = { "blade-formatter" },
+        yaml = { "prettier" }
     },
     format_on_save = {
         lsp_fallback = true,

@@ -84,9 +84,12 @@ if builtin_status then
         })
     end, { desc = '[/] Fuzzily search in current buffer' })
 
-    vim.keymap.set("n", "<leader>gs", builtin.git_status, { desc = "Git status" })
-    vim.keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "Git lists commits" })
-    vim.keymap.set("n", "<leader>gbc", builtin.git_bcommits, { desc = "Git list current buffer commit" })
+    vim.keymap.set("n", "<leader>gs", builtin.git_status, { desc = "Git Status" })
+    vim.keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "Git Commits" })
+    vim.keymap.set("n", "<leader>gbc", builtin.git_bcommits, { desc = "Git Current Buffer Commit" })
+    vim.keymap.set("n", "<leader>gt", builtin.git_stash, { desc = "Git Stash" })
+
+    vim.keymap.set('n', "<leader>tt", builtin.treesitter, { desc = "treesitter" })
 end
 
 pcall(telescope.load_extension, 'fzf')
