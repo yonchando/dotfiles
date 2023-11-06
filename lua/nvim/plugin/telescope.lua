@@ -6,30 +6,25 @@ end
 telescope.setup {
     defaults = {
         layout_config = {
-            vertical = { width = 1.5 }
+            height = 0.96,
         },
         mappings = {
             i = {
                 ["<C-h>"] = "which_key"
             }
         },
-        theme = "dropdown"
     },
     pickers = {
         find_files = {
-            theme = "dropdown",
             previewer = false,
         },
         git_files = {
-            theme = "dropdown",
             previewer = false,
         },
         oldfiles = {
-            theme = "dropdown",
             previewer = false,
         },
         artisan_routes = {
-            theme = "dropdown",
             previewer = false,
         }
     },
