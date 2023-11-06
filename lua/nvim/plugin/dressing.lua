@@ -6,6 +6,7 @@ end
 
 dressing.setup({
     input = {
+        enabled = false,
         relative = "editor",
     }
 })

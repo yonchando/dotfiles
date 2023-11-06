@@ -28,7 +28,7 @@ lualine.setup {
         lualine_c = {
             {
                 'filename',
-                path = 1,
+                path = 0,
                 file_status = false,
             }
         },

@@ -19,7 +19,7 @@ end)
 
 local function my_on_attach(bufnr)
     local function opts(desc)
-        return { desc = "nvim-tree" .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+        return { desc = desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
     end
 
     -- default mapping

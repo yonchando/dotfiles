@@ -12,11 +12,12 @@ conform.setup({
         css = { "prettier" },
         scss = { "prettier" },
         json = { "prettier" },
-        blade = { "blade-formatter" },
-        java = { "google-java-format" }
+        blade = { "prettier" },
+        -- java = { "clang_format" }
     },
     format_on_save = {
         lsp_fallback = true,
+        timeout_ms = 50000,
     },
 })
 
