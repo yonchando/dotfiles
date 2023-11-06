@@ -123,9 +123,7 @@ return packer.startup({
 
         use 'folke/flash.nvim'
 
-        use { 'yonchando/my-spaces.nvim', config = function()
-            require('my_spaces').setup()
-        end }
+        use 'yonchando/my-spaces.nvim'
 
         use {
             'andymass/vim-matchup',

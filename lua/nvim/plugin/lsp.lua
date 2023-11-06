@@ -63,6 +63,8 @@ servers.lua_ls = {
             },
             globals = {
                 "vim",
+                "describe",
+                "it"
             }
         }
     }
