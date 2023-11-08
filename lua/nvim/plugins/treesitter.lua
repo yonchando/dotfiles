@@ -22,6 +22,10 @@ return {
                 "javascript",
                 "typescript",
                 "php",
+                "xml",
+                "vue",
+                "yaml",
+                "json"
             },
 
             matchup = {

@@ -1,5 +1,10 @@
 return {
     "nvim-tree/nvim-tree.lua",
+    lazy = false,
+    version = "*",
+    dependencies = {
+        "nvim-tree/nvim-web-devicons"
+    },
     config = function()
         local status_ok, nvimtree = pcall(require, "nvim-tree")
         if not status_ok then
@@ -19,14 +24,33 @@ return {
             end
 
             -- default mapping
-            api.config.mappings.default_on_attach(bufnr)
+            -- api.config.mappings.default_on_attach(bufnr)
+            --
+            vim.keymap.set("n", "<C-]>", api.tree.change_root_to_node, opts("CD"))
+            vim.keymap.set("n", "<C-k>", api.node.show_info_popup, opts("Info"))
+            vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
+            vim.keymap.set('n', '<Tab>', api.node.open.preview, opts('Open Preview'))
+            vim.keymap.set('n', 'a', api.fs.create, opts('Create'))
+            vim.keymap.set('n', 'c', api.fs.copy.node, opts('Copy'))
+            vim.keymap.set('n', 'd', api.fs.remove, opts('Delete'))
+            vim.keymap.set('n', 'F', api.live_filter.clear, opts('Clean Filter'))
+            vim.keymap.set('n', 'f', api.live_filter.start, opts('Filter'))
+            vim.keymap.set('n', 'g?', api.tree.toggle_help, opts('Help'))
+            vim.keymap.set('n', 'gy', api.fs.copy.absolute_path, opts('Copy Absolute Path'))
+            vim.keymap.set('n', 'H', api.tree.toggle_hidden_filter, opts('Toggle Filter: Dotfiles'))
+            vim.keymap.set('n', 'I', api.tree.toggle_gitignore_filter, opts('Toggle Filter: Git Ignore'))
+            vim.keymap.set('n', 'J', api.node.navigate.sibling.last, opts('Last Sibling'))
+            vim.keymap.set('n', 'K', api.node.navigate.sibling.first, opts('First Sibling'))
 
-            -- custom mappings
-            vim.keymap.set("n", "n+", api.tree.expand_all, opts('Expand All'))
-            vim.keymap.set("n", "n_", api.tree.collapse_all, opts('Collapse All'))
-
-            vim.keymap.set("n", 'lf', api.live_filter.start, opts("Live filter"))
-            vim.keymap.set("n", 'lc', api.live_filter.clear, opts("Live filter clean"))
+            vim.keymap.set('n', 'p', api.fs.paste, opts('Paste'))
+            vim.keymap.set('n', 'P', api.node.navigate.parent, opts('Parent Directory'))
+            vim.keymap.set('n', 'q', api.tree.close, opts('Close'))
+            vim.keymap.set('n', 'r', api.fs.rename, opts('Rename'))
+            vim.keymap.set('n', 'R', api.tree.reload, opts('Refresh'))
+            vim.keymap.set('n', 'y', api.fs.copy.filename, opts('Copy Name'))
+            vim.keymap.set('n', 'Y', api.fs.copy.relative_path, opts('Copy Relative Path'))
+            vim.keymap.set('n', 'L', api.tree.expand_all, opts('Expand All'))
+            vim.keymap.set('n', 'H', api.tree.collapse_all, opts('Collapse'))
 
             vim.keymap.set("n", "M", function()
                 local node = api.tree.get_node_under_cursor()
@@ -138,9 +162,6 @@ return {
                         none = " ",
                     }
                 }
-            },
-            filters = {
-                git_ignored = true
             }
         }
         local opts = function(tbl)

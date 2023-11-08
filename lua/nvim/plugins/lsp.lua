@@ -2,19 +2,15 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
+        { "dcampos/cmp-emmet-vim" },
     },
     config = function()
-        local status_ok, lspconfig = pcall(require, "lspconfig")
-        if not status_ok then
-            return
-        end
-
+        local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         local servers = {
             cssls = {},
             jsonls = {},
-            tsserver = {},
             tailwindcss = {},
             angularls = {},
             clangd = {},
@@ -23,6 +19,7 @@ return {
             lemminx = {},
             rust_analyzer = {},
             gopls = {},
+            vtsls = {},
         }
 
         servers.intelephense = {
@@ -108,9 +105,6 @@ return {
                 vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, { desc = "signature_help", silent = true })
                 vim.keymap.set({ 'n', 'v' }, '<space>i', vim.lsp.buf.code_action,
                     { desc = "Code Actions", silent = true })
-                -- vim.keymap.set('n', '<space>fc', function()
-                --     vim.lsp.buf.format { async = true }
-                -- end, { desc = "Reformat code" })
             end,
         })
     end
