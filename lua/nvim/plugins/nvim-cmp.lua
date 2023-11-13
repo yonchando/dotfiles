@@ -8,19 +8,34 @@ return {
         "hrsh7th/cmp-nvim-lua",
         "onsails/lspkind.nvim",
         "neovim/nvim-lspconfig",
-        "L3MON4D3/LuaSnip",
+        {
+            "L3MON4D3/LuaSnip",
+            version = "v2.*",
+            make = "make install_jsregexp"
+        },
         "saadparwaiz1/cmp_luasnip",
         "rafamadriz/friendly-snippets",
         { "dcampos/cmp-emmet-vim" },
+        "roobert/tailwindcss-colorizer-cmp.nvim"
     },
     config = function()
-        local cmp = require("cmp")
-
         local luasnip = require("luasnip")
 
         require("luasnip.loaders.from_vscode").lazy_load()
 
         luasnip.config.setup({})
+
+        vim.keymap.set({ "i" }, "<C-K>", function() luasnip.expand() end, { silent = true })
+        vim.keymap.set({ "i", "s" }, "<C-L>", function() luasnip.jump(1) end, { silent = true })
+        vim.keymap.set({ "i", "s" }, "<C-J>", function() luasnip.jump(-1) end, { silent = true })
+
+        vim.keymap.set({ "i", "s" }, "<C-E>", function()
+            if luasnip.choice_active() then
+                luasnip.change_choice(1)
+            end
+        end, { silent = true })
+
+        local cmp = require("cmp")
 
         local M = {
             view = {
@@ -92,6 +107,7 @@ return {
                     luasnip = "[LuaSnip]",
                     nvim_lua = "[Lua]",
                     latex_symbols = "[Latex]",
+                    tailwindcss_colors = "[Colors]"
                 }),
                 maxwidth = 50,
                 ellipsis_char = '...',
@@ -131,6 +147,12 @@ return {
         }
         -- nvim-cmp setup
         cmp.setup(M)
+
+
+        -- tailwindcss colorizer
+        -- cmp.config.formatting = {
+        --     format = require("tailwindcss-colorizer-cmp").formatter
+        -- }
 
         -- Set configuration for specific filetype.
         cmp.setup.filetype('gitcommit', {
