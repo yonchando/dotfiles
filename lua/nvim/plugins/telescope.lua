@@ -68,18 +68,21 @@ return {
             vim.keymap.set('n', '<leader>lg', builtin.live_grep, {
                 desc = "[L]ive [G]rep Search for a string in current working directory"
             })
+
             vim.keymap.set('n', '<C-e>', function()
                 return builtin.oldfiles({ cwd_only = true })
             end, { desc = "Recently Files" })
-            vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "help_tags" })
+
+            vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help Tags" })
             vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find all files buffers" })
-            vim.keymap.set("n", "<leader>jp", builtin.jumplist, { desc = "jumplist" })
+            vim.keymap.set("n", "<leader>jp", builtin.jumplist, { desc = "Jump List" })
 
-            vim.keymap.set("n", "<leader>dig", builtin.diagnostics, { desc = "diagnostics" })
+            vim.keymap.set("n", "<leader>dig", builtin.diagnostics, { desc = "Diagnostics" })
 
-            vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "lsp_definitions" })
-            vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "lsp_implementations" })
-            vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "lsp_references" })
+            vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Lsp Definitions" })
+            vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "Lsp Implementations" })
+            vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Lsp References" })
+            vim.keymap.set("n", "gm", builtin.lsp_document_symbols, { desc = "Lsp Document Symbols" })
 
             vim.keymap.set('n', '<leader>fz', function()
                 -- You can pass additional configuration to telescope to change theme, layout, etc.
@@ -94,7 +97,7 @@ return {
             vim.keymap.set("n", "<leader>gbc", builtin.git_bcommits, { desc = "Git Current Buffer Commit" })
             vim.keymap.set("n", "<leader>gt", builtin.git_stash, { desc = "Git Stash" })
 
-            vim.keymap.set('n', "<leader>tt", builtin.treesitter, { desc = "treesitter" })
+            vim.keymap.set('n', "<leader>tt", builtin.treesitter, { desc = "Treesitter" })
         end
 
         pcall(telescope.load_extension, 'fzf')

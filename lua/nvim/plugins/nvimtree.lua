@@ -6,11 +6,6 @@ return {
         "nvim-tree/nvim-web-devicons"
     },
     config = function()
-        local status_ok, nvimtree = pcall(require, "nvim-tree")
-        if not status_ok then
-            return
-        end
-
         vim.g.loaded_netrw = 1
         vim.g.loaded_netrwPlugin = 1
 
@@ -114,7 +109,7 @@ return {
         end
         vim.keymap.set("n", "<leader>gf", goToFile, { desc = "Go to current file in nvimtree" })
 
-        nvimtree.setup {
+        require("nvim-tree").setup {
             on_attach = my_on_attach,
             view = {
                 relativenumber = true,

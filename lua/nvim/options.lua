@@ -11,6 +11,9 @@ vim.o.mouse = false
 vim.o.undofile = true
 vim.opt.wrap = false
 
+-- vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 -- vim.opt.spell = true
 -- vim.opt.spelllang = 'en_us'
 
