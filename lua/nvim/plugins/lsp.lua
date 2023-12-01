@@ -19,7 +19,7 @@ return {
             lemminx = {},
             rust_analyzer = {},
             gopls = {},
-            vtsls = {},
+            tsserver = {},
         }
 
         servers.intelephense = {
