@@ -1,6 +1,6 @@
 return {
-    -- 'yonchando/my-spaces.nvim',
-    dir = "~/code/lua/my-spaces",
+    'yonchando/my-spaces.nvim',
+    -- dir = "~/code/lua/my-spaces",
     config = function()
         local my_spaces = require('my_spaces')
         my_spaces.setup()
