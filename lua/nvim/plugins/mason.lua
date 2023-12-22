@@ -17,11 +17,6 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "html",
-                "cssls",
-                "tsserver",
-                'jsonls',
-                'yamlls',
             },
             automatic_installation = false,
             handlers = nil,

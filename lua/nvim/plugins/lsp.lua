@@ -15,11 +15,23 @@ return {
             angularls = {},
             clangd = {},
             volar = {},
-            yamlls = {},
+            yamlls = {
+                settings = {
+                    yaml = {
+                        schemas = {
+                            ["https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"] =
+                            "/aws.yaml",
+                            ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] =
+                            "/docker-compose.yaml"
+                        }
+                    }
+                },
+            },
             lemminx = {},
             rust_analyzer = {},
             gopls = {},
             tsserver = {},
+            asm_lsp = {},
         }
 
         servers.intelephense = {
