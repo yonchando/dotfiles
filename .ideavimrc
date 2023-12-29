@@ -4,30 +4,29 @@ Plug 'preservim/nerdtree'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'chrisbra/matchit'
 Plug 'tommcdo/vim-exchange'
+Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-commentary'
+Plug 'kana/vim-textobj-entire'
 
-syntax enable
 let mapleader = " "
 set scrolloff=5
 set incsearch
 set relativenumber
-set tabstp=4
+set tabstop=4
 set belloff=all
 set visualbell
 set noerrorbells
 set showmode
 set idearefactormode=keep
-
+set number
 set which-key
 set notimeout
 set timeoutlen=5000
-
-
-" Set Handler
-
-sethandler <C-j> v-n:vim i:ide
-sethandler <C-r> n-v:ide i:vim
-sethandler <C-d> a:vim i:ide
-
+"set sneak
+"set quickscope
+let g:qs_primary_color = ""
+let g:qs_secondary_color = ''
 
 "----------------Mapping-----------------"
 map H b
@@ -35,7 +34,10 @@ map L e
 map J 3j
 map K 3k
 map <leader>da d2f"
-
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+map <c-j> <c-w>j
+map <c-k> <c-w>k
 
 map <leader>vp "0p
 
@@ -47,12 +49,14 @@ map <leader>pa "ap
 map <leader>ps "sp
 map <leader>pd "dp
 
+map <leader>[ @
+
 "------------- EasyMotion Map ------------------"
 map <leader>j <Plug>(easymotion-s)
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
-
+map <BS> <Action>(EditorBackSpace)
 
 map <C-m>0 <Action>(ToggleBookmark0)
 map <C-m>1 <Action>(ToggleBookmark1)
@@ -65,51 +69,72 @@ map <C-m>7 <Action>(ToggleBookmark7)
 map <C-m>8 <Action>(ToggleBookmark8)
 map <C-m>9 <Action>(ToggleBookmark9)
 
-map <C-b>0 <Action>(GotoBookmark0)
-map <C-b>1 <Action>(GotoBookmark1)
-map <C-b>2 <Action>(GotoBookmark2)
-map <C-b>3 <Action>(GotoBookmark3)
-map <C-b>4 <Action>(GotoBookmark4)
-map <C-b>5 <Action>(GotoBookmark5)
-map <C-b>6 <Action>(GotoBookmark6)
-map <C-b>7 <Action>(GotoBookmark7)
-map <C-b>8 <Action>(GotoBookmark8)
-map <C-b>9 <Action>(GotoBookmark9)
-
+map <C-0> <Action>(GotoBookmark0)
+map <C-1> <Action>(GotoBookmark1)
+map <C-2> <Action>(GotoBookmark2)
+map <C-3> <Action>(GotoBookmark3)
+map <C-4> <Action>(GotoBookmark4)
+map <C-5> <Action>(GotoBookmark5)
+map <C-6> <Action>(GotoBookmark6)
+map <C-7> <Action>(GotoBookmark7)
+map <C-8> <Action>(GotoBookmark8)
+map <C-9> <Action>(GotoBookmark9)
 map <C-b>d <Action>(ToggleBookmark)
+
 map <C-b>n <Action>(GotoNextBookmark)
 map <C-b>p <Action>(GotoPreviousBookmark)
 
 
+map <leader>1 <Action>(GoToTab1)
+
+map <leader>2 <Action>(GoToTab2)
+
+map <leader>3 <Action>(GoToTab3)
+
+map <leader>4 <Action>(GoToTab4)
+
+map <leader>5 <Action>(GoToTab5)
+
+map <leader>6 <Action>(GoToTab6)
+
+map <leader>7 <Action>(GoToTab7)
+
+map <leader>8 <Action>(GoToTab8)
+
+map <leader>9 <Action>(GoToTab9)
+
+map <C-n> <Action>(EditorCloneCaretBelow)
+map <C-p> <Action>(EditorCloneCaretAbove)
+
 map <C-q> <Action>(QuickJavaDoc)
 
-map <C-e>d <Action>(ShowErrorDescription)
+map <C-e> <Action>(ShowErrorDescription)
+
+nmap <C-f> <Action>(SelectInProjectView)
 
 "Navigate breadcrumb tab"
-map <C-h> <Action>(PreviousTab) 
+map <A-h> <Action>(PreviousTab)
 
 "Navigate breadcrumb tab"
-map <C-l> <Action>(NextTab) 
+nmap <A-l> <Action>(NextTab)
 
-"Show Import Class and Intention Suggested"
+nmap <A-j> <Action>(MethodDown)
+
+nmap <A-k> <Action>(MethodUp)
+
+map <leader>mth <Action>(com.mikejhill.intellij.movetab.actions.MoveTabLeft)
+map <leader>mtl <Action>(com.mikejhill.intellij.movetab.actions.MoveTabRight)
+
 map <leader>i <Action>(ShowIntentionActions)
 
-map <leader>g <Action>(ActivateVersionControlToolWindow)
-
-map <BS> <Action>(EditorBackSpace)
-
 map <leader>rt <Action>(RunClass)
-
 map <leader>re <Action>(Rerun)
-
-map <leader>rd <Action>(Debug)
 
 map <leader>dt <Action>(Unwrap)
 
 map <leader>t <Action>(Refactorings.QuickListPopupAction)
 
 map <leader>w <Action>(EditorSelectWord)
-
 map <leader>e <Action>(EditorUnSelectWord)
 
 map <leader>o <Action>(OverrideMethods)
@@ -128,43 +153,17 @@ map <leader>msp <Action>(MaximizeEditorInSplit)
 
 map <leader>usp <Action>(Unsplit)
 
-map <leader>1 <Action>(GoToTab1)
-
-map <leader>2 <Action>(GoToTab2)
-
-map <leader>3 <Action>(GoToTab3)
-
-map <leader>4 <Action>(GoToTab4)
-
-map <leader>5 <Action>(GoToTab5)
-
-map <A-j> <Action>(MethodDown)
-
-map <A-k> <Action>(MethodUp)
-
-map <C-j> <Action>(EditorCloneCaretBelow)
-
-map <C-k> <Action>(EditorCloneCaretAbove)
-
-map <leader>nd <Action>(NextDiff)
-map <leader>pd <Action>(PreviousDiff)
-
 map <leader>c <Action>(SilentCodeCleanup)
-
-map <leader>f <Action>(SelectInProjectView)
-
-map <leader>mth <Action>(com.mikejhill.intellij.movetab.actions.MoveTabLeft)
-map <leader>mtl <Action>(com.mikejhill.intellij.movetab.actions.MoveTabRight)
 
 map <leader>el1 <Action>(ExpandToLevel1)
 map <leader>el2 <Action>(ExpandToLevel2)
 map <leader>el3 <Action>(ExpandToLevel3)
 map <leader>el4 <Action>(ExpandToLevel4)
-map <leader>el5 <Action>(ExpandToLevel5)
+
+map <leader>at <Action>(ActivateTerminalToolWindow)
 
 map <leader>op <Action>(OptimizeImports)
 
-"" Map \b to toggle the breakpoint on the current line
-"map \b <Action>(ToggleLineBreakpoint)
+map <leader>n <Action>(GotoNextError)
 
 " Find more examples here: https://jb.gg/share-ideavimrc
