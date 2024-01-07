@@ -3,8 +3,6 @@ return {
     config = function()
         local _, dap = pcall(require, "dap")
 
-
-
         dap.adapters.cppdbg = {
             id = "cppdbg",
             type = "executable",
@@ -36,10 +34,17 @@ return {
             },
         }
 
+        dap.adapters.java = function(callback, config)
+            M.execute_command({ command = 'vscode.java.startDebugSession' }, function(err0, port)
+                assert(not err0, vim.inspect(err0))
+                callback({ type = "server", host = "127.0.0.1", port = port })
+            end)
+        end
+
         vim.keymap.set("n", "<leader>dab", dap.toggle_breakpoint, { desc = "Toggle breakpoint", silent = true })
-        vim.keymap.set("n", "<leader>dac", dap.toggle_breakpoint, { desc = "Toggle breakpoint", silent = true })
-        vim.keymap.set("n", "<leader>dao", dap.toggle_breakpoint, { desc = "Toggle breakpoint", silent = true })
-        vim.keymap.set("n", "<leader>dai", dap.toggle_breakpoint, { desc = "Toggle breakpoint", silent = true })
-        vim.keymap.set("n", "<leader>dar", dap.toggle_breakpoint, { desc = "Toggle breakpoint", silent = true })
+        vim.keymap.set("n", "<leader>dac", dap.continue, { desc = "Continue", silent = true })
+        vim.keymap.set("n", "<leader>dao", dap.step_over, { desc = "Step Over", silent = true })
+        vim.keymap.set("n", "<leader>dai", dap.step_into, { desc = "Step Into", silent = true })
+        vim.keymap.set("n", "<leader>dar", dap.repl.open, { desc = "Open", silent = true })
     end
 }
