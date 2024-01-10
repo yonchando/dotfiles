@@ -24,7 +24,8 @@ return {
             scss = { "prettier" },
             json = { "prettier" },
             blade = { "blade-formatter" },
-            yaml = { "prettier" }
+            yaml = { "prettier" },
+            php = { 'pint', 'php_cs_fixer' }
         },
 
         format_on_save = {
