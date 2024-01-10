@@ -153,7 +153,7 @@ map <leader>msp <Action>(MaximizeEditorInSplit)
 
 map <leader>usp <Action>(Unsplit)
 
-map <leader>c <Action>(SilentCodeCleanup)
+map <leader>oc <Action>(SilentCodeCleanup)
 
 map <leader>el1 <Action>(ExpandToLevel1)
 map <leader>el2 <Action>(ExpandToLevel2)
@@ -165,5 +165,9 @@ map <leader>at <Action>(ActivateTerminalToolWindow)
 map <leader>op <Action>(OptimizeImports)
 
 map <leader>n <Action>(GotoNextError)
+
+map <leader>co <Action>(CloseAllEditorsButActive)
+map <leader>cl <Action>(CloseAllToTheLeft)
+map <leader>cr <Action>(CloseAllToTheRight)
 
 " Find more examples here: https://jb.gg/share-ideavimrc
