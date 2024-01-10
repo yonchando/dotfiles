@@ -4,7 +4,7 @@ return {
     lazy = false,
     name = 'dracula',
     config = function()
-        vim.g.dracula_colorterm = 0
-        vim.cmd("colorscheme dracula")
+        -- vim.g.dracula_colorterm = 0
+        -- vim.cmd("colorscheme dracula")
     end,
 }
