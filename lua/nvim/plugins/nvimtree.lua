@@ -57,6 +57,19 @@ return {
                 end
             end, opts("Add to my space"))
 
+            vim.keymap.set("n", "te", function()
+                local node = api.tree.get_node_under_cursor()
+
+                local ok, neotest = pcall(require, "neotest")
+
+                if ok then
+                    neotest.run.run(node.absolute_path)
+                    api.tree.close()
+                    neotest.output_panel.clear()
+                    neotest.output_panel.open()
+                end
+            end)
+
             local git_add = function(command)
                 local node = api.tree.get_node_under_cursor()
                 local gs = node.git_status.file
