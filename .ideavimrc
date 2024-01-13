@@ -28,6 +28,11 @@ set timeoutlen=5000
 let g:qs_primary_color = ""
 let g:qs_secondary_color = ''
 
+
+"-------- Handler -----------------------"
+sethandler <C-r> n-v:ide i:vim
+sethandler <C-f> v:vim n:ide
+
 "----------------Mapping-----------------"
 map H b
 map L e
@@ -169,5 +174,7 @@ map <leader>n <Action>(GotoNextError)
 map <leader>co <Action>(CloseAllEditorsButActive)
 map <leader>cl <Action>(CloseAllToTheLeft)
 map <leader>cr <Action>(CloseAllToTheRight)
+
+map <C-f> <Action>(Find)
 
 " Find more examples here: https://jb.gg/share-ideavimrc
