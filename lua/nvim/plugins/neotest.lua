@@ -1,5 +1,6 @@
 return {
     "nvim-neotest/neotest",
+    enabled = true,
     dependencies = {
         "nvim-lua/plenary.nvim",
         "antoinemadec/FixCursorHold.nvim",
@@ -11,7 +12,11 @@ return {
     config = function()
         require("neotest").setup({
             adapters = {
-                require("neotest-pest"),
+                require("neotest-pest")({
+                    pest_cmd = function()
+                        return "vendor/bin/pest"
+                    end
+                }),
                 require("neotest-phpunit"),
                 require("neotest-java")({
                     ignore_wrapper = false,
@@ -34,7 +39,7 @@ return {
                 watching = ""
             },
             output = {
-                enabled = false,
+                enabled = true,
             },
             output_panel = {
                 enabled = true,
@@ -51,7 +56,6 @@ return {
 
         local togglePanel = function()
             neotest.output_panel.close()
-            neotest.output_panel.clear()
             neotest.output_panel.open({
                 enter = true,
                 auto_close = true
@@ -60,7 +64,7 @@ return {
 
         vim.keymap.set("n", "<leader>re", function()
             run.run()
-            togglePanel()
+            -- togglePanel()
         end, { desc = "Run single test" })
 
         vim.keymap.set("n", "<leader>rf", function()
