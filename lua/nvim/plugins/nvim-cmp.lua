@@ -21,7 +21,6 @@ return {
     config = function()
         local luasnip = require("luasnip")
 
-        -- require("luasnip.loaders.from_vscode").lazy_load()
         require("luasnip.loaders.from_snipmate").lazy_load()
 
         luasnip.config.setup({})
@@ -64,29 +63,6 @@ return {
                     behavior = cmp.ConfirmBehavior.Replace,
                     select = true,
                 },
-                ['<Tab>'] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        local entry = cmp.get_selected_entry()
-                        if not entry then
-                            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-                        else
-                            cmp.confirm()
-                        end
-                    elseif luasnip.expand_or_jumpable() then
-                        luasnip.expand_or_jump()
-                    else
-                        fallback()
-                    end
-                end, { 'i', 's', 'c' }),
-                ['<S-Tab>'] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    elseif luasnip.jumpable(-1) then
-                        luasnip.jump(-1)
-                    else
-                        fallback()
-                    end
-                end, { 'i', 's' }),
             }),
             sources = {
                 { name = 'nvim_lsp' },
@@ -149,11 +125,10 @@ return {
         -- nvim-cmp setup
         cmp.setup(M)
 
-
         -- tailwindcss colorizer
-        -- cmp.config.formatting = {
-        --     format = require("tailwindcss-colorizer-cmp").formatter
-        -- }
+        cmp.config.formatting = {
+            format = require("tailwindcss-colorizer-cmp").formatter
+        }
 
         -- Set configuration for specific filetype.
         cmp.setup.filetype('gitcommit', {

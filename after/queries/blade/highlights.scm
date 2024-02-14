@@ -1,8 +1,8 @@
-(directive) @tag
+(directive) @directive
 
-(directive_start) @tag
+(directive_start) @directive
 
-(directive_end) @tag
+(directive_end) @directive
 
 (comment) @comment @spell
 
@@ -14,4 +14,4 @@
 
 (bracket_end) @tag.delimiter
 
-(keyword) @function
+(keyword) @php
