@@ -1,20 +1,3 @@
-call plug#begin()
-Plug 'tpope/vim-sensible'
-Plug 'preservim/nerdtree'
-Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-surround'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'ryanoasis/vim-devicons'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'ap/vim-css-color'
-Plug 'preservim/tagbar'
-
-Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'} " For neovim only
-
-call plug#end()
-
 syntax enable
 
 set encoding=UTF-8
@@ -38,6 +21,8 @@ map L e
 map J 3j
 map K 3k
 map <leader>/ :nohl<CR>
+map <leader>q :wqa<CR>
+map <A-w> :bd<CR>
 
 " Normal Map
 nmap <Leader>sp :sp<cr>
@@ -48,18 +33,6 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <Leader>. <C-w>>
 
-"------------- Vinegar ------------------"
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
-
-"------------- EasyMotion Map ------------------"
-nmap <Leader>j <Plug>(easymotion-sn)
-
-"----------------NERDTreeToggle-----------"
-let g:NERDTreeDirArrowExpandable="+"
-let g:NERDTreeDirArrowCollapsible="~"
-
-map <Leader><TAB> :NERDTreeToggle<CR>
-map <Leader>f :NERDTreeFind<CR>
 
 "----------------Auto Command---------------"
 autocmd BufWritePost .vimrc source %
