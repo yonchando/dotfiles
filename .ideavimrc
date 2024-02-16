@@ -23,15 +23,12 @@ set number
 set which-key
 set notimeout
 set timeoutlen=5000
-"set sneak
-"set quickscope
 let g:qs_primary_color = ""
 let g:qs_secondary_color = ''
 
 
 "-------- Handler -----------------------"
 sethandler <C-r> n-v:ide i:vim
-sethandler <C-f> v:vim n:ide
 
 "----------------Mapping-----------------"
 map H b
@@ -44,12 +41,11 @@ map <c-h> <c-w>h
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 
-map <leader>vp "0p
-
 vmap <leader>ya "ay
 vmap <leader>ys "sy
 vmap <leader>yd "dy
 
+map <leader>pv "0p
 map <leader>pa "ap
 map <leader>ps "sp
 map <leader>pd "dp
@@ -115,8 +111,6 @@ map <C-q> <Action>(QuickJavaDoc)
 
 map <C-e> <Action>(ShowErrorDescription)
 
-nmap <C-f> <Action>(SelectInProjectView)
-
 "Navigate breadcrumb tab"
 map <A-h> <Action>(PreviousTab)
 
@@ -175,6 +169,6 @@ map <leader>co <Action>(CloseAllEditorsButActive)
 map <leader>cl <Action>(CloseAllToTheLeft)
 map <leader>cr <Action>(CloseAllToTheRight)
 
-map <C-f> <Action>(Find)
+map <leader>f <Action>(Find)
 
 " Find more examples here: https://jb.gg/share-ideavimrc
