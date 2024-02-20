@@ -30,7 +30,7 @@ let g:qs_secondary_color = ''
 
 
 "-------- Handler -----------------------"
-sethandler <C-r> n-v:ide i:vim
+sethandler <C-r> v:ide i:vim
 sethandler <C-j> n-v:vim i:ide
 
 
@@ -117,9 +117,7 @@ map <C-p> <Action>(EditorCloneCaretAbove)
 
 map <C-q> <Action>(QuickJavaDoc)
 
-map <C-e> <Action>(ShowErrorDescription)
-
-nmap <C-f> <Action>(SelectInProjectView)
+map <leader>E <Action>(ShowErrorDescription)
 
 "Navigate breadcrumb tab"
 map <A-h> <Action>(PreviousTab)
@@ -144,9 +142,8 @@ map <leader>dt <Action>(Unwrap)
 map <leader>t <Action>(Refactorings.QuickListPopupAction)
 
 map <leader>w <Action>(EditorSelectWord)
-map <leader>e <Action>(EditorUnSelectWord)
 
-map <leader>o <Action>(OverrideMethods)
+map <leader>O <Action>(OverrideMethods)
 
 map <leader><tab> <Action>(Switcher)
 
