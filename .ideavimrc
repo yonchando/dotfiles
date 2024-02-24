@@ -54,8 +54,6 @@ map <leader>pa "ap
 map <leader>ps "sp
 map <leader>pd "dp
 
-map <leader>[ @
-
 "------------- EasyMotion Map ------------------"
 map <leader>j <Plug>(easymotion-s)
 
