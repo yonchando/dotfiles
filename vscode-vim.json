@@ -1,0 +1,74 @@
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "vim.leader": "<space>",
+    "vim.highlightedyank.enable": true,
+    "vim.handleKeys": {
+        "<C-d>": false,
+        "<C-s>": false,
+        "<C-z>": false,
+        "<C-c>": false,
+        "<C-v>": false
+    },
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "L"
+            ],
+            "after": [
+                "e"
+            ]
+        },
+        {
+            "before": [
+                "H"
+            ],
+            "after": [
+                "e"
+            ]
+        },
+        {
+            "before": [
+                "J"
+            ],
+            "after": [
+                "3",
+                "j"
+            ]
+        },
+        {
+            "before": [
+                "K"
+            ],
+            "after": [
+                "3",
+                "k"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p",
+                "a"
+            ],
+            "after": [
+                "\"",
+                "a",
+                "p"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "y",
+                "a"
+            ],
+            "after": [
+                "\"",
+                "a",
+                "y"
+            ]
+        }
+    ],
