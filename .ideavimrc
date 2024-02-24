@@ -23,11 +23,6 @@ set number
 set which-key
 set notimeout
 set timeoutlen=5000
-"set sneak
-"set quickscope
-let g:qs_primary_color = ""
-let g:qs_secondary_color = ''
-
 
 "-------- Handler -----------------------"
 sethandler <C-r> v:ide i:vim
@@ -44,8 +39,9 @@ map <c-h> <c-w>h
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 
-map <leader>vp "0p
-
+map <leader>pp "0gr
+xmap <leader>pp "0p
+    
 vmap <leader>ya "ay
 vmap <leader>ys "sy
 vmap <leader>yd "dy
