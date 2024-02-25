@@ -21,8 +21,7 @@ set showmode
 set idearefactormode=keep
 set number
 set which-key
-set notimeout
-set timeoutlen=5000
+set timeoutlen=50000
 
 "-------- Handler -----------------------"
 sethandler <C-r> v:ide i:vim
@@ -57,6 +56,7 @@ map <leader>j <Plug>(easymotion-s)
 "" Map \r to the Reformat Code action
 
 map <BS> <Action>(EditorBackSpace)
+
 "" -- Map Bookmark
 map <leader>b0 <Action>(ToggleBookmark0)
 map <leader>b1 <Action>(ToggleBookmark1)
@@ -119,6 +119,8 @@ map <leader>sp <Action>(SplitHorizontally)
 map <leader>ms <Action>(MaximizeEditorInSplit)
 
 map <leader>f <Action>(Find)
+map <leader>gf <Action>(GotoFile)
+map <leader>go <Action>(GotoClass)
 
 "" Run
 map <leader>rr <Action>(RunMenu)
