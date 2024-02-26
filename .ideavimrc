@@ -81,8 +81,8 @@ map [d <Action>(GotoPreviousError)
 map [m <Action>(MethodDown)
 map ]m <Action>(MethodUp)
 
-map ]t <Action>(PreviousTab)
-map [t <Action>(NextTab)
+map ]t <Action>(NextTab)
+map [t <Action>(PreviousTab)
 
 map ]w <Action>(EditorSelectWord)
 map [w <Action>(EditorUnSelectWord)
