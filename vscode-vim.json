@@ -1,74 +1,31 @@
+{
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "$HOME/.vimrc",
     "vim.leader": "<space>",
+    "vim.easymotion": true,
     "vim.highlightedyank.enable": true,
+    "vim.sneak": true,
+    "vim.statusBarColorControl": true,
+    "vim.camelCaseMotion.enable": true,
+    "vim.replaceWithRegister": true,
     "vim.handleKeys": {
-        "<C-d>": false,
         "<C-s>": false,
-        "<C-z>": false,
+        "<C-a>": false,
+        "<C-v>": false,
+        "<backspace>": false,
+        "<C-f>": false,
         "<C-c>": false,
-        "<C-v>": false
     },
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": [
-                "L"
-            ],
-            "after": [
-                "e"
-            ]
-        },
-        {
-            "before": [
-                "H"
-            ],
-            "after": [
-                "e"
-            ]
-        },
-        {
-            "before": [
-                "J"
-            ],
-            "after": [
-                "3",
-                "j"
-            ]
-        },
-        {
-            "before": [
-                "K"
-            ],
-            "after": [
-                "3",
-                "k"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "p",
-                "a"
-            ],
-            "after": [
-                "\"",
-                "a",
-                "p"
-            ]
-        }
-    ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-        {
-            "before": [
-                "<leader>",
-                "y",
-                "a"
-            ],
-            "after": [
-                "\"",
-                "a",
-                "y"
-            ]
-        }
-    ],
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f",
+        "statusBar.foreground": "#ffffff",
+        "statusBar.debuggingForeground": "#ffffff"
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.minimap.enabled": false,
+}
