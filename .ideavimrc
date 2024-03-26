@@ -87,6 +87,15 @@ map [t <Action>(PreviousTab)
 map ]w <Action>(EditorSelectWord)
 map [w <Action>(EditorUnSelectWord)
 
+map ]l <Action>(MoveStatementUp)
+map [l <Action>(MoveStatementDown)
+
+map ]g <Action>(NextDiff)
+map [g <Action>(PreviousDiff)
+
+map ]c <Action>(VcsShowNextChangeMarker)
+map [c <Action>(VcsShowPrevChangeMarker)
+
 "" Editor Tab
 map <leader><tab> <Action>(Switcher)
 
@@ -119,8 +128,10 @@ map <leader>sp <Action>(SplitHorizontally)
 map <leader>ms <Action>(MaximizeEditorInSplit)
 
 map <leader>f <Action>(Find)
-map <leader>gf <Action>(GotoFile)
+map <leader>gi <Action>(GotoFile)
 map <leader>go <Action>(GotoClass)
+
+map <leader>R <Action>(Replace)
 
 "" Run
 map <leader>rr <Action>(RunMenu)
