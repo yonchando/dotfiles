@@ -6,7 +6,7 @@ vim.o.tabstop = 4
 vim.o.expandtab = true
 vim.loader.enable()
 vim.o.smartindent = true
-vim.o.mouse = false
+vim.o.mouse = "a"
 vim.o.undofile = true
 vim.opt.wrap = false
 
