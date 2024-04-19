@@ -8,6 +8,7 @@ return {
         "olimorris/neotest-phpunit",
         "rcasia/neotest-java",
         "theutz/neotest-pest",
+        "nvim-neotest/nvim-nio",
     },
     config = function()
         require("neotest").setup({
