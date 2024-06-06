@@ -1,0 +1,71 @@
+version: "3.1"
+
+services:
+    mysql:
+        image: mysql:latest
+        restart: always
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: secret@pass
+        volumes:
+            - mysql:/var/lib/mysql
+    
+    pgsql:
+        image: postgres:latest
+        restart: always
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_PASSWORD: secret@pass
+        volumes:
+            - pgsql:/var/lib/postgresql/data
+    
+    adminer:
+        image: adminer:latest
+        restart: always
+        ports:
+            - "8080:8080"
+    
+    phpmyadmin:
+        image: phpmyadmin:latest
+        restart: always
+        ports:
+            - "2083:80"
+        environment:
+            PMA_ARBITRARY: 1
+
+    mailpit:
+        image: axllent/mailpit
+        restart: unless-stopped
+        volumes:
+            - mailpit:/data
+        ports:
+            - "8025:8025"
+            - "1025:1025"
+        environment:
+            MP_MAX_MESSAGES: 5000
+            MP_DATABASE: /data/mailpit.db
+            MP_SMTP_AUTH_ACCEPT_ANY: 1
+            MP_SMTP_AUTH_ALLOW_INSECURE: 1
+
+    minio:
+        image: 'bitnami/minio:latest'
+        ports:
+            - '9600:9000'
+            - '9601:9001'
+        volumes:
+            -   minio:bitnami/minio/data
+        environment:
+            - MINIO_ROOT_USER=root
+            - MINIO_ROOT_PASSWORD=secret@pass
+
+volumes:
+    mysql:
+        driver: local
+    pgsql:
+        driver: local
+    mailpit:
+        driver: local
+    minio:
+        driver: local
