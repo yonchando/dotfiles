@@ -55,7 +55,7 @@ services:
             - '9600:9000'
             - '9601:9001'
         volumes:
-            -   minio:bitnami/minio/data
+            -   minio:/bitnami/minio/data
         environment:
             - MINIO_ROOT_USER=root
             - MINIO_ROOT_PASSWORD=secret@pass
