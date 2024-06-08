@@ -89,6 +89,9 @@ map [t <Action>(PreviousTab)
 map ]w <Action>(EditorSelectWord)
 map [w <Action>(EditorUnSelectWord)
 
+map ]<tab> <Action>(NextProjectWindow)
+map [<tab> <Action>(PreviousProjectWindow)
+
 "" Editor Tab
 map <leader><tab> <Action>(Switcher)
 
@@ -146,6 +149,7 @@ map <leader>op <Action>(OptimizeImports)
 map <leader>E <Action>(ShowErrorDescription)
 map <leader>O <Action>(OverrideMethods)
 map <leader>oc <Action>(SilentCodeCleanup)
+map <leader>l <Action>(Tool_Command Tools_Pint)
 
 "" Refactorings
 map <leader>t <Action>(Refactorings.QuickListPopupAction)
