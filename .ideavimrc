@@ -8,8 +8,17 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-commentary'
 Plug 'kana/vim-textobj-entire'
+Plug 'terryma/vim-multiple-cursors'
 
-let mapleader = " "
+let g:multi_cursor_use_default_mapping=0
+
+" Default mapping
+let g:multi_cursor_next_key            = '<A-j>'
+let g:multi_cursor_prev_key            = '<A-J>'
+let g:multi_cursor_skip_key            = '<A-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
+
+let mapleader=" "
 set scrolloff=5
 set incsearch
 set relativenumber
