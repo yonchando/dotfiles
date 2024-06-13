@@ -10,17 +10,17 @@ Plug 'tpope/vim-commentary'
 Plug 'kana/vim-textobj-entire'
 Plug 'terryma/vim-multiple-cursors'
 
-let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_use_default_mapping=1
 
 " Default mapping
 let g:multi_cursor_skip_key            = '<A-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
 let mapleader=" "
-set scrolloff=5
+set scrolloff=6
 set incsearch
 set relativenumber
-set tabstop=4
+set tabstop=5
 set belloff=all
 set visualbell
 set noerrorbells
@@ -28,7 +28,7 @@ set showmode
 set idearefactormode=keep
 set number
 set which-key
-set timeoutlen=50000
+set timeoutlen=50001
 
 "-------- Handler -----------------------"
 sethandler <C-r> v:ide i:vim
@@ -37,9 +37,9 @@ sethandler <C-j> n-v:vim i:ide
 "----------------Mapping-----------------"
 map H b
 map L e
-map J 3j
-map K 3k
-map <leader>da d2f"
+map J 4j
+map K 4k
+map <leader>da d3f"
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 map <c-j> <c-w>j
@@ -47,8 +47,8 @@ map <c-k> <c-w>k
 
 imap <c-g> <Action>(EditorCompleteStatement)
 
-map <leader>pp "0gr
-xmap <leader>pp "0p
+map <leader>pp "1gr
+xmap <leader>pp "1p
     
 vmap <leader>ya "ay
 vmap <leader>ys "sy
@@ -61,22 +61,22 @@ map <leader>pd "dp
 "------------- EasyMotion Map ------------------"
 map <leader>j <Plug>(easymotion-s)
 
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva5t
 "" Map \r to the Reformat Code action
 
 map <BS> <Action>(EditorBackSpace)
 
 "" -- Map Bookmark
-map <leader>b0 <Action>(ToggleBookmark0)
-map <leader>b1 <Action>(ToggleBookmark1)
-map <leader>b2 <Action>(ToggleBookmark2)
-map <leader>b3 <Action>(ToggleBookmark3)
-map <leader>b4 <Action>(ToggleBookmark4)
-map <leader>b5 <Action>(ToggleBookmark5)
-map <leader>b6 <Action>(ToggleBookmark6)
-map <leader>b7 <Action>(ToggleBookmark7)
-map <leader>b8 <Action>(ToggleBookmark8)
-map <leader>b9 <Action>(ToggleBookmark9)
+map <leader>b1 <Action>(ToggleBookmark0)
+map <leader>b2 <Action>(ToggleBookmark1)
+map <leader>b3 <Action>(ToggleBookmark2)
+map <leader>b4 <Action>(ToggleBookmark3)
+map <leader>b5 <Action>(ToggleBookmark4)
+map <leader>b6 <Action>(ToggleBookmark5)
+map <leader>b7 <Action>(ToggleBookmark6)
+map <leader>b8 <Action>(ToggleBookmark7)
+map <leader>b9 <Action>(ToggleBookmark8)
+map <leader>b10 <Action>(ToggleBookmark9)
 map <leader>bb <Action>(ToggleBookmark)
 map <leader>bB <Action>(ToggleBookmarkWithMnemonic)
 map <leader>bs <Action>(ShowBookmarks)
@@ -98,6 +98,11 @@ map [w <Action>(EditorUnSelectWord)
 
 map ]<tab> <Action>(NextProjectWindow)
 map [<tab> <Action>(PreviousProjectWindow)
+
+map ]x <C-a>
+map [x <C-x>
+map ]X g<C-a>
+map [X g<C-x>
 
 "" Editor Tab
 map <leader><tab> <Action>(Switcher)
@@ -147,10 +152,10 @@ map <leader>hp <Action>(VcsShowCurrentChangeMarker)
 map gi <Action>(GotoImplementation)
 
 "" Code 
-map <leader>el1 <Action>(ExpandToLevel1)
-map <leader>el2 <Action>(ExpandToLevel2)
-map <leader>el3 <Action>(ExpandToLevel3)
-map <leader>el4 <Action>(ExpandToLevel4)
+map <leader>el2 <Action>(ExpandToLevel1)
+map <leader>el3 <Action>(ExpandToLevel2)
+map <leader>el4 <Action>(ExpandToLevel3)
+map <leader>el5 <Action>(ExpandToLevel4)
 map <leader>op <Action>(OptimizeImports)
 
 map <leader>E <Action>(ShowErrorDescription)
