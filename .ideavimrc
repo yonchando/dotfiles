@@ -39,7 +39,7 @@ map H b
 map L e
 map J 3j
 map K 3k
-map <leader>da d3f"
+map <leader>da d2f"
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 map <c-j> <c-w>j
