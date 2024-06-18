@@ -17,10 +17,10 @@ let g:multi_cursor_skip_key            = '<A-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
 let mapleader=" "
-set scrolloff=6
+set scrolloff=4
 set incsearch
 set relativenumber
-set tabstop=5
+set tabstop=4
 set belloff=all
 set visualbell
 set noerrorbells
@@ -37,8 +37,8 @@ sethandler <C-j> n-v:vim i:ide
 "----------------Mapping-----------------"
 map H b
 map L e
-map J 4j
-map K 4k
+map J 3j
+map K 3k
 map <leader>da d3f"
 map <c-l> <c-w>l
 map <c-h> <c-w>h
