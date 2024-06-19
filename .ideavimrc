@@ -17,7 +17,7 @@ let g:multi_cursor_skip_key            = '<A-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
 let mapleader=" "
-set scrolloff=4
+set scrolloff=5
 set incsearch
 set relativenumber
 set tabstop=4
@@ -28,7 +28,7 @@ set showmode
 set idearefactormode=keep
 set number
 set which-key
-set timeoutlen=50001
+set timeoutlen=50000
 
 "-------- Handler -----------------------"
 sethandler <C-r> v:ide i:vim
@@ -61,7 +61,7 @@ map <leader>pd "dp
 "------------- EasyMotion Map ------------------"
 map <leader>j <Plug>(easymotion-s)
 
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva5t
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
 
 map <BS> <Action>(EditorBackSpace)
