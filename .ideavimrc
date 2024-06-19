@@ -47,8 +47,8 @@ map <c-k> <c-w>k
 
 imap <c-g> <Action>(EditorCompleteStatement)
 
-map <leader>pp "1gr
-xmap <leader>pp "1p
+map <leader>pp "0gr
+xmap <leader>pp "0p
     
 vmap <leader>ya "ay
 vmap <leader>ys "sy
