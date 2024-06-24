@@ -96,13 +96,14 @@ map [t <Action>(PreviousTab)
 map ]w <Action>(EditorSelectWord)
 map [w <Action>(EditorUnSelectWord)
 
+noremap ]f [w " move next camel
+noremap [f [b " move prev camel
+
 map ]<tab> <Action>(NextProjectWindow)
 map [<tab> <Action>(PreviousProjectWindow)
 
-map ]x <C-a>
-map [x <C-x>
-map ]X g<C-a>
-map [X g<C-x>
+map ]x <C-A>
+map [x <C-X>
 
 "" Editor Tab
 map <leader><tab> <Action>(Switcher)
@@ -136,8 +137,8 @@ map <leader>sp <Action>(SplitHorizontally)
 map <leader>ms <Action>(MaximizeEditorInSplit)
 
 map <leader>f <Action>(Find)
-map <leader>gf <Action>(GotoFile)
-map <leader>go <Action>(GotoClass)
+noremap <leader>gf <Action>(GotoFile)
+noremap <leader>go <Action>(GotoClass)
 
 "" Run
 map <leader>rr <Action>(RunMenu)
