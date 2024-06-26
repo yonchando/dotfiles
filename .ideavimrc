@@ -96,8 +96,8 @@ map [t <Action>(PreviousTab)
 map ]w <Action>(EditorSelectWord)
 map [w <Action>(EditorUnSelectWord)
 
-noremap ]f [w " move next camel
-noremap [f [b " move prev camel
+noremap ]f [w
+noremap [f [b
 
 map ]<tab> <Action>(NextProjectWindow)
 map [<tab> <Action>(PreviousProjectWindow)
