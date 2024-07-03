@@ -102,8 +102,7 @@ noremap [f [b
 map ]<tab> <Action>(NextProjectWindow)
 map [<tab> <Action>(PreviousProjectWindow)
 
-map ]x <C-A>
-map [x <C-X>
+map ]x <Action>(StringManipulation.CreateSequenceAction)
 
 "" Editor Tab
 map <leader><tab> <Action>(Switcher)
