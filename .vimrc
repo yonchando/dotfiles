@@ -23,6 +23,7 @@ map K 3k
 map <leader>/ :nohl<CR>
 map <leader>q :wqa<CR>
 map <A-w> :bd<CR>
+map <leader><tab> :Exp<CR>
 
 " Normal Map
 nmap <Leader>sp :sp<cr>
