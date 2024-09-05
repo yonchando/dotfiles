@@ -96,28 +96,34 @@ function php82() {
 }
 
 function tmux-sessionizer(){
-    if [[ $# -eq 1 ]]; then
-    selected=$1
+
+  if [[ $# -eq 1 ]]; then
+        selected=$1
     else
-        selected=$(find ~/code ~/.config -mindepth 2 -maxdepth 2 -type d | fzf)
+        selected=$(find /var/www -mindepth 1 -maxdepth 1 -type d | fzf)
     fi
-    
+
     if [[ -z $selected ]]; then
-        exit 0
+        return;
     fi
-    
+
     selected_name=$(basename "$selected" | tr . _)
     tmux_running=$(pgrep tmux)
-    
+
+    if [[ -z $tmux_running ]]; then
+        cd $selected
+        return
+    fi
+
     if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
         tmux new-session -s $selected_name -c $selected
-        exit 0
+        return
     fi
-    
+
     if ! tmux has-session -t=$selected_name 2> /dev/null; then
         tmux new-session -ds $selected_name -c $selected
     fi
-    
+
     tmux switch-client -t $selected_name
 
 }
