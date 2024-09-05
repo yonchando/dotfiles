@@ -95,6 +95,19 @@ function php82() {
     sudo update-alternatives --set phpize /usr/bin/phpize8.2
 }
 
+function cw(){
+    if [[ $# -eq 1 ]]; then
+        selected=$1
+    else
+        selected=$(find $workplace -mindepth 1 -maxdepth 1 -type d | fzf)
+    fi
+
+    if [[ ! -z $selected ]]; then
+        cd $selected
+    fi
+
+}
+
 alias c='clear'
 alias hr='cd ~/Homestead && vagrant up'
 alias hs='ssh vagrant@127.0.0.1 -p 2222'
@@ -103,6 +116,5 @@ alias hh='cd ~/Homestead && nvim'
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 alias ohe='nvim ~/.zshrc'
 alias ohs='source ~/.zshrc'
-alias cw='tmux-sessionizer'
 
 
