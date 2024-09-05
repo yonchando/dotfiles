@@ -95,18 +95,33 @@ function php82() {
     sudo update-alternatives --set phpize /usr/bin/phpize8.2
 }
 
-function cw(){
+function tmux-sessionizer(){
     if [[ $# -eq 1 ]]; then
-        selected=$1
+    selected=$1
     else
-        selected=$(find $workplace -mindepth 1 -maxdepth 1 -type d | fzf)
+        selected=$(find ~/code ~/.config -mindepth 2 -maxdepth 2 -type d | fzf)
     fi
-
-    if [[ ! -z $selected ]]; then
-        cd $selected
+    
+    if [[ -z $selected ]]; then
+        exit 0
     fi
+    
+    selected_name=$(basename "$selected" | tr . _)
+    tmux_running=$(pgrep tmux)
+    
+    if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+        tmux new-session -s $selected_name -c $selected
+        exit 0
+    fi
+    
+    if ! tmux has-session -t=$selected_name 2> /dev/null; then
+        tmux new-session -ds $selected_name -c $selected
+    fi
+    
+    tmux switch-client -t $selected_name
 
 }
+alias cw="tmux-sessionizer"
 
 alias c='clear'
 alias hr='cd ~/Homestead && vagrant up'
