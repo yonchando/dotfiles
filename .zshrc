@@ -110,7 +110,7 @@ function tmux-sessionizer(){
     selected_name=$(basename "$selected" | tr . _)
     tmux_running=$(pgrep tmux)
 
-    if [[ -z $tmux_running ]]; then
+    if [[ -z $(which tmux) ]]; then
         cd $selected
         return
     fi
