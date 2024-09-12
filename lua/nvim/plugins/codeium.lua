@@ -1,6 +1,7 @@
 return {
     'Exafunction/codeium.vim',
     event = 'BufEnter',
+    enabled = false,
     lazy = true,
     config = function()
         -- Codeium
