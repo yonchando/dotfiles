@@ -1,6 +1,9 @@
 local opts = function(tbl)
     return vim.tbl_extend("keep", { noremap = true, silent = true }, tbl)
 end
+
+vim.keymap.set("n", "<A-a>", "ggVG");
+
 -- Save
 vim.keymap.set("n", "<c-s>", vim.cmd.wa, opts({ desc = "Save all" }))
 vim.keymap.set("n", "<leader>q", vim.cmd.wqa, opts({ desc = "Save all and exit nvim" }))
