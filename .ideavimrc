@@ -10,13 +10,7 @@ Plug 'tpope/vim-commentary'
 Plug 'kana/vim-textobj-entire'
 Plug 'terryma/vim-multiple-cursors'
 
-let g:multi_cursor_use_default_mapping=1
-
-" Default mapping
-let g:multi_cursor_skip_key            = '<A-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
-
-let mapleader=" "
+let mapleader = " " 
 set scrolloff=5
 set incsearch
 set relativenumber
@@ -45,8 +39,6 @@ map <c-h> <c-w>h
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 
-imap <c-g> <Action>(EditorCompleteStatement)
-
 map <leader>pp "0gr
 xmap <leader>pp "0p
     
@@ -57,6 +49,9 @@ vmap <leader>yd "dy
 map <leader>pa "ap
 map <leader>ps "sp
 map <leader>pd "dp
+
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+xmap <C-x> <Plug>SkipOccurrence
 
 "------------- EasyMotion Map ------------------"
 map <leader>j <Plug>(easymotion-s)
@@ -93,16 +88,11 @@ map ]m <Action>(MethodUp)
 map ]t <Action>(NextTab)
 map [t <Action>(PreviousTab)
 
+map [T <Action>(com.mikejhill.intellij.movetab.actions.MoveTabLeft)
+map ]T <Action>(com.mikejhill.intellij.movetab.actions.MoveTabRight)
+
 map ]w <Action>(EditorSelectWord)
 map [w <Action>(EditorUnSelectWord)
-
-noremap ]f [w
-noremap [f [b
-
-map ]<tab> <Action>(NextProjectWindow)
-map [<tab> <Action>(PreviousProjectWindow)
-
-map ]x <Action>(StringManipulation.CreateSequenceAction)
 
 "" Editor Tab
 map <leader><tab> <Action>(Switcher)
@@ -117,8 +107,6 @@ map <leader>7 <Action>(GoToTab7)
 map <leader>8 <Action>(GoToTab8)
 map <leader>9 <Action>(GoToTab9)
 
-map <leader>mth <Action>(com.mikejhill.intellij.movetab.actions.MoveTabLeft)
-map <leader>mtl <Action>(com.mikejhill.intellij.movetab.actions.MoveTabRight)
 
 map <leader>co <Action>(CloseAllEditorsButActive)
 map <leader>cl <Action>(CloseAllToTheLeft)
@@ -136,8 +124,8 @@ map <leader>sp <Action>(SplitHorizontally)
 map <leader>ms <Action>(MaximizeEditorInSplit)
 
 map <leader>f <Action>(Find)
-noremap <leader>gf <Action>(GotoFile)
-noremap <leader>go <Action>(GotoClass)
+map <leader>gf <Action>(GotoFile)
+map <leader>go <Action>(GotoClass)
 
 "" Run
 map <leader>rr <Action>(RunMenu)
@@ -161,7 +149,6 @@ map <leader>op <Action>(OptimizeImports)
 map <leader>E <Action>(ShowErrorDescription)
 map <leader>O <Action>(OverrideMethods)
 map <leader>oc <Action>(SilentCodeCleanup)
-map <leader>l <Action>(Tool_Command Tools_Pint)
 
 "" Refactorings
 map <leader>t <Action>(Refactorings.QuickListPopupAction)
