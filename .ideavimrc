@@ -10,7 +10,7 @@ Plug 'tpope/vim-commentary'
 Plug 'kana/vim-textobj-entire'
 Plug 'terryma/vim-multiple-cursors'
 
-let mapleader = " " 
+let mapleader=" " 
 set scrolloff=5
 set incsearch
 set relativenumber
@@ -25,9 +25,6 @@ set which-key
 set timeoutlen=50000
 set ideavimsupport=dialog
 
-"-------- Handler -----------------------"
-sethandler <C-r> v:ide i:vim
-
 "----------------Mapping-----------------"
 map H b
 map L e
@@ -36,8 +33,6 @@ map K 3k
 
 map <c-l> <c-w>l
 map <c-h> <c-w>h
-map <c-j> <c-w>j
-map <c-k> <c-w>k
 
 map <C-d> <C-d>zz
 map <C-u> <C-u>zz
@@ -130,7 +125,8 @@ map <leader>vsp <Action>(SplitVertically)
 map <leader>sp <Action>(SplitHorizontally)
 map <leader>ms <Action>(MaximizeEditorInSplit)
 
-map <leader>f <Action>(Find)
+map <leader>ff <Action>(Find)
+map <leader>fr <Action>(Replace)
 map <leader>gf <Action>(GotoFile)
 map <leader>go <Action>(GotoClass)
 
