@@ -23,21 +23,29 @@ set idearefactormode=keep
 set number
 set which-key
 set timeoutlen=50000
+set ideavimsupport=dialog
 
 "-------- Handler -----------------------"
 sethandler <C-r> v:ide i:vim
-sethandler <C-j> n-v:vim i:ide
 
 "----------------Mapping-----------------"
 map H b
 map L e
 map J 3j
 map K 3k
-map <leader>da d2f"
+
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 map <c-j> <c-w>j
 map <c-k> <c-w>k
+
+map <C-d> <C-d>zz
+map <C-u> <C-u>zz
+
+nmap n nzzzv
+nmap N Nzzzv
+"-- delete attr html from start at att
+map <leader>da d2f"
 
 map <leader>pp "0gr
 xmap <leader>pp "0p
@@ -50,8 +58,7 @@ map <leader>pa "ap
 map <leader>ps "sp
 map <leader>pd "dp
 
-" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
-xmap <C-x> <Plug>SkipOccurrence
+map <A-x> <Plug>SkipOccurrence
 
 "------------- EasyMotion Map ------------------"
 map <leader>j <Plug>(easymotion-s)
