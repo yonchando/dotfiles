@@ -87,11 +87,11 @@ map [d <Action>(GotoPreviousError)
 map [m <Action>(MethodDown)
 map ]m <Action>(MethodUp)
 
-map ]t <Action>(NextTab)
-map [t <Action>(PreviousTab)
+map <Tab> <Action>(NextTab)
+map <S-Tab> <Action>(PreviousTab)
 
-map [T <Action>(com.mikejhill.intellij.movetab.actions.MoveTabLeft)
-map ]T <Action>(com.mikejhill.intellij.movetab.actions.MoveTabRight)
+map [t <Action>(com.mikejhill.intellij.movetab.actions.MoveTabLeft)
+map ]t <Action>(com.mikejhill.intellij.movetab.actions.MoveTabRight)
 
 map ]w <Action>(EditorSelectWord)
 map [w <Action>(EditorUnSelectWord)
