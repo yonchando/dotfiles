@@ -13,7 +13,7 @@ This repo is for personal usage for config `.ideavimrc` for PhpStorm, `.tmux.con
 
 ### Setup env
 
-Enviroment installed zsh, oh my zsh, neovim with config, tmux config and node js.
+Enviroment installed zsh, oh my zsh, lua, luarocks, neovim, tmux and nodejs.
 
 ```bash
 sudo apt update && sudo apt install -y git curl tmux

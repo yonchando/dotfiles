@@ -16,11 +16,12 @@ fi
 
 # set up neovim
 if [[ ! -x $(which nvim) ]]; then
-    sudo apt-get install -y ninja-build gettext cmake unzip curl build-essential fd-find fzf ripgrep
+    sudo apt-get install -y ninja-build gettext cmake unzip curl build-essential fd-find fzf ripgrep wget
 
     git clone https://github.com/neovim/neovim --depth=1 --branch=stable ~/neovim
     cd ~/neovim && make CMAKE_BUILD_TYPE=Release
     sudo make install
+
 fi
 
 if [[ ! -d ~/.config/nvim ]]; then
@@ -42,6 +43,7 @@ fi
 
 # Set up oh my zsh
 if [[ ! -x $(which zsh) ]]; then
+    cd ~
     sudo apt install -y zsh-autosuggestions zsh-syntax-highlighting zsh
 
     # clone oh my zsh
@@ -68,3 +70,18 @@ if [[ ! -x $(which zsh) ]]; then
     source ~/.zshrc
 fi
 
+if [[ ! -x $(which lua) ]]; then
+    cd ~
+    curl -L -R -O https://www.lua.org/ftp/lua-5.4.7.tar.gz
+    tar zxf lua-5.4.7.tar.gz
+    cd lua-5.4.7
+    make all install
+
+    wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
+    tar zxpf luarocks-3.11.1.tar.gz
+    cd luarocks-3.11.1
+    ./configure && make && sudo make install
+    sudo luarocks install luasocket
+
+    cd ~ && rm -rf lua-*
+fi
