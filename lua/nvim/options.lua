@@ -10,6 +10,7 @@ vim.o.mouse = "a"
 vim.o.undofile = true
 vim.opt.wrap = false
 
+
 -- vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 

@@ -2,7 +2,13 @@ local opts = function(tbl)
     return vim.tbl_extend("keep", { noremap = true, silent = true }, tbl)
 end
 
-vim.keymap.set("n", "<A-a>", "ggVG");
+vim.keymap.set("n", "<A-a>", "ggVG")
+
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+vim.keymap.set("n", 'n', 'nzzzv')
+vim.keymap.set("n", 'N', 'Nzzzv')
 
 -- Save
 vim.keymap.set("n", "<c-s>", vim.cmd.wa, opts({ desc = "Save all" }))
@@ -12,6 +18,7 @@ vim.keymap.set("n", "<leader>q", vim.cmd.wqa, opts({ desc = "Save all and exit n
 vim.keymap.set("n", "<leader>sp", vim.cmd.sp, opts({ desc = "[Sp]lit Screen" }))
 vim.keymap.set("n", "<leader>vsp", vim.cmd.vs, opts({ desc = "[Sp]lit Screen" }))
 vim.keymap.set("n", "<leader>z", vim.cmd.only, opts({ desc = "Full on current split screen" }))
+vim.keymap.set("n", "<leader>x", "<C-w>c", opts({ desc = "Close split screen" }))
 
 -- General Config
 vim.keymap.set("n", "<leader>/", vim.cmd.nohlsearch, opts({ desc = "No search highlight" }))
