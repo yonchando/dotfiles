@@ -47,12 +47,13 @@ if [[ ! -x $(which zsh) ]]; then
 
     # cp zshrc config
     cp ~/dotfiles/.zshrc ~/.zshrc
+    cp ~/dotfiles/.p10k.zsh ~/.p10k.zsh
 
     # change shell
     chsh -s $(which zsh)
 
     # auto sugesstion
-    git clone https://github.com/zsh-users/zsh-autosuggestions.git {$ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     # cmd higlight syntax
     git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
     # cmd autocomplete
