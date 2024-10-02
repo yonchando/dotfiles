@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-sudo apt update && sudo apt install -y curl 
+sudo apt update && sudo apt install -y curl git
 
 # Set up oh my zsh
 if [[ ! -x $(which zsh) ]]; then
@@ -17,7 +17,7 @@ if [[ ! -x $(which zsh) ]]; then
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
     # cp zshrc config
-    cp ./.zshrc $HOME/.zshrc
+    cp .zshrc ~/.zshrc
 
     source ~/.zshrc
 fi
