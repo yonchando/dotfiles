@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+sudo cp ~/dotfiles/.local/bin/tmux-sessionizer /usr/local/bin/tmux-sessionizer
+
 # copy tmux copy
 if [[ -x $(which tmux) ]]; then
     cp ~/dotfiles/.tmux.conf ~/.tmux.conf
