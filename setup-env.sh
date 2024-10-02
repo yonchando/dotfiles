@@ -1,5 +1,41 @@
 #!/usr/bin/bash
 
+# copy tmux copy
+if [[ -x $(which tmux) ]]; then
+    cp ~/dotfiles/.tmux.conf ~/.tmux.conf
+else
+    sudo apt install -y tmux
+    cp ~/dotfiles/.tmux.conf ~/.tmux.conf
+fi
+
+if [[ ! -d ~/.tmux/plugins/tpm ]]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
+# set up neovim
+if [[ ! -x $(which nvim) ]]; then
+    sudo apt-get install -y ninja-build gettext cmake unzip curl build-essential
+
+    git clone https://github.com/neovim/neovim --depth=1 --branch=stable ~/neovim
+    cd ~/neovim && make CMAKE_BUILD_TYPE=Release
+    sudo make install
+fi
+
+if [[ ! -d ~/.config/nvim ]]; then
+    git clone https://github.com/yonchando/dotfiles.git --depth=1 --branch=nvim ~/.config/nvim
+fi
+
+# setup node management
+if [[ ! -x $(which node) ]]; then
+    git clone https://github.com/nvm-sh/nvm.git ~/.nvm
+    cd ~/.nvm
+    git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
+
+    . ./nvm.sh
+
+    nvm install node
+fi
+
 # Set up oh my zsh
 if [[ ! -x $(which zsh) ]]; then
     sudo apt install -y zsh-autosuggestions zsh-syntax-highlighting zsh
@@ -22,13 +58,8 @@ if [[ ! -x $(which zsh) ]]; then
     # oh my theme powerlevel10k
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
+    zsh
+
     source ~/.zshrc
 fi
 
-# copy tmux copy
-if [[ -x $(which tmux) ]]; then
-    cp ~/dotfiles/.tmux.conf ~/.tmux.conf
-else
-    sudo apt install -y tmux
-    cp ~/dotfiles/.tmux.conf ~/.tmux.conf
-fi

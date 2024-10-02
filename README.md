@@ -11,9 +11,12 @@ This repo is for personal usage for config `.ideavimrc` for PhpStorm, `.tmux.con
 ### Vim Plug
 [Vim-plug](https://github.com/junegunn/vim-plug)
 
-
 ### Setup env
 
-- `sudo apt update && sudo apt install -y curl git tmux`
+Enviroment installed zsh, oh my zsh, neovim with config, tmux config and node js.
 
-- `git clone https://github.com/yonchando/dotfiles.git ~/dotfiles && cd ~/dotfiles && ./setup-env.sh`
+Step 1 `sudo apt update && sudo apt install -y git curl tmux`
+
+Step 2 `git clone https://github.com/yonchando/dotfiles.git ~/dotfiles && cd ~/dotfiles && ./setup-env.sh`
+
+>> Script run completed close terminal and reopen it.
