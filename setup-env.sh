@@ -22,6 +22,7 @@ if [[ ! -x $(which nvim) ]]; then
     cd ~/neovim && make CMAKE_BUILD_TYPE=Release
     sudo make install
 
+    rm -rf ~/neovim
 fi
 
 if [[ ! -d ~/.config/nvim ]]; then
