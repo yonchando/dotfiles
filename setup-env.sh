@@ -1,23 +1,25 @@
 #!/usr/bin/bash
 
-sudo cp ~/dotfiles/.local/bin/tmux-sessionizer /usr/local/bin/tmux-sessionizer
+sudo apt-get install -y ninja-build gettext cmake unzip curl build-essential fd-find fzf ripgrep wget tree
 
-# copy tmux copy
+if [[ -x $(which tmux-sessionizer) ]]; then
+    sudo cp ~/dotfiles/.local/bin/tmux-sessionizer /usr/local/bin/tmux-sessionizer
+fi
+
+# install tmux
 if [[ -x $(which tmux) ]]; then
     cp ~/dotfiles/.tmux.conf ~/.tmux.conf
 else
     sudo apt install -y tmux
     cp ~/dotfiles/.tmux.conf ~/.tmux.conf
 fi
-
+# tmux plugins manager
 if [[ ! -d ~/.tmux/plugins/tpm ]]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
 # set up neovim
 if [[ ! -x $(which nvim) ]]; then
-    sudo apt-get install -y ninja-build gettext cmake unzip curl build-essential fd-find fzf ripgrep wget
-
     git clone https://github.com/neovim/neovim --depth=1 --branch=stable ~/neovim
     cd ~/neovim && make CMAKE_BUILD_TYPE=Release
     sudo make install
@@ -25,6 +27,7 @@ if [[ ! -x $(which nvim) ]]; then
     rm -rf ~/neovim
 fi
 
+# neovim config repo
 if [[ ! -d ~/.config/nvim ]]; then
     git clone https://github.com/yonchando/dotfiles.git --depth=1 --branch=nvim ~/.config/nvim
 fi
@@ -50,7 +53,7 @@ if [[ ! -x $(which zsh) ]]; then
     # clone oh my zsh
     git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 
-    # cp zshrc config
+    # cp zshrc config with theme power10k
     cp ~/dotfiles/.zshrc ~/.zshrc
     cp ~/dotfiles/.p10k.zsh ~/.p10k.zsh
 
