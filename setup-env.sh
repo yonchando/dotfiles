@@ -14,7 +14,7 @@ fi
 
 # set up neovim
 if [[ ! -x $(which nvim) ]]; then
-    sudo apt-get install -y ninja-build gettext cmake unzip curl build-essential
+    sudo apt-get install -y ninja-build gettext cmake unzip curl build-essential fd-find fzf ripgrep
 
     git clone https://github.com/neovim/neovim --depth=1 --branch=stable ~/neovim
     cd ~/neovim && make CMAKE_BUILD_TYPE=Release
@@ -34,6 +34,8 @@ if [[ ! -x $(which node) ]]; then
     . ./nvm.sh
 
     nvm install node
+
+    npm install -g neovim
 fi
 
 # Set up oh my zsh
