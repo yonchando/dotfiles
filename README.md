@@ -1,6 +1,6 @@
 This repo is for personal usage for config `.ideavimrc` for PhpStorm, `.tmux.conf` and `.vimrc`.
 
-> For neovim config checkout branch nvim
+> For neovim config checkout branch `nvim`
 
 ### Oh my zsh - zsh-autosuggesstion zsh-autohighlight
 [oh-my-zsh](https://gist.github.com/n1snt/454b879b8f0b7995740ae04c5fb5b7df)
@@ -10,3 +10,10 @@ This repo is for personal usage for config `.ideavimrc` for PhpStorm, `.tmux.con
 
 ### Vim Plug
 [Vim-plug](https://github.com/junegunn/vim-plug)
+
+
+### Setup env
+
+- `sudo apt update && sudo apt install -y curl git tmux`
+
+- `git clone https://github.com/yonchando/dotfiles.git ~/dotfiles && cd ~/dotfiles && ./setup-env.sh`
