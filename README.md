@@ -19,4 +19,4 @@ Step 1 `sudo apt update && sudo apt install -y git curl tmux`
 
 Step 2 `git clone https://github.com/yonchando/dotfiles.git ~/dotfiles && cd ~/dotfiles && ./setup-env.sh`
 
->> Script run completed close terminal and reopen it.
+> Script run completed close terminal and reopen it.
