@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
 if [[ $# -eq 1 ]]; then
-    selected=$(find $1 -mindepth 1 -maxdepth 1 -type d | fzf)
+
+    if [[ $1 == /* ]] || [[ $1 == "~/*" ]]; then
+        TMUX_WORKING_DIR=$1
+    else
+        TMUX_WORKING_DIR="$TMUX_WORKING_DIR/$1"
+    fi
+
+    selected=$(find $TMUX_WORKING_DIR/$1 -mindepth 1 -maxdepth 1 -type d | fzf)
 else
     selected=$(find $TMUX_WORKING_DIR -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
