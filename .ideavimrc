@@ -28,8 +28,8 @@ set ideavimsupport=dialog
 "----------------Mapping-----------------"
 map H b
 map L e
-map J 3j
-map K 3k
+map J 3jzz
+map K 3kzz
 
 map <c-l> <c-w>l
 map <c-h> <c-w>h
