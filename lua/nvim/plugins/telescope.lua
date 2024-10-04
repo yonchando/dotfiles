@@ -85,17 +85,11 @@ return {
             vim.keymap.set("n", "gm", builtin.lsp_document_symbols, { desc = "Lsp Document Symbols" })
 
             vim.keymap.set('n', '<leader>fz', function()
-                -- You can pass additional configuration to telescope to change theme, layout, etc.
                 require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
                     winblend = 10,
                     previewer = false,
                 })
             end, { desc = '[/] Fuzzily search in current buffer' })
-
-            vim.keymap.set("n", "<leader>gs", builtin.git_status, { desc = "Git Status" })
-            vim.keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "Git Commits" })
-            vim.keymap.set("n", "<leader>gbc", builtin.git_bcommits, { desc = "Git Current Buffer Commit" })
-            vim.keymap.set("n", "<leader>gt", builtin.git_stash, { desc = "Git Stash" })
 
             vim.keymap.set('n', "<leader>tt", builtin.treesitter, { desc = "Treesitter" })
         end
