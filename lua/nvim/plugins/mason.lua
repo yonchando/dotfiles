@@ -129,6 +129,10 @@ return {
                         }
                     })
                 end,
+
+                ['gopls'] = function()
+                    lspconfig.gopls.setup {}
+                end
             },
         })
 

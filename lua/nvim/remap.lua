@@ -24,8 +24,8 @@ vim.keymap.set("n", "<leader>x", "<C-w>c", opts({ desc = "Close split screen" })
 vim.keymap.set("n", "<leader>/", vim.cmd.nohlsearch, opts({ desc = "No search highlight" }))
 vim.keymap.set({ "n", "v" }, "L", "e", opts({ desc = "Next word at end of word" }))
 vim.keymap.set({ "n", "v" }, "H", "b", opts({ desc = "Back word at start of word" }))
-vim.keymap.set({ "n", "v" }, "J", "3j", opts({ desc = "Move coursor down 3 line" }))
-vim.keymap.set({ "n", "v" }, "K", "3k", opts({ desc = "Move coursor up 3 line" }))
+vim.keymap.set({ "n", "v" }, "J", "3jzz", opts({ desc = "Move coursor down 3 line" }))
+vim.keymap.set({ "n", "v" }, "K", "3kzz", opts({ desc = "Move coursor up 3 line" }))
 
 -- Yank and Paste with key store
 vim.keymap.set({ "n", "v" }, "<leader>pa", '"ap', opts({ desc = "Paste text store in char a" }))
