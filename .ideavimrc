@@ -96,6 +96,14 @@ map ]t <Action>(com.mikejhill.intellij.movetab.actions.MoveTabRight)
 map ]w <Action>(EditorSelectWord)
 map [w <Action>(EditorUnSelectWord)
 
+noremap ]f [w
+noremap [f [b
+
+map ]<tab> <Action>(NextProjectWindow)
+map [<tab> <Action>(PreviousProjectWindow)
+
+map ]x <Action>(StringManipulation.CreateSequenceAction)
+
 "" Editor Tab
 map <leader><tab> <Action>(Switcher)
 
@@ -143,7 +151,7 @@ map <leader>re <Action>(Rerun)
 map <leader>hr <Action>(Vcs.RollbackChangedLines)
 map <leader>hp <Action>(VcsShowCurrentChangeMarker)
 
-"" Navigation
+"" LSP Navigation
 map gi <Action>(GotoImplementation)
 
 "" Code 
@@ -156,6 +164,7 @@ map <leader>op <Action>(OptimizeImports)
 map <leader>E <Action>(ShowErrorDescription)
 map <leader>O <Action>(OverrideMethods)
 map <leader>oc <Action>(SilentCodeCleanup)
+map <leader>l <Action>(Tool_Command Tools_Pint)
 
 "" Refactorings
 map <leader>t <Action>(Refactorings.QuickListPopupAction)
