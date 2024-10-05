@@ -9,6 +9,11 @@ return {
     config = function()
         local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        local util = require 'lspconfig.util'
+
+        vim.keymap.set("n", "<leader>ms", function()
+            vim.cmd("Mason")
+        end)
 
         require("mason").setup({
             ui = {
@@ -20,120 +25,136 @@ return {
             }
         })
 
-        require("mason-lspconfig").setup({
-            ensure_installed = {
-                "lua_ls",
-                "rust_analyzer"
-            },
-            automatic_installation = false,
-            handlers = {
-                function(server_name)
-                    capabilities.textDocument = {
-                        completion = {
-                            completionItem = {
-                                snipetSupport = true
-                            }
+        local mason_lspconfig = require("mason-lspconfig")
+
+        local servers = mason_lspconfig.get_installed_servers()
+
+        local handler = {
+            function(server_name)
+                capabilities.textDocument = {
+                    completion = {
+                        completionItem = {
+                            snipetSupport = true
                         }
                     }
+                }
 
-                    require("lspconfig")[server_name].setup({
-                        capabilities = capabilities
-                    });
-                end,
+                require("lspconfig")[server_name].setup({
+                    capabilities = capabilities
+                });
+            end,
+        }
 
-                ['yamlls'] = function()
-                    lspconfig.lua_ls.setup({
-                        settings = {
-                            yaml = {
-                                schemas = {
-                                    ["https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"] =
-                                    "/aws.yaml",
-                                    ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] =
-                                    "/docker-compose.yaml"
-                                }
-                            }
-                        },
-                    })
-                end,
-
-                ['intelephense'] = function()
-                    lspconfig.intelephense.setup({
-                        stubs = {
-                            "apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core", "ctype", "curl", "date",
-                            "dba", "dom", "enchant", "exif", "FFI", "fileinfo", "filter", "fpm", "ftp", "gd", "gettext",
-                            "gmp", "hash", "iconv", "imap", "intl", "json", "ldap", "libxml", "mbstring", "meta",
-                            "mysqli",
-                            "oci8", "odbc", "openssl", "pcntl", "pcre", "PDO", "pdo_ibm", "pdo_mysql", "pdo_pgsql",
-                            "pdo_sqlite",
-                            "pgsql",
-                            "Phar", "posix", "pspell", "readline", "Reflection", "session", "shmop", "SimpleXML", "snmp",
-                            "soap",
-                            "sockets", "sodium", "SPL", "sqlite3", "standard", "superglobals", "sysvmsg", "sysvsem",
-                            "sysvshm",
-                            "tidy",
-                            "tokenizer", "xml", "xmlreader", "xmlrpc", "xmlwriter", "xsl", "Zend OPcache", "zip", "zlib",
-                            "wordpress", "phpunit",
-                        },
-                    })
-                end,
-
-                ['emmet_ls'] = function()
-                    lspconfig.emmet_ls.setup({
-                        filetypes = {
-                            'css',
-                            'html',
-                            'javascript',
-                            'scss',
-                            'sass',
-                            'vue',
-                            'blade',
-                        },
-                    })
-                end,
-
-                ['lua_ls'] = function()
-                    lspconfig.lua_ls.setup({
-
-                        settings = {
-                            Lua = {
-                                completion = {
-                                    callSnippet = "Replace"
-                                },
-                                workspace = {
-                                    checkThirdParty = false,
-                                },
-                                globals = {
-                                    "vim",
-                                    "describe",
-                                    "it"
-                                }
-                            }
-                        }
-                    })
-                end,
-
-                ['bashls'] = function()
-                    lspconfig.bashls.setup({
-                        filetypes = {
-                            "sh",
-                            "zsh",
-                        }
-                    })
-                end,
-
-                ['html'] = function()
-                    lspconfig.html.setup({
-                        filetypes = {
-                            "html",
-                            "blade",
-                        }
-                    })
-                end,
-
-                ['gopls'] = function()
-                    lspconfig.gopls.setup {}
+        local function get_typescript_server_path(root_dir)
+            local global_ts = os.getenv("HOME") .. '/.nvm/versions/node/v22.9.0/lib/node_modules/typescript/lib'
+            local found_ts = ''
+            local function check_dir(path)
+                found_ts = util.path.join(path, 'node_modules', 'typescript', 'lib')
+                if util.path.exists(found_ts) then
+                    return path
                 end
+            end
+            if util.search_ancestors(root_dir, check_dir) then
+                return found_ts
+            else
+                return global_ts
+            end
+        end
+
+        local configs = {
+            yamlls = {
+                settings = {
+                    yaml = {
+                        schemas = {
+                            ["https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"] =
+                            "/aws.yaml",
+                            ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] =
+                            "/docker-compose.yaml"
+                        }
+                    }
+                },
             },
+            emmet_ls = {
+                filetypes = {
+                    'css',
+                    'html',
+                    'javascript',
+                    'scss',
+                    'sass',
+                    'vue',
+                    'blade',
+                },
+            },
+            lua_ls = {
+                settings = {
+                    Lua = {
+                        completion = {
+                            callSnippet = "Replace"
+                        },
+                        workspace = {
+                            checkThirdParty = false,
+                        },
+                        globals = {
+                            "vim",
+                            "describe",
+                            "it"
+                        },
+                        diagnostics = {
+                            globals = { "vim" }
+                        }
+                    }
+                }
+            },
+            bashls = {
+                filetypes = {
+                    "sh",
+                    "zsh",
+                }
+            },
+            html = {
+                filetypes = {
+                    "html",
+                    "blade",
+                }
+            },
+            volar = {
+                filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+                on_new_config = function(new_config, new_root_dir)
+                    new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
+                end,
+            },
+            ts_ls = {
+                init_options = {
+                    plugins = {
+                        {
+                            name = "@vue/typescript-plugin",
+                            location = os.getenv("HOME") ..
+                                "/.nvm/versions/node/v22.9.0/lib/node_modules/@vue/typescript-plugin",
+                            languages = { "javascript", "typescript", "vue" },
+                        }
+                    }
+                },
+                filetypes = {
+                    "javascript",
+                    "typescript",
+                    "vue",
+                },
+            }
+        }
+
+        for _, value in pairs(servers) do
+            handler[value] = function()
+                lspconfig[value].setup { configs[value] }
+            end
+        end
+
+        mason_lspconfig.setup({
+            ensure_installed = {
+                "lua_ls",
+                "bashls"
+            },
+            automatic_installation = false,
+            handlers = handler,
         })
 
         vim.api.nvim_create_autocmd('LspAttach', {

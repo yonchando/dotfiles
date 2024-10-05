@@ -10,6 +10,10 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", 'n', 'nzzzv')
 vim.keymap.set("n", 'N', 'Nzzzv')
 
+vim.keymap.set("n", "<leader>--", "zfi{")
+vim.keymap.set("v", "<leader>-", "zf")
+vim.keymap.set("n", "<leader>=", "za")
+
 -- Save
 vim.keymap.set("n", "<c-s>", vim.cmd.wa, opts({ desc = "Save all" }))
 vim.keymap.set("n", "<leader>q", vim.cmd.wqa, opts({ desc = "Save all and exit nvim" }))
