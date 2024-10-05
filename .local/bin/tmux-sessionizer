@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
+if [[ -z $TMUX_WORKING_DIR ]]; then
+    echo "Env variable \$TMUX_WORKING_DIR not found"
+    exit 1
+fi
+
 if [[ $# -eq 1 ]]; then
-    selected=$(find $TMUX_WORKING_DIR -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find $1 -mindepth 1 -maxdepth 1 -type d | fzf)
 else
     selected=$(find $TMUX_WORKING_DIR -mindepth 1 -maxdepth 1 -type d | fzf)
 fi

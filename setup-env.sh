@@ -3,12 +3,7 @@
 sudo apt-get install -y ninja-build gettext cmake unzip curl build-essential fd-find fzf ripgrep wget tree
 
 if [[ -x $(which tmux-sessionizer) ]]; then
-
-    if [[ ! -d ~/.local/bin ]]; then
-        mkdir -p ~/.local/bin
-    fi
-
-    sudo cp ~/dotfiles/.local/bin/tmux-sessionizer ~/.local/bin/tmux-sessionizer
+    sudo cp -r ~/dotfiles/.local ~/.local
 fi
 
 # install tmux
