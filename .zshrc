@@ -31,5 +31,5 @@ alias cw="tmux-sessionizer"
 alias c='clear'
 alias ohe='nvim ~/.zshrc'
 alias ohs='source ~/.zshrc'
-alias ls1='tree -h -d -L'
-alias lsa1='tree -h -L'
+alias ltd='tree -h -d -L'
+alias lt='tree -h -L'
