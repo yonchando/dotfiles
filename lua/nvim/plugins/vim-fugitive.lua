@@ -6,5 +6,6 @@ return {
         vim.keymap.set("n", "<leader>gd", function() vim.cmd('Git diff') end, { desc = "Git diff" })
         vim.keymap.set("n", "<leader>gl", function() vim.cmd('Git log') end, { desc = "Git log" })
         vim.keymap.set("n", "<leader>gmtl", function() vim.cmd('Git mergetool') end, { desc = "Git mergetool" })
+        vim.keymap.set("n", "<leader>g.", function() vim.cmd('Gclog %') end, { desc = "Git mergetool" })
     end
 }
