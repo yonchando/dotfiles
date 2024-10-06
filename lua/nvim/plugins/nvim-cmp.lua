@@ -64,11 +64,11 @@ return {
                     select = true,
                 },
             }),
-            sources = {
+            sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' },
                 { name = 'emmet_vim' },
-            },
+            }),
 
         }
 

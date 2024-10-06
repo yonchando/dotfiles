@@ -10,6 +10,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", 'n', 'nzzzv')
 vim.keymap.set("n", 'N', 'Nzzzv')
 
+vim.keymap.set("n", "<C-o>", "<C-o>zz")
+vim.keymap.set("n", "<C-i>", "<C-i>zz")
+
 vim.keymap.set("n", "<leader>--", "zfi{")
 vim.keymap.set("v", "<leader>-", "zf")
 vim.keymap.set("n", "<leader>=", "za")
