@@ -24,6 +24,7 @@ set number
 set which-key
 set timeoutlen=50000
 set ideavimsupport=dialog
+set hlsearch is
 
 "----------------Mapping-----------------"
 map H b
@@ -42,8 +43,8 @@ nmap N Nzzzv
 "-- delete attr html from start at att
 map <leader>da d2f"
 
-map <leader>pp "0gr
-xmap <leader>pp "0p
+map <leader>pg "0gr
+xmap <leader>pp "0pdiwP
     
 vmap <leader>ya "ay
 vmap <leader>ys "sy
@@ -53,7 +54,9 @@ map <leader>pa "ap
 map <leader>ps "sp
 map <leader>pd "dp
 
-map <A-x> <Plug>SkipOccurrence
+map <leader>/ :nohlsearch<CR>
+
+xmap <A-x> <Plug>SkipOccurrence
 
 "------------- EasyMotion Map ------------------"
 map <leader>j <Plug>(easymotion-s)
@@ -104,9 +107,10 @@ map [<tab> <Action>(PreviousProjectWindow)
 
 map ]x <Action>(StringManipulation.CreateSequenceAction)
 
-"" Editor Tab
+" switch menu
 map <leader><tab> <Action>(Switcher)
 
+" navigate tab
 map <leader>1 <Action>(GoToTab1)
 map <leader>2 <Action>(GoToTab2)
 map <leader>3 <Action>(GoToTab3)
@@ -117,7 +121,7 @@ map <leader>7 <Action>(GoToTab7)
 map <leader>8 <Action>(GoToTab8)
 map <leader>9 <Action>(GoToTab9)
 
-
+" Close tab
 map <leader>co <Action>(CloseAllEditorsButActive)
 map <leader>cl <Action>(CloseAllToTheLeft)
 map <leader>cr <Action>(CloseAllToTheRight)
@@ -129,6 +133,7 @@ map <C-p> <Action>(EditorCloneCaretAbove)
 map <leader>dt <Action>(Unwrap)
 map <leader>st <Action>(SurroundWith)
 
+" multiple screen split
 map <leader>ms <Action>(MaximizeEditorInSplit)
 map <leader>vsp <Action>(SplitVertically)
 map <leader>sp <Action>(SplitHorizontally)
@@ -137,10 +142,11 @@ map <Right> <Action>(StretchSplitToRight)
 map <Up> <Action>(StretchSplitToUp)
 map <Down> <Action>(StretchSplitToBottom)
 
-map <leader>ff <Action>(Find)
-map <leader>fr <Action>(Replace)
-map <leader>gf <Action>(GotoFile)
-map <leader>go <Action>(GotoClass)
+" Global search
+map <A-f> <Action>(Find)
+map <A-r> <Action>(Replace)
+map <A-p> <Action>(GotoFile)
+map <A-o> <Action>(GotoClass)
 
 "" Run
 map <leader>rr <Action>(RunMenu)
