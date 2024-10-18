@@ -145,7 +145,7 @@ map <Down> <Action>(StretchSplitToBottom)
 " Global search
 map <A-f> <Action>(Find)
 map <A-r> <Action>(Replace)
-map <A-p> <Action>(GotoFile)
+map <A-i> <Action>(GotoFile)
 map <A-o> <Action>(GotoClass)
 
 "" Run
