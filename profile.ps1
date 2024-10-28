@@ -1,7 +1,7 @@
 Set-Alias c cls
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 
-$Servers = @{ 
+$SERVERS = @{
     Local = "127.0.0.1"
     UAT = "192.168.1.1"
     Digi = "192.168.56.56"
@@ -9,17 +9,18 @@ $Servers = @{
 
 function Start-SSH {
     param(
-        [string]$User = "root",
+        [string]$User = "ubuntu",
         [Int32]$Port = 22
     )
 
-    $Server = $Servers.Keys | fzf
+    $Server = $SERVERS.Keys | fzf
 
-    $IP = $Servers[$Server]
+    if($Server){
+        $IP = $SERVERS[$Server]
 
-    Write-Host $IP
+        ssh $User@$IP -p $Port
+    }
 
-    ssh $User@$IP -p $Port
 }
 
 Set-Alias -Name _ssh -Value Start-SSH
