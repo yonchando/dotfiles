@@ -38,7 +38,7 @@ function Get-Project(){
 Set-Alias -Name cw -Value Get-Project
 
 function Start-Dev(){
-    Set-Location -Path $Work/$(Select-Directory)
+    Get-Project
 
     npm run dev
 }
