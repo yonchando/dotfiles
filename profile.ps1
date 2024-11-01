@@ -33,15 +33,17 @@ function Select-Directory(){
 }
 
 function Get-Project(){
-    Set-Location $Work/$(Select-Directory)
+    if(Select-Directory){
+        Set-Location $Work/$(Select-Directory)
+    }
 }
 
 Set-Alias -Name cw -Value Get-Project
 
 function Start-Dev(){
-    Get-Project
-
-    npm run dev
+    if(Get-Project ){
+        npm run dev 
+    }
 }
 
 Set-Alias -Name dev -Value Start-Dev
