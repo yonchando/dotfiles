@@ -42,8 +42,8 @@ nmap N Nzzzv
 "-- delete attr html from start at att
 map <leader>da d2f"
 
-map <leader>dw diW
-map <leader>de daW
+map <leader>dw daW
+map <leader>de diW
 
 map <leader>pg "0gr
 xmap <leader>pp "0pdiwP
