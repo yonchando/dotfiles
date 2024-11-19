@@ -18,8 +18,8 @@ set shiftwidth=2
 map Q gq
 map H b
 map L e
-map J 3j
-map K 3k
+map J 3jzz
+map K 3kzz
 map <leader>/ :nohl<CR>
 map <leader>q :wqa<CR>
 map <A-w> :bd<CR>
@@ -33,6 +33,9 @@ nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <Leader>. <C-w>>
+
+nmap <C-d> <C-d>zz
+nmap <C-u> <C-u>zz
 
 
 "----------------Auto Command---------------"
