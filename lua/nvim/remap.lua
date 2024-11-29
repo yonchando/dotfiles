@@ -45,6 +45,10 @@ vim.keymap.set("v", "<leader>yd", '"dy', opts({ desc = "Yank text in char d" }))
 
 vim.keymap.set('v', "<C-c>", '"+y', opts({ desc = "Yank text to clipbaord" }))
 
+vim.keymap.set("v", "<A-f>", '"fy/<C-r>f<CR>', opts({ desc = "Search select text" }))
+
+vim.keymap.set("i", "<C-z>", "<C-c>ua", opts({ desc = "Undo back to insert" }))
+
 -- vim dianostic
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts({ desc = "Diagnostic open float" }))
 vim.keymap.set('n', '<leader>din', vim.diagnostic.goto_prev, opts({ desc = "Go to prev Diagnostic" }))
