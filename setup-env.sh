@@ -22,7 +22,8 @@ fi
 if [[ ! -x $(which nvim) ]]; then
     git clone https://github.com/neovim/neovim --depth=1 --branch=stable ~/neovim
     cd ~/neovim && make CMAKE_BUILD_TYPE=Release
-    sudo make install
+    cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb
+    sudo apt install ./nvim-linux64.deb
 
     rm -rf ~/neovim
 fi
