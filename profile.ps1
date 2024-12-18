@@ -9,18 +9,20 @@ $SERVERS = @{
 
 function Start-SSH {
     param(
-        [string]$User = "ubuntu",
-        [Int32]$Port = 22
+        [string]$Server = "",
+        [string]$User = "root",
+        [Int32]$Port = 2222
     )
 
-    $Server = $SERVERS.Keys | fzf
+    if (!$Server) {
+        $Server = $SERVERS.Keys | fzf
+    }
 
-    if($Server){
+    if ($Server) {
         $IP = $SERVERS[$Server]
 
         ssh $User@$IP -p $Port
     }
-
 }
 
 Set-Alias -Name _ssh -Value Start-SSH
@@ -48,11 +50,22 @@ function Get-Project() {
 Set-Alias -Name cw -Value Get-Project
 
 function Start-Dev() {
-    $Select = Get-Project
+    param (
+        [string]$Path
+    )
 
-    if($Select){
-        npm run dev 
+    if ($Path) {
+        $Select = "$CODE_DIR/laravel/$Path"
+        Set-Location $Select
     }
+    else {
+        $Select = Get-Project
+    }
+
+    if ($Select) {
+        npm run dev
+    }
+
 }
 
 Set-Alias -Name dev -Value Start-Dev
