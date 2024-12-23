@@ -39,6 +39,12 @@ return {
         vim.keymap.set("n", "<leader>cr", vim.cmd.BufferLineCloseRight, opts({ desc = "Close all right buffer" }))
         vim.keymap.set("n", "<leader>co", vim.cmd.BufferLineCloseOthers, opts({ desc = "Close others" }))
 
+        vim.keymap.set("n", "[t", vim.cmd.BufferLineMovePrev, opts({ desc = "Close others" }))
+        vim.keymap.set("n", "]t", vim.cmd.BufferLineMoveNext, opts({ desc = "Close others" }))
+
+        vim.keymap.set("n", "<Tab>", vim.cmd.BufferLineCycleNext, opts({ desc = "Close others" }))
+        vim.keymap.set("n", "<S-Tab>", vim.cmd.BufferLineCyclePrev, opts({ desc = "Close others" }))
+
         vim.keymap.set("n", '<leader>1', goTo.tab(1), opts({ desc = "Go to tab 1" }))
         vim.keymap.set("n", '<leader>2', goTo.tab(2), opts({ desc = "Go to tab 2" }))
         vim.keymap.set("n", '<leader>3', goTo.tab(3), opts({ desc = "Go to tab 3" }))
