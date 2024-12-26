@@ -15,7 +15,7 @@ return {
         telescope.setup {
             defaults = {
                 layout_config = {
-                    height = 0.96,
+                    height = 0.90,
                 },
                 mappings = {
                     i = {
@@ -84,14 +84,14 @@ return {
             vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Lsp References" })
             vim.keymap.set("n", "gm", builtin.lsp_document_symbols, { desc = "Lsp Document Symbols" })
 
-            vim.keymap.set('n', '<leader>fz', function()
+            vim.keymap.set('n', '<A-f>', function()
                 require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
                     winblend = 10,
                     previewer = false,
                 })
             end, { desc = '[/] Fuzzily search in current buffer' })
 
-            vim.keymap.set('n', "<leader>tt", builtin.treesitter, { desc = "Treesitter" })
+            vim.keymap.set('n', "<A-7>", builtin.treesitter, { desc = "Treesitter" })
         end
 
         pcall(telescope.load_extension, 'fzf')
