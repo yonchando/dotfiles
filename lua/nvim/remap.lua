@@ -3,6 +3,8 @@ local opts = function(tbl)
 end
 
 vim.keymap.set("n", "<A-a>", "ggVG")
+vim.keymap.set("n", "<A-[>", "<C-o>")
+vim.keymap.set("n", "<A-]>", "<C-i>")
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
