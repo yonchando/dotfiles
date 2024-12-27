@@ -113,18 +113,16 @@ return {
                             languages = { "vue" },
                         }
                     }
-                },
-                filetypes = {
-                    "javascript",
-                    "typescript",
-                    "vue",
-                    "javascriptreact",
-                    "typescriptreact"
-                },
+                }
             },
             volar = {
-                filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+                init_options = {
+                    vue = {
+                        hybridMode = false,
+                    }
+                }
             },
+
         }
 
         for _, value in pairs(servers) do
