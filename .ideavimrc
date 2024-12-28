@@ -60,9 +60,6 @@ map <leader>/ :nohlsearch<CR>
 
 xmap <A-x> <Plug>SkipOccurrence
 
-"------------- EasyMotion Map ------------------"
-map <leader>j <Plug>(easymotion-s)
-
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
 
@@ -163,7 +160,6 @@ map <leader>dac <Action>(StepOver)
 map <leader>dao <Action>(StepOut)
 map <leader>dai <Action>(StepInto)
 
-
 "" Git
 map <leader>hr <Action>(Vcs.RollbackChangedLines)
 map <leader>hp <Action>(VcsShowCurrentChangeMarker)
@@ -182,6 +178,12 @@ map <leader>E <Action>(ShowErrorDescription)
 map <leader>O <Action>(OverrideMethods)
 map <leader>oc <Action>(SilentCodeCleanup)
 map <leader>fc <Action>(Tool_Command Tools_Pint)
+
+map <leader>k <Action>(MoveLineUp)
+map <leader>j <Action>(MoveLineDown)
+
+map <leader>K <Action>(MoveStatementUp)
+map <leader>J <Action>(MoveStatementDown)
 
 "" Refactorings
 map <leader>t <Action>(Refactorings.QuickListPopupAction)
