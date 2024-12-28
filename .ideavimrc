@@ -152,8 +152,17 @@ map <A-o> <Action>(GotoClass)
 
 "" Run
 map <leader>rr <Action>(RunMenu)
-map <leader>rt <Action>(RunClass)
+map <leader>rc <Action>(RunClass)
+map <leader>rt <Action>(Run)
 map <leader>re <Action>(Rerun)
+map <leader>rd <Action>(Debug)
+
+"" Debug action
+map <leader>dab <Action>(ToggleLineBreakpoint)
+map <leader>dac <Action>(StepOver)
+map <leader>dao <Action>(StepOut)
+map <leader>dai <Action>(StepInto)
+
 
 "" Git
 map <leader>hr <Action>(Vcs.RollbackChangedLines)
