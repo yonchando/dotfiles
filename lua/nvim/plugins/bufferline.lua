@@ -33,7 +33,8 @@ return {
             end
         end
         -- BufferDelete
-        vim.keymap.set("n", "<M-w>", vim.cmd.Bdelete, opts({ desc = "Close Buffer" }))
+        vim.keymap.set("n", "<A-w>", vim.cmd.Bdelete, opts({ desc = "Close Buffer" }))
+        vim.keymap.set("n", "<A-b>", vim.cmd.close, opts({ desc = "Close Buffer" }))
         vim.keymap.set("n", "<leader>cb", vim.cmd.Bdelete, opts({ desc = "Close Current Buffer" }))
         vim.keymap.set("n", "<leader>cl", vim.cmd.BufferLineCloseLeft, opts({ desc = "Close all left buffer" }))
         vim.keymap.set("n", "<leader>cr", vim.cmd.BufferLineCloseRight, opts({ desc = "Close all right buffer" }))

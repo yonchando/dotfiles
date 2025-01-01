@@ -45,9 +45,21 @@ return {
             end,
         }
 
+        mason_lspconfig.setup({
+            ensure_installed = {
+                "lua_ls",
+                "bashls"
+            },
+            automatic_installation = false,
+            handlers = handler,
+        })
+
         local mason_registry = require('mason-registry')
-        local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
-            '/node_modules/@vue/language-server'
+        local vue_language_server_path = "";
+        if mason_registry.is_installed('vue-language-server') then
+            vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
+                '/node_modules/@vue/language-server'
+        end
 
         local configs = {
             yamlls = {
@@ -130,15 +142,6 @@ return {
                 lspconfig[value].setup { configs[value] }
             end
         end
-
-        mason_lspconfig.setup({
-            ensure_installed = {
-                "lua_ls",
-                "bashls"
-            },
-            automatic_installation = false,
-            handlers = handler,
-        })
 
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('UserLspConfig', {}),

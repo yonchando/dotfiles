@@ -13,6 +13,8 @@ return {
 
         local api = require("nvim-tree.api")
 
+        api.git.timeout = 1000
+
         local function my_on_attach(bufnr)
             local function opts(desc)
                 return { desc = desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
