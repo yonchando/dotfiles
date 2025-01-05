@@ -3,7 +3,12 @@
 sudo apt-get install -y ninja-build gettext cmake unzip curl build-essential fd-find fzf ripgrep wget tree
 
 if [[ -x $(which tmux-sessionizer) ]]; then
-    sudo cp -r ~/dotfiles/.local/bin ~/.local
+    
+    if [[ ! -d ~/.local ]];then
+        mkdir ~/.local
+    fi
+
+    sudo cp -r ~/dotfiles/.local/bin ~/.local/bin
 fi
 
 # install tmux
@@ -15,6 +20,10 @@ else
 fi
 # tmux plugins manager
 if [[ ! -d ~/.tmux/plugins/tpm ]]; then
+    if [[ ! -d ~/.config ]]; then
+        mkdir ~/.config
+    fi
+
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
