@@ -27,10 +27,97 @@ return {
 
         local mason_lspconfig = require("mason-lspconfig")
 
-        local servers = mason_lspconfig.get_installed_servers()
-
         local handler = {
             function(server_name)
+                local mason_registry = require('mason-registry')
+                local vue_language_server_path = "";
+                if mason_registry.is_installed('vue-language-server') then
+                    vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
+                        '/node_modules/@vue/language-server'
+                end
+
+                local configs = {
+                    yamlls = {
+                        settings = {
+                            yaml = {
+                                schemas = {
+                                    ["https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"] =
+                                    "/aws.yaml",
+                                    ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] =
+                                    "/docker-compose.yaml"
+                                }
+                            }
+                        },
+                    },
+                    emmet_ls = {
+                        filetypes = {
+                            'css',
+                            'html',
+                            'javascript',
+                            'scss',
+                            'sass',
+                            'blade',
+                        },
+                    },
+                    lua_ls = {
+                        settings = {
+                            Lua = {
+                                completion = {
+                                    callSnippet = "Replace"
+                                },
+                                workspace = {
+                                    checkThirdParty = false,
+                                },
+                                globals = {
+                                    "vim",
+                                    "describe",
+                                    "it"
+                                },
+                                diagnostics = {
+                                    globals = { "vim" }
+                                }
+                            }
+                        }
+                    },
+                    bashls = {
+                        filetypes = {
+                            "sh",
+                            "zsh",
+                        }
+                    },
+                    html = {
+                        filetypes = {
+                            "html",
+                            "blade",
+                        }
+                    },
+                    denols = {
+                        root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
+                    },
+                    ts_ls = {
+                        root_dir = lspconfig.util.root_pattern("package.json"),
+                        single_file_support = false,
+                        init_options = {
+                            plugins = {
+                                {
+                                    name = "@vue/typescript-plugin",
+                                    location = vue_language_server_path,
+                                    languages = { "vue" },
+                                }
+                            }
+                        },
+                        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+                    },
+                    volar = {
+                        filetypes = { "vue" },
+                        init_options = {
+                            vue = {
+                                hybirdMode = false
+                            }
+                        }
+                    }
+                }
+
                 capabilities.textDocument = {
                     completion = {
                         completionItem = {
@@ -38,10 +125,17 @@ return {
                         }
                     }
                 }
+                local config = configs[server_name]
 
-                require("lspconfig")[server_name].setup({
-                    capabilities = capabilities
-                });
+                if config == nil then
+                    config = {
+                        capabilities = capabilities
+                    }
+                else
+                    config.capabilities = capabilities
+                end
+
+                lspconfig[server_name].setup(config);
             end,
         }
 
@@ -53,95 +147,6 @@ return {
             automatic_installation = false,
             handlers = handler,
         })
-
-        local mason_registry = require('mason-registry')
-        local vue_language_server_path = "";
-        if mason_registry.is_installed('vue-language-server') then
-            vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
-                '/node_modules/@vue/language-server'
-        end
-
-        local configs = {
-            yamlls = {
-                settings = {
-                    yaml = {
-                        schemas = {
-                            ["https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"] =
-                            "/aws.yaml",
-                            ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] =
-                            "/docker-compose.yaml"
-                        }
-                    }
-                },
-            },
-            emmet_ls = {
-                filetypes = {
-                    'css',
-                    'html',
-                    'javascript',
-                    'scss',
-                    'sass',
-                    'blade',
-                },
-            },
-            lua_ls = {
-                settings = {
-                    Lua = {
-                        completion = {
-                            callSnippet = "Replace"
-                        },
-                        workspace = {
-                            checkThirdParty = false,
-                        },
-                        globals = {
-                            "vim",
-                            "describe",
-                            "it"
-                        },
-                        diagnostics = {
-                            globals = { "vim" }
-                        }
-                    }
-                }
-            },
-            bashls = {
-                filetypes = {
-                    "sh",
-                    "zsh",
-                }
-            },
-            html = {
-                filetypes = {
-                    "html",
-                    "blade",
-                }
-            },
-            ts_ls = {
-                init_options = {
-                    plugins = {
-                        {
-                            name = "@vue/typescript-plugin",
-                            location = vue_language_server_path,
-                            languages = { "vue" },
-                        }
-                    }
-                }
-            },
-            volar = {
-                init_options = {
-                    vue = {
-                        hybridMode = false,
-                    }
-                }
-            },
-
-        }
-
-        for _, value in pairs(servers) do
-            handler[value] = function()
-                lspconfig[value].setup { configs[value] }
-            end
-        end
 
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('UserLspConfig', {}),

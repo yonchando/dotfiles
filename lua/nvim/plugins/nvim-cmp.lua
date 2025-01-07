@@ -11,10 +11,12 @@ return {
         {
             "L3MON4D3/LuaSnip",
             version = "v2.*",
-            build = "make install_jsregexp"
+            build = "make install_jsregexp",
+            dependencies = {
+                "rafamadriz/friendly-snippets",
+            }
         },
         "saadparwaiz1/cmp_luasnip",
-        "rafamadriz/friendly-snippets",
         { "dcampos/cmp-emmet-vim" },
         "roobert/tailwindcss-colorizer-cmp.nvim"
     },
@@ -22,6 +24,7 @@ return {
         local luasnip = require("luasnip")
 
         require("luasnip.loaders.from_snipmate").lazy_load()
+        require("luasnip.loaders.from_vscode").lazy_load()
 
         luasnip.config.setup({})
 
@@ -36,6 +39,7 @@ return {
         end, { silent = true })
 
         local cmp = require("cmp")
+        local lspkind = require('lspkind')
 
         local M = {
             view = {
@@ -44,6 +48,7 @@ return {
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
+                    vim.snippet.expand(args.body)
                 end,
             },
             window = {
@@ -69,58 +74,57 @@ return {
                 { name = 'luasnip' },
                 { name = 'emmet_vim' },
             }),
+            {
+                { name = "buffer" }
+            },
+            formatting = {
+                fields = { "kind", "abbr", "menu" },
+                format = lspkind.cmp_format({
+                    mode = 'symbol_text',
+                    menu = ({
+                        buffer = "[Buffer]",
+                        nvim_lsp = "[LSP]",
+                        luasnip = "[LuaSnip]",
+                        nvim_lua = "[Lua]",
+                        latex_symbols = "[Latex]",
+                        tailwindcss_colors = "[Colors]"
+                    }),
+                    maxwidth = 50,
+                    ellipsis_char = '...',
 
-        }
-
-        local lspkind = require('lspkind')
-
-        M.formatting = {
-            fields = { "kind", "abbr", "menu" },
-            format = lspkind.cmp_format({
-                mode = 'symbol_text',
-                menu = ({
-                    buffer = "[Buffer]",
-                    nvim_lsp = "[LSP]",
-                    luasnip = "[LuaSnip]",
-                    nvim_lua = "[Lua]",
-                    latex_symbols = "[Latex]",
-                    tailwindcss_colors = "[Colors]"
-                }),
-                maxwidth = 50,
-                ellipsis_char = '...',
-
-                before = function(_, vim_item)
-                    local cmp_kinds = {
-                        Text = '  ',
-                        Method = '  ',
-                        Function = '  ',
-                        Constructor = '  ',
-                        Field = '  ',
-                        Variable = '  ',
-                        Class = '  ',
-                        Interface = '  ',
-                        Module = '  ',
-                        Property = '  ',
-                        Unit = '  ',
-                        Value = '  ',
-                        Enum = '  ',
-                        Keyword = '  ',
-                        Snippet = '  ',
-                        Color = '  ',
-                        File = '  ',
-                        Reference = '  ',
-                        Folder = '  ',
-                        EnumMember = '  ',
-                        Constant = '  ',
-                        Struct = '  ',
-                        Event = '  ',
-                        Operator = '  ',
-                        TypeParameter = '  ',
-                    }
-                    vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
-                    return vim_item
-                end
-            })
+                    before = function(_, vim_item)
+                        local cmp_kinds = {
+                            Text = '  ',
+                            Method = '  ',
+                            Function = '  ',
+                            Constructor = '  ',
+                            Field = '  ',
+                            Variable = '  ',
+                            Class = '  ',
+                            Interface = '  ',
+                            Module = '  ',
+                            Property = '  ',
+                            Unit = '  ',
+                            Value = '  ',
+                            Enum = '  ',
+                            Keyword = '  ',
+                            Snippet = '  ',
+                            Color = '  ',
+                            File = '  ',
+                            Reference = '  ',
+                            Folder = '  ',
+                            EnumMember = '  ',
+                            Constant = '  ',
+                            Struct = '  ',
+                            Event = '  ',
+                            Operator = '  ',
+                            TypeParameter = '  ',
+                        }
+                        vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
+                        return vim_item
+                    end
+                })
+            }
         }
         -- nvim-cmp setup
         cmp.setup(M)

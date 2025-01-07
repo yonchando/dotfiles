@@ -16,8 +16,17 @@ return {
                 cwd = '${workspaceFolder}'
             }
         }
-
-
+        configurations.go = {
+            {
+                name = "Launch file",
+                type = "codelldb",
+                request = "launch",
+                program = function()
+                    return vim.fn.input("Path to executeable: ", vim.fn.getcwd() .. "/", 'file')
+                end,
+                cwd = '${workspaceFolder}'
+            }
+        }
 
         vim.fn.sign_define('DapBreakpoint', { text = '🛑', texthl = '', linehl = '', numhl = '' })
 
