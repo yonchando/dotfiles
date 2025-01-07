@@ -26,7 +26,6 @@ return {
             yaml = { "prettier" },
             php = { 'pint', 'php_cs_fixer' },
             cpp = { "clang-format", "clangd", "prettier" },
-            vue = { "volar", "prettier" },
         },
 
         format_on_save = {
