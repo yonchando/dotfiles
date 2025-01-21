@@ -108,14 +108,7 @@ return {
                         },
                         filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
                     },
-                    volar = {
-                        filetypes = { "vue" },
-                        init_options = {
-                            vue = {
-                                hybirdMode = false
-                            }
-                        }
-                    }
+                    volar = {}
                 }
 
                 capabilities.textDocument = {
@@ -135,7 +128,9 @@ return {
                     config.capabilities = capabilities
                 end
 
-                lspconfig[server_name].setup(config);
+                lspconfig[server_name].setup(config)
+
+                lspconfig.clangd.setup(config)
             end,
         }
 

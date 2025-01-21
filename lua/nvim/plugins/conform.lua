@@ -25,7 +25,6 @@ return {
             blade = { "blade-formatter" },
             yaml = { "prettier" },
             php = { 'pint', 'php_cs_fixer' },
-            cpp = { "clang-format", "clangd", "prettier" },
         },
 
         format_on_save = {

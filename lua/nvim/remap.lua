@@ -22,7 +22,7 @@ vim.keymap.set("n", "<leader>=", "za")
 vim.keymap.set("n", "<leader>dw", "diW")
 
 -- Save
-vim.keymap.set("n", "<c-s>", vim.cmd.wa, opts({ desc = "Save all" }))
+vim.keymap.set({ "n", "i" }, "<C-s>", vim.cmd.wa, opts({ desc = "Save all" }))
 vim.keymap.set("n", "<leader>q", vim.cmd.wqa, opts({ desc = "Save all and exit nvim" }))
 
 -- Split Screen

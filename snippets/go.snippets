@@ -1,0 +1,14 @@
+snippet typ "type ($1 name) struct"
+	type ${1} struct {
+		${0}
+	}
+
+snippet funi "func ($1 struct) $2( $3 parameter) $4 return"
+	func (${1}) ${2}(${3}) ${4} {
+		${0}
+	}
+
+snippet if!e "if err != nil"
+	if err != nil {
+		${0}
+	}
