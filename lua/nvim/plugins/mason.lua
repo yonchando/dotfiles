@@ -50,13 +50,14 @@ return {
                         },
                     },
                     emmet_ls = {
-                        filetypes = {
-                            'css',
-                            'html',
-                            'javascript',
-                            'scss',
-                            'sass',
-                            'blade',
+                        filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+                        init_options = {
+                            html = {
+                                options = {
+                                    -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+                                    ["bem.enabled"] = true,
+                                },
+                            },
                         },
                     },
                     lua_ls = {
@@ -121,12 +122,10 @@ return {
                 local config = configs[server_name]
 
                 if config == nil then
-                    config = {
-                        capabilities = capabilities
-                    }
-                else
-                    config.capabilities = capabilities
+                    config = {}
                 end
+
+                config.capabilities = capabilities
 
                 lspconfig[server_name].setup(config)
 
