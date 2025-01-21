@@ -24,6 +24,7 @@ set number
 set which-key
 set timeoutlen=50000
 set ideavimsupport=dialog
+set multicursor
 
 "----------------Mapping-----------------"
 map H b
@@ -40,7 +41,7 @@ map <C-u> <C-u>zz
 nmap n nzzzv
 nmap N Nzzzv
 "-- delete attr html from start at att
-map <leader>da d2f"
+map <leader>da' d2f"
 
 map <leader>dw daW
 map <leader>de diW
@@ -129,6 +130,9 @@ map <leader>q <Action>(CloseAllEditors)
 map <C-n> <Action>(EditorCloneCaretBelow)
 map <C-p> <Action>(EditorCloneCaretAbove)
 
+imap <C-h> <Action>(PreviousTemplateVariable)
+imap <C-l> <Action>(NextTemplateVariable)
+
 map <leader>dt <Action>(Unwrap)
 map <leader>st <Action>(SurroundWith)
 
@@ -136,6 +140,7 @@ map <leader>st <Action>(SurroundWith)
 map <leader>ms <Action>(MaximizeEditorInSplit)
 map <leader>vsp <Action>(SplitVertically)
 map <leader>sp <Action>(SplitHorizontally)
+
 map <Left> <Action>(StretchSplitToLeft)
 map <Right> <Action>(StretchSplitToRight)
 map <Up> <Action>(StretchSplitToUp)
@@ -188,5 +193,8 @@ map <leader>J <Action>(MoveStatementDown)
 "" Refactorings
 map <leader>t <Action>(Refactorings.QuickListPopupAction)
 map <leader>i <Action>(ShowIntentionActions)
+
+""
+map <leader>n <Plug>(multicursor-ms/)
 
 " Find more examples here: https://jb.gg/share-ideavimrc
