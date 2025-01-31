@@ -8,6 +8,11 @@ snippet funi "func ($1 struct) $2( $3 parameter) $4 return"
 		${0}
 	}
 
+snippet funcH "func ${name}(w http.ResponseWriter, r *http.Request)"
+	func ${1}(w http.ResponseWriter, r *http.Request) {
+		${0}
+	}
+
 snippet if!e "if err != nil"
 	if err != nil {
 		${0}
