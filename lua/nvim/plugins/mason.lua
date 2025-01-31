@@ -5,11 +5,13 @@ return {
         "neovim/nvim-lspconfig",
         "hrsh7th/cmp-nvim-lsp",
         "dcampos/cmp-emmet-vim",
+        "smjonas/inc-rename.nvim",
     },
     config = function()
         local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
         local util = require 'lspconfig.util'
+        require("inc_rename").setup()
 
         vim.keymap.set("n", "<leader>ms", function()
             vim.cmd("Mason")
@@ -148,7 +150,7 @@ return {
                 vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
                 vim.keymap.set('n', '<C-q>', vim.lsp.buf.hover, { desc = "Hover", silent = true })
-                vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, { desc = "Rename", silent = true })
+                vim.keymap.set('n', '<leader>rn', ":IncRename ", { desc = "Rename", silent = true })
                 vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, { desc = "signature_help", silent = true })
                 vim.keymap.set({ 'n', 'v' }, '<space>i', vim.lsp.buf.code_action,
                     { desc = "Code Actions", silent = true })

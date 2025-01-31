@@ -10,7 +10,7 @@ return {
         local config = {
             mode = "background",
             css = true,
-            tailwind = true,
+            tailwind = false,
             sass = {
                 enable = true,
                 parser = { "css", "scss" }
