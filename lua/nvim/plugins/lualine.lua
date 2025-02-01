@@ -32,15 +32,19 @@ return {
                 lualine_c = {
                     {
                         'filename',
-                        path = 0,
+                        path = 1,
                         file_status = false,
                     }
                 },
                 lualine_x = {
-                    "require'lsp-status'.status()",
+                    -- {
+                    --     require("noice").api.status.command.get,
+                    --     cond = require("noice").api.status.command.has,
+                    --     color = { fg = "#ff9e64" },
+                    -- },
                     'encoding',
                     'fileformat',
-                    { 'filetype', colored = true, icon_only = false }
+                    { 'filetype', colored = false, icon_only = false }
                 },
                 lualine_y = { 'progress' },
                 lualine_z = { 'location' }

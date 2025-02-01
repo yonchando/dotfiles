@@ -97,5 +97,6 @@ return {
         pcall(telescope.load_extension, 'fzf')
         pcall(telescope.load_extension, "ui-select")
         pcall(telescope.load_extension, "harpoon")
+        pcall(telescope.load_extension, "noice")
     end
 }
