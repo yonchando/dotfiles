@@ -1,0 +1,12 @@
+{
+    "workspace.library": [],
+    "workspace.checkThirdParty": false,
+    "diagnostics.globals": [
+        "vim",
+        "P",
+        "PN"
+    ],
+    "diagnostics.disable": [
+        "unused-local"
+    ]
+}
