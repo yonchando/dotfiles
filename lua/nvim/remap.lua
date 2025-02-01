@@ -62,3 +62,6 @@ vim.keymap.set('n', '<leader>dip', vim.diagnostic.goto_next, opts({ desc = "Go t
 vim.keymap.set('n', "<leader>lsr", vim.cmd.LspRestart, opts({ desc = "Lsp Restart" }))
 
 vim.keymap.set("n", "<leader>tsp", vim.cmd.TSPlaygroundToggle, opts({ desc = "Treesitter playground" }))
+
+-- DB
+vim.keymap.set("n", "<A-2>", vim.cmd.DBUIToggle, opts({ desc = "Toggle DBUI" }))

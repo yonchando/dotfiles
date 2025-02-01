@@ -1,7 +1,7 @@
 return {
     name = "Go run file",
     builder = function()
-        local file = vim.fn.expand("%:p")
+        local file = vim.fn.getcwd()
         local cmd = { file }
         if vim.bo.filetype == "go" then
             cmd = { "go", "run", file }

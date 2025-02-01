@@ -51,17 +51,6 @@ return {
                             }
                         },
                     },
-                    emmet_ls = {
-                        filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
-                        init_options = {
-                            html = {
-                                options = {
-                                    -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-                                    ["bem.enabled"] = true,
-                                },
-                            },
-                        },
-                    },
                     lua_ls = {
                         settings = {
                             Lua = {
@@ -131,6 +120,7 @@ return {
 
                 lspconfig[server_name].setup(config)
 
+                config.filetypes = { "cpp", "c" }
                 lspconfig.clangd.setup(config)
             end,
         }

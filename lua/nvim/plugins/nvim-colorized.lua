@@ -1,5 +1,6 @@
 return {
     "NvChad/nvim-colorizer.lua",
+    enabled = false,
     config = function()
         local status, colorizer = pcall(require, 'colorizer')
 
