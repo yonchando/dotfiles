@@ -5,6 +5,11 @@ end
 vim.keymap.set("n", "<leader>so", ":so %<CR>")
 vim.keymap.set("n", "<A-a>", "ggVG")
 
+
+vim.keymap.set("n", "<A-[>", "<C-o>", opts({ desc = "Jump back" }))
+vim.keymap.set("n", "<A-]>", "<C-i>", opts({ desc = "Jump forward" }))
+
+
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
