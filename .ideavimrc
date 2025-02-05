@@ -66,6 +66,9 @@ xmap <A-x> <Plug>SkipOccurrence
 
 map <BS> <Action>(EditorBackSpace)
 
+map <leader>ml <Action>(OpenFile)
+
+
 "" -- Map Bookmark
 map <leader>b0 <Action>(ToggleBookmark0)
 map <leader>b1 <Action>(ToggleBookmark1)
@@ -140,6 +143,7 @@ map <leader>st <Action>(SurroundWith)
 map <leader>ms <Action>(MaximizeEditorInSplit)
 map <leader>vsp <Action>(SplitVertically)
 map <leader>sp <Action>(SplitHorizontally)
+map <C-w>W <Action>(MoveEditorToOppositeTabGroup);
 
 map <Left> <Action>(StretchSplitToLeft)
 map <Right> <Action>(StretchSplitToRight)
