@@ -119,11 +119,12 @@ return {
                 config.capabilities = capabilities
 
                 lspconfig[server_name].setup(config)
-
-                config.filetypes = { "cpp", "c" }
-                lspconfig.clangd.setup(config)
             end,
         }
+
+        lspconfig.clangd.setup({
+            filetypes = { "cpp", "c" }
+        })
 
         mason_lspconfig.setup({
             ensure_installed = {
