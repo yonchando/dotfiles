@@ -33,8 +33,6 @@ if [[ ! -x $(which nvim) ]]; then
     cd ~/neovim && make CMAKE_BUILD_TYPE=Release
     cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb
     sudo apt install ./nvim-linux64.deb
-
-    rm -rf ~/neovim
 fi
 
 # neovim config repo
