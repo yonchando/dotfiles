@@ -79,23 +79,5 @@ if [[ ! -x $(which zsh) ]]; then
     # oh my theme powerlevel10k
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-    zsh
-
     source ~/.zshrc
-fi
-
-if [[ ! -x $(which lua) ]]; then
-    cd ~
-    curl -L -R -O https://www.lua.org/ftp/lua-5.4.7.tar.gz
-    tar zxf lua-5.4.7.tar.gz
-    cd lua-5.4.7
-    make all install
-
-    wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
-    tar zxpf luarocks-3.11.1.tar.gz
-    cd luarocks-3.11.1
-    ./configure && make && sudo make install
-    sudo luarocks install luasocket
-
-    cd ~ && rm -rf lua-*
 fi
