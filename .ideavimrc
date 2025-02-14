@@ -142,6 +142,7 @@ map <leader>st <Action>(SurroundWith)
 map <leader>ms <Action>(MaximizeEditorInSplit)
 map <leader>vsp <Action>(SplitVertically)
 map <leader>sp <Action>(SplitHorizontally)
+map <C-w>W <Action>(MoveEditorToOppositeTabGroup);
 
 map <Left> <Action>(StretchSplitToLeft)
 map <Right> <Action>(StretchSplitToRight)
