@@ -66,8 +66,7 @@ xmap <A-x> <Plug>SkipOccurrence
 
 map <BS> <Action>(EditorBackSpace)
 
-map <leader>ml <Action>(OpenFile)
-
+map <leader>ml <Action>(ManageRecentProjects)
 
 "" -- Map Bookmark
 map <leader>b0 <Action>(ToggleBookmark0)
@@ -157,7 +156,7 @@ map <Down> <Action>(StretchSplitToBottom)
 map <A-f> <Action>(Find)
 map <A-r> <Action>(Replace)
 map <A-i> <Action>(GotoFile)
-map <A-o> <Action>(GotoClass)
+map <A-p> <Action>(GotoClass)
 
 "" Run
 map <leader>rr <Action>(RunMenu)
