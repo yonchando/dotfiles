@@ -101,8 +101,8 @@ map ]t <Action>(com.mikejhill.intellij.movetab.actions.MoveTabRight)
 map ]w <Action>(EditorSelectWord)
 map [w <Action>(EditorUnSelectWord)
 
-map ]g <Action>(NextDiff);
-map [g <Action>(PreviousDiff);
+map ]g <Action>(VcsShowNextChangeMarker);
+map [g <Action>(VcsShowPrevChangeMarker);
 
 noremap ]f [w
 noremap [f [b
