@@ -65,9 +65,6 @@ if [[ ! -x $(which zsh) ]]; then
     cp ~/dotfiles/.zshrc ~/.zshrc
     cp ~/dotfiles/.p10k.zsh ~/.p10k.zsh
 
-    # change shell
-    chsh -s $(which zsh)
-
     # auto sugesstion
     git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     # cmd higlight syntax
