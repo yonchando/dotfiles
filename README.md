@@ -7,7 +7,9 @@ This repo is for personal usage for config `.ideavimrc` for PhpStorm, `.tmux.con
 Enviroment installed zsh, oh my zsh, lua, luarocks, neovim, tmux and nodejs.
 
 ```bash
-sudo apt update && sudo apt install -y git curl tmux
+sudo apt update && sudo apt install -y git curl tmux zsh
+
+sudo chsh $(which zsh)
 
 git clone https://github.com/yonchando/dotfiles.git ~/dotfiles && cd ~/dotfiles && ./setup-env.sh
 
