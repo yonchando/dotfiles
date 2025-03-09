@@ -66,7 +66,7 @@ function ohMyZsh() {
     # Set up oh my zsh
     if [[ ! -d ~/.oh-my-zsh ]]; then
         cd ~
-        sudo apt install -y zsh-autosuggestions zsh-syntax-highlighting zsh
+        sudo apt install -y zsh-autosuggestions zsh-syntax-highlighting
 
         # clone oh my zsh
         git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
