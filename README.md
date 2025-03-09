@@ -9,7 +9,7 @@ Enviroment installed zsh, oh my zsh, lua, luarocks, neovim, tmux and nodejs.
 ```bash
 sudo apt update && sudo apt install -y git curl tmux zsh
 
-sudo chsh -s $(which zsh)
+chsh -s $(which zsh)
 
 git clone https://github.com/yonchando/dotfiles.git ~/dotfiles && cd ~/dotfiles && ./setup-env.sh
 
