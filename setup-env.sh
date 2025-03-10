@@ -38,8 +38,8 @@ function neovim() {
     if [[ ! -x $(which nvim) ]]; then
         git clone https://github.com/neovim/neovim --depth=1 --branch=stable ~/neovim
         cd ~/neovim && make CMAKE_BUILD_TYPE=Release
-        cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb
-        sudo apt install ./nvim-linux64.deb
+        cd build && cpack -G DEB && sudo dpkg -i nvim-linux-x86_64.deb
+        sudo apt install ./nvim-linux-x86_64.deb
     fi
 
     # neovim config repo
