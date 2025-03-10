@@ -22,14 +22,15 @@ function tmux() {
         git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     fi
 
-    if [[ -x $(which tmux-sessionizer) ]]; then
+    if [[ ! -x $(which tmux-sessionizer) ]]; then
 
-        if [[ ! -d ~/.local ]]; then
-            mkdir ~/.local
+        if [[ ! -d ~/.local/bin ]]; then
+            mkdir -p ~/.local/bin
         fi
 
-        sudo cp -r ~/dotfiles/.local/bin ~/.local/bin
+        cp -r ~/dotfiles/.local/bin/tmux-sessionizer ~/.local/bin
     fi
+
 }
 
 function neovim() {
