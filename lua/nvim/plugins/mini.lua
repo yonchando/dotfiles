@@ -1,5 +1,6 @@
 return {
     'echasnovski/mini.nvim',
+    enabled = true,
     branch = 'stable',
     config = function()
         local status, starter = pcall(require, "mini.starter")

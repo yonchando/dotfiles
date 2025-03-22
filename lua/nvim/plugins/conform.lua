@@ -25,7 +25,8 @@ return {
             blade = { "blade-formatter", lsp_format = "fallback" },
             yaml = { "prettier", lsp_format = "fallback" },
             php = { 'pint', 'php_cs_fixer', lsp_format = "fallback" },
-            cpp = { "clang-format", lsp_format = "fallback" }
+            cpp = { "clang-format", lsp_format = "fallback" },
+            bash = { "clang-format", lsp_format = "fallback" },
         },
 
         format_on_save = {
