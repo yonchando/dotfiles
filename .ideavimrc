@@ -188,7 +188,7 @@ map <leader>op <Action>(OptimizeImports)
 map <leader>E <Action>(ShowErrorDescription)
 map <leader>O <Action>(OverrideMethods)
 map <leader>oc <Action>(SilentCodeCleanup)
-map <leader>fc <Action>(Tool_Command Tools_Pint)
+map <leader>fc <Action>(Tool_External Tools_Pint)
 
 map <leader>k <Action>(MoveLineUp)
 map <leader>j <Action>(MoveLineDown)
