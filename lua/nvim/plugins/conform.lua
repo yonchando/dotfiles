@@ -18,6 +18,7 @@ return {
     opts = {
         formatters_by_ft = {
             javascript = { "prettier", lsp_format = "fallback" },
+            typescript = { "eslint", "prettier", lsp_format = "fallback" },
             html = { "prettier", lsp_format = "fallback" },
             css = { "prettier", lsp_format = "fallback" },
             scss = { "prettier", lsp_format = "fallback" },

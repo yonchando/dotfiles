@@ -100,7 +100,15 @@ return {
                         },
                         filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
                     },
-                    volar = {}
+                    volar = {},
+                    elslint = {
+                        on_attach = function(client, bufnr)
+                            vim.api.nvim_create_autocmd("BufWritePre", {
+                                buffer = bufnr,
+                                command = "EslintFixAll"
+                            })
+                        end
+                    }
                 }
 
                 capabilities.textDocument = {
@@ -141,7 +149,7 @@ return {
                 vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
                 vim.keymap.set('n', '<C-q>', vim.lsp.buf.hover, { desc = "Hover", silent = true })
-                vim.keymap.set('n', '<leader>rn', ":IncRename ", { desc = "Rename", silent = true })
+                vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "Rename", silent = true })
                 vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, { desc = "signature_help", silent = true })
                 vim.keymap.set({ 'n', 'v' }, '<space>i', vim.lsp.buf.code_action,
                     { desc = "Code Actions", silent = true })
