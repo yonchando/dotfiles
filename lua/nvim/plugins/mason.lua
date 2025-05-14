@@ -5,13 +5,11 @@ return {
         "neovim/nvim-lspconfig",
         "hrsh7th/cmp-nvim-lsp",
         "dcampos/cmp-emmet-vim",
-        "smjonas/inc-rename.nvim",
     },
     config = function()
         local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
         local util = require 'lspconfig.util'
-        require("inc_rename").setup()
 
         vim.keymap.set("n", "<leader>ms", function()
             vim.cmd("Mason")

@@ -67,22 +67,30 @@ return {
             mapping = cmp.mapping.preset.insert({
                 ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
                 ['<C-d>'] = cmp.mapping.scroll_docs(4),  -- Down
-                ['<C-Space>'] = cmp.mapping.complete(),
+                ['<C-Space>'] = cmp.mapping.complete({
+                    config = {
+                        sources = {
+                            { name = 'nvim_lsp' },
+                            { name = "emmet_vim" },
+                            { name = "buffer" },
+                        }
+                    }
+                }),
+                ['<C-j>'] = cmp.mapping.complete({
+                    config = {
+                        sources = {
+                            { name = 'luasnip' }
+                        }
+                    }
+                }),
                 ['<CR>'] = cmp.mapping.confirm({ select = true }),
             }),
-            sources = cmp.config.sources(
-                {
-                    { name = 'nvim_lsp' },
-                    { name = 'luasnip' },
-                    { name = "vim-dadbod-completion" },
-                    {
-                        name = 'emmet_vim',
-                    }
-                },
-                {
-                    { name = "buffer" }
-                }
-            ),
+            sources = cmp.config.sources({
+                { name = "buffer" },
+                { name = "nvim_lsp" },
+                { name = "luasnip" },
+                { name = "emmet_vim" },
+            }),
             formatting = {
                 fields = { "kind", "abbr", "menu" },
                 format = lspkind.cmp_format({
