@@ -25,7 +25,8 @@ return {
                 "xml",
                 "vue",
                 "yaml",
-                "json"
+                "json",
+                "php"
             },
 
             matchup = {
@@ -58,7 +59,7 @@ return {
             },
 
             autotag = {
-                enable = true
+                enable = false
             },
 
             playground = {

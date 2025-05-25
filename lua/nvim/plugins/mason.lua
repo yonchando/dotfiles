@@ -149,7 +149,7 @@ return {
                 vim.keymap.set('n', '<C-q>', vim.lsp.buf.hover, { desc = "Hover", silent = true })
                 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "Rename", silent = true })
                 vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, { desc = "signature_help", silent = true })
-                vim.keymap.set({ 'n', 'v' }, '<space>i', vim.lsp.buf.code_action,
+                vim.keymap.set({ 'n', 'v' }, '<leader>i', vim.lsp.buf.code_action,
                     { desc = "Code Actions", silent = true })
             end,
         })

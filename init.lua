@@ -1,2 +1,7 @@
 require("nvim")
-require("folding")
+
+local ok, folding = pcall(require, "folding")
+
+if ok then
+    folding.setup()
+end

@@ -24,8 +24,8 @@ vim.keymap.set("n", "za", "zazz", opts({ desc = "Toggle fold under cursor" }))
 
 vim.keymap.set("n", "<leader>dw", "diW")
 
-vim.keymap.set("n", "<Right>", "<C-w>10>")
-vim.keymap.set("n", "<Left>", "<C-w>10<")
+vim.keymap.set("n", "<Right>", "<C-w>10<")
+vim.keymap.set("n", "<Left>", "<C-w>10>")
 vim.keymap.set("n", "<Up>", "<C-w>10+")
 vim.keymap.set("n", "<Down>", "<C-w>10-")
 
