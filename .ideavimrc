@@ -195,6 +195,9 @@ map <leader>j <Action>(MoveLineDown)
 map <leader>K <Action>(MoveStatementUp)
 map <leader>J <Action>(MoveStatementDown)
 
+map <A-n> <Action>(GotoNextElementUnderCaretUsage)
+map <A-p> <Action>(GotoPrevElementUnderCaretUsage)
+
 "" Refactorings
 map <leader>t <Action>(Refactorings.QuickListPopupAction)
 map <leader>i <Action>(ShowIntentionActions)
