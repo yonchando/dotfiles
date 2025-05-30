@@ -10,9 +10,11 @@ return {
         bufferline.setup {
             options = {
                 mode = "buffers",
-                style_preset = bufferline.style_preset.default,
+                style_preset = bufferline.style_preset.minimal,
                 themable = false,
-                numbers = "ordinal",
+                numbers = function(num)
+                    return num.ordinal .. "(" .. num.id .. ")"
+                end,
                 indicator = {
                     style = "none"
                 },

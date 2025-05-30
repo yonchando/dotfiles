@@ -16,8 +16,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", 'n', 'nzzzv')
 vim.keymap.set("n", 'N', 'Nzzzv')
 
-vim.keymap.set("n", "<leader>-}", "zfi{", opts({ desc = "Create fold in {}" }))
-vim.keymap.set("n", "<leader>-)", "zfi)", opts({ desc = "Create fold in ()" }))
+vim.keymap.set("n", "<leader>-{", "zfi{", opts({ desc = "Create fold in {}" }))
+vim.keymap.set("n", "<leader>-(", "zfi)", opts({ desc = "Create fold in ()" }))
 vim.keymap.set("n", "<leader>-f", "zfif", opts({ desc = "Create fold in function" }))
 vim.keymap.set("v", "<leader>-", "zf", opts({ desc = "Create fold in function" }))
 vim.keymap.set("n", "za", "zazz", opts({ desc = "Toggle fold under cursor" }))
@@ -63,14 +63,12 @@ vim.keymap.set("v", "<A-f>", '"fy/<C-r>f<CR>', opts({ desc = "Search select text
 vim.keymap.set("i", "<C-z>", "<C-c>ua", opts({ desc = "Undo back to insert" }))
 
 -- vim dianostic
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts({ desc = "Diagnostic open float" }))
-vim.keymap.set('n', '<leader>din', vim.diagnostic.goto_prev, opts({ desc = "Go to prev Diagnostic" }))
-vim.keymap.set('n', '<leader>dip', vim.diagnostic.goto_next, opts({ desc = "Go to next Diagnostic" }))
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts({ desc = "Diagnostic open float" }))
 
 -- Lsp mapping
 vim.keymap.set('n', "<leader>lsr", vim.cmd.LspRestart, opts({ desc = "Lsp Restart" }))
 
-vim.keymap.set("n", "<leader>tsp", vim.cmd.TSPlaygroundToggle, opts({ desc = "Treesitter playground" }))
+vim.keymap.set("n", "<leader>tp", vim.cmd.TSPlaygroundToggle, opts({ desc = "Treesitter playground" }))
 
 -- DB
 vim.keymap.set("n", "<A-2>", vim.cmd.DBUIToggle, opts({ desc = "Toggle DBUI" }))

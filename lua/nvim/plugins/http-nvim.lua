@@ -6,7 +6,7 @@ return {
     },
     config = function()
         vim.cmd [[
-augroup HttpFiltypeRelated
+augroup ReqFiltypeRelated
   au BufNewFile,BufRead *.http set ft=http
 augroup END
 ]]
