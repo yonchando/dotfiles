@@ -9,7 +9,6 @@ return {
     config = function()
         local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
-        local util = require 'lspconfig.util'
 
         vim.keymap.set("n", "<leader>ms", function()
             vim.cmd("Mason")

@@ -13,7 +13,8 @@ return {
             items = {
                 starter.sections.recent_files(5, true),
                 starter.sections.builtin_actions(),
-            }
+            },
+            silent = true
         })
     end
 }

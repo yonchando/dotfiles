@@ -12,15 +12,12 @@ return {
                 mode = "buffers",
                 style_preset = bufferline.style_preset.minimal,
                 themable = false,
-                numbers = function(num)
-                    return num.ordinal .. "(" .. num.id .. ")"
-                end,
+                numbers = "ordinal",
                 indicator = {
                     style = "none"
                 },
                 modified_icon = '*',
-                max_name_length = 18,
-                tab_size = 18
+                diagnostics = 'nvim_lsp',
             }
         }
 

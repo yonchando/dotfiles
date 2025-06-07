@@ -77,7 +77,7 @@ return {
             vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find all files buffers" })
             vim.keymap.set("n", "<leader>jp", builtin.jumplist, { desc = "Jump List" })
 
-            vim.keymap.set("n", "<leader>dig", builtin.diagnostics, { desc = "Diagnostics" })
+            vim.keymap.set("n", "<leader>dd", builtin.diagnostics, { desc = "Diagnostics" })
 
             vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Lsp Definitions" })
             vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "Lsp Implementations" })
