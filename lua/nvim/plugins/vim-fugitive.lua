@@ -9,3 +9,4 @@ return {
         vim.keymap.set("n", "<leader>g.", function() vim.cmd('Gclog %') end, { desc = "Git mergetool" })
     end
 }
+
