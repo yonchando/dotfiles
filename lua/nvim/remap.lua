@@ -4,7 +4,7 @@ end
 
 vim.keymap.set("n", "<leader>so", ":so %<CR>")
 vim.keymap.set("n", "<A-a>", "ggVG")
-vim.keymap.set("n", "<A-1>", ":Exp<CR>", opts({desc = "Explore"}))
+vim.keymap.set("n", "<A-1>", ":Exp<CR>", opts({ desc = "Explore" }))
 
 
 vim.keymap.set("n", "<A-[>", "<C-o>", opts({ desc = "Jump back" }))
