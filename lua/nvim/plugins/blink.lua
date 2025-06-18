@@ -1,14 +1,14 @@
 return {
-  'saghen/blink.cmp',
-  dependencies = { 'rafamadriz/friendly-snippets' },
+    'saghen/blink.cmp',
+    dependencies = { 'rafamadriz/friendly-snippets' },
 
-  version = '1.*',
+    version = '1.*',
 
-  opts = {
-    keymap = { preset = 'default' },
+    opts = {
+        keymap = { preset = 'default' },
 
-    appearance = {
-      nerd_font_variant = 'mono'
+        appearance = {
+            nerd_font_variant = 'mono'
+        },
     },
-  },
 }
