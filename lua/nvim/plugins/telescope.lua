@@ -17,10 +17,14 @@ return {
 
         vim.keymap.set("n", "<leader>dd", builtin.diagnostics, { desc = "Diagnostics" })
 
-        vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Lsp Definitions" })
+        -- vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Lsp Definitions" })
         vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "Lsp Implementations" })
         vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Lsp References" })
         vim.keymap.set("n", "gm", builtin.lsp_document_symbols, { desc = "Lsp Document Symbols" })
+
+        vim.keymap.set("n", "<A-9>", builtin.git_branches, { desc = "Git list branches" })
+        vim.keymap.set("n", "<A-0>", builtin.git_bcommits, { desc = "Git commit history current buffer" })
+        vim.keymap.set("n", "<A-k>", builtin.git_commits, { desc = "Git commit history all" })
 
         vim.keymap.set('n', '<C-e>', function()
             return builtin.oldfiles({ cwd_only = true })
