@@ -136,7 +136,7 @@ map <leader>q <Action>(CloseAllEditors)
 map <C-n> <Action>(EditorCloneCaretBelow)
 map <C-p> <Action>(EditorCloneCaretAbove)
 
-imap <C-j> <Action>(PreviousTemplateVariable)
+imap <C-h> <Action>(PreviousTemplateVariable)
 imap <C-l> <Action>(NextTemplateVariable)
 
 map <leader>dt <Action>(Unwrap)
