@@ -18,6 +18,9 @@ vim.o.smartcase = true
 
 vim.o.termguicolors = true
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- yank highlight
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
