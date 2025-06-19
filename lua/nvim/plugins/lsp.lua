@@ -21,5 +21,18 @@ return {
         lspconfig.lua_ls.setup({
             capabilities = capabilities
         })
+
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+            callback = function(ev)
+                vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+                vim.keymap.set('n', '<C-q>', vim.lsp.buf.hover, { desc = "Hover", silent = true })
+                vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "Rename", silent = true })
+                vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, { desc = "signature_help", silent = true })
+                vim.keymap.set({ 'n', 'v' }, '<leader>i', vim.lsp.buf.code_action,
+                    { desc = "Code Actions", silent = true })
+            end
+        })
     end
 }

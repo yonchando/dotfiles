@@ -4,8 +4,6 @@ end
 
 vim.keymap.set("n", "<leader>so", ":so %<CR>")
 vim.keymap.set("n", "<A-a>", "ggVG")
-vim.keymap.set("n", "<A-1>", ":Exp<CR>", opts({ desc = "Explore" }))
-
 
 vim.keymap.set("n", "<A-[>", "<C-o>", opts({ desc = "Jump back" }))
 vim.keymap.set("n", "<A-]>", "<C-i>", opts({ desc = "Jump forward" }))
@@ -25,8 +23,8 @@ vim.keymap.set("n", "za", "zazz", opts({ desc = "Toggle fold under cursor" }))
 
 vim.keymap.set("n", "<leader>dw", "diW")
 
-vim.keymap.set("n", "<Right>", "<C-w>10<")
-vim.keymap.set("n", "<Left>", "<C-w>10>")
+vim.keymap.set("n", "<Right>", "<C-w>10>")
+vim.keymap.set("n", "<Left>", "<C-w>10<")
 vim.keymap.set("n", "<Up>", "<C-w>10+")
 vim.keymap.set("n", "<Down>", "<C-w>10-")
 
