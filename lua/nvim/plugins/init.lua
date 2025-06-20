@@ -1,4 +1,9 @@
 return {
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+    },
     { "christoomey/vim-tmux-navigator", },
     {
         'windwp/nvim-autopairs',
@@ -24,5 +29,38 @@ return {
             vim.keymap.set({ "i" }, '<C-H>', function() ls.jump(-1) end, { silent = true })
         end
     },
+    {
+        "RRethy/vim-illuminate",
+        config = function()
+            require("illuminate").configure()
 
+            vim.api.nvim_set_hl(0, "Visual", { bg = "#2d3f76" })
+            vim.api.nvim_set_hl(0, "IlluminatedWordColor", { bg = "#23315c" })
+
+            -- change the highlight style
+            vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "IlluminatedWordColor" })
+            vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "IlluminatedWordColor" })
+            vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "IlluminatedWordColor" })
+
+            --- auto update the highlight style on colorscheme change
+            vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+                pattern = { "*" },
+                callback = function(ev)
+                    vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "IlluminatedWordColor" })
+                    vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "IlluminatedWordColor" })
+                    vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "IlluminatedWordColor" })
+                end
+            })
+        end
+    },
+    {
+        'andymass/vim-matchup',
+        init = function()
+            vim.g.matchup_matchparen_offscreen = { method = "popup" }
+        end
+    },
+    {
+        'mg979/vim-visual-multi',
+        branch = 'master'
+    }
 }

@@ -3,17 +3,13 @@ return {
     dependencies = {
         'rafamadriz/friendly-snippets',
         'neovim/nvim-lspconfig',
-        'L3MON4D3/LuaSnip'
+        'L3MON4D3/LuaSnip',
+        'onsails/lspkind.nvim',
     },
     version = '1.*',
     opts = {
         keymap = {
             preset = 'default',
-
-            ['C-j'] = { function(cmp)
-                cmp.show({ providers = { 'snippets' } })
-            end, 'fallback' },
-
             ['C-h'] = { 'snippet_backward', 'fallback' },
             ['C-l'] = { 'snippet_forward', 'fallback' },
         },
@@ -37,7 +33,7 @@ return {
         snippets = { preset = 'luasnip' },
 
         sources = {
-            default = { 'lsp', 'path', 'buffer' }
+            default = { 'lsp', 'path', 'snippets', 'buffer' }
         }
-    },
+    }
 }
