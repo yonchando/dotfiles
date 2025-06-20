@@ -66,7 +66,5 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts({ desc = "Diagn
 -- Lsp mapping
 vim.keymap.set('n', "<leader>lsr", vim.cmd.LspRestart, opts({ desc = "Lsp Restart" }))
 
-vim.keymap.set("n", "<leader>tp", vim.cmd.TSPlaygroundToggle, opts({ desc = "Treesitter playground" }))
-
 -- DB
 vim.keymap.set("n", "<A-2>", vim.cmd.DBUIToggle, opts({ desc = "Toggle DBUI" }))

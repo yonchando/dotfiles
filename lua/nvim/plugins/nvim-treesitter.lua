@@ -4,18 +4,52 @@ return {
         "nvim-treesitter/nvim-treesitter-textobjects",
     },
     branch = 'master',
-    lazy = false,
     build = ":TSUpdate",
     config = function()
         local treesitter_config = require('nvim-treesitter.configs')
 
+
+        local opts = function(tbl)
+            return vim.tbl_extend("keep", { noremap = true, silent = true }, tbl)
+        end
+        vim.keymap.set("n", "<leader>tp", vim.cmd.InspectTree, opts({ desc = "Treesitter playground" }))
+        vim.keymap.set("n", "<leader>td", function()
+            vim.cmd('TSUpdate dbdiagram')
+        end, opts({ desc = "TSUpdate dbdiagram" }))
+
         treesitter_config.setup({
             modules = {},
-            ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+            ensure_installed = {
+                "c",
+                "lua",
+                "vim",
+                "vimdoc",
+                "query",
+                "markdown",
+                "markdown_inline",
+                "regex",
+            },
             sync_install = false,
             auto_install = true,
             ignore_install = {},
-
+            highlight = {
+                enable = true,
+                additional_vim_regex_highlighting = false,
+            },
+            indent = {
+                enable = true,
+                disable = {
+                    'html',
+                }
+            },
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = ']w',
+                    node_incremental = ']w',
+                    node_decremental = '[w',
+                },
+            },
             textobjects = {
                 select = {
                     enable = true,
