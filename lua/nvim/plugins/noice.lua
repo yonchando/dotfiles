@@ -3,11 +3,10 @@ return {
     "folke/noice.nvim",
     event = "VeryLazy",
     enabled = true,
-    opts = {
-        -- add any options here
-    },
+    opts = {},
     dependencies = {
         "MunifTanjim/nui.nvim",
+        "rcarriga/nvim-notify",
     },
     config = function()
         local noice = require("noice")
@@ -19,7 +18,6 @@ return {
                     ["cmp.entry.get_documentation"] = false, -- requires hrsh7th/nvim-cmp
                 },
             },
-            -- you can enable a preset for easier configuration
             presets = {
                 bottom_search = true,         -- use a classic bottom cmdline for search
                 command_palette = true,       -- position the cmdline and popupmenu together
@@ -44,5 +42,9 @@ return {
         vim.keymap.set("n", "<leader>nh", function()
             noice.cmd("dismiss")
         end, opts({ desc = "Noice history" }))
+
+        vim.keymap.set("n", "<leader>na", function()
+            noice.cmd("all")
+        end, opts({ desc = "Noice all" }))
     end
 }

@@ -62,5 +62,18 @@ return {
     {
         'mg979/vim-visual-multi',
         branch = 'master'
+    },
+    {
+        'yonchando/my-spaces.nvim',
+        requires = {
+            'nvim-telescope/telescope.nvim',
+            'nvim-lua/plenary.nvim'
+        },
+        config = function()
+            require("my_spaces").setup()
+
+            vim.keymap.set("n", "<leader>ml", vim.cmd.ListSpace, { desc = "[M]y workpaces [L]ist" })
+        end
     }
+
 }

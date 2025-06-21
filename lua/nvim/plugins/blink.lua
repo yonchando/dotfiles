@@ -38,7 +38,15 @@ return {
         snippets = { preset = 'luasnip' },
 
         sources = {
-            default = { 'lsp', 'path', 'snippets', 'buffer' }
+            default = { 'lsp', 'path', 'snippets', 'buffer', 'dbd' },
+
+            providers = {
+                dbd = {
+                    name = "DB Diagram",
+                    module = 'dbdiagram',
+                    opts = {}
+                }
+            }
         }
     }
 }

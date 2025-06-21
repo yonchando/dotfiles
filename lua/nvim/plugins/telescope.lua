@@ -36,8 +36,18 @@ return {
         })
         telescope.load_extension("noice")
         telescope.load_extension("fzf")
+        telescope.load_extension("ui-select")
 
         local builtin = require('telescope.builtin')
+
+        vim.keymap.set('n', '<A-f>', function()
+            builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+                winblend = 10,
+                previewer = true,
+            })
+        end, { desc = '[/] Fuzzily search in current buffer' })
+
+        vim.keymap.set('n', "<A-7>", builtin.treesitter, { desc = 'Telescope tree' })
 
         vim.keymap.set('n', '<C-f>', builtin.find_files, { desc = "Telescope find files" })
         vim.keymap.set('n', '<leader>ff', function()

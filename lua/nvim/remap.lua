@@ -3,6 +3,7 @@ local opts = function(tbl)
 end
 
 vim.keymap.set("n", "<leader>x", ":so %<CR>", opts({ desc = "source %" }))
+vim.keymap.set("n", "<leader><leader>x", ":so ~/.config/nvim/init.lua<CR>", opts({ desc = "source %" }))
 vim.keymap.set("n", "<A-a>", "ggVG")
 
 vim.keymap.set("n", "<A-[>", "<C-o>", opts({ desc = "Jump back" }))

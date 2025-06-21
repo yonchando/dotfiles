@@ -3,6 +3,7 @@ return {
     dependencies = {
         "mason-org/mason-lspconfig.nvim",
         'saghen/blink.cmp',
+        "mfussenegger/nvim-jdtls",
         {
             "folke/lazydev.nvim",
             ft = "lua",
