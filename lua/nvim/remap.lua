@@ -50,6 +50,7 @@ vim.keymap.set({ "n", "v" }, "K", "3kzz", opts({ desc = "Move coursor up 3 line"
 vim.keymap.set({ "n", "v" }, "<leader>pa", '"ap', opts({ desc = "Paste text store in char a" }))
 vim.keymap.set({ "n", "v" }, "<leader>ps", '"sp', opts({ desc = "Paste text store in char s" }))
 vim.keymap.set({ "n", "v" }, "<leader>pd", '"dp', opts({ desc = "Paste text store in char d" }))
+vim.keymap.set({ "n", "v" }, "<leader>pp", '"0pdiwP', opts({ desc = "Paste text store in char d" }))
 
 vim.keymap.set("v", "<leader>ya", '"ay', opts({ desc = "Yank text in char a" }))
 vim.keymap.set("v", "<leader>ys", '"sy', opts({ desc = "Yank text in char s" }))
