@@ -11,8 +11,8 @@ parser_config['dbdiagram'] = {
     filetype = "dbdiagram",                                         -- if filetype does not match the parser name
 }
 
-vim.cmd [[
-augroup DBGFiltypeRelated
-  au BufNewFile,BufRead *.dbdiagram set ft=dbdiagram
-augroup END
-]]
+vim.filetype.add({
+    extension = {
+        dbml = 'dbdiagram'
+    }
+})
