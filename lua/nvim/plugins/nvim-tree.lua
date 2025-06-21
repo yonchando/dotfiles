@@ -2,17 +2,36 @@ return {
     "nvim-tree/nvim-tree.lua",
     config = function()
         local api = require("nvim-tree.api")
-        local nvim_tree = require("nvim-tree")
-        nvim_tree.setup({
-            on_attach = function(bufnr)
-                local opts = function(desc)
-                    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-                end
 
+        local nvim_tree = require("nvim-tree")
+
+        nvim_tree.setup({
+            view = {
+                number = true,
+                relativenumber = true,
+            },
+            renderer = {
+                icons = {
+                    show = {
+                        git = false
+                    },
+                },
+                highlight_git = true,
+                indent_markers = {
+                    enable = true,
+                    icons = {
+                        corner = "└",
+                        edge = "│",
+                        item = "│",
+                        bottom = "─",
+                        none = " ",
+                    }
+                }
+            },
+            on_attach = function(bufnr)
                 api.config.mappings.default_on_attach(bufnr)
             end
         })
-
 
         local opts = function(tbl)
             return vim.tbl_extend("keep", { noremap = true, silent = true }, tbl)
