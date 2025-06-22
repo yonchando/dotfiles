@@ -84,7 +84,7 @@ return {
             http_nvim.setup()
 
             vim.keymap.set("n", "<leader>rc", ":HttpRun<CR>", { desc = "Http run", silent = true, noremap = true })
-            vim.keymap.set("n", "<leader>rl", ":HttpReRun<CR>", { desc = "Http run", silent = true, noremap = true })
+            vim.keymap.set("n", "<leader>rl", ":HttpRerun<CR>", { desc = "Http run", silent = true, noremap = true })
             vim.keymap.set("n", "<leader>rr", ":HttpResult<CR>", { desc = "Http run", silent = true, noremap = true })
             vim.keymap.set("n", "<leader>rh", ":HttpHistory<CR>", { desc = "Http run", silent = true, noremap = true })
             vim.keymap.set("n", "<leader>rx", ":HttpClose<CR>", { desc = "Http run", silent = true, noremap = true })
