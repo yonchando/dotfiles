@@ -9,6 +9,7 @@ return {
                 javascript = { "prettier", "prettierd", lsp_format = "fallback" },
                 typescript = { "prettier", "prettierd", lsp_format = "fallback" },
                 vue = { "prettier", "prettierd", lsp_format = "fallback" },
+                json = { "prettier", "prettierd", lsp_format = "fallback" },
             },
             default_format_opts = {
                 lsp_format = "fallback",

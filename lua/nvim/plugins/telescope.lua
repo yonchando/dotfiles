@@ -62,7 +62,7 @@ return {
 
         vim.keymap.set("n", "<leader>dd", builtin.diagnostics, { desc = "Diagnostics" })
 
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Lsp Definitions" })
+        vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Lsp Definitions" })
         vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "Lsp Implementations" })
         vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Lsp References" })
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Lsp References" })

@@ -74,6 +74,21 @@ return {
 
             vim.keymap.set("n", "<leader>ml", vim.cmd.ListSpace, { desc = "[M]y workpaces [L]ist" })
         end
+    },
+    {
+        -- dir = "/mnt/d/code/lua/http.nvim",
+        "yonchando/http.nvim",
+        config = function()
+            local http_nvim = require("http-nvim")
+
+            http_nvim.setup()
+
+            vim.keymap.set("n", "<leader>rc", ":HttpRun<CR>", { desc = "Http run", silent = true, noremap = true })
+            vim.keymap.set("n", "<leader>rl", ":HttpReRun<CR>", { desc = "Http run", silent = true, noremap = true })
+            vim.keymap.set("n", "<leader>rr", ":HttpResult<CR>", { desc = "Http run", silent = true, noremap = true })
+            vim.keymap.set("n", "<leader>rh", ":HttpHistory<CR>", { desc = "Http run", silent = true, noremap = true })
+            vim.keymap.set("n", "<leader>rx", ":HttpClose<CR>", { desc = "Http run", silent = true, noremap = true })
+        end
     }
 
 }
