@@ -46,8 +46,6 @@ map <leader>da' d2f"
 map <leader>dw daW
 map <leader>de diW
 
-map <leader>pg "0gr
-xmap <leader>pp "0pdiwP
     
 vmap <leader>ya "ay
 vmap <leader>ys "sy
@@ -56,6 +54,9 @@ vmap <leader>yd "dy
 map <leader>pa "ap
 map <leader>ps "sp
 map <leader>pd "dp
+
+map <leader>pg "0gr
+xmap <leader>pp "0pdiwP
 
 map <leader>/ :nohlsearch<CR>
 
@@ -138,6 +139,9 @@ map <C-p> <Action>(EditorCloneCaretAbove)
 
 imap <C-h> <Action>(PreviousTemplateVariable)
 imap <C-l> <Action>(NextTemplateVariable)
+
+imap <C-y> <Action>(EditorChooseLookupItem)
+" InsertInlineCompletionAction
 
 map <leader>dt <Action>(Unwrap)
 map <leader>st <Action>(SurroundWith)
