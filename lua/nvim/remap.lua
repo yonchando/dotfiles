@@ -15,11 +15,29 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", 'n', 'nzzzv')
 vim.keymap.set("n", 'N', 'Nzzzv')
 
-vim.keymap.set("n", "<leader>-{", "zfi{", opts({ desc = "Create fold in {}" }))
-vim.keymap.set("n", "<leader>-(", "zfi)", opts({ desc = "Create fold in ()" }))
-vim.keymap.set("n", "<leader>-f", "zfif", opts({ desc = "Create fold in function" }))
-vim.keymap.set("v", "<leader>-", "zf", opts({ desc = "Create fold in function" }))
-vim.keymap.set("n", "za", "zazz", opts({ desc = "Toggle fold under cursor" }))
+vim.keymap.set("n", "<leader>ee", function()
+    vim.o.foldmethod = 'manual'
+end, opts({ desc = "foldmethod manual" }))
+
+vim.keymap.set("n", "<leader>el1", function()
+    vim.o.foldlevel = 0
+    vim.o.foldnestmax = 1
+    vim.o.foldmethod = 'indent'
+end, opts({ desc = "Fold all" }))
+vim.keymap.set("n", "<leader>el2", function()
+    vim.o.foldlevel = 1
+    vim.o.foldnestmax = 1
+    vim.o.foldmethod = 'indent'
+end, opts({ desc = "Fold level 1" }))
+vim.keymap.set("n", "<leader>el3", function()
+    vim.o.foldlevel = 2
+    vim.o.foldnestmax = 1
+    vim.o.foldmethod = 'indent'
+end, opts({ desc = "Fold leve 2" }))
+
+vim.keymap.set("n", "<leader>_", "zM")
+vim.keymap.set("n", "<leader>+", "zR")
+vim.keymap.set("n", "<leader>=", "za")
 
 vim.keymap.set("n", "<leader>dw", "diW")
 
@@ -67,6 +85,3 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts({ desc = "Diagn
 
 -- Lsp mapping
 vim.keymap.set('n', "<leader>lsr", vim.cmd.LspRestart, opts({ desc = "Lsp Restart" }))
-
--- DB
-vim.keymap.set("n", "<A-2>", vim.cmd.DBUIToggle, opts({ desc = "Toggle DBUI" }))

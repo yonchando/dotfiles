@@ -45,7 +45,7 @@ return {
             --- auto update the highlight style on colorscheme change
             vim.api.nvim_create_autocmd({ "ColorScheme" }, {
                 pattern = { "*" },
-                callback = function(ev)
+                callback = function()
                     vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "IlluminatedWordColor" })
                     vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "IlluminatedWordColor" })
                     vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "IlluminatedWordColor" })
@@ -76,6 +76,25 @@ return {
         end
     },
     {
+        'kristijanhusak/vim-dadbod-ui',
+        dependencies = {
+            { 'tpope/vim-dadbod',                     lazy = true },
+            { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true }, -- Optional
+        },
+        cmd = {
+            'DBUI',
+            'DBUIToggle',
+            'DBUIAddConnection',
+            'DBUIFindBuffer',
+        },
+        init = function()
+            -- Your DBUI configuration
+            vim.g.db_ui_use_nerd_fonts = 1
+
+            vim.keymap.set("n", "<A-2>", ":DBUIToggle<CR>", { silent = true })
+        end
+    },
+    {
         -- dir = "/mnt/d/code/lua/http.nvim",
         "yonchando/http.nvim",
         config = function()
@@ -84,11 +103,12 @@ return {
             http_nvim.setup()
 
             vim.keymap.set("n", "<leader>rc", ":HttpRun<CR>", { desc = "Http run", silent = true, noremap = true })
-            vim.keymap.set("n", "<leader>rl", ":HttpRerun<CR>", { desc = "Http run", silent = true, noremap = true })
-            vim.keymap.set("n", "<leader>rr", ":HttpResult<CR>", { desc = "Http run", silent = true, noremap = true })
-            vim.keymap.set("n", "<leader>rh", ":HttpHistory<CR>", { desc = "Http run", silent = true, noremap = true })
-            vim.keymap.set("n", "<leader>rx", ":HttpClose<CR>", { desc = "Http run", silent = true, noremap = true })
+            vim.keymap.set("n", "<leader>rl", ":HttpRerun<CR>", { desc = "Http Rerun", silent = true, noremap = true })
+            vim.keymap.set("n", "<leader>rr", ":HttpResult<CR>",
+                { desc = "Http view latest result", silent = true, noremap = true })
+            vim.keymap.set("n", "<leader>rh", ":HttpHistory<CR>",
+                { desc = "Http view history", silent = true, noremap = true })
+            vim.keymap.set("n", "<leader>rx", ":HttpClose<CR>", { desc = "Http Close", silent = true, noremap = true })
         end
-    }
-
+    },
 }
