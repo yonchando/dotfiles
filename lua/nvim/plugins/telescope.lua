@@ -1,4 +1,3 @@
-local themes = require "telescope.themes"
 return {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.8',
