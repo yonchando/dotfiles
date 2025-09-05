@@ -47,6 +47,15 @@ return {
             end
         end
 
+        vim.keymap.set("n", "<leader>gf", function()
+            local file = vim.api.nvim_buf_get_name(0)
+
+            api.tree.find_file({
+                buf = file,
+                open = true,
+                focus = true
+            })
+        end, { desc = "Go to current file in nvimtree" })
 
         vim.keymap.set("n", "<A-1>", nvimtreeToggle, opts({ desc = "Explorer toggle" }))
     end

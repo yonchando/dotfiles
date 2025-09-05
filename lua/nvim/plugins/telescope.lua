@@ -1,6 +1,6 @@
 return {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
+    branch = 'master',
     dependencies = {
         'nvim-lua/plenary.nvim',
         "nvim-telescope/telescope-ui-select.nvim",
@@ -28,6 +28,7 @@ return {
             },
             extension = {
                 fzf = {},
+                noice = {},
                 ["ui-select"] = {
                     require("telescope.themes").get_dropdown()
                 }

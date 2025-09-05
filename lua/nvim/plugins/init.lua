@@ -1,5 +1,22 @@
 return {
     {
+        -- dir = "/mnt/d/code/lua/http.nvim",
+        "yonchando/http.nvim",
+        config = function()
+            local http_nvim = require("http-nvim")
+
+            http_nvim.setup()
+
+            vim.keymap.set("n", "<leader>rc", ":HttpRun<CR>", { desc = "Http run", silent = true, noremap = true })
+            vim.keymap.set("n", "<leader>rl", ":HttpRerun<CR>", { desc = "Http Rerun", silent = true, noremap = true })
+            vim.keymap.set("n", "<leader>rr", ":HttpResult<CR>",
+                { desc = "Http view latest result", silent = true, noremap = true })
+            vim.keymap.set("n", "<leader>rh", ":HttpHistory<CR>",
+                { desc = "Http view history", silent = true, noremap = true })
+            vim.keymap.set("n", "<leader>rx", ":HttpClose<CR>", { desc = "Http Close", silent = true, noremap = true })
+        end
+    },
+    {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
         config = true
@@ -92,23 +109,6 @@ return {
             vim.g.db_ui_use_nerd_fonts = 1
 
             vim.keymap.set("n", "<A-2>", ":DBUIToggle<CR>", { silent = true })
-        end
-    },
-    {
-        -- dir = "/mnt/d/code/lua/http.nvim",
-        "yonchando/http.nvim",
-        config = function()
-            local http_nvim = require("http-nvim")
-
-            http_nvim.setup()
-
-            vim.keymap.set("n", "<leader>rc", ":HttpRun<CR>", { desc = "Http run", silent = true, noremap = true })
-            vim.keymap.set("n", "<leader>rl", ":HttpRerun<CR>", { desc = "Http Rerun", silent = true, noremap = true })
-            vim.keymap.set("n", "<leader>rr", ":HttpResult<CR>",
-                { desc = "Http view latest result", silent = true, noremap = true })
-            vim.keymap.set("n", "<leader>rh", ":HttpHistory<CR>",
-                { desc = "Http view history", silent = true, noremap = true })
-            vim.keymap.set("n", "<leader>rx", ":HttpClose<CR>", { desc = "Http Close", silent = true, noremap = true })
         end
     },
 }

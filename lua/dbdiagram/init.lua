@@ -31,7 +31,7 @@ function source.new(opts)
 end
 
 function source:enabled()
-    return vim.bo.filetype == 'dbdiagram' or vim.bo.filetype == 'dbd'
+    return vim.bo.filetype == 'dbml'
 end
 
 function source:get_completions(ctx, callback)

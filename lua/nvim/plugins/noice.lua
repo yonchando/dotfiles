@@ -40,7 +40,7 @@ return {
         end, opts({ desc = "Noice last" }))
 
         vim.keymap.set("n", "<leader>nh", function()
-            noice.cmd("dismiss")
+            noice.cmd("viewstats")
         end, opts({ desc = "Noice history" }))
 
         vim.keymap.set("n", "<leader>na", function()

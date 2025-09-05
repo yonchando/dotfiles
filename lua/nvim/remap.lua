@@ -81,7 +81,7 @@ vim.keymap.set("v", "<A-f>", '"fy/<C-r>f<CR>', opts({ desc = "Search select text
 vim.keymap.set("i", "<C-z>", "<C-c>ua", opts({ desc = "Undo back to insert" }))
 
 -- vim dianostic
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts({ desc = "Diagnostic open float" }))
+vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, opts({ desc = "Diagnostic open float" }))
 
 -- Lsp mapping
 vim.keymap.set('n', "<leader>lsr", vim.cmd.LspRestart, opts({ desc = "Lsp Restart" }))
