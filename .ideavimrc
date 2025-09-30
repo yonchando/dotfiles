@@ -59,12 +59,12 @@ vmap <leader>yc "cy
 map <leader>pa "ap
 map <leader>ps "sp
 map <leader>pd "dp
-map <leader>yq "qp
-map <leader>yw "wp
-map <leader>ye "ep
-map <leader>yz "zp
-map <leader>yx "xp
-map <leader>yc "cp
+map <leader>pq "qp
+map <leader>pw "wp
+map <leader>pe "ep
+map <leader>pz "zp
+map <leader>px "xp
+map <leader>pc "cp
 
 map <leader>pg "0gr
 xmap <leader>pp "0pdiwP
