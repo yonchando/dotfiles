@@ -46,14 +46,25 @@ map <leader>da' d2f"
 map <leader>dw daW
 map <leader>de diW
 
-    
 vmap <leader>ya "ay
 vmap <leader>ys "sy
 vmap <leader>yd "dy
+vmap <leader>yq "qy
+vmap <leader>yw "wy
+vmap <leader>ye "ey
+vmap <leader>yz "zy
+vmap <leader>yx "xy
+vmap <leader>yc "cy
 
 map <leader>pa "ap
 map <leader>ps "sp
 map <leader>pd "dp
+map <leader>yq "qp
+map <leader>yw "wp
+map <leader>ye "ep
+map <leader>yz "zp
+map <leader>yx "xp
+map <leader>yc "cp
 
 map <leader>pg "0gr
 xmap <leader>pp "0pdiwP
