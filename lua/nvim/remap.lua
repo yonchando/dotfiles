@@ -6,8 +6,8 @@ vim.keymap.set("n", "<leader>x", ":so %<CR>", opts({ desc = "source %" }))
 vim.keymap.set("n", "<leader><leader>x", ":so ~/.config/nvim/init.lua<CR>", opts({ desc = "source %" }))
 vim.keymap.set("n", "<A-a>", "ggVG")
 
-vim.keymap.set("n", "<A-[>", "<C-o>", opts({ desc = "Jump back" }))
-vim.keymap.set("n", "<A-]>", "<C-i>", opts({ desc = "Jump forward" }))
+vim.keymap.set("n", "<A-[>", "<C-o>zz", opts({ desc = "Jump back" }))
+vim.keymap.set("n", "<A-]>", "<C-i>zz", opts({ desc = "Jump forward" }))
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")

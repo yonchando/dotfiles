@@ -1,6 +1,6 @@
 return {
     'nvim-telescope/telescope.nvim',
-    branch = 'master',
+    version = '1.*',
     dependencies = {
         'nvim-lua/plenary.nvim',
         "nvim-telescope/telescope-ui-select.nvim",
@@ -43,14 +43,14 @@ return {
         vim.keymap.set('n', '<A-f>', function()
             builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
                 winblend = 10,
-                previewer = true,
+                previewer = false,
             })
         end, { desc = '[/] Fuzzily search in current buffer' })
 
         vim.keymap.set('n', "<A-7>", builtin.treesitter, { desc = 'Telescope tree' })
 
         vim.keymap.set('n', '<C-f>', builtin.find_files, { desc = "Telescope find files" })
-        vim.keymap.set('n', '<leader>ff', function()
+        vim.keymap.set('n', '<C-p>', function()
             builtin.find_files({
                 hidden = true,
                 no_ignore = true,

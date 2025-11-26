@@ -16,20 +16,6 @@ return {
     },
 
     config = function()
-        local capabilities = require('blink.cmp').get_lsp_capabilities()
-
-        local mason = require("mason-lspconfig")
-
-        local servers = mason.get_installed_servers()
-
-        for _, server in pairs(servers) do
-            vim.lsp.config(server, {
-                capabilities = capabilities
-            })
-
-            vim.lsp.enable(server)
-        end
-
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("UserLspConfig", {}),
             callback = function(ev)
