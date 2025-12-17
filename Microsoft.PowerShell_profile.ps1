@@ -1,29 +1,17 @@
 Set-Alias c clear
 Set-Alias ll ls
 
-$APIFY = "192.168.100.47"
-$NANO_PD = "192.168.100.90"
-$UAT = "192.168.100.37"
-$PORTAL = "192.168.100.95"
-$NOVA = "192.168.100.48"
-$PGI = "192.168.100.74"
-$EDEN = "192.168.100.89"
+$UAT = "192.168.56.2"
 
 $SERVERS = @{
-    APIFY   = $APIFY
-    NANO_PD = $NANO_PD
     UAT     = $UAT
-    PORTAL  = $PORTAL
-    NOVA    = $NOVA
-    PGI     = $PGI
-    EDEN    = $EDEN
 }
 
 function Start-SSH {
     param(
         [string]$Server = "",
         [string]$User = "root",
-        [Int32]$Port = 2222
+        [Int32]$Port = 22
     )
 
     if (!$Server) {
