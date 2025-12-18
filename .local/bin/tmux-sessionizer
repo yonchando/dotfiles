@@ -1,15 +1,29 @@
 #!/usr/bin/env bash
 
-if [[ -z $TMUX_WORKING_DIR ]]; then
+if [[ -z $WORKING_DIR && $# -eq 0 ]]; then
     echo "Env variable \$TMUX_WORKING_DIR not found"
+    echo "Pass first argument or export TMUX_WORKING_DIR"
     exit 1
 fi
 
-if [[ $# -eq 1 ]]; then
-    selected=$(find $1 -mindepth 1 -maxdepth 1 -type d | fzf)
-else
-    selected=$(find $TMUX_WORKING_DIR -mindepth 1 -maxdepth 1 -type d | fzf)
-fi
+selected=""
+prev=""
+
+function fuzzy(){
+    if [[ $# -eq 1 ]]; then
+        prev=$(dirname $1)
+        selected=$(find $1 -mindepth 1 -maxdepth 1 -type d | fzf --bind='alt-c:execute(echo %%:{})+abort' --bind="alt-x:execute(echo %%:$prev)+abort")
+    else
+        prev=$WORKING_DIR
+        selected=$(find $WORKING_DIR -mindepth 1 -maxdepth 1 -type d | fzf --bind='alt-c:execute(echo %%:{})+abort')
+    fi
+
+    if [[ "$selected" == "%%:"* ]]; then
+        fuzzy ${selected:3}
+    fi
+}
+
+fuzzy
 
 if [[ -z $selected ]]; then
     exit 0
