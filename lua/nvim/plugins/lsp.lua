@@ -1,9 +1,26 @@
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
-        "mason-org/mason-lspconfig.nvim",
+        {
+            "mason-org/mason-lspconfig.nvim",
+            opts = {
+                automatic_enable = true,
+                ensure_installed = { "lua_ls", "bashls" },
+            },
+        },
+        {
+            "mason-org/mason.nvim",
+            opts = {
+                ui = {
+                    icons = {
+                        package_installed = "✓",
+                        package_pending = "➜",
+                        package_uninstalled = "✗"
+                    }
+                }
+            }
+        },
         'saghen/blink.cmp',
-        "mfussenegger/nvim-jdtls",
         {
             "folke/lazydev.nvim",
             ft = "lua",
