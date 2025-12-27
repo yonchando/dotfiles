@@ -25,8 +25,6 @@ return {
         end
         vim.keymap.set("n", "<leader>tp", vim.cmd.InspectTree, opts({ desc = "Treesitter playground" }))
 
-        vim.print(vim.inspect(tree.get_installed()))
-
         for _, value in pairs(tree.get_installed()) do
             vim.api.nvim_create_autocmd("FileType", {
                 pattern = { value },

@@ -3,10 +3,6 @@ local completion = require("dbdiagram.completion")
 --- @class blink.cmp.Source
 local source = {}
 
-local p = function(value)
-    vim.print(vim.inspect(value))
-end
-
 local tbl_insert_items = function(values)
     local items = {}
     for _, value in ipairs(values) do
