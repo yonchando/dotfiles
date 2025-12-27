@@ -9,6 +9,7 @@ return {
     },
     config = function()
         local telescope = require("telescope")
+        local actions = require("telescope.actions")
 
         telescope.setup({
             pickers = {
@@ -24,6 +25,16 @@ return {
                 },
                 artisan_routes = {
                     previewer = false,
+                },
+                help_tags = {
+                    themes = 'ivy',
+                    mappings = {
+                        i = {
+                            ["<CR>"] = function()
+                                actions.select_vertical()
+                            end
+                        },
+                    },
                 }
             },
             extension = {
@@ -34,7 +45,7 @@ return {
                 }
             }
         })
-        telescope.load_extension("noice")
+        -- telescope.load_extension("noice")
         telescope.load_extension("fzf")
         telescope.load_extension("ui-select")
 

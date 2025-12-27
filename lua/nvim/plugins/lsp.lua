@@ -1,13 +1,15 @@
 return {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-        {
-            "mason-org/mason-lspconfig.nvim",
-            opts = {
-                automatic_enable = true,
-                ensure_installed = { "lua_ls", "bashls" },
-            },
+
+    "mason-org/mason-lspconfig.nvim",
+    opts = {
+        automatic_enable = {
+            exclude = {
+                "jdtls"
+            }
         },
+        ensure_installed = { "lua_ls", "bashls" },
+    },
+    dependencies = {
         {
             "mason-org/mason.nvim",
             opts = {
@@ -20,7 +22,8 @@ return {
                 }
             }
         },
-        'saghen/blink.cmp',
+        { "neovim/nvim-lspconfig" },
+        { 'saghen/blink.cmp' },
         {
             "folke/lazydev.nvim",
             ft = "lua",
@@ -31,8 +34,8 @@ return {
             },
         },
     },
-
     config = function()
+        require("mason-lspconfig").setup()
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("UserLspConfig", {}),
             callback = function(ev)

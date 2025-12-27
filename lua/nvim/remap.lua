@@ -41,8 +41,8 @@ vim.keymap.set("n", "<leader>=", "za")
 
 vim.keymap.set("n", "<leader>dw", "diW")
 
-vim.keymap.set("n", "<Right>", "<C-w>10>")
-vim.keymap.set("n", "<Left>", "<C-w>10<")
+vim.keymap.set("n", "<Right>", "10<C-w><")
+vim.keymap.set("n", "<Left>", "10<C-w>>")
 vim.keymap.set("n", "<Up>", "<C-w>10+")
 vim.keymap.set("n", "<Down>", "<C-w>10-")
 

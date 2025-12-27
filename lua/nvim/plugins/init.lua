@@ -2,6 +2,7 @@ return {
     {
         -- dir = "/mnt/d/code/lua/http.nvim",
         "yonchando/http.nvim",
+        enable = true,
         config = function()
             local http_nvim = require("http-nvim")
 
@@ -111,4 +112,7 @@ return {
             vim.keymap.set("n", "<A-2>", ":DBUIToggle<CR>", { silent = true })
         end
     },
+    {
+        "mfussenegger/nvim-jdtls",
+    }
 }

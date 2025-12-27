@@ -30,6 +30,10 @@ return {
             },
             on_attach = function(bufnr)
                 api.config.mappings.default_on_attach(bufnr)
+
+                vim.keymap.set("n", "<Esc>", "<C-w>l", { buffer = bufnr })
+                vim.keymap.set("n", "<Right>", ":NvimTreeResize +20<CR>", { buffer = bufnr, silent = true })
+                vim.keymap.set("n", "<Left>", ":NvimTreeResize -20<CR>", { buffer = bufnr, silent = true })
             end
         })
 
