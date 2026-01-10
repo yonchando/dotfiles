@@ -7,18 +7,15 @@ return {
             conform.setup({
                 formatters_by_ft = {
                     go = { "gofmt" },
-                    javascript = { "prettier", "prettierd", lsp_format = "fallback" },
-                    typescript = { "prettier", "prettierd", lsp_format = "fallback" },
-                    vue = { "prettier", "prettierd", lsp_format = "fallback" },
-                    json = { "prettier", "prettierd", lsp_format = "fallback" },
-                    yaml = { "prettier", "prettierd", lsp_format = "fallback" },
-                    yml = { "prettier", "prettierd", lsp_format = "fallback" },
-                },
-                default_format_opts = {
-                    lsp_format = "fallback",
+                    javascript = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
+                    typescript = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
+                    vue = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
+                    json = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
+                    yaml = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
+                    yml = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
+                    xml = { "prettierd", "prettier", stop_after_first = true, lsp_format = "fallback" },
                 },
                 format_on_save = {
-                    -- These options will be passed to conform.format()
                     timeout_ms = 50000,
                     lsp_format = "fallback",
                 },
@@ -31,7 +28,13 @@ return {
                 end,
             })
 
-            vim.keymap.set("n", "<leader>fc", conform.format, { desc = "Conform format" })
+            vim.keymap.set("n", "<leader>fc", function()
+                conform.format({
+                    timeout_ms = 50000,
+                    dry_run = true,
+                    lsp_format = "fallback"
+                })
+            end, { desc = "Conform format" })
         end
     },
     {
@@ -371,4 +374,17 @@ return {
         'mg979/vim-visual-multi',
         branch = 'master'
     },
+    {
+        dir = "~/plugins/maven.nvim",
+        cond = function()
+            local stat = vim.uv.fs_stat(vim.env.HOME .. "/plugins/maven.nvim")
+
+            return stat ~= nil
+        end,
+        config = function()
+            local mvn = require("mvn")
+
+            mvn.setup()
+        end
+    }
 }
