@@ -23,7 +23,7 @@ function fuzzy(){
     fi
 }
 
-fuzzy
+fuzzy $1
 
 if [[ -z $selected ]]; then
     exit 0
