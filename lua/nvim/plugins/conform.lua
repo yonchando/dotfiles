@@ -6,12 +6,13 @@ return {
         conform.setup({
             formatters_by_ft = {
                 go = { "gofmt" },
-                javascript = { "prettier", "prettierd", lsp_format = "fallback" },
-                typescript = { "prettier", "prettierd", lsp_format = "fallback" },
+                javascript = { "prettierd", lsp_format = "fallback" },
+                typescript = { "prettierd", lsp_format = "fallback" },
                 vue = { "prettier", "prettierd", lsp_format = "fallback" },
                 json = { "prettier", "prettierd", lsp_format = "fallback" },
                 yaml = { "prettier", "prettierd", lsp_format = "fallback" },
                 yml = { "prettier", "prettierd", lsp_format = "fallback" },
+                angular = { "prettierd", lsp_format = "fallback" }
             },
             default_format_opts = {
                 lsp_format = "fallback",

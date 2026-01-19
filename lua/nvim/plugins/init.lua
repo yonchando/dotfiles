@@ -114,5 +114,9 @@ return {
     },
     {
         "mfussenegger/nvim-jdtls",
+    },
+    {
+        dir = "~/plugins/maven.nvim",
+        opts = {}
     }
 }
