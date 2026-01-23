@@ -1,16 +1,13 @@
 Plug 'tpope/vim-surround'
-Plug 'easymotion/vim-easymotion'
 Plug 'preservim/nerdtree'
-Plug 'vim-scripts/argtextobj.vim'
 Plug 'chrisbra/matchit'
 Plug 'tommcdo/vim-exchange'
-Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-commentary'
-Plug 'kana/vim-textobj-entire'
 Plug 'terryma/vim-multiple-cursors'
 
 let mapleader=" " 
+
 set scrolloff=5
 set incsearch
 set relativenumber
@@ -25,6 +22,7 @@ set which-key
 set timeoutlen=50000
 set ideavimsupport=dialog
 set multicursor
+set anyobject
 
 "----------------Mapping-----------------"
 map H b
@@ -116,6 +114,8 @@ map ]t <Action>(com.mikejhill.intellij.movetab.actions.MoveTabRight)
 
 map ]w <Action>(EditorSelectWord)
 map [w <Action>(EditorUnSelectWord)
+map ]g <Action>(VcsShowNextChangeMarker)
+map [g <Action>(VcsShowPrevChangeMarker)
 
 noremap ]f [w
 noremap [f [b
