@@ -35,11 +35,22 @@ return {
                 'onsails/lspkind.nvim',
             },
             version = '1.*',
+            ---@module 'blink.cmp'
+            ---@type blink.cmp.Config
             opts = {
                 keymap = {
                     preset = 'default',
+
                     ['C-h'] = { 'snippet_backward', 'fallback' },
                     ['C-l'] = { 'snippet_forward', 'fallback' },
+
+                    ['C-j'] = {
+                        function(cmp)
+                            cmp.show({
+                                providers = { "snippets" }
+                            })
+                        end,
+                    }
                 },
 
                 appearance = {
@@ -59,7 +70,6 @@ return {
                 },
 
                 cmdline = {
-                    keymap = { preset = 'inherit' },
                     completion = { menu = { auto_show = true } }
                 },
 
