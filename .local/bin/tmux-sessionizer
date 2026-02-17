@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 if [[ -z $WORKING_DIR && $# -eq 0 ]]; then
     echo "Env variable \$TMUX_WORKING_DIR not found"
@@ -6,20 +6,20 @@ if [[ -z $WORKING_DIR && $# -eq 0 ]]; then
     exit 1
 fi
 
-selected=""
-prev=""
+# CTRL-Y to copy the command into clipboard using pbcopy
+FZF_CTRL_R_OPTS="ctrl-r:reload(find $WORKING_DIR -mindepth 1 -maxdepth 1 -type d)"
+FZF_CTRL_F_OPTS="ctrl-f:reload(find {} -mindepth 1 -maxdepth 1 -type d)"
+FZF_BIND_OPTS="$FZF_CTRL_R_OPTS,$FZF_CTRL_F_OPTS"
 
-function fuzzy(){
-    if [[ $# -eq 1 ]]; then
-        prev=$(dirname $1)
-        selected=$(find $1 -mindepth 1 -maxdepth 1 -type d | fzf --bind='alt-c:execute($HOME/.local/bin/tmux-sessionizer {})+abort' --bind="alt-x:execute($HOME/.local/bin/tmux-sessionizer $prev)+abort")
-    else
-        prev=$WORKING_DIR
-        selected=$(find $WORKING_DIR -mindepth 1 -maxdepth 1 -type d | fzf --bind='alt-c:execute($HOME/.local/bin/tmux-sessionizer {})+abort')
-    fi
-}
+FIND_OPTS="-mindepth 1 -maxdepth 1 -type d"
 
-fuzzy $1
+if [[ $# -eq 2 ]]; then
+    selected=$(fd -t d -- $1 $2 | fzf --bind "$FZF_BIND_OPTS")
+elif [[ $# -eq 1 ]]; then
+    selected=$(find "$1" $FIND_OPTS | fzf --bind "$FZF_BIND_OPTS")
+else
+    selected=$(find $WORKING_DIR $FIND_OPTS | fzf --bind "$FZF_BIND_OPTS")
+fi
 
 if [[ -z $selected ]]; then
     exit 0
@@ -38,7 +38,7 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
+if ! tmux has-session -t=$selected_name 2>/dev/null; then
     tmux new-session -ds $selected_name -c $selected
 fi
 
@@ -47,5 +47,3 @@ if [[ -z $TMUX ]]; then
 else
     tmux switch-client -t $selected_name
 fi
-
-
