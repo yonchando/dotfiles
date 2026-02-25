@@ -1,5 +1,19 @@
 #!/usr/bin/bash
 
+if [[ "$1" == "new" ]]; then
+    sudo pacman -S ghostty rofi rofi-emoji waybar xdg-desktop-portal-hyprland \
+        hyprpaper hyprlauncher hyprland tlp
+
+
+    rm -rf $HOME/.config/nvim
+    rm -rf $HOME/.config/hypr
+    rm -rf $HOME/.config/waybar
+
+elif [[ "$1" == "start-service" ]]; then
+    sudo systemctl start tlp
+fi
+
+
 if [[ ! -L $HOME/.config/ghostty ]]; then
     ln -s $HOME/dotfiles/ghostty $HOME/.config
 fi

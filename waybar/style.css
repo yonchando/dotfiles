@@ -37,6 +37,7 @@
 #network:hover,
 #user:hover,
 #language:hover,
+#battery:hover,
 #custom-power:hover {
     background-color: rgb(41, 42, 53);
 }
@@ -112,6 +113,8 @@
 #pulseaudio,
 #language,
 #network,
+#battery,
+#user,
 #tray {
     padding: 0 0.75rem;
 }

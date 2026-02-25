@@ -41,7 +41,7 @@ return {
                     "lua_ls"
                 }
             },
-            ensure_installed = { "lua_ls", "bashls" },
+            ensure_installed = { "lua_ls", "bashls", "hyprls" },
         })
 
         vim.lsp.config("lua_ls", {
