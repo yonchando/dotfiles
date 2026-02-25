@@ -3,56 +3,29 @@
     "position": "top",
     "margin-bottom": -10,
     "spacing": 0,
-    "modules-left": [
-        "hyprland/workspaces",
-        "custom/uptime",
-        "image#datagrip",
-        "image#postman",
-        "image#chrome"
-    ],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": [
-        "tray",
-        "hyprland/language",
-        "pulseaudio",
-        "network",
-        "user",
-        "custom/power"
-    ],
-    "image#datagrip": {
-        "path": "/home/chando/dotfiles/waybar/icons/com.jetbrains.DataGrip.svg",
-        "size": 20,
-        "on-click": "flatpak --installation=home run com.jetbrains.DataGrip",
-        "interval": 60,
-        "tooltip": false
-    },
-    "image#postman": {
-        "path": "/home/chando/dotfiles/waybar/icons/com.getpostman.Postman.svg",
-        "size": 20,
-        "on-click": "flatpak --installation=home run com.getpostman.Postman",
-        "interval": 60,
-        "tooltip": false
-    },
-    "image#chrome": {
-        "path": "/home/chando/dotfiles/waybar/icons/goa-account-google.svg",
-        "size": 20,
-        "on-click": "google-chrome-stable",
-        "interval": 60,
-        "tooltip": false
+    "modules-right": ["tray", "hyprland/language", "group/right"],
+    "group/right": {
+        "orientation": "inherit",
+        "modules": ["pulseaudio", "network", "user", "custom/power"]
     },
     "user": {
-        "format": "{user}",
+        "format": " {user}",
         "interval": 60,
-        "height": 30,
-        "width": 30,
-        "icon": true
+        "icon": false
     },
     "hyprland/workspaces": {
         "disable-scroll": false,
-        "all-outputs": true,
+        "all-outputs": false,
         "format": "{name}: {icon}",
         "format-icons": {
-            "active": "",
+            "1": "󰣇",
+            "2": "",
+            "3": "",
+            "4": "󰲌",
+            "6": "",
+            "urgent": "",
             "default": ""
         }
     },
@@ -68,19 +41,16 @@
         "interval": 60,
         "on-click": "gnome-calendar"
     },
-
     "tray": {
         "icon-size": 16,
         "spacing": 10
     },
-
     "network": {
         "format-wifi": "󰤢 ({signalStrength}%)",
         "format-ethernet": "󰈀 up",
         "format-disconnected": "󰤠 down",
         "interval": 5,
-        "tooltip": false,
-        "on-click": "nm-connection-editor"
+        "tooltip": false
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",
@@ -89,13 +59,6 @@
             "default": ["", "", " "]
         },
         "on-click": "pavucontrol"
-    },
-    "custom/uptime": {
-        "format": "{}",
-        "format-icon": [""],
-        "tooltip": false,
-        "interval": 1600,
-        "exec": "$HOME/.config/waybar/scripts/uptime.sh"
     },
     "custom/power": {
         "tooltip": false,
