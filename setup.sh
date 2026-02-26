@@ -1,16 +1,14 @@
 #!/usr/bin/bash
 
 if [[ "$1" == "new" ]]; then
-    sudo pacman -S ghostty rofi rofi-emoji waybar xdg-desktop-portal-hyprland \
-        hyprpaper hyprlauncher hyprland tlp
-
+    sudo pacman -S sddm hyprpaper hyprlauncher hyprland waybar cliphist ghostty \
+        rofi rofi-emoji xdg-desktop-portal-hyprland \
+        tlp git neovim lua dolphin tmux
 
     rm -rf $HOME/.config/nvim
     rm -rf $HOME/.config/hypr
     rm -rf $HOME/.config/waybar
 
-elif [[ "$1" == "start-service" ]]; then
-    sudo systemctl start tlp
 fi
 
 
@@ -36,4 +34,8 @@ fi
 
 if [[ ! -L $HOME/.config/waybar ]]; then
     ln -s $HOME/dotfiles/waybar $HOME/.config
+fi
+
+if [[ ! -L /etc/keyd/default.conf ]]; then
+    sudo ln -s $HOME/dotfiles/keyd/default.conf /etc/keyd
 fi

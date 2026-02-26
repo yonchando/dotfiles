@@ -20,6 +20,7 @@
 #backlight,
 #tray,
 #language,
+#window,
 #right {
     min-width: 0px;
     background-color: #1a1b26;
@@ -32,14 +33,31 @@
         color 0.2s ease-in-out;
 }
 
+#user,
+#clock,
+#custom-power,
+#pulseaudio,
+#language,
+#network,
+#battery,
+#window,
+#tray {
+    padding: 0 0.75rem;
+}
+
 #clock:hover,
 #pulseaudio:hover,
 #network:hover,
 #user:hover,
 #language:hover,
 #battery:hover,
+#window:hover,
 #custom-power:hover {
     background-color: rgb(41, 42, 53);
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
 }
 
 /* --- Workspaces --- */
@@ -107,17 +125,6 @@
 /* --- Center Module --- */
 
 /* --- Right Modules --- */
-/* #user, */
-#clock,
-#custom-power,
-#pulseaudio,
-#language,
-#network,
-#battery,
-#user,
-#tray {
-    padding: 0 0.75rem;
-}
 
 #pulseaudio:hover {
     border-top-left-radius: 4px;

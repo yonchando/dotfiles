@@ -193,11 +193,11 @@ return {
             local http = require("http-nvim")
             http.setup()
 
-            vim.keymap.set("n", "<leader>hrl", http.rerun, { desc = "[HttpRun] re-run recently" })
+            vim.keymap.set("n", "<leader>re", http.rerun, { desc = "[HttpRun] re-run recently" })
 
-            vim.keymap.set("n", "<leader>hrp", http.last_result, { desc = "[HttpRun] Preview recently run" })
+            vim.keymap.set("n", "<leader>rl", http.last_result, { desc = "[HttpRun] Preview recently run" })
 
-            vim.keymap.set("n", "<leader>hrc", ":HttpRun<CR>")
+            vim.keymap.set("n", "<leader>rr", ":HttpRun<CR>")
         end
     }
 }
