@@ -5,10 +5,6 @@ if [[ ! -d $HOME/.oh-my-zsh ]]; then
     # clone oh my zsh
     git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
 
-    # cp zshrc config with theme power10k
-    ln -s $HOME/dotfiles/dotfiles/.zshrc $HOME
-    ln -s $HOME/dotfiles/dotfiles/.p10k.zsh $HOME
-
     # cmd higlight syntax
     git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
 

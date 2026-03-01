@@ -39,3 +39,11 @@ fi
 if [[ ! -L $HOME/.local/bin/tmux-sessionizer ]]; then
     sudo ln -s $HOME/dotfiles/dotfiles/.local/bin/tmux-sessionizer $HOME/.local/bin
 fi
+
+if [[ ! -L $HOME/dotfiles/dotfiles/.zshrc ]]; then
+    sudo ln -s $HOME/dotfiles/dotfiles/.zshrc $HOME
+fi
+
+if [[ ! -L $HOME/dotfiles/dotfiles/.zshrc ]]; then
+    ln -s $HOME/dotfiles/dotfiles/.p10k.zsh $HOME
+fi
