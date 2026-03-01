@@ -1,16 +1,12 @@
 #!/usr/bin/bash
 
 if [[ "$1" == "new" ]]; then
-    sudo pacman -S sddm hyprpaper hyprlauncher hyprland waybar cliphist ghostty \
-        rofi rofi-emoji xdg-desktop-portal-hyprland \
-        tlp git neovim lua dolphin tmux
-
     rm -rf $HOME/.config/nvim
     rm -rf $HOME/.config/hypr
     rm -rf $HOME/.config/waybar
-
 fi
 
+source ./installation.sh
 
 if [[ ! -L $HOME/.config/ghostty ]]; then
     ln -s $HOME/dotfiles/ghostty $HOME/.config
@@ -38,4 +34,8 @@ fi
 
 if [[ ! -L /etc/keyd/default.conf ]]; then
     sudo ln -s $HOME/dotfiles/keyd/default.conf /etc/keyd
+fi
+
+if [[ ! -L $HOME/.local/bin/tmux-sessionizer ]]; then
+    sudo ln -s $HOME/dotfiles/dotfiles/.local/bin/tmux-sessionizer $HOME/.local/bin
 fi
