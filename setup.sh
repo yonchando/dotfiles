@@ -37,6 +37,11 @@ if [[ ! -L /etc/keyd/default.conf ]]; then
 fi
 
 if [[ ! -L $HOME/.local/bin/tmux-sessionizer ]]; then
+
+    if [[ ! -d $HOME/.local/bin ]]; then
+        mkdir -p $HOME/.local/bin
+    fi
+
     sudo ln -s $HOME/dotfiles/dotfiles/.local/bin/tmux-sessionizer $HOME/.local/bin
 fi
 
@@ -44,6 +49,6 @@ if [[ ! -L $HOME/dotfiles/dotfiles/.zshrc ]]; then
     sudo ln -s $HOME/dotfiles/dotfiles/.zshrc $HOME
 fi
 
-if [[ ! -L $HOME/dotfiles/dotfiles/.zshrc ]]; then
+if [[ ! -L $HOME/dotfiles/dotfiles/.p10k.zsh ]]; then
     ln -s $HOME/dotfiles/dotfiles/.p10k.zsh $HOME
 fi
