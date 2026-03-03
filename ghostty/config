@@ -26,7 +26,7 @@
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
 # font-family = Iosevka
-# window-padding-x = 2
+
 #
 # # Spacing around the equals sign does not matter.
 # # All of these are identical:
@@ -53,3 +53,6 @@ font-family = "MesloLGL Nerd Font Mono"
 font-size = 16
 background-opacity = 0.9
 background-image-opacity = 1.9
+
+window-padding-x = 8
+window-padding-y = 8,1

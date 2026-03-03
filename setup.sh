@@ -1,5 +1,11 @@
 #!/usr/bin/bash
 
+if [[ "$1" == "pacman" ]]; then
+    sudo pacman --needed -S sddm hyprpaper hyprlauncher hyprland waybar cliphist ghostty \
+        rofi rofi-emoji xdg-desktop-portal-hyprland \
+        tlp git neovim lua dolphin tmux zsh
+fi
+
 if [[ "$1" == "new" ]]; then
     rm -rf $HOME/.config/nvim
     rm -rf $HOME/.config/hypr

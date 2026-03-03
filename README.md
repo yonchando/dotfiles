@@ -19,7 +19,7 @@ chsh -s $(which zsh)
 ### Arch Linux
 
 ```sh
-    sudo pacman -S sddm hyprpaper hyprlauncher hyprland waybar cliphist ghostty \
+    sudo pacman --needed -S sddm hyprpaper hyprlauncher hyprland waybar cliphist ghostty \
         rofi rofi-emoji xdg-desktop-portal-hyprland \
         tlp git neovim lua dolphin tmux zsh
 
