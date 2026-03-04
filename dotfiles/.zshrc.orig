@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
 # Hyprshot
 export HYPRSHOT_DIR=$HOME/Pictures
 
@@ -37,6 +38,10 @@ alias ohe='nvim ~/.zshrc'
 alias ohs='source ~/.zshrc'
 alias ltd='tree -h -d -L'
 alias lt='tree -h -L'
+<<<<<<< HEAD
 alias dcls='docker ps -a --format "table {{.Image}}\t{{.Names}}\t{{.Status}}"'
+=======
+
 alias ll='exa -l'
 alias lsa='exa -la'
+>>>>>>> 9d2fc76 (Updated dotfiles)

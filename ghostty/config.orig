@@ -54,9 +54,16 @@ title = ghostty
 font-family = "MesloLGL Nerd Font Mono"
 font-size = 16
 background-opacity = 0.9
+<<<<<<< HEAD
 background-image-opacity = 1.9
+
+window-padding-x = 8
+window-padding-y = 8,1
+=======
+background-image-opacity = 1.8
 
 window-decoration = none
 window-padding-x = 8,0
 window-padding-y = 8,0
 window-padding-balance = false
+>>>>>>> 9d2fc76 (Updated dotfiles)
