@@ -199,5 +199,14 @@ return {
 
             vim.keymap.set("n", "<leader>rr", ":HttpRun<CR>")
         end
-    }
+    },
+    {
+        "NachoNievaG/atac.nvim",
+        dependencies = { "akinsho/toggleterm.nvim" },
+        config = function()
+            require("atac").setup({
+                dir = vim.fn.stdpath("data") .. "/atac/tmp/", -- By default, the dir will be set as /tmp/atac
+            })
+        end,
+    },
 }
