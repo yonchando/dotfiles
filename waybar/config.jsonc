@@ -1,0 +1,94 @@
+{
+    "layer": "top",
+    "position": "top",
+    "margin-bottom": -10,
+    "spacing": 0,
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/window",
+        "hyprland/submap"
+    ],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "hyprland/language", "group/right"],
+    "group/right": {
+        "orientation": "inherit",
+        "modules": ["pulseaudio", "network", "battery", "user", "custom/power"]
+    },
+    "user": {
+        "format": "{user} ",
+        "interval": 60,
+        "icon": false
+    },
+    "hyprland/window": {
+        "format": "{class}",
+        "separate-outputs": true
+    },
+    "hyprland/submap": {
+        "format": "✌️ {}",
+        "max-length": 8,
+        "tooltip": false
+    },
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": false,
+        "format": "{name}: {icon}",
+        "format-icons": {
+            "1": "󰣇",
+            "2": "",
+            "3": "",
+            "4": "󰲌",
+            "6": "",
+            "urgent": "",
+            "default": ""
+        }
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "US",
+        "format-kh": "KH"
+    },
+    "clock": {
+        "timezone": "Asia/Phnom_Penh",
+        "tooltip": false,
+        "format": "{:%I:%M %p  -  %A, %d/%m}",
+        "interval": 60,
+        "on-click": "gnome-calendar"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "bat": "BAT0",
+        "interval": 60,
+        "format": "{capacity}% {icon}",
+        "format-icons": {
+            "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+            "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+        }
+    },
+    "network": {
+        "format-wifi": "󰤢 ({essid})",
+        "format-ethernet": "󰈀 up",
+        "format-disconnected": "󰤠 down ",
+        "interval": 6,
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/power": {
+        "tooltip": false,
+        "on-click": "rofi -show p -modi p:'rofi-power-menu --symbols-font \"MesloLGL Nerd Font Mono\"' -theme arch-dark",
+        "format": "⏻"
+    }
+}

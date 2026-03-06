@@ -1,0 +1,60 @@
+#!/usr/bin/bash
+
+if [[ "$1" == "pacman" ]]; then
+    sudo pacman --needed -S sddm hyprpaper hyprlauncher hyprland waybar cliphist ghostty \
+        rofi rofi-emoji xdg-desktop-portal-hyprland \
+        tlp git neovim lua dolphin tmux zsh
+fi
+
+if [[ "$1" == "new" ]]; then
+    rm -rf $HOME/.config/nvim
+    rm -rf $HOME/.config/hypr
+    rm -rf $HOME/.config/waybar
+fi
+
+source ./installation.sh
+
+if [[ ! -L $HOME/.config/ghostty ]]; then
+    ln -s $HOME/dotfiles/ghostty $HOME/.config
+fi
+
+if [[ ! -L $HOME/.config/hypr ]]; then
+    ln -s $HOME/dotfiles/hypr $HOME/.config
+fi
+
+if [[ ! -L $HOME/.config/kitty ]]; then
+    ln -s $HOME/dotfiles/kitty $HOME/.config
+fi
+
+if [[ ! -L $HOME/.config/nvim ]]; then
+    ln -s $HOME/dotfiles/nvim $HOME/.config
+fi
+
+if [[ ! -L $HOME/.config/rofi ]]; then
+    ln -s $HOME/dotfiles/rofi $HOME/.config
+fi
+
+if [[ ! -L $HOME/.config/waybar ]]; then
+    ln -s $HOME/dotfiles/waybar $HOME/.config
+fi
+
+if [[ ! -L /etc/keyd/default.conf ]]; then
+    sudo ln -s $HOME/dotfiles/keyd/default.conf /etc/keyd
+fi
+
+if [[ ! -L $HOME/.local/bin/tmux-sessionizer ]]; then
+
+    if [[ ! -d $HOME/.local/bin ]]; then
+        mkdir -p $HOME/.local/bin
+    fi
+
+    sudo ln -s $HOME/dotfiles/dotfiles/.local/bin/tmux-sessionizer $HOME/.local/bin
+fi
+
+if [[ ! -L $HOME/dotfiles/dotfiles/.zshrc ]]; then
+    sudo ln -s $HOME/dotfiles/dotfiles/.zshrc $HOME
+fi
+
+if [[ ! -L $HOME/dotfiles/dotfiles/.p10k.zsh ]]; then
+    ln -s $HOME/dotfiles/dotfiles/.p10k.zsh $HOME
+fi

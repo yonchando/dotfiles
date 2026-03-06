@@ -1,8 +1,7 @@
 #!/usr/bin/bash
 
 if [[ -z $WORKING_DIR && $# -eq 0 ]]; then
-    echo "Env variable \$TMUX_WORKING_DIR not found"
-    echo "Pass first argument or export TMUX_WORKING_DIR"
+    echo "Env variable \$WORKING_DIR not found"
     exit 1
 fi
 

@@ -1,5 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+# Hyprshot
+export HYPRSHOT_DIR=$HOME/Pictures
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -8,7 +10,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
-plugins=(git aliases zsh-autosuggestions fast-syntax-highlighting zsh-autocomplete)
+plugins=(git aliases fast-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -26,7 +28,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export TMUX_WORKING_DIR=/var/www
+export WORKING_DIR="$HOME $HOME/code $HOME/code/java $HOME/code/laravel"
+
 
 alias cw="tmux-sessionizer"
 alias c='clear'
@@ -34,3 +37,6 @@ alias ohe='nvim ~/.zshrc'
 alias ohs='source ~/.zshrc'
 alias ltd='tree -h -d -L'
 alias lt='tree -h -L'
+alias dcls='docker ps -a --format "table {{.Image}}\t{{.Names}}\t{{.Status}}"'
+alias ll='exa -l'
+alias lsa='exa -la'
