@@ -1,9 +1,9 @@
 #!/usr/bin/bash
 
 if [[ "$1" == "pacman" ]]; then
-    sudo pacman --needed -S sddm hyprpaper hyprlauncher hyprland waybar cliphist ghostty \
+    sudo pacman --needed -S sddm hyprpaper hyprlauncher hyprland waybar cliphist ghostty kitty \
         rofi rofi-emoji xdg-desktop-portal-hyprland \
-        tlp git neovim lua dolphin tmux zsh
+        git neovim lua dolphin tmux zsh exa
 fi
 
 if [[ "$1" == "new" ]]; then
