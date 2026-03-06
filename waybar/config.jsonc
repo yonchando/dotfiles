@@ -88,7 +88,7 @@
     },
     "custom/power": {
         "tooltip": false,
-        "on-click": "rofi -show p -modi p:'rofi-power-menu --symbols-font \"MesloLGL Nerd Font Mono\"' -theme arch-dark",
+        "on-click": "~/dotfiles/rofi/rofi/powermenu/type-1/powermenu.sh",
         "format": "⏻"
     }
 }
