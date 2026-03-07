@@ -1,11 +1,11 @@
 #!/usr/bin/bash
 
 if [[ "$1" == "pacman" ]]; then
-    sudo pacman --needed -S sddm hyprpaper hyprlauncher hyprland waybar kitty \
-        swayosd rofi cliphist ghostty \
-        xdg-desktop-portal-hyprland \
-        zsh zsh-completions \
-        git neovim lua tmux exa swayosd
+    sudo pacman --needed -S sddm hyprpaper hyprlauncher hyprland waybar kitty xdg-desktop-portal-hyprland \
+        rofi cliphist ghostty \
+        zsh \
+        swaync swayosd \
+        git neovim lua tmux exa fzf
 fi
 
 if [[ "$1" == "new" ]]; then

@@ -1,0 +1,10 @@
+alias cw="tmux-sessionizer"
+alias c='clear'
+alias ohe='nvim ~/.zshrc'
+alias ohs='source ~/.zshrc'
+alias ltd='tree -h -d -L'
+alias lt='tree -h -L'
+alias dcls='docker ps -a --format "table {{.Image}}\t{{.Names}}\t{{.Status}}"'
+alias ls='exa'
+alias ll='exa -lh'
+alias lsa='exa -lah'

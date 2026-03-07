@@ -24,6 +24,10 @@ link_config() {
     if [[ ! -L $HOME/.config/rofi ]]; then
         ln -s $HOME/dotfiles/rofi $HOME/.config
     fi
+
+    if [[ ! -L $HOME/.config/swaync ]]; then
+        ln -s $HOME/dotfiles/swaync $HOME/.config/swaync
+    fi
 }
 
 link_keyd() {

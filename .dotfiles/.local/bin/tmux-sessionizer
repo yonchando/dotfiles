@@ -1,8 +1,7 @@
 #!/usr/bin/bash
 
 if [[ -z $WORKING_DIR && $# -eq 0 ]]; then
-    echo "Env variable \$WORKING_DIR not found"
-    exit 1
+    WORKING_DIR="."
 fi
 
 # CTRL-Y to copy the command into clipboard using pbcopy
