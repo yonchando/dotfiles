@@ -5,7 +5,7 @@ if [[ "$1" == "pacman" ]]; then
         rofi cliphist ghostty \
         zsh \
         swaync swayosd \
-        git neovim lua tmux exa fzf
+        git neovim tree-sitter-cli lua luarocks tmux exa fzf
 fi
 
 if [[ "$1" == "new" ]]; then
