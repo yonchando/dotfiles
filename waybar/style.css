@@ -63,6 +63,10 @@ window#waybar.empty #window {
   background-color: transparent;
 }
 
+#battery.charging #icon {
+    font-size: 24px;
+}
+
 /* --- Workspaces --- */
 
 #workspaces {
