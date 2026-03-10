@@ -59,6 +59,10 @@ link_dotfile() {
     if [[ ! -L $HOME/.tmux.conf ]]; then
         ln -s $HOME/dotfiles/.dotfiles/.tmux.conf $HOME
     fi
+
+    if [[ ! -L $HOME/.ideavimrc ]]; then
+        ln -s $HOME/dotfiles/.dotfiles/.ideavimrc $HOME
+    fi
 }
 
 #Main

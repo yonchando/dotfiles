@@ -6,7 +6,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
 
-let mapleader=" " 
+let mapleader=" "
 
 set scrolloff=5
 set incsearch
