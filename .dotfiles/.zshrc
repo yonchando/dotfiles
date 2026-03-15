@@ -2,6 +2,8 @@
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export WORKING_DIR="$HOME $HOME/code $HOME/code/laravel $HOME/code/java $HOME/code/lua"
 export EDITOR=nvim
+#export PLATFORM="pc"
+export PLATFORM="laptop"
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"

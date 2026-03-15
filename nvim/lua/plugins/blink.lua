@@ -2,7 +2,7 @@ return {
     'saghen/blink.cmp',
     dependencies = {
         'rafamadriz/friendly-snippets',
-        'L3MON4D3/LuaSnip',
+        { "L3MON4D3/LuaSnip",     run = "make install_jsregexp" },
         'onsails/lspkind.nvim',
         { "neovim/nvim-lspconfig" },
     },
