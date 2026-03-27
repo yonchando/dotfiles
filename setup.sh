@@ -2,7 +2,7 @@
 
 if [[ "$1" == "pacman" ]]; then
     sudo pacman --needed -S sddm hyprland hyprpaper waybar kitty xdg-desktop-portal-hyprland \
-        base-devel iwd networkmanager network-manager-applet \
+        base-devel iwd networkmanager network-manager-applet nautilus \
         rofi cliphist ghostty \
         swaync swayosd \
         git zsh neovim tree-sitter-cli lua luarocks fd tmux exa fzf
