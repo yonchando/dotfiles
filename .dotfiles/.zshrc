@@ -30,3 +30,4 @@ zinit light zsh-users/zsh-completions
 source $HOME/dotfiles/.dotfiles/aliases.zsh
 source $HOME/dotfiles/.dotfiles/config.zsh
 source $HOME/dev.zsh
+
