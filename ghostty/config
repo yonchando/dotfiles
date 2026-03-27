@@ -52,7 +52,7 @@
 #
 title = ghostty
 font-family = "MesloLGL Nerd Font Mono"
-font-size = 16
+font-size = 14
 background-opacity = 0.9
 background-image-opacity = 1.9
 

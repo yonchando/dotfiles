@@ -1,7 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-export WORKING_DIR="$HOME $HOME/code $HOME/code/laravel $HOME/code/java $HOME/code/lua"
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+
 export EDITOR=nvim
+export WORKING_DIR="$HOME $HOME/code"
+export WORKING_DIR="$WORKING_DIR $HOME/code/laravel $HOME/code/java $HOME/code/lua $HOME/code/go"
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"

@@ -15,7 +15,8 @@ return {
                 "php",
                 "hyprlang",
                 "rasi",
-                "zsh"
+                "zsh",
+                "go"
             })
 
             local opts = function(tbl)
