@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 if [[ "$1" == "pacman" ]]; then
-    sudo pacman --needed -S sddm hyprland hyprpaper waybar kitty xdg-desktop-portal-hyprland \
+    sudo pacman --needed -S sddm hyprland hyprpaper hyprshot waybar kitty xdg-desktop-portal-hyprland \
         base-devel iwd networkmanager network-manager-applet nautilus \
         rofi cliphist ghostty \
         swaync swayosd \

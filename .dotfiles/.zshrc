@@ -4,7 +4,7 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
 export EDITOR=nvim
 export WORKING_DIR="$HOME $HOME/code"
-export WORKING_DIR="$WORKING_DIR $HOME/code/laravel $HOME/code/java $HOME/code/lua $HOME/code/go"
+export WORKING_DIR="$WORKING_DIR $HOME/code/laravel $HOME/code/java $HOME/code/lua $HOME/code/go $HOME/code/angularjs"
 export JAVA_HOME=/usr/lib/jvm/default
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
