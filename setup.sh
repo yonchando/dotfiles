@@ -5,11 +5,8 @@ if [[ "$1" == "pacman" ]]; then
         base-devel iwd networkmanager network-manager-applet nautilus \
         rofi cliphist ghostty \
         swaync swayosd \
-        git zsh neovim tree-sitter-cli lua luarocks fd tmux exa fzf
-
-    if [[ "$PLATFORM" == "laptop" ]]; then
-        sudo pacman --needed -S bluez bluez-utils blueman
-    fi
+        git zsh neovim tree-sitter-cli lua luarocks fd tmux exa fzf \
+        bluez bluez-utils blueman
 
 fi
 
