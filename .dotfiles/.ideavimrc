@@ -40,12 +40,16 @@ map <C-u> <C-u>zz
 
 nmap n nzzzv
 nmap N Nzzzv
+
+map <BS> <Action>(EditorBackSpace)
+
 "-- delete attr html from start at att
 map <leader>da' d2f"
 
 map <leader>dw daW
 map <leader>de diW
 
+" Yank key for common template need in code
 vmap <leader>ya "ay
 vmap <leader>ys "sy
 vmap <leader>yd "dy
@@ -66,18 +70,28 @@ map <leader>pz "zp
 map <leader>px "xp
 map <leader>pc "cp
 
+" paste yank and set current paste back to p
 xmap <leader>pp "0pdiwP
 
 map <leader>/ :nohlsearch<CR>
 
+
+" Selection
 xmap <A-x> <Plug>SkipOccurrence
+
 nmap <leader><C-n> <Plug>AllWholeOccurrences
 xmap <leader><C-n> <Plug>AllWholeOccurrences
+
 nmap <leader>g<C-n> <Plug>AllOccurrences
 xmap <leader>g<C-n> <Plug>AllOccurrences
 
+map ]w <Action>(EditorSelectWord)
+map [w <Action>(EditorUnSelectWord)
+
+" Open project menu
 map <leader>ml <Action>(ManageRecentProjects)
-map <BS> <Action>(EditorBackSpace)
+map ]<tab> <Action>(NextProjectWindow)
+map [<tab> <Action>(PreviousProjectWindow)
 
 " -- Map Bookmark
 map <leader>b0 <Action>(ToggleBookmark0)
@@ -101,27 +115,20 @@ map [b <Action>(GotoPreviousBookmark)
 map ]d <Action>(GotoNextError)
 map [d <Action>(GotoPreviousError)
 
+map <leader>E <Action>(ShowErrorDescription)
+
+" Plugin Move tab
 map [t <Action>(com.mikejhill.intellij.movetab.actions.MoveTabLeft)
 map ]t <Action>(com.mikejhill.intellij.movetab.actions.MoveTabRight)
 
+" Next camelCase or snakeCase
 noremap ]f [w
 noremap [f [b
-
-map ]w <Action>(EditorSelectWord)
-map [w <Action>(EditorUnSelectWord)
-
-map ]g <Action>(VcsShowNextChangeMarker)
-map [g <Action>(VcsShowPrevChangeMarker)
-
-map ]<tab> <Action>(NextProjectWindow)
-map [<tab> <Action>(PreviousProjectWindow)
-
-map ]i <Action>(StringManipulation.CreateSequenceAction)
 
 " switch menu
 map <leader><tab> <Action>(Switcher)
 
-" navigate tab
+" Navigate Tab
 map <Tab> <Action>(NextTab)
 map <S-Tab> <Action>(PreviousTab)
 
@@ -141,10 +148,6 @@ map <leader>cl <Action>(CloseAllToTheLeft)
 map <leader>cr <Action>(CloseAllToTheRight)
 map <leader>q <Action>(CloseAllEditors)
 
-" InsertInlineCompletionAction
-map <leader>dt <Action>(Unwrap)
-map <leader>st <Action>(SurroundWith)
-
 " multiple screen split
 map <leader>ms <Action>(MaximizeEditorInSplit)
 map <leader>vsp <Action>(SplitVertically)
@@ -156,7 +159,7 @@ map <Right> <Action>(StretchSplitToRight)
 map <Up> <Action>(StretchSplitToUp)
 map <Down> <Action>(StretchSplitToBottom)
 
-" Global search
+" Local Search or Replace
 map <A-f> <Action>(Find)
 map <A-r> <Action>(Replace)
 
@@ -171,37 +174,50 @@ map <leader>rd <Action>(Debug)
 map <leader>hr <Action>(Vcs.RollbackChangedLines)
 map <leader>hp <Action>(VcsShowCurrentChangeMarker)
 
+map ]g <Action>(VcsShowNextChangeMarker)
+map [g <Action>(VcsShowPrevChangeMarker)
+
 " LSP Navigation
 map gi <Action>(GotoImplementation)
 
-"" Code 
+" Code Expand
 map <leader>el1 <Action>(ExpandToLevel1)
 map <leader>el2 <Action>(ExpandToLevel2)
 map <leader>el3 <Action>(ExpandToLevel3)
 map <leader>el4 <Action>(ExpandToLevel4)
+
+" Code optimize
+map <leader>oc <Action>(SilentCodeCleanup)
 map <leader>op <Action>(OptimizeImports)
 
-map <leader>E <Action>(ShowErrorDescription)
-map <leader>O <Action>(OverrideMethods)
-map <leader>oc <Action>(SilentCodeCleanup)
-
+" Move block code or line
 map <leader>k <Action>(MoveLineUp)
 map <leader>j <Action>(MoveLineDown)
-
 map <leader>K <Action>(MoveStatementUp)
 map <leader>J <Action>(MoveStatementDown)
 
+" Navigate to next word have the same word under cursor
 map <A-n> <Action>(GotoNextElementUnderCaretUsage)
 map <A-p> <Action>(GotoPrevElementUnderCaretUsage)
 
+" Multiple cursor
 map <C-n> <Action>(EditorCloneCaretBelow)
 map <C-p> <Action>(EditorCloneCaretAbove)
 
+" Snippet
 imap <C-k> <Action>(ExpandLiveTemplateByTab)
 imap <C-l> <Action>(NextTemplateVariable)
 imap <C-h> <Action>(PreviousTemplateVariable)
 
+" Accept from neovim blink style
 imap <C-y> <Action>(EditorChooseLookupItem)
+
+" Wrapper or remove wrapper
+map <leader>dt <Action>(Unwrap)
+map <leader>st <Action>(SurroundWith)
+
+" Plugin StringManipulation
+map ]i <Action>(StringManipulation.CreateSequenceAction)
 
 " Refactorings
 map <leader>t <Action>(Refactorings.QuickListPopupAction)
