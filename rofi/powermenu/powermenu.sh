@@ -89,7 +89,7 @@ run_cmd() {
 chosen="$(run_rofi)"
 case ${chosen} in
 $shutdown)
-    run_cmd --shutdown
+    systemctl poweroff
     ;;
 $reboot)
     run_cmd --reboot
