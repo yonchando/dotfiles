@@ -1,10 +1,10 @@
 Set-Alias c clear
 Set-Alias ll ls
 
-$UAT = "192.168.56.2"
+$UAT = "127.0.0.1"
 
 $SERVERS = @{
-    UAT     = $UAT
+    UAT = $UAT
 }
 
 function Start-SSH {
@@ -109,9 +109,25 @@ Set-Alias -Name dev -Value Start-Dev
 # Git aliases
 Set-Alias -Name g -Value git
 
+function Start-Npm-Run() {
+    param (
+        [string]$Command = "start"
+    )
 
-function Npm-Start() {
-    npm run start
+    Write-Output "npm run $Command"
+
+    npm run $Command
 }
 
-Set-Alias -Name ds -value Npm-Start
+Set-Alias -Name npms -value Start-Npm-Run
+
+function Start-Ng-Serve() {
+    param (
+        [int]$Port = 4200
+    )
+
+    Write-Output "ng serve --port $Port"
+
+    ng serve --port $Port
+}
+Set-Alias -Name ngs -Value Start-Ng-Serve
