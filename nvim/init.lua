@@ -1,3 +1,2 @@
-require("chando.options")
-require("chando.remap")
+require("chando")
 require("config.lazy")
