@@ -27,8 +27,8 @@ zinit snippet OMZL::key-bindings.zsh
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 
-source $HOME/dotfiles/.dotfiles/aliases.zsh
-source $HOME/dotfiles/.dotfiles/config.zsh
+source $HOME/dotfiles/.dotfiles/.aliases.zsh
+source $HOME/dotfiles/.dotfiles/.config.zsh
 
 
 [[ ! -d $HOME/.dev.zsh ]] || source $HOME/.dev.zsh

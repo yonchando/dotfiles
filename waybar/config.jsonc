@@ -28,7 +28,8 @@
     },
     "hyprland/window": {
         "format": "{class}",
-        "separate-outputs": true
+        "separate-outputs": true,
+        "on-click": "hyprctl activewindow -j | jq -r .class | wl-copy"
     },
     "hyprland/submap": {
         "format": "✌️ {}",
