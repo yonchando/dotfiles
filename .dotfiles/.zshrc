@@ -30,6 +30,8 @@ zinit light zsh-users/zsh-completions
 source $HOME/dotfiles/.dotfiles/.aliases.zsh
 source $HOME/dotfiles/.dotfiles/.config.zsh
 
-
-[[ ! -d $HOME/.dev.zsh ]] || source $HOME/.dev.zsh
+if [[ -f $HOME/.dev.zsh ]]; then
+    alias devc='nvim $HOME/.dev.zsh'
+    source $HOME/.dev.zsh
+fi
 
