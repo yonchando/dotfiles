@@ -1,6 +1,8 @@
 require("chando")
 
 vim.pack.add({
+    { src = 'https://github.com/nvim-tree/nvim-web-devicons' }, -- optional
+
     -- Syntax highlight
     'https://github.com/nvim-treesitter/nvim-treesitter',
 
@@ -8,7 +10,6 @@ vim.pack.add({
     'https://github.com/folke/tokyonight.nvim',
 
     -- Explore sidebar
-    { src = 'https://github.com/nvim-tree/nvim-web-devicons' }, -- optional
     { src = 'https://github.com/nvim-tree/nvim-tree.lua' },
 
     -- Telescope
@@ -32,16 +33,14 @@ vim.pack.add({
 
     "https://github.com/lewis6991/gitsigns.nvim",
 
-    'https://github.com/akinsho/bufferline.nvim' 
+    {src = 'https://github.com/akinsho/bufferline.nvim', version = vim.version.range("4.x")},
+
+    -- LSP
+    { src = 'https://github.com/mason-org/mason.nvim' },
+    { src = 'https://github.com/neovim/nvim-lspconfig' },
+
 }, {
     confirm = false
 })
 
 require("nvim-autopairs").setup {}
---
-require('gitsigns').setup({
-    on_attach = function(bufnr)
-        local gitsigns = require('gitsigns')
-
-    end
-})

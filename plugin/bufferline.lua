@@ -1,33 +1,6 @@
 local bufferline = require("bufferline")
 
-bufferline.setup({
-    options = {
-        mode = "buffers",
-        style_preset = bufferline.style_preset.default,
-        numbers = 'ordinal',
-        indicator = {
-            style = 'none'
-        },
-        modified_icon = '*',
-        diagnostics = 'nvim_lsp',
-        diagnostics_update_on_event = true,
-        diagnostics_indicator = function(_, level, _, _)
-            if level == 'error' then
-                return "e"
-            end
-            return ""
-        end,
-        offsets = {
-            {
-                filetype = "NvimTree",
-                text = "File Explorer",
-                text_alisgn = "center",
-                separator = true
-            }
-        },
-        separator_style = "slant",
-    }
-})
+bufferline.setup()
 
 local keyOpts = function(tbl)
     return vim.tbl_extend("keep", { noremap = true, silent = true }, tbl)

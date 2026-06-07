@@ -2,6 +2,8 @@ local opts = function(tbl)
     return vim.tbl_extend("keep", { noremap = true, silent = true }, tbl)
 end
 
+vim.keymap.set("i", "<C-space>", "<C-X><C-O>", opts({ desc = "Auto complete", silent = true }));
+
 vim.keymap.set("n", "<leader><leader>x", ":restart <CR>", opts({ desc = "source %" }))
 vim.keymap.set("n", "<A-a>", "ggVG")
 
