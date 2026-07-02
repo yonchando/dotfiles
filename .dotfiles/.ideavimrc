@@ -24,6 +24,8 @@ set timeoutlen=50000
 set ideavimsupport=dialog
 set multicursor
 set anyobject
+set VimEverywhere
+set inccommand=nosplit
 let g:anyobject_excluded = "anyArgument"
 
 "----------------Mapping-----------------"
@@ -74,7 +76,6 @@ map <leader>pc "cp
 xmap <leader>pp "0pdiwP
 
 map <leader>/ :nohlsearch<CR>
-
 
 " Selection
 xmap <A-x> <Plug>SkipOccurrence
@@ -152,7 +153,7 @@ map <leader>q <Action>(CloseAllEditors)
 map <leader>ms <Action>(MaximizeEditorInSplit)
 map <leader>vsp <Action>(SplitVertically)
 map <leader>sp <Action>(SplitHorizontally)
-map <C-w>W <Action>(MoveEditorToOppositeTabGroup);
+map <leader>wsp <Action>(MoveEditorToOppositeTabGroup);
 
 map <Left> <Action>(StretchSplitToLeft)
 map <Right> <Action>(StretchSplitToRight)
