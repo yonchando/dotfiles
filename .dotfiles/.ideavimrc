@@ -174,7 +174,7 @@ map <leader>rd <Action>(Debug)
 " Git
 map <leader>hr <Action>(Vcs.RollbackChangedLines)
 map <leader>hp <Action>(VcsShowCurrentChangeMarker)
-map <C-k> <Action>(Git.Commit.Stage)
+nmap <C-k> <Action>(CheckinProject)
 
 map ]g <Action>(VcsShowNextChangeMarker)
 map [g <Action>(VcsShowPrevChangeMarker)
