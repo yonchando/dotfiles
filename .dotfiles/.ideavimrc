@@ -34,8 +34,8 @@ map L e
 map J 3jzz
 map K 3kzz
 
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+map <C-l> <C-w>l
+map <C-h> <C-w>h
 
 map <C-d> <C-d>zz
 map <C-u> <C-u>zz
