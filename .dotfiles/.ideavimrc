@@ -27,6 +27,7 @@ set anyobject
 set VimEverywhere
 set inccommand=nosplit
 let g:anyobject_excluded = "anyArgument"
+let g:multi_cursor_use_default_mapping = 0
 
 "----------------Mapping-----------------"
 map H b
@@ -34,8 +35,8 @@ map L e
 map J 3jzz
 map K 3kzz
 
-map <C-l> <C-w>l
-map <C-h> <C-w>h
+nmap <C-l> <C-w>l
+nmap <C-h> <C-w>h
 
 map <C-d> <C-d>zz
 map <C-u> <C-u>zz
