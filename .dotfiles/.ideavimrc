@@ -6,8 +6,10 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/argtextobj.vim'
+Plug 'bkad/CamelCaseMotion'
 
 let mapleader=" " 
+let g:camelcasemotion_key = '\'
 
 set scrolloff=5
 set incsearch
@@ -19,13 +21,16 @@ set noerrorbells
 set showmode
 set idearefactormode=keep
 set number
-set which-key
 set timeoutlen=50000
+
+set VimEverywhere
 set ideavimsupport=dialog
 set multicursor
 set anyobject
-set VimEverywhere
 set inccommand=nosplit
+set clipboard^=ideaput
+set which-key
+
 let g:anyobject_excluded = "anyArgument"
 let g:multi_cursor_use_default_mapping = 0
 
@@ -123,10 +128,6 @@ map <leader>E <Action>(ShowErrorDescription)
 map [t <Action>(com.mikejhill.intellij.movetab.actions.MoveTabLeft)
 map ]t <Action>(com.mikejhill.intellij.movetab.actions.MoveTabRight)
 
-" Next camelCase or snakeCase
-noremap ]f [w
-noremap [f [b
-
 " switch menu
 map <leader><tab> <Action>(Switcher)
 
@@ -156,14 +157,10 @@ map <leader>vsp <Action>(SplitVertically)
 map <leader>sp <Action>(SplitHorizontally)
 map <leader>wsp <Action>(MoveEditorToOppositeTabGroup);
 
-map <Left> <Action>(StretchSplitToLeft)
-map <Right> <Action>(StretchSplitToRight)
-map <Up> <Action>(StretchSplitToUp)
-map <Down> <Action>(StretchSplitToBottom)
-
 " Local Search or Replace
 map <A-f> <Action>(Find)
 map <A-r> <Action>(Replace)
+
 
 " Run
 map <leader>rr <Action>(RunMenu)
