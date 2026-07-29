@@ -48,12 +48,14 @@
             "6": "",
             "urgent": "",
             "default": ""
-        }
+        },
+        "on-click": "activate"
     },
     "hyprland/language": {
         "format": "{}",
         "format-en": "US",
-        "format-kh": "KH"
+        "format-kh": "KH",
+        "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
     },
     "clock": {
         "timezone": "Asia/Phnom_Penh",
@@ -85,8 +87,8 @@
     },
     "network": {
         "format-wifi": "󰤢 ({essid})",
-        "format-ethernet": "󰈀 up",
-        "format-disconnected": "󰤠 down ",
+        "format-ethernet": "󰈀 Connected",
+        "format-disconnected": "󰤠 Disconnected",
         "interval": 6,
         "tooltip": false
     },

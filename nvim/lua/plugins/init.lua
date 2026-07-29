@@ -120,11 +120,6 @@ return {
         config = true
     },
     { "christoomey/vim-tmux-navigator", },
-    {
-        'windwp/nvim-autopairs',
-        event = "InsertEnter",
-        config = true
-    },
     { "famiu/bufdelete.nvim" },
     {
         "RRethy/vim-illuminate",

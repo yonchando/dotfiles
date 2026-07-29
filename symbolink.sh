@@ -17,8 +17,8 @@ link_config() {
     fi
 
     if [[ ! -L $HOME/.config/nvim ]]; then
-        rm -rf $HOME/.config/nvim
-        ln -s $HOME/dotfiles/nvim $HOME/.config
+        # rm -rf $HOME/.config/nvim
+        # ln -s $HOME/dotfiles/nvim $HOME/.config
     fi
 
     if [[ ! -L $HOME/.config/waybar ]]; then
