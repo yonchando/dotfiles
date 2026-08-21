@@ -1,10 +1,10 @@
 Set-Alias c clear
 Set-Alias ll ls
 
-$UAT = "127.0.0.1"
+$LOCALHOST = "127.0.0.1"
 
 $SERVERS = @{
-    UAT = $UAT
+    LOCAL = $LOCALHOST
 }
 
 function Start-SSH {
@@ -28,7 +28,15 @@ function Start-SSH {
 
 Set-Alias -Name _ssh -Value Start-SSH
 
-$CODE_DIR = "D:\CODE"
+function Get-Directory-Path {
+    param (
+        [string]$Path = ''
+    )
+
+    Write-Host $Path
+}
+
+$CODE_DIR = "G:\CODE"
 function Select-Directory() {
 
     param (
@@ -38,73 +46,25 @@ function Select-Directory() {
 
     $BaseDIR = if ($Path) { Join-Path $CODE_DIR $Path } else { $CODE_DIR }
 
-    $Selected = Get-ChildItem -Path $BaseDIR -Depth $Depth -Attributes Directory -Name | fzf --bind "alt-c:execute(echo dr:{})+abort"
+    # CTRL-Y to copy the command into clipboard using pbcopy
+    # $FZF_CTRL_R_OPTS = "ctrl-r:reload(Get-ChildItem -Path $CODE_DIR -Depth $Depth -Attributes Directory -Name)"
+    # $FZF_CTRL_F_OPTS = "ctrl-f:reload(pwsh -NoProfile -Command ""Get-ChildItem -Name '{}'"")"
+    # $FZF_BIND_OPTS = "$FZF_CTRL_R_OPTS, $FZF_CTRL_F_OPTS"
+
+    $Selected = Get-ChildItem -Path $BaseDIR -Depth $Depth -Attributes Directory -Name | fzf
 
     if (-not $Selected) {
         return ''
     }
 
-    if ( $Selected.StartsWith("dr:")) {
+    Write-Host "BaseDir: $BaseDIR, Selected: $Selected"
 
-        $Child = $Selected.Replace("dr:", "").Replace('"', "")
+    $ProjectPath = Join-Path $BaseDIR $Selected
 
-        $ChildPath = if ($Path) { Join-Path $Path $Child } else { $Child }
-
-        $Selected = Select-Directory -Path $ChildPath -Depth 0
-
-        return $Selected
-    }
-
-    $path = Join-Path $BaseDIR $Selected
-
-    return $path
+    Set-Location -Path $ProjectPath
 }
 
-function Get-Project() {
-
-    param(
-        [string]$Path = ''
-    )
-
-    $PathLocation = Select-Directory -Path $Path
-
-    if ($PathLocation) {
-        Set-Location $PathLocation
-    }
-}
-
-Set-Alias -Name cw -Value Get-Project
-
-function Start-Dev() {
-    param (
-        [string]$Path,
-        [string]$Command = 'dev'
-    )
-
-    if ($Path) {
-        $PathLocation = Join-Path $CODE_DIR $Path
-        Set-Location $PathLocation
-    }
-    else {
-        $PathLocation = Select-Directory -Path $Path
-
-        if ($PathLocation) {
-            Set-Location $PathLocation
-        }
-    }
-
-    if ($PathLocation) {
-        if ($Command -eq 'dev') {
-            npm run dev
-        }
-        else {
-            npm run start
-        }
-
-    }
-}
-    
-Set-Alias -Name dev -Value Start-Dev
+Set-Alias -Name cw -Value Select-Directory
 
 # Git aliases
 Set-Alias -Name g -Value git
