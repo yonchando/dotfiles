@@ -5,7 +5,7 @@ tree.setup({
 })
 
 tree.install({
-    "lua", "bash", "regex", "vimdoc",
+    "vim", "lua", "bash", "regex",  "vimdoc", "markdown", "markdown_inline",
     "html", "javascript", "typescript",
     "http", "json", "xml", "yaml",
     "java", "javadoc",

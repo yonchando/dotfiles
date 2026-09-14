@@ -89,3 +89,6 @@ vim.keymap.set('n', "<leader>lsr", vim.cmd.LspRestart, opts({ desc = "Lsp Restar
 
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 
+vim.keymap.set("n", "<leader>fc", function ()
+    vim.lsp.buf.format()
+end)
