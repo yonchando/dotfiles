@@ -1,7 +1,6 @@
 local cmp = require('blink.cmp')
 cmp.build():pwait()
 cmp.setup({
-    keymap = { preset = 'default' },
     cmdline = { enabled = true },
     completion = {
         keyword = { range = 'prefix' },
@@ -20,8 +19,33 @@ cmp.setup({
                 },
             }
         },
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        documentation = { auto_show = false },
         ghost_text = { enabled = true },
     },
 
+    sources = {
+        -- Remove 'buffer' if you don't want text completions, by default it's only enabled when LSP returns no items
+        default = { 'buffer' },
+    },
+
+    snippets = { preset = 'luasnip' },
+
+    keymap = {
+        preset = 'default',
+
+        ['<C-Space>'] = {
+            function(c)
+                return c.show({
+                    providers = { 'lsp', 'path' }
+                })
+            end
+        },
+        ['<C-j>'] = {
+            function(c)
+                return c.show({
+                    providers = { 'snippets' }
+                })
+            end
+        }
+    }
 })

@@ -1,6 +1,23 @@
 local bufferline = require("bufferline")
 
-bufferline.setup()
+bufferline.setup({
+    options = {
+        style_preset = bufferline.style_preset.minimal,
+        numbers = "ordinal",
+        show_buffer_icons = false,
+        show_tab_indicators = true,
+        indicator = {
+            icon = '▎', -- this should be omitted if indicator style is not 'icon'
+            style = 'none',
+        },
+        offsets = {
+            {
+                filetype = "NvimTree",
+                text = "File Explorer"
+            }
+        },
+    }
+})
 
 local keyOpts = function(tbl)
     return vim.tbl_extend("keep", { noremap = true, silent = true }, tbl)
@@ -33,4 +50,3 @@ vim.keymap.set("n", '<leader>8', tab(8), keyOpts({ desc = "Go to tab 8" }))
 vim.keymap.set("n", '<leader>9', tab(9), keyOpts({ desc = "Go to tab 9" }))
 vim.keymap.set("n", '<leader>$', tab(-1), keyOpts({ desc = "Go to tab last" }))
 vim.keymap.set("n", "<leader>`", vim.cmd.BufferLinePick, keyOpts({ desc = "Buffer pick tab" }))
-

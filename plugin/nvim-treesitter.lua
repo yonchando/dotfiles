@@ -5,7 +5,7 @@ tree.setup({
 })
 
 tree.install({
-    "vim", "lua", "bash", "regex",  "vimdoc", "markdown", "markdown_inline",
+    "vim", "lua", "bash", "regex", "vimdoc", "markdown", "markdown_inline",
     "html", "javascript", "typescript",
     "http", "json", "xml", "yaml",
     "java", "javadoc",
@@ -19,7 +19,11 @@ tree.install({
 
 for _, value in pairs(tree.get_installed()) do
     vim.api.nvim_create_autocmd('FileType', {
-      pattern = { value },
-      callback = function() vim.treesitter.start() end,
+        pattern = { value },
+        callback = function() vim.treesitter.start() end,
     })
 end
+
+local obj = require("nvim-treesitter-textobjects")
+
+obj.setup()

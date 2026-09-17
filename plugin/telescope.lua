@@ -27,16 +27,20 @@ telescope.setup({
             },
         }
     },
-    extension = {
+    extensions = {
         fzf = {
-            fuzzy = true,                    -- false will only do exact matching
-            override_generic_sorter = true,  -- override the generic sorter
-            override_file_sorter = true,     -- override the file sorter
-            case_mode = "smart_case",        -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
+            fuzzy = true,                   -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true,    -- override the file sorter
+            case_mode = "smart_case",       -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
         },
+        ['ui-select'] = {
+            require("telescope.themes").get_dropdown()
+        }
     }
 })
 
+require('telescope').load_extension('ui-select')
 require('telescope').load_extension('fzf')
 
 local builtin = require('telescope.builtin')
@@ -67,5 +71,30 @@ vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "Lsp Implementat
 vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Lsp References" })
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Lsp References" })
 vim.keymap.set("n", "gm", builtin.lsp_document_symbols, { desc = "Lsp Document Symbols" })
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
 
+vim.keymap.set({ 'n', 'v' }, "<leader>i", function()
+    vim.lsp.buf.code_action()
+end, { desc = "Lsp Auto-Fix / Auto-Import" })
 
+vim.keymap.set({ 'n', 'v' }, "<leader><leader>i", function()
+    vim.lsp.buf.code_action({
+        context = {
+            diagnostics = {},
+            only = { "quickfix", "source.fixAll" }
+        }
+    })
+end, { desc = "Lsp quickfix" })
+
+vim.keymap.set({ 'n', 'v' }, "<leader>t", function()
+    vim.lsp.buf.code_action({
+        context = {
+            diagnostics = {},
+            only = { "refactor" }
+        }
+    })
+end, { desc = "Lsp quickfix or refactor" })
+
+vim.keymap.set("n", "<C-q>", vim.lsp.buf.hover, { desc = "LSP hover documentation" })
+
+vim.keymap.set("i", "<A-p>", vim.lsp.buf.signature_help, { desc = "LSP signature help" })
