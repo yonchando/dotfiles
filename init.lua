@@ -12,10 +12,15 @@ vim.pack.add({
     "https://github.com/windwp/nvim-autopairs",
     "https://github.com/lukas-reineke/indent-blankline.nvim",
     "https://github.com/nvim-lualine/lualine.nvim",
-    "https://github.com/lewis6991/gitsigns.nvim",
     "https://github.com/christoomey/vim-tmux-navigator",
     "https://github.com/stevearc/conform.nvim.git",
     "https://github.com/folke/noice.nvim",
+
+    "https://github.com/lewis6991/gitsigns.nvim",
+    "https://github.com/tpope/vim-fugitive", -- git
+
+    "https://github.com/brenton-leighton/multiple-cursors.nvim",
+
     {
         src = "https://github.com/kylechui/nvim-surround",
         version = vim.version.range("4.x"), -- Use for stability; omit to use `main` branch for the latest features
@@ -40,5 +45,3 @@ vim.pack.add({
 }, {
     confirm = false
 })
-
-require("nvim-autopairs").setup {}

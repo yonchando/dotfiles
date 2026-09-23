@@ -10,7 +10,7 @@ cmp.setup({
         list = { selection = { preselect = false, auto_insert = true } },
 
         menu = {
-            auto_show = false,
+            auto_show = true,
 
             draw = {
                 columns = {
