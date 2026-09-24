@@ -20,7 +20,11 @@ tree.install({
 for _, value in pairs(tree.get_installed()) do
     vim.api.nvim_create_autocmd('FileType', {
         pattern = { value },
-        callback = function() vim.treesitter.start() end,
+        callback = function()
+            vim.treesitter.start()
+            vim.wo[0][0].foldmethod = "expr"
+            vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        end,
     })
 end
 
