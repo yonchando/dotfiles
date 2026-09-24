@@ -3,8 +3,8 @@ export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
 export EDITOR=nvim
-export WORKING_DIR="$HOME $HOME/code"
-export WORKING_DIR="$WORKING_DIR $HOME/code/laravel $HOME/code/java $HOME/code/lua $HOME/code/go $HOME/code/angularjs"
+export WORKING_DIR="$HOME/code $HOME/.config"
+export WORKING_DIR="$WORKING_DIR"
 export JAVA_HOME=/usr/lib/jvm/default
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -20,6 +20,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 zinit snippet OMZP::git
+zinit snippet OMZP::aliases
 zinit snippet OMZL::directories.zsh
 zinit snippet OMZL::key-bindings.zsh
 

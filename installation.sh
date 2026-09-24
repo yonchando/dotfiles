@@ -1,43 +1,132 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
+set -eo pipefail   # no "-u" here: nvm.sh breaks with "set -u"
 
-# Set up oh my zsh
-install_oh_my_zsh() {
-    if [[ ! -d $HOME/.oh-my-zsh ]]; then
-        # clone oh my zsh
-        git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
+install_packages() {
+    sudo apt update
+    sudo apt install -y curl tmux zsh fzf ripgrep xclip build-essential
 
-        # oh my theme powerlevel10k
-        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    # Neovim build prerequisites
+    sudo apt install -y ninja-build gettext cmake
+}
 
-        source ~/.zshrc
+set_default_shell() {
+    local zsh_path
+    zsh_path="$(command -v zsh)"
+    if [[ "$SHELL" != "$zsh_path" ]]; then
+        chsh -s "$zsh_path"
     fi
 }
 
-# setup node management
-install_node() {
-    if [[ ! -x $(which node) ]]; then
-        export NVM_DIR="$HOME/.nvm" && (
-            git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
-            cd "$NVM_DIR"
-            git checkout $(git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1))
-        ) && \. "$NVM_DIR/nvm.sh"
-
-        nvm install node
+install_rust() {
+    if ! command -v rustup >/dev/null 2>&1 && [[ ! -x "$HOME/.cargo/bin/rustup" ]]; then
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
     fi
+    . "$HOME/.cargo/env"
+    rustc --version
+}
+
+install_exa() {
+    if ! command -v exa >/dev/null 2>&1; then
+        cargo install exa
+    fi
+    exa --version
+}
+
+install_go() {
+    local arch version current
+
+    # Detect CPU type
+    case "$(uname -m)" in
+        x86_64)  arch="amd64" ;;
+        aarch64) arch="arm64" ;;
+        *) echo "Unsupported arch: $(uname -m)" >&2; return 1 ;;
+    esac
+
+    # Latest version, e.g. "go1.23.2"
+    version="$(curl -fsSL "https://go.dev/VERSION?m=text" | head -n1)"
+
+    # Version installed now (empty if none)
+    if [[ -x /usr/local/go/bin/go ]]; then
+        current="$(/usr/local/go/bin/go version | awk '{print $3}')"
+    fi
+
+    if [[ "$current" != "$version" ]]; then
+        echo "Installing $version ..."
+        curl -fsSL "https://go.dev/dl/${version}.linux-${arch}.tar.gz" -o /tmp/go.tar.gz
+        sudo rm -rf /usr/local/go
+        sudo tar -C /usr/local -xzf /tmp/go.tar.gz
+        rm /tmp/go.tar.gz
+    fi
+
+    export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
+    go version
+}
+
+install_node() {
+    export NVM_DIR="$HOME/.nvm"
+
+    if [[ ! -d "$NVM_DIR" ]]; then
+        git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
+        (
+            cd "$NVM_DIR"
+            git checkout "$(git describe --abbrev=0 --tags --match "v[0-9]*" "$(git rev-list --tags --max-count=1)")"
+        )
+    fi
+
+    . "$NVM_DIR/nvm.sh"
+    nvm install --lts
+    node --version
+
+    if ! command -v tree-sitter >/dev/null 2>&1; then
+        npm install -g tree-sitter-cli
+    fi
+    tree-sitter --version
+}
+
+install_neovim() {
+    local src="$HOME/.local/src/neovim"
+
+    if command -v nvim >/dev/null 2>&1; then
+        nvim --version | head -n1
+        return
+    fi
+
+    if [[ ! -d "$src" ]]; then
+        git clone https://github.com/neovim/neovim.git "$src"
+    fi
+
+    (
+        cd "$src"
+        git fetch --tags --force
+        git checkout stable
+        make distclean
+        # Clean PATH: Windows entries leaked in by WSL can break the build
+        PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" \
+            make CMAKE_BUILD_TYPE=RelWithDebInfo
+        # Package as .deb so it can be removed cleanly with "sudo apt remove neovim"
+        cd build
+        cpack -G DEB
+        sudo dpkg -i nvim-linux-*.deb
+    )
+
+    nvim --version | head -n1
 }
 
 install_tmux_plugin() {
-    # tmux plugins manager
-    if [[ ! -d ~/.tmux/plugins/tpm ]]; then
-        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+        git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
     fi
 }
 
-# Main
 main() {
-    install_oh_my_zsh
+    install_packages
+    set_default_shell
+    install_rust
+    install_exa
+    install_go
     install_node
+    install_neovim
     install_tmux_plugin
 }
 
-main
+main "$@"
