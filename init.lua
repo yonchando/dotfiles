@@ -28,8 +28,8 @@ vim.pack.add({
     { src = 'https://github.com/akinsho/bufferline.nvim', version = vim.version.range("4.x") },
 
     -- Teelescope
-    "https://github.com/nvim-telescope/telescope-ui-select.nvim",
     "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+    "https://github.com/nvim-telescope/telescope-ui-select.nvim",
     "https://github.com/nvim-telescope/telescope.nvim",
 
     -- LSP

@@ -1,5 +1,10 @@
 {
     "diagnostics.globals": [
         "vim"
+    ],
+    "workspace.library": [
+        "/usr/share/nvim/runtime",
+        "/home/chando/.local/share/nvim/site/pack/core/opt/nvim-lspconfig/lua/lspconfig",
+        "${3rd}/luv/library"
     ]
 }

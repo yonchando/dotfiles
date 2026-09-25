@@ -13,7 +13,6 @@ theme.setup({
     }
 })
 
-
 vim.cmd [[colorscheme tokyonight]]
 
 -- indent blankline
@@ -31,7 +30,15 @@ vim.opt.fillchars:append("lastline:⋅")
 -- mason
 local mason = require("mason")
 
-mason.setup()
+mason.setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
 
 require("mason-lspconfig").setup({
     automatic_enable = true,
@@ -73,7 +80,6 @@ vim.keymap.set("n", "<leader>gmtl", function() vim.cmd('Git mergetool') end, { d
 vim.keymap.set("n", "<leader>g.", function() vim.cmd('Gclog %') end, { desc = "Git mergetool" })
 
 -- multiple cursor
---
 
 require("multiple-cursors").setup()
 vim.keymap.set({ "n", "x" }, "<C-n>", function() vim.cmd('MultipleCursorsAddDown') end,
