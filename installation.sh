@@ -17,6 +17,11 @@ set_default_shell() {
     fi
 }
 
+install_python() {
+    sudo apt install -y python3 python3-pip python3-venv
+    python3 --version
+}
+
 install_rust() {
     if ! command -v rustup >/dev/null 2>&1 && [[ ! -x "$HOME/.cargo/bin/rustup" ]]; then
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -121,6 +126,7 @@ install_tmux_plugin() {
 main() {
     install_packages
     set_default_shell
+    install_python
     install_rust
     install_exa
     install_go
