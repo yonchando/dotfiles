@@ -1,7 +1,6 @@
 require("nvim-autopairs").setup {}
 
 local theme = require("tokyonight")
-
 theme.setup({
     style = "moon",
     transparent = true,
@@ -10,9 +9,10 @@ theme.setup({
         comments = { italic = true },
         keywords = { italic = true },
         floats = "dark",
-    }
+    },
+    on_colors = function() end,
+    on_highlights = function() end,
 })
-
 vim.cmd [[colorscheme tokyonight]]
 
 -- indent blankline
@@ -22,15 +22,12 @@ require("ibl").setup({
         show_end = false,
     }
 })
-
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
 vim.opt.fillchars:append("lastline:⋅")
 
 -- mason
-local mason = require("mason")
-
-mason.setup({
+require("mason").setup({
     ui = {
         icons = {
             package_installed = "✓",
@@ -39,17 +36,45 @@ mason.setup({
         }
     }
 })
-
-require("mason-lspconfig").setup({
+local mlspconfig = require("mason-lspconfig")
+mlspconfig.setup({
     automatic_enable = true,
     ensure_installed = {
-        "lua_ls"
+        "vimls",
+        "lua_ls",
     }
+})
+
+vim.api.nvim_create_user_command("InstallMyServer", function()
+    local servers = {
+        "laravel_ls",
+        "angularls",
+        "tailwindcss",
+        "ts_ls"
+    }
+
+    local installed = {}
+
+    local installed_services = mlspconfig.get_installed_servers()
+
+    for _, value in ipairs(servers) do
+        if not vim.list_contains(installed_services, value) then
+            table.insert(installed, value)
+        end
+    end
+
+    if next(installed) then
+        vim.api.nvim_cmd({
+            cmd = "LspInstall",
+            args = installed
+        }, {})
+    end
+end, {
+    desc = "Install language server laravel_ls angularls tailwindcss ts_ls"
 })
 
 -- noice
 local noice = require("noice")
-
 noice.setup({
     lsp = {
         signature = {
@@ -67,9 +92,8 @@ noice.setup({
         }
     }
 })
-
 vim.keymap.set("n", "<leader>nc", ":Noice dismiss<CR>", { silent = true })
-
+vim.keymap.set("n", "<leader>na", ":Noice all<CR>", { silent = true })
 
 -- git vim-fugitive
 vim.keymap.set("n", "<leader>gs", function() vim.cmd('Git') end, { desc = "Git Status" })
@@ -80,7 +104,6 @@ vim.keymap.set("n", "<leader>gmtl", function() vim.cmd('Git mergetool') end, { d
 vim.keymap.set("n", "<leader>g.", function() vim.cmd('Gclog %') end, { desc = "Git mergetool" })
 
 -- multiple cursor
-
 require("multiple-cursors").setup()
 vim.keymap.set({ "n", "x" }, "<C-n>", function() vim.cmd('MultipleCursorsAddDown') end,
     { desc = "Add multiple cursor down" })

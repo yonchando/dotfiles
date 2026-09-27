@@ -24,10 +24,37 @@ for _, value in pairs(tree.get_installed()) do
             vim.treesitter.start()
             vim.wo[0][0].foldmethod = "expr"
             vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end,
     })
 end
 
-local obj = require("nvim-treesitter-textobjects")
+local textobj = require("nvim-treesitter-textobjects")
 
-obj.setup()
+textobj.setup({
+    select = {
+        selection_modes = {
+            ['@parameter.outer'] = 'v',
+            ['@function.outer'] = 'v',
+        }
+    }
+})
+
+local text_select = require("nvim-treesitter-textobjects.select")
+
+local text_object_mapping = {
+    ['af'] = '@function.outer',
+    ['if'] = '@function.inner',
+    ['aa'] = '@parameter.outer',
+    ['ia'] = '@parameter.inner',
+    ['ac'] = '@class.outer',
+    ['ic'] = '@class.inner',
+}
+
+for key, value in pairs(text_object_mapping) do
+    vim.keymap.set({ "x", "o" }, key, function()
+        text_select.select_textobject(value, "textobjects")
+    end, {
+        desc = "Select " .. value
+    })
+end
