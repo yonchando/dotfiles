@@ -16,7 +16,7 @@ cmp.setup({
                 columns = {
                     { "kind_icon",  "kind",              gap = 1 },
                     { "label",      "label_description", gap = 1 },
-                    { "source_name" },
+                    { "source_name" }
                 },
                 components = {
                     label = {
@@ -30,6 +30,31 @@ cmp.setup({
                         end,
                         highlight = "BlinkCmpSource",
                     },
+                    kind_icon = {
+                        text = function(ctx)
+                            local icon = ctx.kind_icon
+                            if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                                local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
+                                if dev_icon then
+                                    icon = dev_icon
+                                end
+                            else
+                                icon = require("lspkind").symbol_map[ctx.kind] or ""
+                            end
+
+                            return icon .. ctx.icon_gap
+                        end,
+                        highlight = function(ctx)
+                            local hl = ctx.kind_hl
+                            if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                                local dev_icon, dev_hl = require("nvim-web-devicons").get_icon(ctx.label)
+                                if dev_icon then
+                                    hl = dev_hl
+                                end
+                            end
+                            return hl
+                        end,
+                    }
                 },
                 treesitter = { "lsp" }
             }
@@ -55,6 +80,16 @@ cmp.setup({
 
     keymap = {
         preset = 'default',
+
+        ['<A-2>'] = { function(c) c.accept({ index = 2 }) end },
+        ['<A-3>'] = { function(c) c.accept({ index = 3 }) end },
+        ['<A-4>'] = { function(c) c.accept({ index = 4 }) end },
+        ['<A-5>'] = { function(c) c.accept({ index = 5 }) end },
+        ['<A-6>'] = { function(c) c.accept({ index = 6 }) end },
+        ['<A-7>'] = { function(c) c.accept({ index = 7 }) end },
+        ['<A-8>'] = { function(c) c.accept({ index = 8 }) end },
+        ['<A-9>'] = { function(c) c.accept({ index = 9 }) end },
+        ['<A-0>'] = { function(c) c.accept({ index = 10 }) end },
 
         ['<C-Space>'] = {
             function(c)

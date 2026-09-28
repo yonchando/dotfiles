@@ -17,9 +17,11 @@ tree.install({
     "go"
 })
 
+vim.treesitter.language.register("angular", "htmlangular")
+
 for _, value in pairs(tree.get_installed()) do
     vim.api.nvim_create_autocmd('FileType', {
-        pattern = { value },
+        pattern = vim.treesitter.language.get_filetypes(value),
         callback = function()
             vim.treesitter.start()
             vim.wo[0][0].foldmethod = "expr"
