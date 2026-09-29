@@ -19,6 +19,7 @@ vim.keymap.set("n", 'N', 'Nzzzv')
 vim.keymap.set("n", "<leader>_", "zM")
 vim.keymap.set("n", "<leader>+", "zR")
 vim.keymap.set("n", "<leader>=", "zO", opts({ desc = "Unfold all under cursor" }))
+vim.keymap.set("n", "<leader>-", "zc", opts({ desc = "Fold under cursor" }))
 
 for level = 0, 4 do
     vim.keymap.set("n", "<leader>el" .. level, function()
