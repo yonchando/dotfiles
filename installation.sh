@@ -20,6 +20,16 @@ set_default_shell() {
 install_python() {
     sudo apt install -y python3 python3-pip python3-venv
     python3 --version
+
+    # uv provides older Pythons (e.g. python3.13 in ~/.local/bin) for tools
+    # that don't support the distro's python3 yet; Mason picks them up by name
+    export PATH="$HOME/.local/bin:$PATH"
+    if ! command -v uv >/dev/null 2>&1; then
+        # .zshrc already adds ~/.local/bin to PATH; don't let the installer edit it
+        curl -LsSf https://astral.sh/uv/install.sh | env UV_NO_MODIFY_PATH=1 sh
+    fi
+    uv python install 3.13
+    python3.13 --version
 }
 
 install_rust() {
@@ -31,6 +41,8 @@ install_rust() {
 }
 
 install_exa() {
+    # cargo may not be on PATH yet when this runs without install_rust
+    [[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
     if ! command -v exa >/dev/null 2>&1; then
         cargo install exa
     fi
@@ -123,16 +135,52 @@ install_tmux_plugin() {
     fi
 }
 
+# Step name -> function, in install order (used when no args are given)
+STEPS=(
+    packages:install_packages
+    shell:set_default_shell
+    python:install_python
+    rust:install_rust
+    exa:install_exa
+    go:install_go
+    node:install_node
+    neovim:install_neovim
+    tmux:install_tmux_plugin
+)
+
+usage() {
+    echo "Usage: $0 [-h|--help] [step...]"
+    echo "Steps (default: all): ${STEPS[*]%%:*}"
+}
+
 main() {
-    install_packages
-    set_default_shell
-    install_python
-    install_rust
-    install_exa
-    install_go
-    install_node
-    install_neovim
-    install_tmux_plugin
+    local step entry fn
+    local -a fns=()
+
+    if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+        usage
+        return
+    fi
+
+    if (( $# == 0 )); then
+        for entry in "${STEPS[@]}"; do fns+=("${entry#*:}"); done
+    else
+        for step in "$@"; do
+            fn=""
+            for entry in "${STEPS[@]}"; do
+                [[ "${entry%%:*}" == "$step" ]] && fn="${entry#*:}"
+            done
+            if [[ -z "$fn" ]]; then
+                echo "Unknown step: $step (see $0 --help)" >&2
+                return 1
+            fi
+            fns+=("$fn")
+        done
+    fi
+
+    for fn in "${fns[@]}"; do
+        "$fn"
+    done
 }
 
 main "$@"

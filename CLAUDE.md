@@ -17,7 +17,10 @@ Check which branch you're on before editing: a config that exists on `main` may 
 
 ```bash
 ./setup.sh           # runs installation.sh then symbolink.sh
-./installation.sh    # packages + toolchains only
+./setup.sh node go   # only the named install steps (no symlinking)
+./setup.sh --link    # symlinks only (same as ./symbolink.sh; -l for short)
+./setup.sh --help    # usage + list of step names (-h for short)
+./installation.sh    # packages + toolchains only (also accepts step names)
 ./symbolink.sh       # symlinks only (safe to re-run)
 ```
 
@@ -25,7 +28,7 @@ Check which branch you're on before editing: a config that exists on `main` may 
 
 ## Architecture
 
-- **`installation.sh`** — one `install_*` function per tool, invoked from `main()`. Each is idempotent (checks for an existing install first). Installs apt packages (incl. `xclip` for tmux copy-mode), sets zsh as login shell, Python 3 (`python3`, `pip`, `venv` via apt), rustup, `exa` via `cargo install` (so it must run after `install_rust`), Go (official tarball into `/usr/local/go`), nvm + LTS node (plus global `tree-sitter-cli` via npm), Neovim (built from the `stable` tag in `~/.local/src/neovim`, packaged with `cpack -G DEB` and installed via `dpkg -i`, so `apt remove neovim` uninstalls it; skipped if `nvim` is already on PATH), and tmux TPM.
+- **`installation.sh`** — one `install_*` function per tool, registered in the `STEPS` array (`name:function`, in run order) that `main()` iterates; with args, only the named steps run. Each is idempotent (checks for an existing install first). Installs apt packages (incl. `xclip` for tmux copy-mode), sets zsh as login shell, Python 3 (`python3`, `pip`, `venv` via apt, plus `uv` and a uv-managed `python3.13` in `~/.local/bin` for tools like Mason packages that reject the distro's newer Python), rustup, `exa` via `cargo install` (so it must run after `install_rust`), Go (official tarball into `/usr/local/go`), nvm + LTS node (plus global `tree-sitter-cli` via npm), Neovim (built from the `stable` tag in `~/.local/src/neovim`, packaged with `cpack -G DEB` and installed via `dpkg -i`, so `apt remove neovim` uninstalls it; skipped if `nvim` is already on PATH), and tmux TPM.
 - **`symbolink.sh`** — a single `link <src> <dst> [sudo]` helper (`ln -sfn`, creates parent dirs, skips missing sources with a warning). To add a new dotfile, add it to the loop in `link_dotfile` or add a new `link_*` function and call it from `main`.
 - **`.dotfiles/`** — files that get symlinked into `$HOME` (`.zshrc`, `.p10k.zsh`, `.tmux.conf`, `.ideavimrc`) plus `.local/bin/tmux-sessionizer` → `~/.local/bin/`.
 
