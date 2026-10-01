@@ -43,6 +43,10 @@ install_rust() {
 install_exa() {
     # cargo may not be on PATH yet when this runs without install_rust
     [[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
+    if ! command -v cargo >/dev/null 2>&1; then
+        echo "Skip exa: cargo not found (run './setup.sh rust' first)" >&2
+        return
+    fi
     if ! command -v exa >/dev/null 2>&1; then
         cargo install exa
     fi
