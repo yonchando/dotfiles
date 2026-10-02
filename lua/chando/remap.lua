@@ -22,6 +22,10 @@ vim.keymap.set("n", "<leader>-", "zc", opts({ desc = "Fold under cursor" }))
 for level = 0, 4 do
     vim.keymap.set("n", "<leader>el" .. level, function()
         vim.wo.foldlevel = level
+
+        if level > 0 then
+            vim.cmd("normal! zz")
+        end
     end, opts({ desc = "Expand all to level " .. level }))
 end
 
