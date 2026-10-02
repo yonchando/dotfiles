@@ -36,41 +36,12 @@ require("mason").setup({
         }
     }
 })
-local mlspconfig = require("mason-lspconfig")
-mlspconfig.setup({
+require("mason-lspconfig").setup({
     automatic_enable = true,
     ensure_installed = {
         "vimls",
         "lua_ls",
     }
-})
-
-vim.api.nvim_create_user_command("InstallMyServer", function()
-    local servers = {
-        "laravel_ls",
-        "angularls",
-        "tailwindcss",
-        "ts_ls"
-    }
-
-    local installed = {}
-
-    local installed_services = mlspconfig.get_installed_servers()
-
-    for _, value in ipairs(servers) do
-        if not vim.list_contains(installed_services, value) then
-            table.insert(installed, value)
-        end
-    end
-
-    if next(installed) then
-        vim.api.nvim_cmd({
-            cmd = "LspInstall",
-            args = installed
-        }, {})
-    end
-end, {
-    desc = "Install language server laravel_ls angularls tailwindcss ts_ls"
 })
 
 -- noice

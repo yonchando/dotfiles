@@ -2,8 +2,6 @@ local opts = function(tbl)
     return vim.tbl_extend("keep", { noremap = true, silent = true }, tbl)
 end
 
-vim.keymap.set("i", "<C-space>", "<C-X><C-O>", opts({ desc = "Auto complete", silent = true }));
-
 vim.keymap.set("n", "<leader><leader>x", ":restart <CR>", opts({ desc = "source %" }))
 vim.keymap.set("n", "<A-a>", "ggVG")
 
@@ -28,6 +26,7 @@ for level = 0, 4 do
 end
 
 vim.keymap.set("n", "<leader>dw", "diW")
+vim.keymap.set("n", "<leader>da'", 'df2"')
 
 vim.keymap.set("n", "<Right>", "10<C-w><")
 vim.keymap.set("n", "<Left>", "10<C-w>>")
@@ -64,18 +63,26 @@ vim.keymap.set("v", "<leader>yd", '"dy', opts({ desc = "Yank text in char d" }))
 
 vim.keymap.set('v', "<C-c>", '"+y', opts({ desc = "Yank text to clipbaord" }))
 
-vim.keymap.set("v", "<A-f>", '"fy/<C-r>f<CR>', opts({ desc = "Search select text" }))
+vim.keymap.set({ "v", "x" }, "<A-f>", '"fy/<C-r>f<CR>', opts({ desc = "Search select text" }))
 
 vim.keymap.set("i", "<C-z>", "<C-c>ua", opts({ desc = "Undo back to insert" }))
 
--- vim dianostic
 vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, opts({ desc = "Diagnostic open float" }))
 
--- Lsp mapping
-vim.keymap.set('n', "<leader>lsr", vim.cmd.LspRestart, opts({ desc = "Lsp Restart" }))
+vim.keymap.set('n', "<leader>lsr", vim.lsp.enable, opts({ desc = "Lsp Restart" }))
 
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 
 vim.keymap.set("n", "<leader>fc", function()
-    vim.lsp.buf.format()
-end)
+    local bufnr = vim.api.nvim_get_current_buf()
+    local ok, conform = pcall(require, "conform")
+    if ok then
+        for _, name in ipairs({ "prettierd", "prettier" }) do
+            if conform.get_formatter_info(name, bufnr).available then
+                conform.format({ bufnr = bufnr, formatters = { name } })
+                return
+            end
+        end
+    end
+    vim.lsp.buf.format({ bufnr = bufnr })
+end, opts({ desc = "Format with prettier, fallback to LSP" }))
