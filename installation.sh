@@ -3,7 +3,8 @@ set -eo pipefail   # no "-u" here: nvm.sh breaks with "set -u"
 
 install_packages() {
     sudo apt update
-    sudo apt install -y curl tmux zsh fzf ripgrep xclip build-essential
+    # libglib2.0-bin provides "gio trash"; trash-cli provides trash-put etc.
+    sudo apt install -y curl tmux zsh fzf ripgrep xclip build-essential libglib2.0-bin trash-cli
 
     # Neovim build prerequisites
     sudo apt install -y ninja-build gettext cmake
