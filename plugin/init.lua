@@ -44,6 +44,24 @@ require("mason-lspconfig").setup({
     }
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = 'lua',
+    once = true,
+    callback = function()
+        vim.cmd("packadd lazydev.nvim")
+
+        -- lazydev
+        require("lazydev").setup({
+            library = {
+                {
+                    path = "${3rd}/luv/library",
+                    word = { "vim%.uv" }
+                }
+            }
+        })
+    end
+})
+
 -- noice
 local noice = require("noice")
 noice.setup({
@@ -70,9 +88,12 @@ vim.keymap.set("n", "<leader>na", ":Noice all<CR>", { silent = true })
 vim.keymap.set("n", "<leader>gs", function() vim.cmd('Git') end, { desc = "Git Status" })
 vim.keymap.set("n", "<leader>gc", function() vim.cmd('Git commit') end, { desc = "Git Commits" })
 vim.keymap.set("n", "<leader>gd", function() vim.cmd('Git diff') end, { desc = "Git diff" })
-vim.keymap.set("n", "<leader>gl", function() vim.cmd('Git log') end, { desc = "Git log" })
+vim.keymap.set("n", "<leader>gl", function() vim.cmd('Git log --oneline') end, { desc = "Git log" })
 vim.keymap.set("n", "<leader>gmtl", function() vim.cmd('Git mergetool') end, { desc = "Git mergetool" })
-vim.keymap.set("n", "<leader>g.", function() vim.cmd('Gclog %') end, { desc = "Git mergetool" })
+vim.keymap.set("n", "<leader>g.", function() vim.cmd('Gclog %') end, { desc = "Git log current file" })
+vim.keymap.set("n", "<leader>gh", function() vim.cmd('diffget //2') end, { desc = "Git diffget ours (left)" })
+vim.keymap.set("n", "<leader>gu", function() vim.cmd('diffget //3') end, { desc = "Git diffget theirs (right)" })
+vim.keymap.set("n", "<leader>g1", function() vim.cmd('Gedit :1:%') end, { desc = "Git open base version (stage 1)" })
 
 -- multiple cursor
 require("multiple-cursors").setup()

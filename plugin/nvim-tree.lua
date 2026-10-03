@@ -1,12 +1,9 @@
--- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 local api = require("nvim-tree.api")
 
 local nvim_tree = require("nvim-tree")
 
 nvim_tree.setup({
+    disable_netrw = true,
     view = {
         number = true,
         relativenumber = true,
@@ -17,7 +14,7 @@ nvim_tree.setup({
                 git = false
             },
         },
-        highlight_git = true,
+        highlight_git = "name",
         indent_markers = {
             enable = true,
             icons = {
@@ -30,7 +27,7 @@ nvim_tree.setup({
         }
     },
     on_attach = function(bufnr)
-        api.config.mappings.default_on_attach(bufnr)
+        api.map.on_attach.default(bufnr)
 
         vim.keymap.set("n", "<Esc>", "<C-w>l", { buffer = bufnr })
         vim.keymap.set("n", "<Right>", ":NvimTreeResize +20<CR>", { buffer = bufnr, silent = true })
@@ -63,4 +60,3 @@ vim.keymap.set("n", "<leader>gf", function()
 end, { desc = "Go to current file in nvimtree" })
 
 vim.keymap.set("n", "<A-1>", nvimtreeToggle, opts({ desc = "Explorer toggle" }))
-

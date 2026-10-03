@@ -1,5 +1,14 @@
 require("chando")
 
+vim.api.nvim_create_autocmd("PackChanged", {
+    pattern = "telescope-fzf-native.nvim",
+    callback = function(e)
+        vim.schedule(function()
+            vim.cmd("! cd " .. e.data.path .. " && make")
+        end)
+    end
+})
+
 vim.pack.add({
     'https://github.com/nvim-tree/nvim-web-devicons',
     'https://github.com/nvim-lua/plenary.nvim',
@@ -58,22 +67,4 @@ vim.pack.add({
     'https://github.com/saghen/blink.cmp',
 }, {
     confirm = false
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = 'lua',
-    once = true,
-    callback = function()
-        vim.cmd("packadd lazydev.nvim")
-
-        -- lazydev
-        require("lazydev").setup({
-            library = {
-                {
-                    path = "${3rd}/luv/library",
-                    word = { "vim%.uv" }
-                }
-            }
-        })
-    end
 })

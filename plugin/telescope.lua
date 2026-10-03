@@ -1,8 +1,5 @@
 local telescope = require("telescope")
-local pickers = require("telescope.pickers")
-local finders = require("telescope.finders")
 local actions = require("telescope.actions")
-local state = require("telescope.actions.state")
 
 telescope.setup({
     pickers = {
@@ -60,9 +57,9 @@ local recentlyFiles = function()
 end
 
 vim.keymap.set('n', '<C-f>', builtin.find_files, { desc = "Telescope find files" })
-vim.keymap.set('n', '<C-p>', findAll, { desc = 'Telescope find all files include hidden and git ignore' })
 vim.keymap.set('n', '<C-e>', recentlyFiles, { desc = "Recently Files" })
 
+vim.keymap.set('n', '<leader>ff', findAll, { desc = 'Telescope find all files include hidden and git ignore' })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })

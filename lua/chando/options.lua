@@ -7,7 +7,6 @@ vim.o.expandtab = true
 vim.loader.enable()
 vim.o.smartindent = true
 vim.o.mouse = "a"
-vim.o.undofile = true
 vim.opt.wrap = false
 
 vim.opt.spell = true
@@ -17,6 +16,9 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 vim.o.termguicolors = true
+
+vim.o.undofile = true
+vim.o.undodir = vim.fn.stdpath("data") .. "/undodir"
 
 -- Folding (treesitter-based, see plugin/nvim-treesitter.lua)
 vim.o.foldlevel = 99
