@@ -76,17 +76,3 @@ vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, opts({ desc = "Diagn
 vim.keymap.set('n', "<leader>lsr", function() vim.cmd("lsp restart") end, opts({ desc = "Lsp Restart" }))
 
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
-
-vim.keymap.set("n", "<leader>fc", function()
-    local bufnr = vim.api.nvim_get_current_buf()
-    local ok, conform = pcall(require, "conform")
-    if ok then
-        for _, name in ipairs({ "prettierd", "prettier" }) do
-            if conform.get_formatter_info(name, bufnr).available then
-                conform.format({ bufnr = bufnr, formatters = { name } })
-                return
-            end
-        end
-    end
-    vim.lsp.buf.format({ bufnr = bufnr })
-end, opts({ desc = "Format with prettier, fallback to LSP" }))

@@ -56,22 +56,37 @@ local recentlyFiles = function()
     builtin.oldfiles({ cwd_only = true })
 end
 
+-- git vim-fugitive and telescope git
+vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = "Telescope git branches" })
+vim.keymap.set('n', '<leader>gt', builtin.git_stash, { desc = "Telescope git stash" })
+vim.keymap.set("n", "<leader>gs", function() vim.cmd('Git') end, { desc = "Git Status" })
+vim.keymap.set("n", "<leader>gc", function() vim.cmd('Git commit') end, { desc = "Git Commits" })
+vim.keymap.set("n", "<leader>gd", function() vim.cmd('Git diff') end, { desc = "Git diff" })
+vim.keymap.set("n", "<leader>gl", function() vim.cmd('Git log --oneline') end, { desc = "Git log" })
+vim.keymap.set("n", "<leader>g.", function() vim.cmd('Gclog %') end, { desc = "Git log current file" })
+vim.keymap.set("n", "<leader>gh", function() vim.cmd('diffget //2') end, { desc = "Git diffget ours (left)" })
+vim.keymap.set("n", "<leader>gu", function() vim.cmd('diffget //3') end, { desc = "Git diffget theirs (right)" })
+vim.keymap.set("n", "<leader>g1", function() vim.cmd('Gedit :1:%') end, { desc = "Git open base version (stage 1)" })
+
+-- find file
 vim.keymap.set('n', '<C-f>', builtin.find_files, { desc = "Telescope find files" })
 vim.keymap.set('n', '<C-e>', recentlyFiles, { desc = "Recently Files" })
-
 vim.keymap.set('n', '<leader>ff', findAll, { desc = 'Telescope find all files include hidden and git ignore' })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set({ 'x' }, '<leader>ff', builtin.grep_string, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
-
 vim.keymap.set("n", "<leader>dd", builtin.diagnostics, { desc = "Diagnostics" })
 
+-- lsp
 vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Lsp Definitions" })
 vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "Lsp Implementations" })
 vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Lsp References" })
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Lsp References" })
 vim.keymap.set("n", "gm", builtin.lsp_document_symbols, { desc = "Lsp Document Symbols" })
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
+vim.keymap.set("n", "<C-q>", vim.lsp.buf.hover, { desc = "LSP hover documentation" })
+vim.keymap.set("i", "<A-p>", vim.lsp.buf.signature_help, { desc = "LSP signature help" })
 
 vim.keymap.set({ 'n', 'v' }, "<leader>i", function()
     vim.lsp.buf.code_action()
@@ -94,7 +109,3 @@ vim.keymap.set({ 'n', 'v' }, "<leader>t", function()
         }
     })
 end, { desc = "Lsp quickfix or refactor" })
-
-vim.keymap.set("n", "<C-q>", vim.lsp.buf.hover, { desc = "LSP hover documentation" })
-
-vim.keymap.set("i", "<A-p>", vim.lsp.buf.signature_help, { desc = "LSP signature help" })

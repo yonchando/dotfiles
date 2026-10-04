@@ -1,5 +1,4 @@
 return {
-    ---@type lspconfig.settings.tailwindcss
     settings = {
         tailwindCSS = {
             classFunctions = {

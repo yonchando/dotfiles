@@ -1,6 +1,5 @@
 local conform = require("conform")
 
-
 conform.setup({
     formatters_by_ft = {
         lua = { "stylua" },
@@ -21,9 +20,17 @@ conform.setup({
     }
 })
 
-vim.keymap.set("n", "<leader>fsc", function()
+local opts = function(tbl)
+    return vim.tbl_extend("keep", { noremap = true, silent = true }, tbl)
+end
+
+vim.keymap.set("n", "<leader>fc", function()
     local bufnr = vim.api.nvim_get_current_buf()
-    conform.format({
-        bufnr = bufnr
-    })
-end)
+    for _, name in ipairs({ "prettierd", "prettier" }) do
+        if conform.get_formatter_info(name, bufnr).available then
+            conform.format({ bufnr = bufnr, formatters = { name } })
+            return
+        end
+    end
+    vim.lsp.buf.format({ bufnr = bufnr })
+end, opts({ desc = "Format with prettier, fallback to LSP" }))
