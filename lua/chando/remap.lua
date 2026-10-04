@@ -73,7 +73,7 @@ vim.keymap.set("i", "<C-z>", "<C-c>ua", opts({ desc = "Undo back to insert" }))
 
 vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, opts({ desc = "Diagnostic open float" }))
 
-vim.keymap.set('n', "<leader>lsr", vim.lsp.enable, opts({ desc = "Lsp Restart" }))
+vim.keymap.set('n', "<leader>lsr", function() vim.cmd("lsp restart") end, opts({ desc = "Lsp Restart" }))
 
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 
