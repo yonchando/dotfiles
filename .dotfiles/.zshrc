@@ -3,8 +3,6 @@ export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
 export EDITOR=nvim
-export WORKING_DIR="$HOME/code $HOME/.config"
-export WORKING_DIR="$WORKING_DIR"
 export JAVA_HOME=/usr/lib/jvm/default
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -30,11 +28,7 @@ zinit light zsh-users/zsh-completions
 
 source $HOME/dotfiles/.dotfiles/.aliases.zsh
 source $HOME/dotfiles/.dotfiles/.config.zsh
-
-if [[ -f $HOME/.dev.zsh ]]; then
-    alias devc='nvim $HOME/.dev.zsh'
-    source $HOME/.dev.zsh
-fi
+[[ -f $HOME/.local.zsh ]] && source $HOME/.local.zsh
 
 export PATH="/home/chando/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/home/chando/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"

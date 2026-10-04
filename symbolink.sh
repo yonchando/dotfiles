@@ -21,9 +21,19 @@ link_local_bin() {
     link "$DOTFILES/.dotfiles/.local/bin/tmux-sessionizer" "$HOME/.local/bin/tmux-sessionizer"
 }
 
+init_local_zsh() {
+    local f="$DOTFILES/.dotfiles/.local.zsh"
+    [[ -e "$f" ]] && return
+cat > "$f" <<'EOF'
+export WORKING_DIR="$HOME $HOME/.config"
+EOF
+    echo "Created: $f"
+}
+
 link_dotfile() {
     local f
-    for f in .zshrc .p10k.zsh .tmux.conf .ideavimrc; do
+    init_local_zsh
+    for f in .zshrc .p10k.zsh .tmux.conf .ideavimrc .local.zsh; do
         link "$DOTFILES/.dotfiles/$f" "$HOME/$f"
     done
 }
