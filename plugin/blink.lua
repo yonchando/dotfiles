@@ -1,5 +1,6 @@
 local cmp = require('blink.cmp')
 cmp.build():pwait()
+
 cmp.setup({
     cmdline = { enabled = true },
     completion = {
@@ -59,8 +60,8 @@ cmp.setup({
                 treesitter = { "lsp" }
             }
         },
-        documentation = { auto_show = false },
-        ghost_text = { enabled = true },
+
+        ghost_text = { enabled = false },
     },
 
     sources = {

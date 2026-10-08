@@ -2,19 +2,17 @@ local telescope = require("telescope")
 local actions = require("telescope.actions")
 
 telescope.setup({
+    defaults = {
+        wrap_results = true,
+        path_display = {
+            "filename_first",
+            "truncate",
+        },
+        preview = false
+    },
     pickers = {
         find_files = {
             themes = 'ivy',
-            previewer = false,
-        },
-        git_files = {
-            previewer = false,
-        },
-        oldfiles = {
-            previewer = false,
-        },
-        artisan_routes = {
-            previewer = false,
         },
         help_tags = {
             themes = 'ivy',
@@ -53,7 +51,9 @@ local findAll = function()
 end
 
 local recentlyFiles = function()
-    builtin.oldfiles({ cwd_only = true })
+    builtin.oldfiles({
+        cwd_only = true,
+    })
 end
 
 -- git vim-fugitive and telescope git
@@ -72,7 +72,11 @@ vim.keymap.set("n", "<leader>g1", function() vim.cmd('Gedit :1:%') end, { desc =
 vim.keymap.set('n', '<C-f>', builtin.find_files, { desc = "Telescope find files" })
 vim.keymap.set('n', '<C-e>', recentlyFiles, { desc = "Recently Files" })
 vim.keymap.set('n', '<leader>ff', findAll, { desc = 'Telescope find all files include hidden and git ignore' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fg', function()
+    builtin.live_grep({
+        preview = true,
+    })
+end, { desc = 'Telescope live grep' })
 vim.keymap.set({ 'x' }, '<leader>ff', builtin.grep_string, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })

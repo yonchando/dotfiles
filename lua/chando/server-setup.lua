@@ -1,7 +1,8 @@
 local language_setup = {
     "php",
     "angular",
-    "java"
+    "java",
+    "docker"
 }
 
 local lsp_names = {
@@ -13,8 +14,10 @@ local lsp_names = {
         "angularls",
         "ts_ls",
     },
+    docker = {
+        "docker_language_server"
+    }
 }
-
 
 vim.api.nvim_create_user_command("SetupServer", function(opts)
     local status, mlspconfig = pcall(require, "mason-lspconfig")
@@ -62,5 +65,4 @@ end, {
     complete = function()
         return language_setup
     end
-
 })
