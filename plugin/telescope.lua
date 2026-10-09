@@ -3,7 +3,7 @@ local actions = require("telescope.actions")
 
 telescope.setup({
     defaults = {
-        wrap_results = true,
+        wrap_results = false,
         path_display = {
             "filename_first",
             "truncate",
