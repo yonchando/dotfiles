@@ -3,8 +3,11 @@ alias c="clear"
 # tmux
 alias cw="tmux-sessionizer"
 
+tw() { tmux new -s "$(basename "$PWD" | tr . _)"; }
+
 # dotfile
 alias ohd='nvim ~/dotfiles'
+alias ohw='nvim ~/dotfiles/.dotfiles/.local.zsh'
 alias ohe='nvim ~/.zshrc'
 alias ohs='source ~/.zshrc'
 

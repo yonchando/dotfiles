@@ -29,6 +29,8 @@ zinit light zsh-users/zsh-completions
 source $HOME/dotfiles/.dotfiles/.aliases.zsh
 source $HOME/dotfiles/.dotfiles/.config.zsh
 [[ -f $HOME/.local.zsh ]] && source $HOME/.local.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH="/home/chando/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/home/chando/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+
