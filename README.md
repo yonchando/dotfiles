@@ -46,4 +46,3 @@ To uninstall Neovim: `sudo apt remove neovim`.
 
 - Open a new terminal (or log out and back in) so zsh becomes the shell.
 - In tmux, press `Ctrl-a` then `I` to install the tmux plugins.
-- Put machine-specific shell settings in `~/.dev.zsh`. `.zshrc` loads it if it exists, and it is not tracked in the repo.
