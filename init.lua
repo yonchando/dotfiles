@@ -1,5 +1,3 @@
-require("chando")
-
 vim.api.nvim_create_autocmd("PackChanged", {
     pattern = "telescope-fzf-native.nvim",
     callback = function(e)
@@ -40,6 +38,7 @@ vim.pack.add({
     'https://github.com/brenton-leighton/multiple-cursors.nvim',
     'https://github.com/windwp/nvim-autopairs',
     { src = 'https://github.com/kylechui/nvim-surround',  version = vim.version.range("4.x") },
+    "https://github.com/mbbill/undotree",
 
     -- formatting
     'https://github.com/stevearc/conform.nvim.git',
@@ -68,3 +67,5 @@ vim.pack.add({
 }, {
     confirm = false
 })
+
+require("chando")

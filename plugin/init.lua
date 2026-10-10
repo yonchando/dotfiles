@@ -6,9 +6,10 @@ theme.setup({
     transparent = true,
     terminal_colors = true,
     styles = {
-        comments = { italic = true },
-        keywords = { italic = true },
+        comments = { italic = false },
+        keywords = { italic = false },
         floats = "dark",
+        sidebars = "dark",
     },
     on_colors = function() end,
     on_highlights = function() end,
@@ -59,3 +60,8 @@ vim.keymap.set({ "n", "x" }, "<A-k>", function() vim.cmd('MultipleCursorsAddJump
     { desc = "Select previous match" })
 vim.keymap.set({ "n", "x" }, "<A-x>", function() vim.cmd('MultipleCursorsJumpNextMatch') end,
     { desc = "Add multiple cursor up" })
+
+-- undo tree
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, {
+    desc = "Undo tree toggle"
+})

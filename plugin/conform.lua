@@ -13,6 +13,7 @@ conform.setup({
         json = { "prettierd", "prettier", stop_after_first = true },
         htmlangular = { "prettierd", "prettier", stop_after_first = true },
         html = { "prettierd", "prettier", stop_after_first = true },
+        go = { "gofmt" },
     },
     format_on_save = {
         timeout_ms = 50000,
