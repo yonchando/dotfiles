@@ -56,17 +56,6 @@ local recentlyFiles = function()
     })
 end
 
--- git vim-fugitive and telescope git
-vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = "Telescope git branches" })
-vim.keymap.set('n', '<leader>gt', builtin.git_stash, { desc = "Telescope git stash" })
-vim.keymap.set("n", "<leader>gs", function() vim.cmd('Git') end, { desc = "Git Status" })
-vim.keymap.set("n", "<leader>gc", function() vim.cmd('Git commit') end, { desc = "Git Commits" })
-vim.keymap.set("n", "<leader>gd", function() vim.cmd('Git diff') end, { desc = "Git diff" })
-vim.keymap.set("n", "<leader>gl", function() vim.cmd('Git log --oneline') end, { desc = "Git log" })
-vim.keymap.set("n", "<leader>g.", function() vim.cmd('Gclog %') end, { desc = "Git log current file" })
-vim.keymap.set("n", "<leader>gh", function() vim.cmd('diffget //2') end, { desc = "Git diffget ours (left)" })
-vim.keymap.set("n", "<leader>gu", function() vim.cmd('diffget //3') end, { desc = "Git diffget theirs (right)" })
-vim.keymap.set("n", "<leader>g1", function() vim.cmd('Gedit :1:%') end, { desc = "Git open base version (stage 1)" })
 
 -- find file
 vim.keymap.set('n', '<C-f>', builtin.find_files, { desc = "Telescope find files" })
