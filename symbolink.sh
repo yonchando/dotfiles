@@ -21,6 +21,10 @@ link_local_bin() {
     link "$DOTFILES/.dotfiles/.local/bin/tmux-sessionizer" "$HOME/.local/bin/tmux-sessionizer"
 }
 
+link_starship() {
+    link "$DOTFILES/.dotfiles/starship.toml" "$HOME/.config/starship.toml"
+}
+
 init_local_zsh() {
     local f="$DOTFILES/.dotfiles/.local.zsh"
     [[ -e "$f" ]] && return
@@ -38,9 +42,15 @@ link_dotfile() {
     done
 }
 
+link_fd() {
+    link "$(which fdfind)" "$HOME/.local/bin/fd"
+}
+
 main() {
     link_local_bin
     link_dotfile
+    link_starship
+    link_fd
 }
 
 main "$@"

@@ -5,21 +5,18 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 export EDITOR=nvim
 export JAVA_HOME=/usr/lib/jvm/default
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+# Load starship theme
+zinit ice as"command" from"gh-r" \
+          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+          atpull"%atclone" src"init.zsh"
+zinit light starship/starship
 
-zinit snippet OMZP::git
-zinit snippet OMZP::aliases
-zinit snippet OMZL::directories.zsh
 zinit snippet OMZL::key-bindings.zsh
 
 # zinit light zsh-users/zsh-autosuggestions
@@ -30,7 +27,3 @@ source $HOME/dotfiles/.dotfiles/.aliases.zsh
 source $HOME/dotfiles/.dotfiles/.config.zsh
 [[ -f $HOME/.local.zsh ]] && source $HOME/.local.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export PATH="/home/chando/.config/herd-lite/bin:$PATH"
-export PHP_INI_SCAN_DIR="/home/chando/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
-

@@ -3,8 +3,7 @@ set -eo pipefail   # no "-u" here: nvm.sh breaks with "set -u"
 
 install_packages() {
     sudo apt update
-    # libglib2.0-bin provides "gio trash"; trash-cli provides trash-put etc.
-    sudo apt install -y curl tmux zsh fzf ripgrep xclip build-essential libglib2.0-bin trash-cli
+    sudo apt install -y curl tmux zsh ripgrep xclip build-essential libglib2.0-bin trash-cli fd-find
 
     # Neovim build prerequisites
     sudo apt install -y ninja-build gettext cmake
@@ -140,6 +139,27 @@ install_tmux_plugin() {
     fi
 }
 
+install_fzf() {
+    local dir="$HOME/.fzf"
+
+    if [[ ! -d "$dir" ]]; then
+        git clone --depth 1 https://github.com/junegunn/fzf.git "$dir"
+    else
+        git -C "$dir" pull --ff-only
+    fi
+
+    # Distro fzf is older and /usr/bin comes before ~/.fzf/bin in PATH
+    if dpkg -s fzf >/dev/null 2>&1; then
+        sudo apt remove -y fzf
+    fi
+
+    # Downloads the latest binary into ~/.fzf/bin and writes ~/.fzf.zsh
+    # (.zshrc already sources it, so don't let the installer edit rc files)
+    "$dir/install" --key-bindings --completion --no-update-rc --no-bash --no-fish
+
+    "$dir/bin/fzf" --version
+}
+
 # Step name -> function, in install order (used when no args are given)
 STEPS=(
     packages:install_packages
@@ -151,6 +171,7 @@ STEPS=(
     node:install_node
     neovim:install_neovim
     tmux:install_tmux_plugin
+    fzf:install_fzf
 )
 
 usage() {

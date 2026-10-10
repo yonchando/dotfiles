@@ -4,18 +4,18 @@ if [[ -z $WORKING_DIR && $# -eq 0 ]]; then
     WORKING_DIR="."
 fi
 
-FZF_CTRL_R_OPTS="ctrl-r:reload(find $WORKING_DIR -mindepth 1 -maxdepth 1 -type d)"
-FZF_CTRL_F_OPTS="ctrl-f:reload(find {} -mindepth 1 -maxdepth 1 -type d)"
-FZF_BIND_OPTS="$FZF_CTRL_R_OPTS,$FZF_CTRL_F_OPTS"
+FIND_OPTS="--min-depth 1 --max-depth 1 --type d"
 
-FIND_OPTS="-mindepth 1 -maxdepth 1 -type d"
+FZF_CTRL_W_OPTS="ctrl-w:reload(fd . $FIND_OPTS $WORKING_DIR)"
+FZF_CTRL_F_OPTS="ctrl-f:reload(fd . $FIND_OPTS {})"
+FZF_BIND_OPTS="$FZF_CTRL_W_OPTS,$FZF_CTRL_F_OPTS"
 
 if [[ $# -eq 2 ]]; then
     selected=$(fd -t d -- $1 $2 | fzf --bind "$FZF_BIND_OPTS")
 elif [[ $# -eq 1 ]]; then
-    selected=$(find "$1" $FIND_OPTS | fzf --bind "$FZF_BIND_OPTS")
+    selected=$(fd . $FIND_OPTS "$1" | fzf --bind "$FZF_BIND_OPTS")
 else
-    selected=$(find $WORKING_DIR $FIND_OPTS | fzf --bind "$FZF_BIND_OPTS")
+    selected=$(fd . $FIND_OPTS $WORKING_DIR | fzf --bind "$FZF_BIND_OPTS")
 fi
 
 if [[ -z $selected ]]; then
@@ -24,11 +24,6 @@ fi
 
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
-
-if [[ -z $(which tmux) ]]; then
-    cd $selected
-    exit 0
-fi
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s $selected_name -c $selected
