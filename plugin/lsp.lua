@@ -16,6 +16,23 @@ require("mason-lspconfig").setup({
     }
 })
 
+local registry = require("mason-registry")
+
+local ensure_installed = {}
+
+for _, v in ipairs({ "prettier", "prettierd" }) do
+    if not registry.is_installed(v) then
+        table.insert(ensure_installed, v)
+    end
+end
+
+if next(ensure_installed) then
+    vim.api.nvim_cmd({
+        cmd = "MasonInstall",
+        args = ensure_installed
+    }, {})
+end
+
 vim.api.nvim_create_autocmd("FileType", {
     pattern = 'lua',
     once = true,
