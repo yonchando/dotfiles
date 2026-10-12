@@ -33,7 +33,7 @@ EOF
 link_dotfile() {
     local f
     init_local_zsh
-    for f in .zshrc .tmux.conf .ideavimrc .local.zsh; do
+    for f in .zshrc .tmux.conf .ideavimrc .local.zsh .vimrc; do
         link "$DOTFILES/.dotfiles/$f" "$HOME/$f"
     done
 }

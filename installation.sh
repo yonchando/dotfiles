@@ -113,7 +113,7 @@ install_neovim() {
     fi
 
     if [[ ! -d "$src" ]]; then
-        git clone https://github.com/neovim/neovim.git "$src"
+        git clone --depth=1 https://github.com/neovim/neovim.git "$src"
     fi
 
     (

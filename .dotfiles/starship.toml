@@ -22,8 +22,10 @@ scan_timeout = 100
 [directory]
 style = "fg:#e3e5e5 bg:#769ff0"
 format = "[ $path ]($style)"
-truncation_length = 3
+truncation_length = 100
 truncation_symbol = "…/"
+home_symbol = "/home/chando"
+truncate_to_repo = false
 
 [directory.substitutions]
 "Documents" = "󰈙 "
