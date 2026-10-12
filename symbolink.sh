@@ -21,10 +21,6 @@ link_local_bin() {
     link "$DOTFILES/.dotfiles/.local/bin/tmux-sessionizer" "$HOME/.local/bin/tmux-sessionizer"
 }
 
-link_starship() {
-    link "$DOTFILES/.dotfiles/starship.toml" "$HOME/.config/starship.toml"
-}
-
 init_local_zsh() {
     local f="$DOTFILES/.dotfiles/.local.zsh"
     [[ -e "$f" ]] && return
@@ -37,7 +33,7 @@ EOF
 link_dotfile() {
     local f
     init_local_zsh
-    for f in .zshrc .p10k.zsh .tmux.conf .ideavimrc .local.zsh; do
+    for f in .zshrc .tmux.conf .ideavimrc .local.zsh; do
         link "$DOTFILES/.dotfiles/$f" "$HOME/$f"
     done
 }
@@ -49,7 +45,6 @@ link_fd() {
 main() {
     link_local_bin
     link_dotfile
-    link_starship
     link_fd
 }
 

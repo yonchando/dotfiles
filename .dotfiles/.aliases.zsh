@@ -38,3 +38,8 @@ alias glog='git log --oneline --decorate --graph'
 
 # docker
 alias dcls='docker ps -a --format "table {{.Image}}\t{{.Names}}\t{{.Status}}"'
+
+# npm
+alias npms="npm run start"
+alias npmd="npm run dev"
+alias npmi="npm install"

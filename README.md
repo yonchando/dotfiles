@@ -39,7 +39,7 @@ To uninstall Neovim: `sudo apt remove neovim`.
 
 | Source | Target |
 | --- | --- |
-| `.dotfiles/.zshrc`, `.p10k.zsh`, `.tmux.conf`, `.ideavimrc` | `~/` |
+| `.dotfiles/.zshrc`, `.tmux.conf`, `.ideavimrc` | `~/` |
 | `.dotfiles/.local/bin/tmux-sessionizer` | `~/.local/bin/` |
 
 ### After setup

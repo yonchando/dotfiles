@@ -4,6 +4,7 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
 export EDITOR=nvim
 export JAVA_HOME=/usr/lib/jvm/default
+export STARSHIP_CONFIG=$HOME/dotfiles/.dotfiles/starship.toml
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
