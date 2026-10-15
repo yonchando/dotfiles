@@ -7,7 +7,7 @@ local language_setup = {
 
 local lsp_names = {
     php = {
-        "laravel_ls",
+        "laravel_lsp",
         "intelephense",
     },
     angular = {

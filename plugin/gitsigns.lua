@@ -93,5 +93,8 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
         vim.keymap.set("n", "<leader>gl", function()
             vim.cmd("Git pull --rebase")
         end, opts)
+
+        vim.keymap.set("n", "K", "3kzz")
+        vim.keymap.set("n", "J", "3jzz")
     end
 })
