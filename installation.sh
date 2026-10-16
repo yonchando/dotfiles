@@ -3,7 +3,7 @@ set -eo pipefail   # no "-u" here: nvm.sh breaks with "set -u"
 
 install_packages() {
     sudo apt update
-    sudo apt install -y curl tmux zsh ripgrep xclip build-essential libglib2.0-bin trash-cli fd-find
+    sudo apt install -y curl tmux zsh ripgrep xclip build-essential libglib2.0-bin trash-cli fd-find zip unzip
 
     # Neovim build prerequisites
     sudo apt install -y ninja-build gettext cmake
