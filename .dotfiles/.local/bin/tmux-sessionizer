@@ -6,7 +6,7 @@ fi
 
 FIND_OPTS="--min-depth 1 --max-depth 1 --type d"
 
-FZF_CTRL_W_OPTS="ctrl-w:reload(fd . $FIND_OPTS $WORKING_DIR)"
+FZF_CTRL_W_OPTS="ctrl-r:reload(fd . $FIND_OPTS $WORKING_DIR)"
 FZF_CTRL_F_OPTS="ctrl-f:reload(fd . $FIND_OPTS {})"
 FZF_BIND_OPTS="$FZF_CTRL_W_OPTS,$FZF_CTRL_F_OPTS"
 
