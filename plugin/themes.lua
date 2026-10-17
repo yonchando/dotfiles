@@ -22,6 +22,8 @@ local function my_colors()
     hl(0, "@comment", { link = "Comment" })
     -- Unused variable / function (LSP)
     hl(0, "DiagnosticUnnecessary", { fg = "#6b7680" })
+    -- Folded lines (visible on transparent terminal)
+    hl(0, "Folded", { fg = "#c8d3f5", bg = "#2f3b63", bold = true })
 end
 
 vim.api.nvim_create_autocmd("ColorScheme", { callback = my_colors })

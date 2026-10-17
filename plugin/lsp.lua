@@ -51,6 +51,22 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
+-- php folding from intelephense (overrides treesitter foldexpr)
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("IntelephenseFold", { clear = true }),
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if not client or client.name ~= "intelephense" or not client:supports_method("textDocument/foldingRange") then
+            return
+        end
+
+        for _, win in ipairs(vim.fn.win_findbuf(args.buf)) do
+            vim.wo[win][0].foldmethod = "expr"
+            vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+        end
+    end
+})
+
 -- laravel ide-helper
 local laravel_group = vim.api.nvim_create_augroup("LaravelIdeHelper", { clear = true })
 local ide_helper_generated = {}
