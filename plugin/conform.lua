@@ -27,11 +27,25 @@ end
 
 vim.keymap.set("n", "<leader>fc", function()
     local bufnr = vim.api.nvim_get_current_buf()
-    for _, name in ipairs({ "prettierd", "prettier" }) do
-        if conform.get_formatter_info(name, bufnr).available then
-            conform.format({ bufnr = bufnr, formatters = { name } })
+    local formatters = { "prettierd", "prettier" }
+
+    -- "available" only means installed, so fall through on errors (e.g. no parser for the filetype)
+    local function try(index)
+        local name = formatters[index]
+        if not name then
+            vim.lsp.buf.format({ bufnr = bufnr })
             return
         end
+        if not conform.get_formatter_info(name, bufnr).available then
+            try(index + 1)
+            return
+        end
+        conform.format({ bufnr = bufnr, formatters = { name }, quiet = true }, function(err)
+            if err then
+                vim.schedule(function() try(index + 1) end)
+            end
+        end)
     end
-    vim.lsp.buf.format({ bufnr = bufnr })
+
+    try(1)
 end, opts({ desc = "Format with prettier, fallback to LSP" }))
