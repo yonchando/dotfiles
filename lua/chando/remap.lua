@@ -76,3 +76,4 @@ vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, opts({ desc = "Diagn
 vim.keymap.set('n', "<leader>lsr", function() vim.cmd("lsp restart") end, opts({ desc = "Lsp Restart" }))
 
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+vim.keymap.set("t", "<A-w>", "<c-\\><c-n>:bd!<CR>")

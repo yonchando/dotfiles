@@ -27,10 +27,6 @@ snippet br "break"
 snippet ch "channel"
 	chan ${0:int}
 
-snippet cs "case"
-	case ${1:value}:
-		${0:${VISUAL}}
-
 snippet co "constants with iota"
 	const (
 		${1:NAME1} = iota
@@ -66,6 +62,11 @@ snippet inf "full interface "
 snippet if "if condition"
 	if $1 {
 		${2:${VISUAL}}
+	}
+
+snippet ifn "if err not nil"
+	if err != nil {
+		${0:${VISUAL}}
 	}
 
 
