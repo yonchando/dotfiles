@@ -9,20 +9,24 @@ require('gitsigns').setup {
         end
 
         -- Navigation
-        map('n', ']c', function()
+        map('n', ']g', function()
             if vim.wo.diff then
                 vim.cmd.normal({ ']c', bang = true })
             else
                 gitsigns.nav_hunk('next')
             end
+
+            vim.cmd.normal({ 'zz', bang = true })
         end)
 
-        map('n', '[c', function()
+        map('n', '[g', function()
             if vim.wo.diff then
                 vim.cmd.normal({ '[c', bang = true })
             else
                 gitsigns.nav_hunk('prev')
             end
+
+            vim.cmd.normal({ 'zz', bang = true })
         end)
 
         -- Actions

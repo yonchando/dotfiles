@@ -20,11 +20,6 @@ cmp.setup({
                     { "source_name" }
                 },
                 components = {
-                    label = {
-                        text = function(ctx)
-                            return ctx.label .. ctx.label_description
-                        end,
-                    },
                     source_name = {
                         text = function(ctx)
                             return "[" .. ctx.source_name .. "]"
