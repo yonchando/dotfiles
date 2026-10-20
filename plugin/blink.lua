@@ -20,6 +20,15 @@ cmp.setup({
                     { "source_name" }
                 },
                 components = {
+                    label_description = {
+                        text = function(ctx)
+                            if ctx.label_description and ctx.label_detail then
+                                return ctx.label_description .. " [" .. ctx.label_detail .. "]"
+                            end
+
+                            return ctx.label_description
+                        end
+                    },
                     source_name = {
                         text = function(ctx)
                             return "[" .. ctx.source_name .. "]"
@@ -65,13 +74,11 @@ cmp.setup({
     },
 
     sources = {
-        -- Remove 'buffer' if you don't want text completions, by default it's only enabled when LSP returns no items
-        default = { 'lazydev', 'lsp', 'path' },
+        default = { 'lazydev', 'lsp', 'path', 'buffer' },
         providers = {
             lazydev = {
                 name = "LazyDev",
                 module = "lazydev.integrations.blink",
-                -- make lazydev completions top priority (see `:h blink.cmp`)
                 score_offset = 100,
             },
         },

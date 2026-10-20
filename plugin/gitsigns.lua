@@ -78,6 +78,7 @@ vim.keymap.set("n", "<leader>gs", function() vim.cmd('Git') end, { desc = "Git S
 vim.keymap.set("n", "<leader>gc", function() vim.cmd('Git commit') end, { desc = "Git Commits" })
 vim.keymap.set("n", "<leader>gd", function() vim.cmd('Git diff') end, { desc = "Git diff" })
 vim.keymap.set("n", "<leader>gl", function() vim.cmd('Git log --oneline') end, { desc = "Git log" })
+vim.keymap.set("n", "<leader>gL", function() vim.cmd('Git log') end, { desc = "Git log" })
 vim.keymap.set("n", "<leader>g.", function() vim.cmd('Gclog %') end, { desc = "Git log current file" })
 vim.keymap.set("n", "<leader>g1", function() vim.cmd('Gedit :1:%') end, { desc = "Git open base version (stage 1)" })
 

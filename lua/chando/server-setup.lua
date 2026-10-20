@@ -12,7 +12,7 @@ local lsp_names = {
     },
     angular = {
         "angularls",
-        "ts_ls",
+        "vtsls",
     },
     docker = {
         "docker_language_server"

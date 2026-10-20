@@ -35,10 +35,11 @@ vim.pack.add({
     'https://github.com/tpope/vim-fugitive',
 
     -- editor
+    { src = 'https://github.com/kylechui/nvim-surround',  version = vim.version.range("4.x") },
     'https://github.com/brenton-leighton/multiple-cursors.nvim',
     'https://github.com/windwp/nvim-autopairs',
-    { src = 'https://github.com/kylechui/nvim-surround',  version = vim.version.range("4.x") },
     "https://github.com/mbbill/undotree",
+    "https://github.com/tpope/vim-dadbod",
 
     -- formatting
     'https://github.com/stevearc/conform.nvim.git',
