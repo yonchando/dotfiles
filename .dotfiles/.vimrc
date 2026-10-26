@@ -1,5 +1,8 @@
 syntax enable
 
+let &t_SI = "\e[6 q" " Thin vertical bar in insert mode
+let &t_EI = "\e[2 q" " Solid block in normal mode
+
 set encoding=UTF-8
 let mapleader = " "
 set scrolloff=5
@@ -13,6 +16,7 @@ set visualbell
 set noerrorbells
 set showmode
 set shiftwidth=2
+
 
 "----------------Mapping-----------------"
 map Q gq
@@ -36,7 +40,6 @@ nmap <Leader>. <C-w>>
 
 nmap <C-d> <C-d>zz
 nmap <C-u> <C-u>zz
-
 
 "----------------Auto Command---------------"
 autocmd BufWritePost .vimrc source %
