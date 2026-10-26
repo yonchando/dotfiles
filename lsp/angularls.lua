@@ -201,6 +201,63 @@ local function go_to_component(bufnr)
     end, function() open_component_ts(bufnr) end)
 end
 
+-- Opens the generated type-check block for the template at cursor, highlighting the matching code
+local function show_tcb(bufnr)
+    local client = vim.lsp.get_clients({ bufnr = bufnr, name = "angularls" })[1]
+
+    if not client then
+        return vim.notify("angularls is not attached", vim.log.levels.WARN)
+    end
+
+    -- Custom angularls method, not in the typed list of LSP methods
+    ---@diagnostic disable-next-line: param-type-mismatch
+    client:request("angular/getTcb", vim.lsp.util.make_position_params(0, client.offset_encoding), function(err, result)
+        if err or not result then
+            return vim.notify("No type-check block at cursor", vim.log.levels.WARN)
+        end
+
+        local tcb_buf = vim.api.nvim_create_buf(false, true)
+        vim.api.nvim_buf_set_lines(tcb_buf, 0, -1, false, vim.split(result.content, "\n"))
+        vim.bo[tcb_buf].filetype = "typescript"
+        vim.bo[tcb_buf].bufhidden = "wipe"
+        vim.bo[tcb_buf].modifiable = false
+
+        vim.cmd.vsplit()
+        vim.api.nvim_win_set_buf(0, tcb_buf)
+
+        local ns = vim.api.nvim_create_namespace("angular_tcb")
+
+        for _, range in ipairs(result.selections) do
+            vim.hl.range(tcb_buf, ns, "Visual",
+                { range.start.line, range.start.character },
+                { range["end"].line, range["end"].character })
+        end
+
+        local first = result.selections[1]
+
+        if first then
+            vim.api.nvim_win_set_cursor(0, { first.start.line + 1, first.start.character })
+            vim.cmd("normal! zz")
+        end
+    end, bufnr)
+end
+
+vim.api.nvim_create_user_command("NgTcb", function()
+    show_tcb(vim.api.nvim_get_current_buf())
+end, { desc = "Show Angular type-check block for the template at cursor" })
+
+local progress_id
+
+local function echo_progress(message, status)
+    progress_id = vim.api.nvim_echo({ { message } }, false, {
+        id = progress_id,
+        kind = "progress",
+        status = status,
+        title = "angularls",
+        source = "angularls",
+    })
+end
+
 vim.keymap.set("n", "gF", function()
     local bufnr = vim.api.nvim_get_current_buf()
     local ft = vim.bo.filetype
@@ -211,3 +268,28 @@ vim.keymap.set("n", "gF", function()
         go_to_component(bufnr)
     end
 end)
+
+
+return {
+    -- Only start inside Angular projects (angular.json / nx.json)
+    workspace_required = true,
+    handlers = {
+        ["angular/projectLoadingStart"] = function()
+            echo_progress("Loading project", "running")
+        end,
+        ["angular/projectLoadingFinish"] = function()
+            echo_progress("Project loaded", "success")
+            progress_id = nil
+        end,
+    },
+    commands = {
+        -- Sent with completions that need edits in other files (e.g. auto-import into the component)
+        ["angular.applyCompletionCodeAction"] = function(command, ctx)
+            local client = assert(vim.lsp.get_client_by_id(ctx.client_id))
+
+            for _, edit in ipairs(command.arguments[1] or {}) do
+                vim.lsp.util.apply_workspace_edit(edit, client.offset_encoding)
+            end
+        end,
+    }
+}

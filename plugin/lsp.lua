@@ -51,6 +51,35 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
+-- angularls: add the completion flags the VS Code extension passes by default.
+-- Set here because nvim-lspconfig's lsp/angularls.lua overrides cmd from our lsp/angularls.lua.
+-- Its cmd builds the argv (probe locations, angularCoreVersion) and starts the server itself,
+-- so the flags are appended when it calls vim.lsp.rpc.start
+local angular_cmd = vim.lsp.config.angularls.cmd
+
+if type(angular_cmd) == "function" then
+    vim.lsp.config("angularls", {
+        cmd = function(dispatchers, config)
+            local rpc_start = vim.lsp.rpc.start
+            vim.lsp.rpc.start = function(argv, ...)
+                return rpc_start(vim.list_extend(argv, {
+                    "--includeCompletionsWithSnippetText",
+                    "--includeAutomaticOptionalChainCompletions",
+                }), ...)
+            end
+
+            local ok, result = pcall(angular_cmd, dispatchers, config)
+            vim.lsp.rpc.start = rpc_start
+
+            if not ok then
+                error(result, 0)
+            end
+
+            return result
+        end,
+    })
+end
+
 -- php folding from intelephense (overrides treesitter foldexpr)
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("IntelephenseFold", { clear = true }),

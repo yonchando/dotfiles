@@ -32,7 +32,7 @@ vim.o.foldtext = ""
 vim.opt.fillchars:append({ fold = " " })
 
 vim.o.signcolumn = "yes"
-vim.o.colorcolumn = "120"
+vim.o.colorcolumn = "80"
 vim.opt.isfname:append("@-@")
 
 -- yank highlight

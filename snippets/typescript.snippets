@@ -60,3 +60,19 @@ snippet clsx "ts class extends"
 		${0}
 	}
 
+# anguglar
+snippet cmp "computed(() => {})"
+    computed(() => {
+        $0
+    })
+
+snippet cp "computed(() => {})"
+    protected readonly $1 = computed(() => {
+        $0
+    })
+
+snippet si "signal()"
+    $1 = signal($0);
+
+snippet in "signal()"
+    $1 = input($0);

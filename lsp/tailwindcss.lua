@@ -3,6 +3,13 @@ return {
     ---@type lspconfig.settings.tailwindcss
     settings = {
         tailwindCSS = {
+            classAttributes = {
+                "appSkeletonClassNameWrapper",
+                "appSkeletonClassName",
+                "classNameWrapper",
+                "className",
+                ".*ClassName.*"
+            },
             classFunctions = {
                 "cn",
                 "cva",
