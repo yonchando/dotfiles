@@ -14,6 +14,13 @@ telescope.setup({
         find_files = {
             themes = 'ivy',
         },
+        lsp_references = {
+            themes = 'ivy',
+            path_display = {
+                "filename_first",
+            },
+            preview = true
+        },
         help_tags = {
             themes = 'ivy',
             mappings = {
