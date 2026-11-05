@@ -11,8 +11,6 @@ tree.install({
     "java", "javadoc",
     "angular",
     "php",
-    "hyprlang",
-    "rasi",
     "zsh",
     "go"
 })
