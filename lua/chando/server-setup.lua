@@ -16,7 +16,17 @@ local lsp_names = {
     },
     docker = {
         "docker_language_server"
-    }
+    },
+    java = {
+        "jdtls",
+    },
+}
+
+-- mason packages that are not lspconfig servers (installed via :MasonInstall)
+local mason_packages = {
+    java = {
+        "vscode-spring-boot-tools",
+    },
 }
 
 vim.api.nvim_create_user_command("SetupServer", function(opts)
@@ -27,20 +37,16 @@ vim.api.nvim_create_user_command("SetupServer", function(opts)
         local lsp = {
             "tailwindcss",
         }
+        local packages = {}
 
-        if opts.args == "" then
-            for _, value in ipairs(language_setup) do
-                if lsp_names[value] then
-                    lsp = vim.list_extend(lsp, lsp_names[value])
-                end
-            end
-        else
-            for _, value in ipairs(vim.split(opts.args, " ")) do
-                if lsp_names[value] then
-                    lsp = vim.list_extend(lsp, lsp_names[value])
-                else
-                    vim.notify("Language invalid", vim.log.levels.WARN)
-                end
+        local languages = opts.args == "" and language_setup or vim.split(opts.args, " ")
+
+        for _, value in ipairs(languages) do
+            if lsp_names[value] or mason_packages[value] then
+                vim.list_extend(lsp, lsp_names[value] or {})
+                vim.list_extend(packages, mason_packages[value] or {})
+            elseif opts.args ~= "" then
+                vim.notify("Language invalid: " .. value, vim.log.levels.WARN)
             end
         end
 
@@ -56,6 +62,18 @@ vim.api.nvim_create_user_command("SetupServer", function(opts)
             vim.api.nvim_cmd({
                 cmd = "LspInstall",
                 args = installed
+            }, {})
+        end
+
+        local registry = require("mason-registry")
+        local missing = vim.tbl_filter(function(name)
+            return not registry.is_installed(name)
+        end, packages)
+
+        if next(missing) then
+            vim.api.nvim_cmd({
+                cmd = "MasonInstall",
+                args = missing
             }, {})
         end
     end
