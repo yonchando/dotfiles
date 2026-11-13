@@ -19,6 +19,11 @@ conform.setup({
     format_on_save = {
         timeout_ms = 50000,
         lsp_format = "fallback"
+    },
+    formatters = {
+        xmlformatter = {
+            prepend_args = { "--indent", "4" }
+        }
     }
 })
 

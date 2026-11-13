@@ -19,6 +19,7 @@ local lsp_names = {
     },
     java = {
         "jdtls",
+        "lemminx",
     },
 }
 
@@ -26,6 +27,9 @@ local lsp_names = {
 local mason_packages = {
     java = {
         "vscode-spring-boot-tools",
+        "java-debug-adapter",
+        "java-test",
+        "xmlformatter",
     },
 }
 

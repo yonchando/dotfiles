@@ -4,8 +4,6 @@ local paths = {
     -- root dir containing plugins/ and config_linux/
     jdtls = mason .. "/jdtls",
     lombok = mason .. "/jdtls/lombok.jar",
-    -- extension dir containing jars/ and language-server/
-    spring_boot_tools = mason .. "/vscode-spring-boot-tools/extension",
     jdk = "/usr/lib/jvm/default",
 }
 
@@ -20,23 +18,32 @@ if next(missing) then
     return
 end
 
+local optional = {
+    spring_boot_tools = mason .. "/vscode-spring-boot-tools/extension",
+    java_test = mason .. "/java-test/extension",
+    java_debug_adapter = mason .. "/java-debug-adapter/extension",
+}
+
 require("java").setup({
     jdtls = {
         path = paths.jdtls,
         auto_install = false,
     },
-    java_test = {
-        enable = false,
-    },
-    java_debug_adapter = {
-        enable = false,
-    },
     lombok = {
         path = paths.lombok,
         auto_install = false,
     },
+    java_test = {
+        enable = vim.uv.fs_stat(optional.java_test) ~= nil,
+        path = optional.java_test
+    },
+    java_debug_adapter = {
+        enable = vim.uv.fs_stat(optional.java_debug_adapter) ~= nil,
+        path = optional.java_debug_adapter,
+    },
     spring_boot_tools = {
-        path = paths.spring_boot_tools,
+        enable = vim.uv.fs_stat(optional.spring_boot_tools) ~= nil,
+        path = optional.spring_boot_tools,
         auto_install = false,
     },
     jdk = {
