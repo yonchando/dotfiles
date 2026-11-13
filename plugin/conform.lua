@@ -14,17 +14,11 @@ conform.setup({
         htmlangular = { "prettierd", "prettier", stop_after_first = true },
         html = { "prettierd", "prettier", stop_after_first = true },
         go = { "gofmt" },
-        xml = { "xmlformatter" },
     },
     format_on_save = {
         timeout_ms = 50000,
         lsp_format = "fallback"
     },
-    formatters = {
-        xmlformatter = {
-            prepend_args = { "--indent", "4" }
-        }
-    }
 })
 
 local opts = function(tbl)

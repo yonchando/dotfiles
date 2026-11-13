@@ -29,7 +29,6 @@ local mason_packages = {
         "vscode-spring-boot-tools",
         "java-debug-adapter",
         "java-test",
-        "xmlformatter",
     },
 }
 
