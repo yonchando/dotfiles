@@ -17,13 +17,6 @@ for name, path in pairs(paths) do
 end
 
 if next(missing) then
-    vim.schedule(function()
-        vim.notify(
-            "nvim-java skipped, missing:\n  " .. table.concat(missing, "\n  ")
-            .. "\nRun :SetupServer java",
-            vim.log.levels.WARN
-        )
-    end)
     return
 end
 
