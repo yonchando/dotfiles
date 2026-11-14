@@ -29,7 +29,12 @@ local mason_packages = {
         "vscode-spring-boot-tools",
         "java-debug-adapter",
         "java-test",
+        "palantir-java-format",
     },
+}
+
+local lsp = {
+    "tailwindcss",
 }
 
 vim.api.nvim_create_user_command("SetupServer", function(opts)
@@ -37,11 +42,7 @@ vim.api.nvim_create_user_command("SetupServer", function(opts)
 
     if status then
         local installed = {}
-        local lsp = {
-            "tailwindcss",
-        }
         local packages = {}
-
         local languages = opts.args == "" and language_setup or vim.split(opts.args, " ")
 
         for _, value in ipairs(languages) do

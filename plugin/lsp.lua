@@ -20,7 +20,7 @@ local registry = require("mason-registry")
 
 local ensure_installed = {}
 
-for _, v in ipairs({ "prettier", "prettierd" }) do
+for _, v in ipairs({ "prettierd" }) do
     if not registry.is_installed(v) then
         table.insert(ensure_installed, v)
     end
@@ -135,7 +135,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         local commands = {
             { "ide-helper:generate", "vendor/_ide_helper.php" },
-            { "ide-helper:models", "--nowrite", "--filename=vendor/_ide_helper_models.php" },
+            { "ide-helper:models",   "--nowrite",             "--filename=vendor/_ide_helper_models.php" },
         }
 
         local function run(index)

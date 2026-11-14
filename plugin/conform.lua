@@ -14,6 +14,7 @@ conform.setup({
         htmlangular = { "prettierd", "prettier", stop_after_first = true },
         html = { "prettierd", "prettier", stop_after_first = true },
         go = { "gofmt" },
+        java = { "palantir-java-format" },
     },
     format_on_save = {
         timeout_ms = 50000,
