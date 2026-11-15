@@ -94,6 +94,30 @@ local function parent_collapse()
     end
 end
 
+local function create_relative()
+    local root = api.tree.get_nodes().absolute_path -- tree root folder
+    local prefix = root:gsub("/$", "") .. "/"
+    local orig_input = vim.ui.input
+
+    vim.ui.input = function(opts, on_confirm)
+        vim.ui.input = orig_input
+
+        if opts.default and vim.startswith(opts.default, prefix) then
+            opts.default = "./" .. opts.default:sub(#prefix + 1)
+        end
+
+        orig_input(opts, function(input)
+            if input and vim.startswith(input, "./") then
+                input = prefix .. input:sub(3)
+            end
+            on_confirm(input)
+        end)
+    end
+
+    api.fs.create()
+    vim.ui.input = orig_input
+end
+
 nvim_tree.setup({
     disable_netrw = true,
     view = {
@@ -122,6 +146,9 @@ nvim_tree.setup({
         api.map.on_attach.default(bufnr)
 
         local o = function(desc) return { buffer = bufnr, noremap = true, silent = true, nowait = true, desc = desc } end
+
+        vim.keymap.set("n", "a", create_relative, o("nvim-tree: Create (relative ./)"))
+
         vim.keymap.set("n", "<CR>", open_or_collapse, o("Open / collapse recursively"))
         vim.keymap.set("n", "o", open_or_collapse, o("Open / collapse recursively"))
         vim.keymap.set("n", "<2-LeftMouse>", open_or_collapse, o("Open / collapse recursively"))
