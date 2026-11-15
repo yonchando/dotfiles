@@ -83,6 +83,63 @@ install_go() {
     go version
 }
 
+# Replace the line matching <pattern> in .local.zsh with <line> (append if absent)
+set_local_zsh() {
+    local pattern="$1" line="$2" file="$HOME/dotfiles/.dotfiles/.local.zsh"
+    touch "$file"
+    if grep -q "$pattern" "$file"; then
+        local tmp; tmp="$(mktemp)"
+        awk -v p="$pattern" -v l="$line" '$0 ~ p { print l; next } { print }' "$file" > "$tmp"
+        cat "$tmp" > "$file" && rm "$tmp"
+    else
+        echo "$line" >> "$file"
+    fi
+}
+
+# JAVA_VERSION: OpenJDK major version from apt (e.g. 21, 25)
+install_java() {
+    local version="${JAVA_VERSION:-21}" java_home
+    if ! apt-cache show "openjdk-${version}-jdk" >/dev/null 2>&1; then
+        echo "openjdk-${version}-jdk is not available in apt" >&2
+        return 1
+    fi
+    sudo apt install -y "openjdk-${version}-jdk"
+
+    java_home="/usr/lib/jvm/java-${version}-openjdk-$(dpkg --print-architecture)"
+
+    # .zshrc sets JAVA_HOME=/usr/lib/jvm/default; point it at this JDK
+    if [[ -d /usr/lib/jvm/default && ! -L /usr/lib/jvm/default ]]; then
+        echo "/usr/lib/jvm/default is a real directory; not replacing it" >&2
+        return 1
+    fi
+    sudo ln -sfn "$java_home" /usr/lib/jvm/default
+    # /usr/bin/java follows update-alternatives, which may pick another JDK
+    set_local_zsh '^export PATH=.*JAVA_HOME' 'export PATH="$JAVA_HOME/bin:$PATH"'
+
+    /usr/lib/jvm/default/bin/java -version
+}
+
+# MAVEN_VERSION: Apache Maven release (e.g. 3.10.0), extracted into /opt
+install_maven() {
+    local version="${MAVEN_VERSION:-3.10.0}"
+    local name="apache-maven-${version}"
+    local tarball="${name}-bin.tar.gz"
+    local path="maven/maven-${version%%.*}/${version}/binaries/${tarball}"
+
+    if [[ ! -x "/opt/${name}/bin/mvn" ]]; then
+        echo "Installing Maven ${version} ..."
+        # dlcdn only hosts current releases; older ones live in the archive
+        curl -fsSL "https://dlcdn.apache.org/${path}" -o "/tmp/${tarball}" \
+            || curl -fsSL "https://archive.apache.org/dist/${path}" -o "/tmp/${tarball}"
+        sudo tar -C /opt -xzf "/tmp/${tarball}"
+        rm "/tmp/${tarball}"
+    fi
+
+    set_local_zsh '^export PATH=.*apache-maven-' "export PATH=\"/opt/${name}/bin:\$PATH\""
+
+    "/opt/${name}/bin/mvn" -version
+}
+
 install_node() {
     export NVM_DIR="$HOME/.nvm"
 
@@ -168,6 +225,8 @@ STEPS=(
     rust:install_rust
     exa:install_exa
     go:install_go
+    java:install_java
+    maven:install_maven
     node:install_node
     neovim:install_neovim
     tmux:install_tmux_plugin
