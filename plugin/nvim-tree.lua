@@ -118,6 +118,31 @@ local function create_relative()
     vim.ui.input = orig_input
 end
 
+-- Change tree root to the folder under cursor (parent folder for files)
+-- and set the global cwd, so Telescope pickers search from there too.
+local function cd_under_cursor()
+    local node = api.tree.get_node_under_cursor()
+    if not node or not node.absolute_path then return end
+
+    local dir = node.type == "directory" and node.absolute_path
+        or vim.fn.fnamemodify(node.absolute_path, ":h")
+
+    vim.cmd.cd(vim.fn.fnameescape(dir))
+    api.tree.change_root(dir)
+    -- vim.notify("cwd: " .. vim.fn.fnamemodify(dir, ":~"), vim.log.levels.INFO)
+end
+
+-- Like default `-` (root up one level), but also sets the global cwd.
+local function cd_up()
+    local root = api.tree.get_nodes().absolute_path
+    local parent = vim.fn.fnamemodify(root:gsub("/$", ""), ":h")
+    if parent == root then return end
+
+    vim.cmd.cd(vim.fn.fnameescape(parent))
+    api.tree.change_root(parent)
+    -- vim.notify("cwd: " .. vim.fn.fnamemodify(parent, ":~"), vim.log.levels.INFO)
+end
+
 nvim_tree.setup({
     disable_netrw = true,
     view = {
@@ -153,6 +178,8 @@ nvim_tree.setup({
         vim.keymap.set("n", "o", open_or_collapse, o("Open / collapse recursively"))
         vim.keymap.set("n", "<2-LeftMouse>", open_or_collapse, o("Open / collapse recursively"))
         vim.keymap.set("n", "<BS>", parent_collapse, o("Close parent recursively"))
+        vim.keymap.set("n", "<C-]>", cd_under_cursor, o("CD under cursor (tree root + cwd)"))
+        vim.keymap.set("n", "-", cd_up, o("Up to parent (tree root + cwd)"))
 
         vim.keymap.set("n", "<Esc>", "<C-w>l", { buffer = bufnr })
         vim.keymap.set("n", "<Right>", ":NvimTreeResize +20<CR>", { buffer = bufnr, silent = true })
