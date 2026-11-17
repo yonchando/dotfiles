@@ -1,4 +1,6 @@
-require("nvim-autopairs").setup {}
+local autopairs = require("nvim-autopairs")
+
+autopairs.setup {}
 
 -- indent blankline
 require("ibl").setup({
@@ -12,7 +14,14 @@ vim.opt.listchars:append("space:⋅")
 vim.opt.fillchars:append("lastline:⋅")
 
 -- multiple cursor
-require("multiple-cursors").setup()
+require("multiple-cursors").setup({
+    pre_hook = function()
+        autopairs.disable()
+    end,
+    post_hook = function()
+        autopairs.enable()
+    end
+})
 vim.keymap.set({ "n", "x" }, "<C-n>", function() vim.cmd('MultipleCursorsAddDown') end,
     { desc = "Add multiple cursor down" })
 vim.keymap.set({ "n", "x" }, "<C-p>", function() vim.cmd('MultipleCursorsAddUp') end, { desc = "Add multiple cursor up" })

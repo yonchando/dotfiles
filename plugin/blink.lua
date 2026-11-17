@@ -4,6 +4,9 @@ cmp.build():pwait()
 cmp.setup({
     cmdline = { enabled = true },
     completion = {
+        trigger = {
+            show_on_keyword = false,
+        },
         keyword = { range = 'prefix' },
 
         accept = { auto_brackets = { enabled = false }, },
