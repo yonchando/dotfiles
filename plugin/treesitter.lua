@@ -58,3 +58,14 @@ for key, value in pairs(text_object_mapping) do
         desc = "Select " .. value
     })
 end
+
+
+local text_swap = require("nvim-treesitter-textobjects.swap")
+
+vim.keymap.set("n", "<leader>a", function()
+    text_swap.swap_next("@parameter.inner")
+end)
+
+vim.keymap.set("n", "<leader>A", function()
+    text_swap.swap_previous("@parameter.outer")
+end)
