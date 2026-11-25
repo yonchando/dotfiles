@@ -61,6 +61,10 @@
       "rev": "16ba83bfc8a25f52bb545134f5bee082b195c460",
       "src": "https://github.com/mason-org/mason.nvim"
     },
+    "maven.nvim": {
+      "rev": "bcbac7a521b7512f9849b2745c71dc43a788486e",
+      "src": "https://github.com/yonchando/maven.nvim"
+    },
     "multiple-cursors.nvim": {
       "rev": "eae76d4c5f7ede2d45746dc2affb5e7a139e4aa8",
       "src": "https://github.com/brenton-leighton/multiple-cursors.nvim"
