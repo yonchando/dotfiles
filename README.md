@@ -4,6 +4,9 @@ This repo is for personal usage for config `hyprland`, `neovim`, `.ideavimrc`, `
 
 Enviroment installed zsh, oh my zsh, lua, luarocks, neovim, tmux and nodejs.
 
+### Neovim
+
+`git clone --branch nvim_12 https://github.com/yonchando/dotfiles.git ~/.config/nvim`
 
 ### Ubuntu
 
