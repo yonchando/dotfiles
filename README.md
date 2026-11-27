@@ -4,7 +4,6 @@ This repo is for personal usage for config `hyprland`, `neovim`, `.ideavimrc`, `
 
 Enviroment installed zsh, oh my zsh, lua, luarocks, neovim, tmux and nodejs.
 
-`git clone https://github.com/yonchando/dotfiles.git ~/dotfiles && cd ~/dotfiles`
 
 ### Ubuntu
 
@@ -14,16 +13,22 @@ sudo apt update && sudo apt install -y git curl tmux zsh
 
 chsh -s $(which zsh)
 
+`git clone https://github.com/yonchando/dotfiles.git ~/dotfiles && cd ~/dotfiles && git chekcout wsl_linux`
+
+
 ```
 
 ### Arch Linux
 
 ```sh
-    sudo pacman --needed -S sddm hyprpaper hyprlauncher hyprland waybar cliphist ghostty \
-        rofi rofi-emoji xdg-desktop-portal-hyprland \
-        tlp git neovim lua dolphin tmux zsh
+sudo pacman --needed -S sddm hyprpaper hyprlauncher hyprland waybar cliphist ghostty \
+    rofi rofi-emoji xdg-desktop-portal-hyprland \
+    tlp git neovim lua dolphin tmux zsh
 
-    chsh -s $(which zsh)
+chsh -s $(which zsh)
+
+`git clone https://github.com/yonchando/dotfiles.git ~/dotfiles && cd ~/dotfiles`
+
 ```
 
 ### Setup run
