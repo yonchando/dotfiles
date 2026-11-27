@@ -16,8 +16,7 @@ sudo apt update && sudo apt install -y git curl tmux zsh
 
 chsh -s $(which zsh)
 
-`git clone https://github.com/yonchando/dotfiles.git ~/dotfiles && cd ~/dotfiles && git chekcout wsl_linux`
-
+git clone https://github.com/yonchando/dotfiles.git ~/dotfiles && cd ~/dotfiles && git checkout wsl_linux
 
 ```
 
@@ -30,7 +29,7 @@ sudo pacman --needed -S sddm hyprpaper hyprlauncher hyprland waybar cliphist gho
 
 chsh -s $(which zsh)
 
-`git clone https://github.com/yonchando/dotfiles.git ~/dotfiles && cd ~/dotfiles`
+git clone https://github.com/yonchando/dotfiles.git ~/dotfiles && cd ~/dotfiles
 
 ```
 
